@@ -4,11 +4,11 @@ import axios from "axios";
 
 const PokemonList = props => {
 
-    
+
 
     return(
         <>
-            
+
         </>
     )
 }
