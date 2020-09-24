@@ -1,21 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router } from "react-router-dom";
 import { Provider } from "react-redux";
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
+import reducer from "./store/reducers/reducer"
+import thunk from "redux-thunk";
+import logger from "redux-logger";
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-const store = createStore(
-  //Create your main reducers, then combine them in index.js/reducers, and then import them in this file as allReducer
-  // allReducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-)
-
+const store = createStore(reducer, applyMiddleware(thunk, logger));
 
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <Router>
+      <App />
+    </Router>
   </Provider>,
   document.getElementById('root')
 );
