@@ -1,17 +1,16 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { connect } from "react-redux";
+import { fetchPokemonList } from "./store/actions";
 import PokemonList from "./components/PokemonList";
 
-function App() {
-
+const App = props => {
+  
+  const { fetchPokemonList } = props;
 
   useEffect(() => {
-    axios.get(`https://pokeapi.co/api/v2/pokemon/`)
-            .then(response => {
-                console.log(response.data)
-                let results = response.data.results;
-            })
-  })
+    fetchPokemonList()
+  }, [fetchPokemonList])
 
   return (
     <div className="App">
@@ -21,4 +20,5 @@ function App() {
   );
 }
 
-export default App;
+
+export default connect(null, { fetchPokemonList })(App);
