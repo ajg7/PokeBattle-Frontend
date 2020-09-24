@@ -1,7 +1,7 @@
 import {
-    FETCH_POKEMON,
-    FETCH_POKEMON_SUCCESS,
-    FETCH_POKEMON_ERROR
+    FETCH_POKEMON_LIST,
+    FETCH_POKEMON_LIST_SUCCESS,
+    FETCH_POKEMON_LIST_ERROR,
 } from "../actions";
 
 const initialState = {
@@ -12,18 +12,18 @@ const initialState = {
 
 export default (state = initialState, action) => {
     switch(action.type) {
-        case FETCH_POKEMON:
+        case FETCH_POKEMON_LIST:
             return {
                 ...state,
                 isLoading: true
             }
-        case FETCH_POKEMON_SUCCESS:
+        case FETCH_POKEMON_LIST_SUCCESS:
             return {
                 ...state,
                 pokemon: action.payload,
                 isLoading: false
             }
-        case FETCH_POKEMON_ERROR:
+        case FETCH_POKEMON_LIST_ERROR:
             return {
                 ...state,
                 isLoading: false,

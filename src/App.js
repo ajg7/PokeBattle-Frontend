@@ -6,7 +6,7 @@ function App() {
 
 
   useEffect(() => {
-    axios.get("https://pokeapi.co/api/v2/pokemon/")
+    axios.get(`https://pokeapi.co/api/v2/pokemon/`)
             .then(response => {
                 console.log(response.data)
                 let results = response.data.results;

@@ -1,19 +1,20 @@
 import axios from "axios";
 
-export const FETCH_POKEMON = "FETCH_POKEMON";
-export const FETCH_POKEMON_SUCCESS = "FETCH_POKEMON_SUCCESS";
-export const FETCH_POKEMON_ERROR = "FETCH_POKEMON_ERROR";
+export const FETCH_POKEMON_LIST = "FETCH_POKEMON_LSIT";
+export const FETCH_POKEMON_LIST_SUCCESS = "FETCH_POKEMON_SUCCESS_LIST";
+export const FETCH_POKEMON_LIST_ERROR = "FETCH_POKEMON_ERROR_LIST";
 
-export const fetchPokemon = () => {
+export const fetchPokemonList = () => {
     return dispatch => {
+        dispatch({ type: FETCH_POKEMON_LIST })
         axios.get("https://pokeapi.co/api/v2/pokemon/")
             .then(response => {
                 console.log(response)
                 let results = response.results;
-                dispatch({ type: FETCH_POKEMON_SUCCESS, payload: results})
+                dispatch({ type: FETCH_POKEMON_LIST_SUCCESS, payload: results})
             })
             .catch(error => {
-                dispatch({ type: FETCH_POKEMON_ERROR, payload: { message: "You blacked out!" }})
+                dispatch({ type: FETCH_POKEMON_LIST_ERROR, payload: { message: "You blacked out!" }})
             })
     }
 }
