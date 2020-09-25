@@ -6,10 +6,15 @@ Pokemon Cards
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    font-family: "Flexo-Demi", arial, sans-serif;
+}
+
+.id, .poke-name {
+    text-align: left;
 }
 
 .pokemon-card {
-    border: 10px solid orange;
+    border: 10px solid #FF0000;
     text-align: center;
     padding: 25px;
     margin: 25px 25px;
@@ -17,7 +22,34 @@ Pokemon Cards
     height: 350px;
 }
 
+.pokemon-card .image-container {
+    height: 50%;
+}
+
 .pokemon-card img {
-    height: 75%;
-    width: 50%;
+    height: 100%;
+    width: 75%;
+}
+
+.pokemon-card .pokemon-team-button {
+    display: flex;
+    justify-content: center;
+}
+
+.pokemon-card .pokemon-team-button button {
+    border-radius: 5px;
+    font-weight: bold;
+    background-color: #FF0000;
+    color: #FFFFFF;
+    outline: none;
+}
+
+.pokemon-card .pokemon-team-button button:hover {
+    opacity: 0.8;
+}
+
+.pokemon-card .pokemon-team-button img {
+    height: 5%;
+    width: 10%;
+    margin: 0 5px;
 }
