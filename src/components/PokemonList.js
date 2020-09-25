@@ -9,17 +9,18 @@ const PokemonList = props => {
     const { pokemon, nextPokemonList, previousPokemonList, fetchPokemonList } = props;
     const [currentList, setCurrentList] = useState("https://pokeapi.co/api/v2/pokemon/");
 
-
     useEffect(() => {
         fetchPokemonList(currentList);
     }, [currentList, fetchPokemonList, nextPokemonList])
 
     const nextClickHandler = event => {
         setCurrentList(nextPokemonList);
+        window.scrollTo(0,0)
     }
 
     const previousClickHandler = event => {
         setCurrentList(previousPokemonList);
+        window.scrollTo(0,0)
     }
 
     return(
