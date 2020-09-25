@@ -26,12 +26,13 @@ header img {
 }
 
 .pokemon-card {
-    border: 10px solid #FF0000;
+    border: 1px solid black;
     text-align: center;
     padding: 25px;
     margin: 25px 25px;
     width: 15%;
     height: 450px;
+    box-shadow: 0 15px 35px rgba(50, 50, 93, .1), 0 5px 15px rgba(0,0,0,.07); 
 }
 
 .pokemon-card .image-container {
