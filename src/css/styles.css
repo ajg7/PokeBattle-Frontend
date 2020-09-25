@@ -31,7 +31,6 @@ header img {
 }
 
 .pokemon-card {
-    border: 1px solid black;
     text-align: var(--center);
     padding: 25px;
     margin: 25px 25px;
