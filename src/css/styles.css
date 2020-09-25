@@ -1,3 +1,23 @@
 /*###############################
 Pokemon Cards
 #################################*/
+
+.App {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.pokemon-card {
+    border: 10px solid orange;
+    text-align: center;
+    padding: 25px;
+    margin: 25px 25px;
+    width: 15%;
+    height: 350px;
+}
+
+.pokemon-card img {
+    height: 75%;
+    width: 50%;
+}
