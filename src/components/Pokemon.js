@@ -3,6 +3,10 @@ import React, { useState, useEffect } from "react";
 import "../css/reset.css";
 import "../css/styles.css";
 import { theme } from "../StyledComponents/theme";
+import Pokeball from "../assets/Pokeball.png";
+import Greatball from "../assets/Greatball.png";
+import Ultraball from "../assets/Ultraball.png";
+import Masterball from "../assets/Masterball.png";
 import styled from "styled-components";
 
 
@@ -22,7 +26,10 @@ const Pokemon = props => {
     const [type, setType] = useState("");
     const [imgs, setImgs] = useState("");
     const [id, setId] = useState(0);
-    
+
+    const imgArray = [Pokeball, Greatball, Ultraball, Masterball]
+    const randNum = Math.round(Math.random() * (imgArray.length - 1));
+
     useEffect(() => {
         axios.get(url)
             .then(response => {
@@ -51,6 +58,11 @@ const Pokemon = props => {
                             <h3 className={type}>{type.charAt(0).toUpperCase() + type.slice(1)}</h3>
                         </div>
                     </StyledThemePill>
+                    <div className="pokemon-team-button">
+                        <img src={imgArray[randNum]} alt="pokeball" />
+                        <button>Add Pokemon to Team</button>
+                        <img src={imgArray[randNum]} alt="pokeball" />
+                    </div>
                 </div>
             </div>
     )

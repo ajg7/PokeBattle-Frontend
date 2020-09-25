@@ -8,6 +8,10 @@ Pokemon Cards
     justify-content: center;
 }
 
+.id, .poke-name {
+    text-align: left;
+}
+
 .pokemon-card {
     border: 10px solid orange;
     text-align: center;
@@ -27,7 +31,20 @@ Pokemon Cards
     width: 75%;
 }
 
-.id, .poke-name {
-    text-align: left;
+.pokemon-card .pokemon-team-button {
+    display: flex;
+    justify-content: center;
 }
 
+.pokemon-card .pokemon-team-button button {
+    border-radius: 5px;
+    font-weight: bold;
+    background-color: #FF0000;
+    color: #FFFFFF;
+}
+
+.pokemon-card .pokemon-team-button img {
+    height: 5%;
+    width: 10%;
+    margin: 0 5px;
+}
