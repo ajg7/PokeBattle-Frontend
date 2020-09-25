@@ -6,6 +6,7 @@ Pokemon Cards
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    font-family: "Flexo-Demi", arial, sans-serif;
 }
 
 .id, .poke-name {
@@ -13,13 +14,12 @@ Pokemon Cards
 }
 
 .pokemon-card {
-    border: 10px solid orange;
+    border: 10px solid #FF0000;
     text-align: center;
     padding: 25px;
     margin: 25px 25px;
     width: 15%;
     height: 350px;
-    font-family: "Flexo-Demi", arial, sans-serif;
 }
 
 .pokemon-card .image-container {
@@ -41,6 +41,11 @@ Pokemon Cards
     font-weight: bold;
     background-color: #FF0000;
     color: #FFFFFF;
+    outline: none;
+}
+
+.pokemon-card .pokemon-team-button button:hover {
+    opacity: 0.8;
 }
 
 .pokemon-card .pokemon-team-button img {
