@@ -6,7 +6,7 @@ export const FETCH_POKEMON_LIST_ERROR = "FETCH_POKEMON_ERROR_LIST";
 
 export const fetchPokemonList = url => {
     return dispatch => {
-        dispatch({ type: FETCH_POKEMON_LIST })
+        dispatch({ type: FETCH_POKEMON_LIST }) 
         axios.get(url)
             .then(response => {
                 console.log(response.results)
@@ -18,5 +18,4 @@ export const fetchPokemonList = url => {
             })
     }
 }
-
 
