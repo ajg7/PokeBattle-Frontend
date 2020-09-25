@@ -15,9 +15,19 @@ Pokemon Cards
     margin: 25px 25px;
     width: 15%;
     height: 350px;
+    font-family: "Flexo-Demi", arial, sans-serif;
+}
+
+.pokemon-card .image-container {
+    height: 50%;
 }
 
 .pokemon-card img {
-    height: 75%;
-    width: 50%;
+    height: 100%;
+    width: 75%;
 }
+
+.id, .poke-name {
+    text-align: left;
+}
+

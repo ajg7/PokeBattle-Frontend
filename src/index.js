@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from "react-redux";
+import { ThemeProvider } from "styled-components";
+import { theme } from "./StyledComponents/theme";
 import { createStore, applyMiddleware } from "redux";
 import reducer from "./store/reducers/reducer"
 import thunk from "redux-thunk";
@@ -13,7 +15,9 @@ const store = createStore(reducer, applyMiddleware(thunk, logger));
 
 ReactDOM.render(
   <Provider store={store}>
+    <ThemeProvider theme={theme}>
         <App />
+    </ThemeProvider>
   </Provider>,
   document.getElementById('root')
 );
