@@ -13,17 +13,27 @@ import styled from "styled-components";
 
 
 const StyledThemePill = styled.div`
-    div {
+
+    .type-pill-primary {
         background-color: ${({ theme, type }) => {
             return theme.types[type];
         }};
         border-radius: 5px;
     }
+    .type-pill-secondary {
+        background-color: ${({ theme, secondaryType }) => {
+            return theme.types[secondaryType];
+        }};
+        border-radius: 5px;
+    }
+
+    
 `
 
 const Pokemon = props => {
     const { name, url } = props;
     const [type, setType] = useState("");
+    const [secondaryType, setSecondaryType] = useState("");
     const [imgs, setImgs] = useState("");
     const [id, setId] = useState(0);
 
@@ -34,16 +44,17 @@ const Pokemon = props => {
         axios.get(url)
             .then(response => {
                 const data = response.data;
+                const types = response.data.types;
                 const sprites = response.data.sprites.versions
-                setType(data.types[0].type.name)
+                setType(types[0].type.name)
                 setImgs(sprites["generation-i"]["red-blue"].front_default)
                 setId(data.id)
+                return types.length === 2 ? setSecondaryType(types[1].type.name) : null;
             })
             .catch(error => {
                 console.log(error);
             })
     }, [url])
-
 
     return(
             <div className="pokemon-card">
@@ -53,9 +64,12 @@ const Pokemon = props => {
                 <div className="pokemon-data-container">
                     <h3 className="id">#{id}</h3>
                     {name === "mr-mime" ? <h2 className="poke-name">Mr. Mime</h2> : <h2 className="poke-name">{name.charAt(0).toUpperCase() + name.slice(1)}</h2>}
-                    <StyledThemePill type={type}>
-                        <div className="type-pill">
-                            <h3 className={type}>{type.charAt(0).toUpperCase() + type.slice(1)}</h3>
+                    <StyledThemePill type={type} secondaryType={secondaryType}>
+                        <div className="type-pill-primary">
+                            <h3 className={type} id="primary-type-title">{type.charAt(0).toUpperCase() + type.slice(1)}</h3>
+                        </div>
+                        <div className="type-pill-secondary">
+                            <h3 className={secondaryType} id="primary-type-title">{secondaryType.charAt(0).toUpperCase() + secondaryType.slice(1)}</h3>
                         </div>
                     </StyledThemePill>
                     <div className="pokemon-team-button">
