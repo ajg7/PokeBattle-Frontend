@@ -9,9 +9,11 @@ const PokemonList = props => {
     const { pokemon, nextPokemonList, previousPokemonList, fetchPokemonList } = props;
     const [currentList, setCurrentList] = useState("https://pokeapi.co/api/v2/pokemon/");
 
+
     useEffect(() => {
         fetchPokemonList(currentList);
-    }, [currentList, fetchPokemonList, nextPokemonList])
+        
+    }, [currentList, fetchPokemonList, nextPokemonList, pokemon])
 
     const nextClickHandler = event => {
         setCurrentList(nextPokemonList);
@@ -26,7 +28,8 @@ const PokemonList = props => {
             {pokemon.map(individualPokemon => {
                 return <Pokemon name={individualPokemon.name} url={individualPokemon.url} />
             })}
-            <button onClick={previousClickHandler}>Previous</button><button onClick={nextClickHandler}>Next</button>
+            <button onClick={previousClickHandler}>Previous</button>
+            <button onClick={nextClickHandler}>Next</button>
         </>
     )
 }
@@ -35,8 +38,7 @@ const mapStateToProps = state => {
     return {
         pokemon: state.pokemon,
         nextPokemonList: state.nextPokemonList,
-        previousPokemonList: state.previousPokemonList,
-        pokemonURLs: state.pokemonURLs
+        previousPokemonList: state.previousPokemonList
     }
 }
 

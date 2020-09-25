@@ -1,7 +1,7 @@
 import {
     FETCH_POKEMON_LIST,
     FETCH_POKEMON_LIST_SUCCESS,
-    FETCH_POKEMON_LIST_ERROR
+    FETCH_POKEMON_LIST_ERROR, 
 } from "../actions";
 
 const initialState = {
@@ -25,7 +25,7 @@ export default (state = initialState, action) => {
                 pokemon: action.payload.results,
                 isLoading: false,
                 nextPokemonList: action.payload.next,
-                previousPokemonList: action.payload.previous
+                previousPokemonList: action.payload.previous,
             }
         case FETCH_POKEMON_LIST_ERROR:
             return {
