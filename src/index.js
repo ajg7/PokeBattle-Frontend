@@ -1,10 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from "react-redux";
+import { createStore, applyMiddleware } from "redux";
+import reducer from "./store/reducers/reducer"
+import thunk from "redux-thunk";
+import logger from "redux-logger";
+import { ThemeProvider } from "styled-components";
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { PokemonCardStyledComponent as theme } from "./styled_components/PokemonCardStyledComponent"
+
+const store = createStore(reducer, applyMiddleware(thunk, logger));
+
 
 ReactDOM.render(
-    <App />,
+  <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>
+  </Provider>,
   document.getElementById('root')
 );
 
