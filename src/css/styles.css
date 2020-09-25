@@ -1,12 +1,17 @@
 /*###############################
 Pokemon Cards
 #################################*/
+:root {
+    --pokeball-toplid-color: #FF0000;
+    --pokebal-bottomlid-color: #FFFFFF;
+    --center: center;
 
+}
 
 header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: var(--center);
 }
 
 header img {
@@ -17,7 +22,7 @@ header img {
 .pokemon-app {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: var(--center);
     font-family: "Flexo-Demi", arial, sans-serif;
 }
 
@@ -27,7 +32,7 @@ header img {
 
 .pokemon-card {
     border: 1px solid black;
-    text-align: center;
+    text-align: var(--center);
     padding: 25px;
     margin: 25px 25px;
     width: 15%;
@@ -47,14 +52,14 @@ header img {
 
 .pokemon-card .pokemon-team-button {
     display: flex;
-    justify-content: center;
+    justify-content: var(--center);
 }
 
 .pokemon-card .pokemon-team-button button {
     border-radius: 5px;
     font-weight: bold;
-    background-color: #FF0000;
-    color: #FFFFFF;
+    background-color: var(--pokeball-toplid-color);
+    color: var(--pokebal-bottomlid-color);
     outline: none;
 }
 
