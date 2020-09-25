@@ -1,10 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import { connect } from "react-redux";
 import "../css/reset.css";
 import "../css/styles.css";
-import { PokemonCardStyledComponent } from "../styled_components/PokemonCardStyledComponent";
-import { fetchPokemonList } from "../store/actions"
 
 const Pokemon = props => {
     const { name, url } = props;
@@ -29,17 +26,19 @@ const Pokemon = props => {
 
 
     return(
-        <PokemonCardStyledComponent>
-            {id <= 151 ? <div className="pokemon-card">
-                <img src={img} alt={name} />
-                <h2>{name}</h2>
-                <h3>{id}</h3>
-                <h3>{type}</h3>
-            </div> : null}
-        </PokemonCardStyledComponent>
+            <div className="pokemon-card">
+                <div className="image-container">
+                    <img src={img} alt={name} />
+                </div>
+                <div className="pokemon-data-container">
+                    {name === "mr-mime" ? <h2>Mr. Mime</h2> : <h2>{name.charAt(0).toUpperCase() + name.slice(1)}</h2>}
+                    <h3>{id}</h3>
+                    <h3>{type.charAt(0).toUpperCase() + type.slice(1)}</h3>
+                </div>
+            </div>
     )
 }
 
 
 
-export default connect(null, { fetchPokemonList })(Pokemon);
+export default Pokemon;

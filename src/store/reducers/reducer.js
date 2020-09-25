@@ -1,7 +1,7 @@
 import {
     FETCH_POKEMON_LIST,
     FETCH_POKEMON_LIST_SUCCESS,
-    FETCH_POKEMON_LIST_ERROR
+    FETCH_POKEMON_LIST_ERROR, 
 } from "../actions";
 
 const initialState = {
@@ -33,6 +33,7 @@ export default (state = initialState, action) => {
                 isLoading: false,
                 errorMessage: action.payload.message
             }
+        
         default:
             return state;
     }

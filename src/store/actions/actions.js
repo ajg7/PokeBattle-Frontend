@@ -3,6 +3,7 @@ import axios from "axios";
 export const FETCH_POKEMON_LIST = "FETCH_POKEMON_LIST";
 export const FETCH_POKEMON_LIST_SUCCESS = "FETCH_POKEMON_SUCCESS_LIST";
 export const FETCH_POKEMON_LIST_ERROR = "FETCH_POKEMON_ERROR_LIST";
+export const FILTER_POKEMON_LIST = "FILTER_POKEMON_LIST";
 
 export const fetchPokemonList = url => {
     return dispatch => {
