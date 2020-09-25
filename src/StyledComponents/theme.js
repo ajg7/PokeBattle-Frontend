@@ -17,5 +17,8 @@ export const theme = {
         ice: "#51C4E7",
         dragon: "#F16E57",
         psychic: "#F366B9",
+        fairy: "#FDB9E9",
+        steel: "#9EB7B8",
+        dark: "#707070"
     }
 }
