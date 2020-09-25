@@ -2,7 +2,19 @@
 Pokemon Cards
 #################################*/
 
-.App {
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header img {
+    height: 50px;
+    width: 50px;
+}
+
+.pokemon-app {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
