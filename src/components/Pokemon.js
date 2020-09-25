@@ -5,6 +5,7 @@ const Pokemon = props => {
     const { name, url } = props;
     const [type, setType] = useState("");
     const [img, setImg] = useState("");
+    const [id, setId] = useState(0);
     
     useEffect(() => {
         axios.get(url)
@@ -13,6 +14,8 @@ const Pokemon = props => {
                 setType(data.types[0].type.name)
                 const sprites = response.data.sprites.versions
                 setImg(sprites["generation-i"]["red-blue"].front_default)
+                console.log(data.id)
+                setId(data.id)
             })
             .catch(error => {
                 console.log(error);
@@ -23,9 +26,9 @@ const Pokemon = props => {
 
     return(
         <div className="pokemon-card">
-            <img src={img} alt={name} />
-            <h2>{name}</h2>
-            <h3>{type}</h3>
+            {id <= 151 ? <img src={img} alt={name} /> : null}
+            {id <= 151 ? <h2>{name}</h2> : null}
+            {id <= 151 ? <h3>{type}</h3> : null}
         </div>
     )
 }

@@ -1,7 +1,8 @@
 import {
     FETCH_POKEMON_LIST,
     FETCH_POKEMON_LIST_SUCCESS,
-    FETCH_POKEMON_LIST_ERROR, 
+    FETCH_POKEMON_LIST_ERROR,
+    FETCH_SPECIFIC_POKEMON 
 } from "../actions";
 
 const initialState = {
