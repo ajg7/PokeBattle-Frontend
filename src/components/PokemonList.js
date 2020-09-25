@@ -8,10 +8,9 @@ import Pokemon from "./Pokemon";
 const PokemonList = props => {
     const { pokemon, nextPokemonList, previousPokemonList, fetchPokemonList } = props;
     const [currentList, setCurrentList] = useState("https://pokeapi.co/api/v2/pokemon/");
-    
+
     useEffect(() => {
         fetchPokemonList(currentList);
-        console.log(nextPokemonList)
     }, [currentList, fetchPokemonList, nextPokemonList])
 
     const nextClickHandler = event => {
@@ -25,7 +24,7 @@ const PokemonList = props => {
     return(
         <>
             {pokemon.map(individualPokemon => {
-                return <Pokemon name={individualPokemon.name} />
+                return <Pokemon name={individualPokemon.name} url={individualPokemon.url} />
             })}
             <button onClick={previousClickHandler}>Previous</button><button onClick={nextClickHandler}>Next</button>
         </>
@@ -36,7 +35,8 @@ const mapStateToProps = state => {
     return {
         pokemon: state.pokemon,
         nextPokemonList: state.nextPokemonList,
-        previousPokemonList: state.previousPokemonList
+        previousPokemonList: state.previousPokemonList,
+        pokemonURLs: state.pokemonURLs
     }
 }
 
