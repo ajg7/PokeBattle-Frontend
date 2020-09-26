@@ -43,8 +43,15 @@ header img {
     border-radius: 7px;
 }
 
+@keyframes bounce{
+    0% {transform: translateY(0)}
+    50% {transform: translateY(-15px)}
+    100% {transform: translateY(0)}
+}
+
 .pokemon-card:hover {
-    transform: translate(0, -15px);
+    animation-name: bounce;
+    animation-duration: 0.25s;
 }
 
 .pokemon-card .image-container {
