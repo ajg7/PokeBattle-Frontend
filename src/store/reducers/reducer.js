@@ -35,7 +35,7 @@ export default (state = initialState, action) => {
         case MAKE_POKEMON_TEAM:
             return {
                 ...state,
-                chosenPokemon: [action.payload],
+                chosenPokemon: state.chosenPokemon.length < 6 ? [...state.chosenPokemon, action.payload] : state.chosenPokemon,
                 isLoading: false
             }
         // case POKEMON_TEAM_IS_FULL:

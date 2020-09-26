@@ -61,6 +61,7 @@ const Pokemon = props => {
     const addTeamHandler = event => {
         setChosenPokemon(name);
         pokemonTeamMaker(chosenPokemon);
+        
     }
 
     return(
