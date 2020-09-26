@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { connect } from "react-redux";
 import { fetchPokemonList } from "../store/actions"
 import Pokemon from "./Pokemon";
@@ -7,12 +6,12 @@ import "../css/styles.css";
 
 
 const PokemonList = props => {
-    const { pokemon, nextPokemonList, previousPokemonList, fetchPokemonList } = props;
+    const { pokemon, fetchPokemonList } = props;
     const [currentList, setCurrentList] = useState("https://pokeapi.co/api/v2/pokemon/?limit=151");
     
     useEffect(() => {
         fetchPokemonList(currentList);
-    }, [currentList, fetchPokemonList, nextPokemonList])
+    }, [currentList, fetchPokemonList])
 
 
     return(

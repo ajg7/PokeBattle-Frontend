@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import { pokemonTeamMaker } from "../store/actions";
 import "../css/reset.css";
 import "../css/styles.css";
-import { theme } from "../StyledComponents/theme";
 import Pokeball from "../assets/Pokeball.png";
 import Greatball from "../assets/Greatball.png";
 import Ultraball from "../assets/Ultraball.png";
@@ -29,7 +28,6 @@ const StyledThemePill = styled.div`
         border-radius: 5px;
     }
 
-    
 `
 
 const Pokemon = props => {
@@ -38,7 +36,7 @@ const Pokemon = props => {
     const [secondaryType, setSecondaryType] = useState("");
     const [imgs, setImgs] = useState("");
     const [id, setId] = useState(0);
-    const [chosenPokemon, setChosenPokemon] = useState("");
+    const [chosenPokemon, setChosenPokemon] = useState(name);
 
     const imgArray = [Pokeball, Greatball, Ultraball, Masterball]
     const randNum = Math.round(Math.random() * (imgArray.length - 1));
@@ -57,12 +55,12 @@ const Pokemon = props => {
             .catch(error => {
                 console.log(error);
             })
-            console.log(chosenPokemon)
-        pokemonTeamMaker(chosenPokemon);
-    }, [url, chosenPokemon, pokemonTeamMaker])
+    }, [url])
+
 
     const addTeamHandler = event => {
         setChosenPokemon(name);
+        pokemonTeamMaker(chosenPokemon);
     }
 
     return(
