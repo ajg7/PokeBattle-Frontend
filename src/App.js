@@ -1,5 +1,4 @@
 import React from "react";
-import axios from "axios";
 import { Route, Link } from "react-router-dom";
 import PokemonList from "./components/PokemonList";
 import PokemonTeam from "./components/PokemonTeam";

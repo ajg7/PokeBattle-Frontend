@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import { pokemonTeamMaker } from "../store/actions";
 import "../css/reset.css";
 import "../css/styles.css";
-import { theme } from "../StyledComponents/theme";
 import Pokeball from "../assets/Pokeball.png";
 import Greatball from "../assets/Greatball.png";
 import Ultraball from "../assets/Ultraball.png";
@@ -29,7 +28,6 @@ const StyledThemePill = styled.div`
         border-radius: 5px;
     }
 
-    
 `
 
 const Pokemon = props => {
@@ -58,7 +56,7 @@ const Pokemon = props => {
                 console.log(error);
             })
             console.log(chosenPokemon)
-        pokemonTeamMaker(chosenPokemon);
+        // pokemonTeamMaker(chosenPokemon);
     }, [url, chosenPokemon, pokemonTeamMaker])
 
     const addTeamHandler = event => {
