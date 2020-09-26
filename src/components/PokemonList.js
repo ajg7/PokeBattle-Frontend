@@ -3,6 +3,7 @@ import axios from "axios";
 import { connect } from "react-redux";
 import { fetchPokemonList, filterPokemonList } from "../store/actions"
 import Pokemon from "./Pokemon";
+import "../css/styles.css";
 
 
 const PokemonList = props => {
@@ -13,12 +14,11 @@ const PokemonList = props => {
         fetchPokemonList(currentList);
     }, [currentList, fetchPokemonList, nextPokemonList])
 
-
     return(
         <>
             {pokemon.map(individualPokemon => {
                 return <Pokemon name={individualPokemon.name} url={individualPokemon.url} />
-            })}
+            })} 
         </>
     )
 }

@@ -57,6 +57,7 @@ const Pokemon = props => {
     }, [url])
 
     return(
+        <>
             <div className="pokemon-card">
                 <div className="image-container">
                     <img src={imgs} alt={name} />
@@ -79,6 +80,7 @@ const Pokemon = props => {
                     </div>
                 </div>
             </div>
+        </>
     )
 }
 

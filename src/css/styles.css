@@ -57,7 +57,7 @@ header img {
     justify-content: var(--center);
 }
 
-.pokemon-card .pokemon-team-button button {
+.pokemon-card .pokemon-team-button button, footer button {
     border-radius: 5px;
     font-weight: bold;
     background-color: var(--pokeball-toplid-color);

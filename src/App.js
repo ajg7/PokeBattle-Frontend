@@ -6,6 +6,11 @@ import PokeballStorage from "./assets/PokemonStorage.png"
 
 const App = props => {
 
+  const scrollClickHandler = event => {
+    window.scroll(0,0);
+  }
+
+
   return (
     <>
       <header>
@@ -15,6 +20,9 @@ const App = props => {
       <div className="pokemon-app">
         <PokemonList />
       </div>
+      <footer>
+        <button className="scroll-button" onClick={scrollClickHandler}>Back to the Top</button>
+      </footer>
     </>
   );
 }
