@@ -3,16 +3,19 @@ Pokemon Cards
 #################################*/
 :root {
     --pokeball-toplid-color: #FF0000;
-    --pokebal-bottomlid-color: #FFFFFF;
+    --pokeball-bottomlid-color: #FFFFFF;
     --center: center;
-
 }
 
 header {
     display: flex;
     justify-content: space-between;
     align-items: var(--center);
+    background-color: var(--pokeball-toplid-color);
+    color: var(--pokeball-bottomlid-color);
+    padding: 0 20px;
 }
+
 
 header img {
     height: 50px;
@@ -58,7 +61,7 @@ header img {
     border-radius: 5px;
     font-weight: bold;
     background-color: var(--pokeball-toplid-color);
-    color: var(--pokebal-bottomlid-color);
+    color: var(--pokeball-bottomlid-color);
     outline: none;
 }
 
