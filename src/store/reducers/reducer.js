@@ -2,14 +2,15 @@ import {
     FETCH_POKEMON_LIST,
     FETCH_POKEMON_LIST_SUCCESS,
     FETCH_POKEMON_LIST_ERROR, 
+    MAKE_POKEMON_TEAM,
+    // POKEMON_TEAM_IS_FULL
 } from "../actions";
 
 const initialState = {
     pokemon: [],
     isLoading: true,
     errorMessage: "",
-    nextPokemonList: "",
-    previousPokemonList: ""
+    pokemonTeam: []
 }
 
 export default (state = initialState, action) => {
@@ -24,8 +25,6 @@ export default (state = initialState, action) => {
                 ...state,
                 pokemon: action.payload.results,
                 isLoading: false,
-                nextPokemonList: action.payload.next,
-                previousPokemonList: action.payload.previous
             }
         case FETCH_POKEMON_LIST_ERROR:
             return {
@@ -33,7 +32,17 @@ export default (state = initialState, action) => {
                 isLoading: false,
                 errorMessage: action.payload.message
             }
-        
+        case MAKE_POKEMON_TEAM:
+            return {
+                ...state,
+                pokemonTeam: action.payload,
+                isLoading: false
+            }
+        // case POKEMON_TEAM_IS_FULL:
+        //     return {
+        //         ...state,
+        //         errorMessage: action.payload.message
+        //     }
         default:
             return state;
     }
