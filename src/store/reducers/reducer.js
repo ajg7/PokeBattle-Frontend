@@ -33,9 +33,11 @@ export default (state = initialState, action) => {
                 errorMessage: action.payload.message
             }
         case MAKE_POKEMON_TEAM:
+            const newPokemonTeam = state.pokemonTeam.length < 6 ? [...state.pokemonTeam, action.payload] : state.pokemonTeam
+            localStorage.setItem("PokemonTeam", newPokemonTeam);
             return {
                 ...state,
-                pokemonTeam: state.pokemonTeam.length < 6 ? [...state.pokemonTeam, action.payload] : state.pokemonTeam,
+                pokemonTeam: newPokemonTeam,
                 isLoading: false
             }
         // case POKEMON_TEAM_IS_FULL:

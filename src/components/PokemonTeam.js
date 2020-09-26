@@ -4,8 +4,8 @@ import { useHistory } from "react-router-dom";
 
 const PokemonTeam = ({ pokemon, pokemonTeam }) => {
     const history = useHistory();
-    
 
+    console.log(localStorage.getItem("pokemonTeam"))
 
     const goBackHandler = event => {
         history.push("/")

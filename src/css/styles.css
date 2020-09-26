@@ -23,6 +23,7 @@ header {
     width: 98%;
     top: 0;
     position: fixed;
+    z-index: 100;
 }
 
 
