@@ -55,7 +55,6 @@ const Pokemon = props => {
             .catch(error => {
                 console.log(error);
             })
-            console.log(chosenPokemon)
         // pokemonTeamMaker(chosenPokemon);
     }, [url, chosenPokemon, pokemonTeamMaker])
 

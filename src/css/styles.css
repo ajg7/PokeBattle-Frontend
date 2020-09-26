@@ -7,6 +7,12 @@ Pokemon Cards
     --center: center;
 }
 
+@keyframes bounce{
+    0% {transform: translateY(0)}
+    50% {transform: translateY(-15px)}
+    100% {transform: translateY(0)}
+}
+
 header {
     display: flex;
     justify-content: space-between;
@@ -43,12 +49,6 @@ header img {
     border-radius: 7px;
 }
 
-@keyframes bounce{
-    0% {transform: translateY(0)}
-    50% {transform: translateY(-15px)}
-    100% {transform: translateY(0)}
-}
-
 .pokemon-card:hover {
     animation-name: bounce;
     animation-duration: 0.25s;
@@ -62,7 +62,6 @@ header img {
     height: 100%;
     width: 75%;
 }
-
 
 .pokemon-card .pokemon-team-button {
     display: flex;
