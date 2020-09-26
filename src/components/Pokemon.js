@@ -1,5 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
+import { pokemonTeamMaker } from "../store/actions";
 import "../css/reset.css";
 import "../css/styles.css";
 import { theme } from "../StyledComponents/theme";
@@ -31,11 +33,12 @@ const StyledThemePill = styled.div`
 `
 
 const Pokemon = props => {
-    const { name, url } = props;
+    const { name, url, pokemonTeamMaker } = props;
     const [type, setType] = useState("");
     const [secondaryType, setSecondaryType] = useState("");
     const [imgs, setImgs] = useState("");
     const [id, setId] = useState(0);
+    const [chosenPokemon, setChosenPokemon] = useState("");
 
     const imgArray = [Pokeball, Greatball, Ultraball, Masterball]
     const randNum = Math.round(Math.random() * (imgArray.length - 1));
@@ -54,7 +57,13 @@ const Pokemon = props => {
             .catch(error => {
                 console.log(error);
             })
-    }, [url])
+            console.log(chosenPokemon)
+        pokemonTeamMaker(chosenPokemon);
+    }, [url, chosenPokemon, pokemonTeamMaker])
+
+    const addTeamHandler = event => {
+        setChosenPokemon(name);
+    }
 
     return(
         <>
@@ -75,7 +84,7 @@ const Pokemon = props => {
                     </StyledThemePill>
                     <div className="pokemon-team-button">
                         <img src={imgArray[randNum]} alt="pokeball" />
-                        <button>Add Pokemon to Team</button>
+                        <button onClick={addTeamHandler}>Add Pokemon to Team</button>
                         <img src={imgArray[randNum]} alt="pokeball" />
                     </div>
                 </div>
@@ -86,4 +95,4 @@ const Pokemon = props => {
 
 
 
-export default Pokemon;
+export default connect(null, { pokemonTeamMaker })(Pokemon);

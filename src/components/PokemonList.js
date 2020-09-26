@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
-import { fetchPokemonList, filterPokemonList } from "../store/actions"
+import { fetchPokemonList } from "../store/actions"
 import Pokemon from "./Pokemon";
 import "../css/styles.css";
 
@@ -13,6 +13,7 @@ const PokemonList = props => {
     useEffect(() => {
         fetchPokemonList(currentList);
     }, [currentList, fetchPokemonList, nextPokemonList])
+
 
     return(
         <>
@@ -26,8 +27,6 @@ const PokemonList = props => {
 const mapStateToProps = state => {
     return {
         pokemon: state.pokemon,
-        nextPokemonList: state.nextPokemonList,
-        previousPokemonList: state.previousPokemonList,
     }
 }
 
