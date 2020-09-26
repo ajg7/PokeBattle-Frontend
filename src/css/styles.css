@@ -43,6 +43,10 @@ header img {
     border-radius: 7px;
 }
 
+.pokemon-card:hover {
+    transform: translate(0, -15px);
+}
+
 .pokemon-card .image-container {
     height: 50%;
 }
@@ -67,7 +71,7 @@ header img {
 }
 
 .pokemon-card .pokemon-team-button button:hover {
-    opacity: 0.8;
+    opacity: 0.5;
 }
 
 .pokemon-card .pokemon-team-button img {
