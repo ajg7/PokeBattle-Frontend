@@ -36,7 +36,7 @@ const Pokemon = props => {
     const [secondaryType, setSecondaryType] = useState("");
     const [imgs, setImgs] = useState("");
     const [id, setId] = useState(0);
-    const [chosenPokemon, setChosenPokemon] = useState("");
+    const [chosenPokemon, setChosenPokemon] = useState(name);
 
     const imgArray = [Pokeball, Greatball, Ultraball, Masterball]
     const randNum = Math.round(Math.random() * (imgArray.length - 1));
@@ -55,11 +55,12 @@ const Pokemon = props => {
             .catch(error => {
                 console.log(error);
             })
-        // pokemonTeamMaker(chosenPokemon);
-    }, [url, chosenPokemon, pokemonTeamMaker])
+    }, [url])
+
 
     const addTeamHandler = event => {
         setChosenPokemon(name);
+        pokemonTeamMaker(chosenPokemon);
     }
 
     return(

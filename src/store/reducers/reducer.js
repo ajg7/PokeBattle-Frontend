@@ -10,7 +10,7 @@ const initialState = {
     pokemon: [],
     isLoading: true,
     errorMessage: "",
-    chosenPokemon: ""
+    chosenPokemon: []
 }
 
 export default (state = initialState, action) => {
@@ -35,7 +35,7 @@ export default (state = initialState, action) => {
         case MAKE_POKEMON_TEAM:
             return {
                 ...state,
-                chosenPokemon: action.payload,
+                chosenPokemon: [action.payload],
                 isLoading: false
             }
         // case POKEMON_TEAM_IS_FULL:

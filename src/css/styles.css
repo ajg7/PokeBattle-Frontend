@@ -20,6 +20,9 @@ header {
     background-color: var(--pokeball-toplid-color);
     color: var(--pokeball-bottomlid-color);
     padding: 0 20px;
+    width: 98%;
+    top: 0;
+    position: fixed;
 }
 
 
@@ -33,6 +36,7 @@ header img {
     flex-wrap: wrap;
     justify-content: var(--center);
     font-family: "Flexo-Demi", arial, sans-serif;
+    padding: 100px 0;
 }
 
 .id, .poke-name {
