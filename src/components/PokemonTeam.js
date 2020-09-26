@@ -1,12 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 
-const PokemonTeam = ({ pokemon }) => {
-    console.log(pokemon)
+const PokemonTeam = ({ pokemon, pokemonTeam }) => {
+
+    
     return(
         <div className="pokemon-team">
-            <h2>Your Team</h2>
-
         </div>
     )
 }
@@ -14,7 +13,8 @@ const PokemonTeam = ({ pokemon }) => {
 
 const mapStateToProps = state => {
     return {
-        pokemon: state.pokemon
+        pokemon: state.pokemon,
+        pokemonTeam: state.pokemonTeam
     }
 }
 

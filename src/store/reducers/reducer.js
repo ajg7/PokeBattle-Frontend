@@ -35,7 +35,8 @@ export default (state = initialState, action) => {
         case MAKE_POKEMON_TEAM:
             return {
                 ...state,
-                pokemonTeam: action.payload
+                pokemonTeam: action.payload,
+                isLoading: false
             }
         // case POKEMON_TEAM_IS_FULL:
         //     return {

@@ -21,7 +21,6 @@ export const fetchPokemonList = url => {
 
 export const pokemonTeamMaker = pokemon => {
     return dispatch => {
-        const pokemonTeamArray = [pokemon];
-        dispatch({ type: MAKE_POKEMON_TEAM, payload: pokemonTeamArray})
+        dispatch({ type: MAKE_POKEMON_TEAM, payload: pokemon })
     }
 }
