@@ -2,9 +2,7 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-const PokemonTeam = ({ pokemon, chosenPokemon }) => {
-    console.log(chosenPokemon)
-    const [pokemonTeam, setPokemonTeam] = useState([]);
+const PokemonTeam = ({ pokemon, pokemonTeam }) => {
     const history = useHistory();
     
 
@@ -15,7 +13,9 @@ const PokemonTeam = ({ pokemon, chosenPokemon }) => {
 
     return(
         <div className="pokemon-team">
-            <h2>{chosenPokemon}</h2>
+            {pokemonTeam.map(individualPokemon => {
+                return <h2>{individualPokemon}</h2>
+            })}
             <button onClick={goBackHandler}>Go Back</button>
         </div>
     )
@@ -25,7 +25,7 @@ const PokemonTeam = ({ pokemon, chosenPokemon }) => {
 const mapStateToProps = state => {
     return {
         pokemon: state.pokemon,
-        chosenPokemon: state.chosenPokemon
+        pokemonTeam: state.pokemonTeam
     }
 }
 
