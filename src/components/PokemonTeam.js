@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 const PokemonTeam = ({ pokemon, pokemonTeam }) => {
     const history = useHistory();
 
-    console.log(localStorage.getItem("pokemonTeam"))
+
 
     const goBackHandler = event => {
         history.push("/")
@@ -28,5 +28,6 @@ const mapStateToProps = state => {
         pokemonTeam: state.pokemonTeam
     }
 }
+
 
 export default connect(mapStateToProps, {})(PokemonTeam);

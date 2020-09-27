@@ -24,3 +24,4 @@ export const pokemonTeamMaker = pokemon => {
         dispatch({ type: MAKE_POKEMON_TEAM, payload: pokemon })
     }
 }
+

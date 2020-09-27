@@ -2,15 +2,14 @@ import {
     FETCH_POKEMON_LIST,
     FETCH_POKEMON_LIST_SUCCESS,
     FETCH_POKEMON_LIST_ERROR, 
-    MAKE_POKEMON_TEAM,
-    // POKEMON_TEAM_IS_FULL
+    MAKE_POKEMON_TEAM
 } from "../actions";
 
 const initialState = {
     pokemon: [],
     isLoading: true,
     errorMessage: "",
-    pokemonTeam: []
+    pokemonTeam: [],
 }
 
 export default (state = initialState, action) => {
@@ -33,18 +32,11 @@ export default (state = initialState, action) => {
                 errorMessage: action.payload.message
             }
         case MAKE_POKEMON_TEAM:
-            const newPokemonTeam = state.pokemonTeam.length < 6 ? [...state.pokemonTeam, action.payload] : state.pokemonTeam
-            localStorage.setItem("PokemonTeam", newPokemonTeam);
             return {
                 ...state,
-                pokemonTeam: newPokemonTeam,
+                pokemonTeam: state.pokemonTeam.length < 6 ? [...state.pokemonTeam, action.payload] : state.pokemonTeam,
                 isLoading: false
             }
-        // case POKEMON_TEAM_IS_FULL:
-        //     return {
-        //         ...state,
-        //         errorMessage: action.payload.message
-        //     }
         default:
             return state;
     }
