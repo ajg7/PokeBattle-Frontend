@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 const PokemonTeam = ({ pokemon, pokemonTeam }) => {
     const history = useHistory();
-    const [pokemonTeamData, setPokemonTeamData] = useState({})
-
+    const [pokemonTeamData, setPokemonTeamData] = useState([]);
+    const [url, setUrl] = useState("");
 
     useEffect(() => {
         setPokemonTeamData(pokemonTeam.map(pokemonTeamMember => {
@@ -19,7 +20,21 @@ const PokemonTeam = ({ pokemon, pokemonTeam }) => {
             }))
     }, [pokemonTeam, pokemon])
 
+    useEffect(() => {
+        setUrl(pokemonTeamData.map(individualPokemon => {
+            return individualPokemon[0].url
+        }))
+    },[pokemonTeamData])
+
+    useEffect(() => {
+        axios.get(url)
+            .then(response => {
+                console.log(response.data)
+            })
+    })
+
     console.log(pokemonTeamData)
+    console.log(url)
 
 
 
