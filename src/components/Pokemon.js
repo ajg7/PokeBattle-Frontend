@@ -66,24 +66,31 @@ const Pokemon = props => {
     return(
         <>
             <div className="pokemon-card">
-                <div className="image-container">
-                    <img src={imgs} alt={name} />
-                </div>
-                <div className="pokemon-data-container">
-                    <h3 className="id">#{id}</h3>
-                    {name === "mr-mime" ? <h2 className="poke-name">Mr. Mime</h2> : <h2 className="poke-name">{name.charAt(0).toUpperCase() + name.slice(1)}</h2>}
-                    <StyledThemePill type={type} secondaryType={secondaryType}>
-                        <div className="type-pill-primary">
-                            <h3 className={type} id="primary-type-title">{type.charAt(0).toUpperCase() + type.slice(1)}</h3>
+                <div className="pokemon-card-inner">
+                    <div className="pokemon-card-front">
+                        <div className="image-container">
+                            <img src={imgs} alt={name} />
                         </div>
-                        <div className="type-pill-secondary">
-                            <h3 className={secondaryType} id="primary-type-title">{secondaryType.charAt(0).toUpperCase() + secondaryType.slice(1)}</h3>
+                        <div className="pokemon-data-container">
+                            <h3 className="id">#{id}</h3>
+                            {name === "mr-mime" ? <h2 className="poke-name">Mr. Mime</h2> : <h2 className="poke-name">{name.charAt(0).toUpperCase() + name.slice(1)}</h2>}
+                            <StyledThemePill type={type} secondaryType={secondaryType}>
+                                <div className="type-pill-primary">
+                                    <h3 className={type} id="primary-type-title">{type.charAt(0).toUpperCase() + type.slice(1)}</h3>
+                                </div>
+                                <div className="type-pill-secondary">
+                                    <h3 className={secondaryType} id="primary-type-title">{secondaryType.charAt(0).toUpperCase() + secondaryType.slice(1)}</h3>
+                                </div>
+                            </StyledThemePill>
+                            <div className="pokemon-team-button">
+                                <img src={imgArray[randNum]} alt="pokeball" />
+                                <button onClick={addTeamHandler}>Add Pokemon to Team</button>
+                                <img src={imgArray[randNum]} alt="pokeball" />
+                            </div>
                         </div>
-                    </StyledThemePill>
-                    <div className="pokemon-team-button">
-                        <img src={imgArray[randNum]} alt="pokeball" />
-                        <button onClick={addTeamHandler}>Add Pokemon to Team</button>
-                        <img src={imgArray[randNum]} alt="pokeball" />
+                    </div>
+                    <div className="pokemon-card-back">
+                        <h1>This is the back</h1>
                     </div>
                 </div>
             </div>

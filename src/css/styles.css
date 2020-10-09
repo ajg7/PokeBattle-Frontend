@@ -54,26 +54,46 @@ header img {
     border-radius: 7px;
 }
 
-.pokemon-card:hover {
+/* .pokemon-card-front:hover {
     animation-name: bounce;
     animation-duration: 0.25s;
+} */
+
+.pokemon-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
 }
 
-.pokemon-card .image-container {
+.pokemon-card:active .pokemon-card-inner {
+    transform: rotateY(180deg);
+}
+
+.pokemon-card-front, .pokemon-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+
+.pokemon-card-front .image-container {
     height: 50%;
 }
 
-.pokemon-card img {
+.pokemon-card-front img {
     height: 100%;
     width: 75%;
 }
 
-.pokemon-card .pokemon-team-button {
+.pokemon-card-front .pokemon-team-button {
     display: flex;
     justify-content: var(--center);
 }
 
-.pokemon-card .pokemon-team-button button, footer button {
+.pokemon-card-front .pokemon-team-button button, footer button {
     border-radius: 5px;
     font-weight: bold;
     background-color: var(--pokeball-toplid-color);
@@ -81,13 +101,18 @@ header img {
     outline: none;
 }
 
-.pokemon-card .pokemon-team-button button:hover {
+.pokemon-card-front .pokemon-team-button button:hover {
     background-color: rgb(161, 1, 36);
     transition-duration: 0.5s;
 }
 
-.pokemon-card .pokemon-team-button img {
+.pokemon-card-front .pokemon-team-button img {
     height: 5%;
     width: 10%;
     margin: 0 5px;
+} 
+
+
+.pokemon-card-back {
+    transform: rotateY(180deg);
 }
