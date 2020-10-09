@@ -12,7 +12,7 @@ const App = ({ pokemonTeam }) => {
     <>
       <header>
         <h1>Gotta Catch 'em All!</h1>
-        <p>{pokemonTeam.length} / 6</p>
+        {pokemonTeam.length < 6 ? <p>{pokemonTeam.length} / 6</p> : <p>Pokemon Team is Full!</p>}
         <Link to="/pokemon_team"><img src={PokeballStorage} alt="storage for your pokemon team" /></Link>
       </header>
       <div className="pokemon-app">

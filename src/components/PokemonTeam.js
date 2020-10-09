@@ -31,7 +31,7 @@ const PokemonTeam = ({ pokemon, pokemonTeam }) => {
             .then(response => {
                 console.log(response.data)
             })
-    })
+    },[url])
 
     console.log(pokemonTeamData)
     console.log(url)
