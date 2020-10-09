@@ -36,6 +36,8 @@ const Pokemon = props => {
     const [secondaryType, setSecondaryType] = useState("");
     const [imgs, setImgs] = useState("");
     const [id, setId] = useState(0);
+    const [height, setHeight] = useState(0);
+    const [weight, setWeight] = useState(0);
     const [chosenPokemon, setChosenPokemon] = useState(name);
 
     const imgArray = [Pokeball, Greatball, Ultraball, Masterball]
@@ -47,9 +49,12 @@ const Pokemon = props => {
                 const data = response.data;
                 const types = response.data.types;
                 const sprites = response.data.sprites.versions
+                console.log(data)
                 setType(types[0].type.name)
                 setImgs(sprites["generation-i"]["red-blue"].front_default)
                 setId(data.id)
+                setHeight(data.height);
+                setWeight(data.weight);
                 return types.length === 2 ? setSecondaryType(types[1].type.name) : null;
             })
             .catch(error => {
@@ -90,7 +95,8 @@ const Pokemon = props => {
                         </div>
                     </div>
                     <div className="pokemon-card-back">
-                        <h1>This is the back</h1>
+                        <h3>{height}</h3>
+                        <h3>{weight}</h3>
                     </div>
                 </div>
             </div>
