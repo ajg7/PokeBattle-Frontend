@@ -1,9 +1,40 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 const PokemonTeam = ({ pokemon, pokemonTeam }) => {
     const history = useHistory();
+    const [pokemonTeamData, setPokemonTeamData] = useState([]);
+    const [url, setUrl] = useState("");
+
+    useEffect(() => {
+        setPokemonTeamData(pokemonTeam.map(pokemonTeamMember => {
+            return pokemon.filter(individualPokemon => {
+                    if(pokemonTeamMember === individualPokemon.name) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                })
+            }))
+    }, [pokemonTeam, pokemon])
+
+    useEffect(() => {
+        setUrl(pokemonTeamData.map(individualPokemon => {
+            return individualPokemon[0].url
+        }))
+    },[pokemonTeamData])
+
+    useEffect(() => {
+        axios.get(url)
+            .then(response => {
+                console.log(response.data)
+            })
+    },[url])
+
+    console.log(pokemonTeamData)
+    console.log(url)
 
 
 
@@ -13,9 +44,6 @@ const PokemonTeam = ({ pokemon, pokemonTeam }) => {
 
     return(
         <div className="pokemon-team">
-            {pokemonTeam.map(individualPokemon => {
-                return <h2>{individualPokemon}</h2>
-            })}
             <button onClick={goBackHandler}>Go Back</button>
         </div>
     )
