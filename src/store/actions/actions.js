@@ -19,9 +19,8 @@ export const fetchPokemonList = url => {
     }
 }
 
-export const pokemonTeamMaker = pokemon => {
+export const pokemonTeamMaker = (pokemon, pokemonDataObject) => {
     return dispatch => {
-        dispatch({ type: MAKE_POKEMON_TEAM, payload: pokemon })
+        dispatch({ type: MAKE_POKEMON_TEAM, payload: {name: pokemon, data: pokemonDataObject }})
     }
 }
-
