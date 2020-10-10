@@ -37,7 +37,10 @@ const Pokemon = props => {
     const [imgs, setImgs] = useState("");
     const [id, setId] = useState(0);
     const [height, setHeight] = useState(0);
+    const [heightInFeet, setHeightInFeet] = useState(0);
     const [weight, setWeight] = useState(0);
+    const [abilities, setAbilities] = useState([]);
+    const [entries, setEntries] = useState([]);
     const [chosenPokemon, setChosenPokemon] = useState(name);
 
     const imgArray = [Pokeball, Greatball, Ultraball, Masterball]
@@ -49,18 +52,29 @@ const Pokemon = props => {
                 const data = response.data;
                 const types = response.data.types;
                 const sprites = response.data.sprites.versions
-                console.log(data)
+                // console.log(data)
                 setType(types[0].type.name)
                 setImgs(sprites["generation-i"]["red-blue"].front_default)
                 setId(data.id)
-                setHeight(data.height);
-                setWeight(data.weight);
+                setHeight(Math.round((data.height * 3.93701)));
+                setHeightInFeet(Math.round((data.height * 0.220462)));
+                setWeight(Math.round((data.weight * 0.220462)));
+                setAbilities(data.abilities);
                 return types.length === 2 ? setSecondaryType(types[1].type.name) : null;
             })
             .catch(error => {
                 console.log(error);
             })
-    }, [url])
+        axios.get(`https://pokeapi.co/api/v2/pokemon-species/${name}`)
+            .then(response => {
+                console.log(response.data.flavor_text_entries[0].flavor_text)
+                const data = response.data;
+                setEntries(data.flavor_text_entries[0].flavor_text)
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }, [url, name])
 
 
     const addTeamHandler = event => {
@@ -95,8 +109,18 @@ const Pokemon = props => {
                         </div>
                     </div>
                     <div className="pokemon-card-back">
-                        <h3>{height}</h3>
-                        <h3>{weight}</h3>
+                        <div className="pokemon-stats-back">
+                            {height < 24 ? <h3> {height} in </h3> : <h3> {heightInFeet} ft</h3>}
+                            <h3>{weight} lbs.</h3>
+                        </div>
+                        <div className="pokemon-ability-back">
+                            {abilities.map(ability => {
+                                return <h3>{ability.ability.name}</h3>
+                            })}
+                        </div>
+                        <div className="pokemon-entry-back">
+                            <p>{entries}</p>
+                        </div>
                     </div>
                 </div>
             </div>

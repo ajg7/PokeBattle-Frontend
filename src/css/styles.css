@@ -70,7 +70,7 @@ header img {
 }
 
 .pokemon-card:active .pokemon-card-inner {
-    transform: rotateY(180deg);
+    transform: rotateY(540deg);
 }
 
 .pokemon-card-front, .pokemon-card-back {
@@ -116,4 +116,11 @@ header img {
 
 .pokemon-card-back {
     transform: rotateY(180deg);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.pokemon-card-back .pokemon-ability-back {
+    text-transform: capitalize;
 }
