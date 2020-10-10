@@ -55,7 +55,6 @@ const Pokemon = props => {
                 const data = response.data;
                 const types = response.data.types;
                 const sprites = response.data.sprites.versions
-                // console.log(data)
                 setType(types[0].type.name)
                 setImgs(sprites["generation-i"]["red-blue"].front_default)
                 setId(data.id)
@@ -70,7 +69,6 @@ const Pokemon = props => {
             })
         axios.get(`https://pokeapi.co/api/v2/pokemon-species/${name}`)
             .then(response => {
-                console.log(response.data)
                 const data = response.data;
                 setEntries(data.flavor_text_entries[0].flavor_text)
                 setHabitat(data.habitat.name)
@@ -92,7 +90,23 @@ const Pokemon = props => {
 
     const addTeamHandler = event => {
         setChosenPokemon(name);
-        pokemonTeamMaker(chosenPokemon, imgs, type);
+        const pokemonTeamDataObject = {
+            name: name,
+            type: type,
+            secondaryType: secondaryType,
+            imgs: imgs,
+            id: id,
+            height: height,
+            heightInFeet: heightInFeet,
+            weight: weight,
+            abilities: abilities,
+            entries: entries,
+            habitat: habitat,
+            legendary: legendary,
+            mythical: mythical,
+            ancient: ancient
+        }
+        pokemonTeamMaker(chosenPokemon, pokemonTeamDataObject);
     }
 
     return(
@@ -145,7 +159,5 @@ const Pokemon = props => {
         </>
     )
 }
-
-
 
 export default connect(null, { pokemonTeamMaker })(Pokemon);

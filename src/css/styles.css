@@ -122,6 +122,6 @@ header img {
     align-items: space-around;
 }
 
-.pokemon-card-back .pokemon-ability-back, .habitat, .pokemon-team {
+.pokemon-card-back .pokemon-ability-back, .habitat {
     text-transform: var(--cap);
 }

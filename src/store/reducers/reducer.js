@@ -10,6 +10,7 @@ const initialState = {
     isLoading: true,
     errorMessage: "",
     pokemonTeam: [],
+    pokemonDataObject: []
 }
 
 export default (state = initialState, action) => {
@@ -34,7 +35,8 @@ export default (state = initialState, action) => {
         case MAKE_POKEMON_TEAM:
             return {
                 ...state,
-                pokemonTeam: state.pokemonTeam.length < 6 ? [...state.pokemonTeam, action.payload] : state.pokemonTeam,
+                pokemonTeam: state.pokemonTeam.length < 6 ? [...state.pokemonTeam, action.payload.name] : state.pokemonTeam,
+                pokemonDataObject: [...state.pokemonDataObject, action.payload.data],
                 isLoading: false
             }
         default:
