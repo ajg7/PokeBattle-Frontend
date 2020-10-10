@@ -7,6 +7,7 @@ const PokemonTeam = ({ pokemon, pokemonTeam }) => {
     const history = useHistory();
     const [pokemonTeamData, setPokemonTeamData] = useState([]);
     const [url, setUrl] = useState("");
+    // const [name, setName] = useState("");
 
     useEffect(() => {
         setPokemonTeamData(pokemonTeam.map(pokemonTeamMember => {
@@ -24,6 +25,9 @@ const PokemonTeam = ({ pokemon, pokemonTeam }) => {
         setUrl(pokemonTeamData.map(individualPokemon => {
             return individualPokemon[0].url
         }))
+        // setName(pokemonTeamData.map(individualPokemon => {
+        //     return individualPokemon[0].name
+        // }))
     },[pokemonTeamData])
 
     useEffect(() => {
