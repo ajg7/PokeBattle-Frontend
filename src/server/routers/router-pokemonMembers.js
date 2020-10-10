@@ -1,8 +1,5 @@
 const express = require("express");
-const db = require("../data/db-config");
-
 const PokemonMembers = require("./model-pokemonMembers");
-
 const router = express.Router();
 
 router.get("/", (request, response) => {
