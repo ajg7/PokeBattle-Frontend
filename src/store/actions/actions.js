@@ -22,5 +22,12 @@ export const fetchPokemonList = url => {
 export const pokemonTeamMaker = (pokemon, pokemonDataObject) => {
     return dispatch => {
         dispatch({ type: MAKE_POKEMON_TEAM, payload: {name: pokemon, data: pokemonDataObject }})
+        // axios.get("")
+        //     .then(response => {
+        //         console.log(response);
+        //     })
+        //     .catch(error => {
+        //         console.log(error)
+        //     })
     }
 }
