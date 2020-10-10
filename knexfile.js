@@ -6,13 +6,13 @@ module.exports = {
     client: 'sqlite3',
     useNullAsDefault: true,
     connection: {
-      filename: './server/data/pokemon_database.db3'
+      filename: './src/server/data/pokemon_database.db3'
     },
     migrations: {
-      directory: './server/data/migrations'
+      directory: './src/server/migrations'
     },
     seeds: {
-      directory: "./server/data/seeds"
+      directory: "./src/server/seeds"
     }
   },
 
