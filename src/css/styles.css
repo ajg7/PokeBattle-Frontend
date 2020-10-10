@@ -5,6 +5,7 @@ Pokemon Cards
     --pokeball-toplid-color: #FF0000;
     --pokeball-bottomlid-color: #FFFFFF;
     --center: center;
+    --cap: capitalize;
 }
 
 @keyframes bounce{
@@ -117,10 +118,10 @@ header img {
 .pokemon-card-back {
     transform: rotateY(180deg);
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+    flex-flow: column wrap;
+    align-items: space-around;
 }
 
-.pokemon-card-back .pokemon-ability-back {
-    text-transform: capitalize;
+.pokemon-card-back .pokemon-ability-back, .habitat {
+    text-transform: var(--cap);
 }

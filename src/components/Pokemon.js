@@ -27,7 +27,6 @@ const StyledThemePill = styled.div`
         }};
         border-radius: 5px;
     }
-
 `
 
 const Pokemon = props => {
@@ -40,7 +39,11 @@ const Pokemon = props => {
     const [heightInFeet, setHeightInFeet] = useState(0);
     const [weight, setWeight] = useState(0);
     const [abilities, setAbilities] = useState([]);
-    const [entries, setEntries] = useState([]);
+    const [entries, setEntries] = useState("");
+    const [habitat, setHabitat] = useState("");
+    const [legendary, setLegendary] = useState(false);
+    const [mythical, setMythical] = useState(false);
+    const [ancient, setAncient] = useState(false);
     const [chosenPokemon, setChosenPokemon] = useState(name);
 
     const imgArray = [Pokeball, Greatball, Ultraball, Masterball]
@@ -67,9 +70,19 @@ const Pokemon = props => {
             })
         axios.get(`https://pokeapi.co/api/v2/pokemon-species/${name}`)
             .then(response => {
-                console.log(response.data.flavor_text_entries[0].flavor_text)
+                console.log(response.data)
                 const data = response.data;
                 setEntries(data.flavor_text_entries[0].flavor_text)
+                setHabitat(data.habitat.name)
+                setLegendary(data.is_legendary)
+                setMythical(data.is_mythical)
+                if(data.name === "kabuto" || 
+                   data.name === "kabutops" || 
+                   data.name === "omanyte" || 
+                   data.name === "omastar" || 
+                   data.name === "aerodactyl"){
+                    setAncient(true)
+                }
             })
             .catch(error => {
                 console.log(error);
@@ -110,12 +123,17 @@ const Pokemon = props => {
                     </div>
                     <div className="pokemon-card-back">
                         <div className="pokemon-stats-back">
-                            {height < 24 ? <h3> {height} in </h3> : <h3> {heightInFeet} ft</h3>}
-                            <h3>{weight} lbs.</h3>
+                            {height < 24 ? <h4> Height: {height} in </h4> : <h4> Height: {heightInFeet} ft</h4>}
+                            <h4>Weight: {weight} lbs.</h4>
+                            <h4 className="habitat">Habitat: {habitat}</h4>
+                            {legendary ? <h4>Legendary</h4> : null}
+                            {mythical ? <h4>Mythical</h4> : null}
+                            {ancient ? <h4>Ancient</h4> : null}
                         </div>
                         <div className="pokemon-ability-back">
+                            <h4>Abilities:</h4>
                             {abilities.map(ability => {
-                                return <h3>{ability.ability.name}</h3>
+                                return <h5>{ability.ability.name}</h5>
                             })}
                         </div>
                         <div className="pokemon-entry-back">
