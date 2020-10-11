@@ -7,8 +7,6 @@ const PokemonTeam = ({ pokemon, pokemonTeam, pokemonDataObject }) => {
     const history = useHistory();
     const [pokemonTeamData, setPokemonTeamData] = useState([]);
     const [pokemonObject, setPokemonObject] = useState(pokemonDataObject);
-    // const [url, setUrl] = useState("");
-    // const [name, setName] = useState("");
 
     useEffect(() => {
         setPokemonTeamData(pokemonTeam.map(pokemonTeamMember => {
@@ -19,8 +17,15 @@ const PokemonTeam = ({ pokemon, pokemonTeam, pokemonDataObject }) => {
                         return false;
                     }
                 })
-            }))
-            
+        }))
+        axios.get("https://pokemon-server-ajg7.herokuapp.com/pokemon_team_members")
+            .then(response => {
+                console.log(response)
+            })
+            .catch(error => {
+                console.log(error);
+            })
+        
     }, [pokemonTeam, pokemon, pokemonObject])
 
 
