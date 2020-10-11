@@ -20,19 +20,8 @@ const PokemonTeam = ({ pokemon, pokemonTeam, pokemonDataObject }) => {
                     }
                 })
             }))
-            console.log(pokemonObject)
+            
     }, [pokemonTeam, pokemon, pokemonObject])
-
-    useEffect(() => {
-        // setUrl(pokemonTeamData.map(individualPokemon => {
-        //     return individualPokemon[0].url
-        // }))
-        // setName(pokemonTeamData.map(individualPokemon => {
-        //     return individualPokemon[0].name
-        // }))
-    },[pokemonTeamData])
-
-
 
 
     const goBackHandler = event => {
