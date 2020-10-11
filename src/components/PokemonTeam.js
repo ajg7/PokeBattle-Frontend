@@ -8,7 +8,6 @@ const PokemonTeam = ({ pokemon, pokemonTeam, pokemonDataObject }) => {
     const history = useHistory();
     const [pokemonObject, setPokemonObject] = useState(pokemonDataObject);
     const [pokemonFetchData, setPokemonFetchData] = useState([]);
-    const [chosenPokemon, setChosenPokemon] = useState("");
 
     useEffect(() => {
         axios.get("https://pokemon-server-ajg7.herokuapp.com/pokemon_team_members")
@@ -28,7 +27,6 @@ const PokemonTeam = ({ pokemon, pokemonTeam, pokemonDataObject }) => {
     }
 
     const removePokemonHandler = event => {
-        console.log(event.target.value)
         const id = event.target.value;
         axios.delete(`https://pokemon-server-ajg7.herokuapp.com/pokemon_team_members/${id}`)
             .then(response => {
