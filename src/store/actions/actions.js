@@ -22,19 +22,19 @@ export const fetchPokemonList = url => {
 export const pokemonTeamMaker = (pokemon, pokemonDataObject) => {
     return dispatch => {
         dispatch({ type: MAKE_POKEMON_TEAM, payload: {name: pokemon, data: pokemonDataObject }})
-        // const newPokemonDataObject = {
-        //     name: pokemonDataObject.name,
-        //     type1: pokemonDataObject.type,
-        //     type2: pokemonDataObject.secondaryType,
-        //     ImgUrl: pokemonDataObject.imgs,
-        //     PokemonNumber: pokemonDataObject.id
-        // }
-        // axios.post("https://pokedex-server-ajg7.herokuapp.com/pokemon_team_members", newPokemonDataObject)
-        //     .then(response => {
-        //         console.log(response);
-        //     })
-        //     .catch(error => {
-        //         console.log(error)
-        //     })
+        const newPokemonDataObject = {
+            name: pokemonDataObject.name,
+            type1: pokemonDataObject.type,
+            type2: pokemonDataObject.secondaryType,
+            ImgUrl: pokemonDataObject.imgs,
+            PokemonNumber: pokemonDataObject.id
+        }
+        axios.post("https://pokemon-server-ajg7.herokuapp.com/pokemon_team_members", newPokemonDataObject)
+            .then(response => {
+                console.log(response);
+            })
+            .catch(error => {
+                console.log(error)
+            })
     }
 }
