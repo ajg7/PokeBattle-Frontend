@@ -7,6 +7,7 @@ const PokemonTeam = ({ pokemon, pokemonTeam, pokemonDataObject }) => {
     const history = useHistory();
     const [pokemonTeamData, setPokemonTeamData] = useState([]);
     const [pokemonObject, setPokemonObject] = useState(pokemonDataObject);
+    const [pokemonFetchData, setPokemonFetchData] = useState([]);
 
     useEffect(() => {
         setPokemonTeamData(pokemonTeam.map(pokemonTeamMember => {
@@ -20,7 +21,9 @@ const PokemonTeam = ({ pokemon, pokemonTeam, pokemonDataObject }) => {
         }))
         axios.get("https://pokemon-server-ajg7.herokuapp.com/pokemon_team_members")
             .then(response => {
-                console.log(response)
+                console.log(response.data)
+                const data = response.data;
+                setPokemonFetchData(data)
             })
             .catch(error => {
                 console.log(error);
@@ -35,8 +38,13 @@ const PokemonTeam = ({ pokemon, pokemonTeam, pokemonDataObject }) => {
 
     return(
         <div className="pokemon-team">
-            {pokemonTeamData.map(individualPokemon => {
-                return <h3>{individualPokemon[0].name}</h3>
+            {pokemonFetchData.map(individualPokemon => {
+                return (
+                    <div>
+                        <img src={individualPokemon.ImgUrl} alt={individualPokemon.name} />
+                        <p>{individualPokemon.Name}</p>
+                    </div>
+                    )
             })}
             <button onClick={goBackHandler}>Go Back</button>
         </div>
