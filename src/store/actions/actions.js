@@ -21,20 +21,24 @@ export const fetchPokemonList = url => {
 
 export const pokemonTeamMaker = (pokemon, pokemonDataObject) => {
     return dispatch => {
-        dispatch({ type: MAKE_POKEMON_TEAM, payload: {name: pokemon, data: pokemonDataObject }})
-        // const newPokemonDataObject = {
-        //     name: pokemonDataObject.name,
-        //     type1: pokemonDataObject.type,
-        //     type2: pokemonDataObject.secondaryType,
-        //     ImgUrl: pokemonDataObject.imgs,
-        //     PokemonNumber: pokemonDataObject.id
-        // }
-        // axios.post("https://pokedex-server-ajg7.herokuapp.com/pokemon_team_members", newPokemonDataObject)
-        //     .then(response => {
-        //         console.log(response);
-        //     })
-        //     .catch(error => {
-        //         console.log(error)
-        //     })
+        const newPokemonDataObject = {
+            name: pokemonDataObject.name,
+            type1: pokemonDataObject.type,
+            type2: pokemonDataObject.secondaryType,
+            ImgUrl: pokemonDataObject.imgs,
+            PokemonNumber: pokemonDataObject.id
+        }
+        console.log(pokemon)
+        axios.post("https://pokemon-server-ajg7.herokuapp.com/pokemon_team_members", newPokemonDataObject)
+            .then(response => {
+                console.log(response.config.data);
+                //Make a dispatch and put json data in it so you can use it in PokemonTeam component
+                //Next will be Remove Pokemon
+                //Next Will be Nickname Edit
+                dispatch({ type: MAKE_POKEMON_TEAM, payload: {name: pokemon, data: newPokemonDataObject }})
+            })
+            .catch(error => {
+                console.log(error)
+            })
     }
 }
