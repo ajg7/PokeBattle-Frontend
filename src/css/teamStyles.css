@@ -1,0 +1,15 @@
+.pokemon-team {
+    display: flex;
+    justify-content: space-around;
+    flex-flow: row wrap;
+}
+
+.pokemon-team img {
+    height: 250px;
+    width: 250px;
+}
+
+.pokemon-team p {
+    text-align: center;
+}
+

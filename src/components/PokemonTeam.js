@@ -1,24 +1,16 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
+import "../css/teamStyles.css";
 
 const PokemonTeam = ({ pokemon, pokemonTeam, pokemonDataObject }) => {
     const history = useHistory();
-    const [pokemonTeamData, setPokemonTeamData] = useState([]);
     const [pokemonObject, setPokemonObject] = useState(pokemonDataObject);
     const [pokemonFetchData, setPokemonFetchData] = useState([]);
+    const [chosenPokemon, setChosenPokemon] = useState("");
 
     useEffect(() => {
-        setPokemonTeamData(pokemonTeam.map(pokemonTeamMember => {
-            return pokemon.filter(individualPokemon => {
-                    if(pokemonTeamMember === individualPokemon.name) {
-                        return true;
-                    } else {
-                        return false;
-                    }
-                })
-        }))
         axios.get("https://pokemon-server-ajg7.herokuapp.com/pokemon_team_members")
             .then(response => {
                 console.log(response.data)
@@ -28,7 +20,6 @@ const PokemonTeam = ({ pokemon, pokemonTeam, pokemonDataObject }) => {
             .catch(error => {
                 console.log(error);
             })
-        
     }, [pokemonTeam, pokemon, pokemonObject])
 
 
@@ -36,16 +27,35 @@ const PokemonTeam = ({ pokemon, pokemonTeam, pokemonDataObject }) => {
         history.push("/")
     }
 
+    const removePokemonHandler = event => {
+        console.log(event.target.value)
+        const id = event.target.value;
+        axios.delete(`https://pokemon-server-ajg7.herokuapp.com/pokemon_team_members/${id}`)
+            .then(response => {
+                console.log(response)
+                history.go(0);
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
+
     return(
-        <div className="pokemon-team">
-            {pokemonFetchData.map(individualPokemon => {
-                return (
-                    <div>
-                        <img src={individualPokemon.ImgUrl} alt={individualPokemon.name} />
-                        <p>{individualPokemon.Name}</p>
-                    </div>
-                    )
-            })}
+        <div className="pokemon-team-page">
+            <div className="pokemon-team">
+                {pokemonFetchData.map(individualPokemon => {
+                    return (
+                        <div className="pokemon-team-members">
+                            <img src={individualPokemon.ImgUrl} alt={individualPokemon.name} />
+                            <p>{individualPokemon.Name}</p>
+                            <p>{individualPokemon.Type1}</p>
+                            <p>{individualPokemon.Type2}</p>
+                            <p>{individualPokemon.PokemonNumber}</p>
+                            <button onClick={removePokemonHandler} value={individualPokemon.id}>Remove From Team</button>
+                        </div>
+                        )
+                })}
+            </div>
             <button onClick={goBackHandler}>Go Back</button>
         </div>
     )
