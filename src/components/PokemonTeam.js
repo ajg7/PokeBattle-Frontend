@@ -10,6 +10,7 @@ const PokemonTeam = ({ pokemon, pokemonTeam, pokemonDataObject }) => {
     const [pokemonFetchData, setPokemonFetchData] = useState([]);
     const [active, setActive] = useState(false);
     const [id, setId] = useState(0);
+    const [nickName, setNickName] = useState("");
     
 
     useEffect(() => {
@@ -44,29 +45,39 @@ const PokemonTeam = ({ pokemon, pokemonTeam, pokemonDataObject }) => {
 
     const changeHandler = event => {
         console.log(event.target.value)
+        setNickName(event.target.value)
     }
 
-    const editNameHandler = async event => {
+    const editNameHandler = event => {
         const id = event.target.value;
         setActive(true)
+        setId(id)
+    
+    }
+
+    const battleHandler = event => {
+        history.push("/battle")
+    }
+
+    const exitHandler = event => {
+        setActive(false)
+    }
+
+    const nickNameSubmit = async event => {
+        event.preventDefault();
         class Changes {
             constructor(Name) {
                 this.Name = Name;
             }
         }
 
-        const nickName = new Changes("Example")
-        console.log(nickName)
-        console.log(id)
-        setId(id)
+        const nickNameSubmission = new Changes(nickName)
+        console.log(nickNameSubmission)
         
-        // const editPokemonName = await axios.put(`https://pokemon-server-ajg7.herokuapp.com/pokemon_team_members/${id}`, nickName)
-        // console.log(editPokemonName)
-        // history.go(0);
-    }
-
-    const battleHandler = event => {
-        history.push("/battle")
+        
+        const editPokemonName = await axios.put(`https://pokemon-server-ajg7.herokuapp.com/pokemon_team_members/${id}`, nickNameSubmission)
+        console.log(editPokemonName)
+        history.go(0)
     }
 
     return(
@@ -78,13 +89,17 @@ const PokemonTeam = ({ pokemon, pokemonTeam, pokemonDataObject }) => {
                             <div>
                                 <button onClick={editNameHandler} value={individualPokemon.id}>Add Nickname</button>
                                 {active && id == individualPokemon.id ? 
-                                    <form>
+                                    <>
+                                    <form onSubmit={nickNameSubmit}>
                                         <input 
                                         type="textbox" 
                                         placeholder={individualPokemon.Name}
                                         onChange={changeHandler}
                                         />
+                                        <button>Change</button>
                                     </form> 
+                                    <button onClick={exitHandler}>Exit</button>
+                                    </>
                                     : 
                                     <p>{individualPokemon.Name}</p>}
                             </div>
