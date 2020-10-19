@@ -10,6 +10,7 @@ const PokemonTeam = ({ pokemon, pokemonTeam, pokemonDataObject }) => {
     const [pokemonObject, setPokemonObject] = useState(pokemonDataObject);
     const [pokemonFetchData, setPokemonFetchData] = useState([]);
     const [active, setActive] = useState(false);
+    const [newName, setNewName] = useState("");
 
     useEffect(() => {
         axios.get("https://pokemon-server-ajg7.herokuapp.com/pokemon_team_members")
@@ -40,8 +41,20 @@ const PokemonTeam = ({ pokemon, pokemonTeam, pokemonDataObject }) => {
             })
     }
 
-    const editNameHandler = event => {
-        console.log(event.target.value)
+    const editNameHandler = async event => {
+        const id = event.target.value;
+        class Changes {
+            constructor(Name) {
+                this.Name = Name;
+            }
+        }
+
+        const nickName = new Changes("Example")
+        console.log(nickName)
+        
+        const editPokemonName = await axios.put(`https://pokemon-server-ajg7.herokuapp.com/pokemon_team_members/${id}`, nickName)
+        console.log(editPokemonName)
+        history.go(0);
     }
 
     const battleHandler = event => {
@@ -55,7 +68,7 @@ const PokemonTeam = ({ pokemon, pokemonTeam, pokemonDataObject }) => {
                     return (
                         <>
                             <div>
-                                <button onClick={editNameHandler} value={individualPokemon.Name}>Add Nickname</button>
+                                <button onClick={editNameHandler} value={individualPokemon.id}>Add Nickname</button>
                             </div>
                             <div className="pokemon-team-members">
                                 <img src={individualPokemon.ImgUrl} alt={individualPokemon.Name} />
@@ -70,7 +83,7 @@ const PokemonTeam = ({ pokemon, pokemonTeam, pokemonDataObject }) => {
                 })}
             </div>
             <button onClick={goBackHandler} className="go-back-button">Go Back</button>
-            <button onClick={battleHandler} classname="battle-button">Battle!</button>
+            <button onClick={battleHandler} className="battle-button">Battle!</button>
         </div>
     )
 }
