@@ -12,10 +12,11 @@ const App = ({ pokemonTeam }) => {
     <>
       <header>
         <h1>Gotta Catch 'em All!</h1>
+        <p>{pokemonTeam.length}</p>
         <Link to="/pokemon_team"><img src={PokeballStorage} alt="storage for your pokemon team" /></Link>
       </header>
       <div className="pokemon-app">
-        <Route exact path="/" component={PokemonList}/>
+        <Route exact path="/" component={PokemonList} />
       </div>
         <Route exact path="/pokemon_team" component={PokemonTeam} />
       

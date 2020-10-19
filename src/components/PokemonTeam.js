@@ -55,14 +55,14 @@ const PokemonTeam = ({ pokemon, pokemonTeam, pokemonDataObject }) => {
                     return (
                         <>
                             <div>
-                                <img src={editImage} alt="edit button" className="edit-image" value={individualPokemon.Name} onClick={editNameHandler} />
+                                <button onClick={editNameHandler} value={individualPokemon.Name}>Add Nickname</button>
                             </div>
                             <div className="pokemon-team-members">
                                 <img src={individualPokemon.ImgUrl} alt={individualPokemon.Name} />
                                 <p>{individualPokemon.Name}</p>
                                 <p>{individualPokemon.Type1}</p>
                                 <p>{individualPokemon.Type2}</p>
-                                <p>{individualPokemon.PokemonNumber}</p>
+                                <p>#{individualPokemon.PokemonNumber}</p>
                                 <button onClick={removePokemonHandler} value={individualPokemon.id}>Remove From Team</button>
                             </div>
                         </>

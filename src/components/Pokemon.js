@@ -33,7 +33,7 @@ const Pokemon = props => {
     const [type, setType] = useState("");
     const [secondaryType, setSecondaryType] = useState("");
     const [imgs, setImgs] = useState("");
-    const [id, setId] = useState(0);
+    const [id, setId] = useState(null);
     const [height, setHeight] = useState(0);
     const [heightInFeet, setHeightInFeet] = useState(0);
     const [weight, setWeight] = useState(0);
