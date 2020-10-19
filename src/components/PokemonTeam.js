@@ -3,14 +3,14 @@ import axios from "axios";
 import { connect } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import "../css/teamStyles.css";
-import editImage from "../assets/edit.png";
 
 const PokemonTeam = ({ pokemon, pokemonTeam, pokemonDataObject }) => {
     const history = useHistory();
     const [pokemonObject, setPokemonObject] = useState(pokemonDataObject);
     const [pokemonFetchData, setPokemonFetchData] = useState([]);
     const [active, setActive] = useState(false);
-    const [newName, setNewName] = useState("");
+    const [id, setId] = useState(0);
+    
 
     useEffect(() => {
         axios.get("https://pokemon-server-ajg7.herokuapp.com/pokemon_team_members")
@@ -31,6 +31,7 @@ const PokemonTeam = ({ pokemon, pokemonTeam, pokemonDataObject }) => {
 
     const removePokemonHandler = event => {
         const id = event.target.value;
+        setId(id)
         axios.delete(`https://pokemon-server-ajg7.herokuapp.com/pokemon_team_members/${id}`)
             .then(response => {
                 console.log(response)
@@ -41,8 +42,13 @@ const PokemonTeam = ({ pokemon, pokemonTeam, pokemonDataObject }) => {
             })
     }
 
+    const changeHandler = event => {
+        console.log(event.target.value)
+    }
+
     const editNameHandler = async event => {
         const id = event.target.value;
+        setActive(true)
         class Changes {
             constructor(Name) {
                 this.Name = Name;
@@ -51,10 +57,12 @@ const PokemonTeam = ({ pokemon, pokemonTeam, pokemonDataObject }) => {
 
         const nickName = new Changes("Example")
         console.log(nickName)
+        console.log(id)
+        setId(id)
         
-        const editPokemonName = await axios.put(`https://pokemon-server-ajg7.herokuapp.com/pokemon_team_members/${id}`, nickName)
-        console.log(editPokemonName)
-        history.go(0);
+        // const editPokemonName = await axios.put(`https://pokemon-server-ajg7.herokuapp.com/pokemon_team_members/${id}`, nickName)
+        // console.log(editPokemonName)
+        // history.go(0);
     }
 
     const battleHandler = event => {
@@ -69,10 +77,19 @@ const PokemonTeam = ({ pokemon, pokemonTeam, pokemonDataObject }) => {
                         <>
                             <div>
                                 <button onClick={editNameHandler} value={individualPokemon.id}>Add Nickname</button>
+                                {active && id == individualPokemon.id ? 
+                                    <form>
+                                        <input 
+                                        type="textbox" 
+                                        placeholder={individualPokemon.Name}
+                                        onChange={changeHandler}
+                                        />
+                                    </form> 
+                                    : 
+                                    <p>{individualPokemon.Name}</p>}
                             </div>
                             <div className="pokemon-team-members">
                                 <img src={individualPokemon.ImgUrl} alt={individualPokemon.Name} />
-                                <p>{individualPokemon.Name}</p>
                                 <p>{individualPokemon.Type1}</p>
                                 <p>{individualPokemon.Type2}</p>
                                 <p>#{individualPokemon.PokemonNumber}</p>
