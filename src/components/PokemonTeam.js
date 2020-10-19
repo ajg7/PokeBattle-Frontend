@@ -70,13 +70,8 @@ const PokemonTeam = ({ pokemon, pokemonTeam, pokemonDataObject }) => {
                 this.Name = Name;
             }
         }
-
         const nickNameSubmission = new Changes(nickName)
-        console.log(nickNameSubmission)
-        
-        
-        const editPokemonName = await axios.put(`https://pokemon-server-ajg7.herokuapp.com/pokemon_team_members/${id}`, nickNameSubmission)
-        console.log(editPokemonName)
+        await axios.put(`https://pokemon-server-ajg7.herokuapp.com/pokemon_team_members/${id}`, nickNameSubmission)
         history.go(0)
     }
 
@@ -86,24 +81,24 @@ const PokemonTeam = ({ pokemon, pokemonTeam, pokemonDataObject }) => {
                 {pokemonFetchData.map(individualPokemon => {
                     return (
                         <>
-                            <div>
-                                <button onClick={editNameHandler} value={individualPokemon.id}>Add Nickname</button>
-                                {active && id == individualPokemon.id ? 
-                                    <>
-                                    <form onSubmit={nickNameSubmit}>
-                                        <input 
-                                        type="textbox" 
-                                        placeholder={individualPokemon.Name}
-                                        onChange={changeHandler}
-                                        />
-                                        <button>Change</button>
-                                    </form> 
-                                    <button onClick={exitHandler}>Exit</button>
-                                    </>
-                                    : 
-                                    <p>{individualPokemon.Name}</p>}
-                            </div>
                             <div className="pokemon-team-members">
+                                <button onClick={editNameHandler} value={individualPokemon.id}>Add Nickname</button>
+                                {
+                                    active && id == individualPokemon.id ? 
+                                        <>
+                                        <form onSubmit={nickNameSubmit}>
+                                            <input 
+                                            type="textbox" 
+                                            placeholder={individualPokemon.Name}
+                                            onChange={changeHandler}
+                                            />
+                                            <button>Change</button>
+                                            <button onClick={exitHandler}>Exit</button>
+                                        </form> 
+                                        </>
+                                    : 
+                                        <p>{individualPokemon.Name}</p>
+                                }
                                 <img src={individualPokemon.ImgUrl} alt={individualPokemon.Name} />
                                 <p>{individualPokemon.Type1}</p>
                                 <p>{individualPokemon.Type2}</p>
