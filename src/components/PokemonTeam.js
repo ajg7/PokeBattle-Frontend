@@ -3,11 +3,13 @@ import axios from "axios";
 import { connect } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import "../css/teamStyles.css";
+import editImage from "../assets/edit.png";
 
 const PokemonTeam = ({ pokemon, pokemonTeam, pokemonDataObject }) => {
     const history = useHistory();
     const [pokemonObject, setPokemonObject] = useState(pokemonDataObject);
     const [pokemonFetchData, setPokemonFetchData] = useState([]);
+    const [active, setActive] = useState(false);
 
     useEffect(() => {
         axios.get("https://pokemon-server-ajg7.herokuapp.com/pokemon_team_members")
@@ -38,23 +40,37 @@ const PokemonTeam = ({ pokemon, pokemonTeam, pokemonDataObject }) => {
             })
     }
 
+    const editNameHandler = event => {
+        console.log(event.target.value)
+    }
+
+    const battleHandler = event => {
+        history.push("/battle")
+    }
+
     return(
         <div className="pokemon-team-page">
             <div className="pokemon-team">
                 {pokemonFetchData.map(individualPokemon => {
                     return (
-                        <div className="pokemon-team-members">
-                            <img src={individualPokemon.ImgUrl} alt={individualPokemon.name} />
-                            <p>{individualPokemon.Name}</p>
-                            <p>{individualPokemon.Type1}</p>
-                            <p>{individualPokemon.Type2}</p>
-                            <p>{individualPokemon.PokemonNumber}</p>
-                            <button onClick={removePokemonHandler} value={individualPokemon.id}>Remove From Team</button>
-                        </div>
+                        <>
+                            <div>
+                                <img src={editImage} alt="edit button" className="edit-image" value={individualPokemon.Name} onClick={editNameHandler} />
+                            </div>
+                            <div className="pokemon-team-members">
+                                <img src={individualPokemon.ImgUrl} alt={individualPokemon.Name} />
+                                <p>{individualPokemon.Name}</p>
+                                <p>{individualPokemon.Type1}</p>
+                                <p>{individualPokemon.Type2}</p>
+                                <p>{individualPokemon.PokemonNumber}</p>
+                                <button onClick={removePokemonHandler} value={individualPokemon.id}>Remove From Team</button>
+                            </div>
+                        </>
                         )
                 })}
             </div>
-            <button onClick={goBackHandler}>Go Back</button>
+            <button onClick={goBackHandler} className="go-back-button">Go Back</button>
+            <button onClick={battleHandler} classname="battle-button">Battle!</button>
         </div>
     )
 }
