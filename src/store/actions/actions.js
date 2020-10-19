@@ -31,7 +31,7 @@ export const pokemonTeamMaker = (pokemon, pokemonDataObject) => {
         console.log(pokemon)
         axios.post("https://pokemon-server-ajg7.herokuapp.com/pokemon_team_members", newPokemonDataObject)
             .then(response => {
-                console.log(response.config.data);
+                console.log(response.config);
                 //Make a dispatch and put json data in it so you can use it in PokemonTeam component
                 //Next will be Remove Pokemon
                 //Next Will be Nickname Edit

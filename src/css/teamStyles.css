@@ -13,3 +13,11 @@
     text-align: center;
 }
 
+.pokemon-team-page .go-back-button {
+    margin: 15px 0;
+}
+
+.pokemon-team div .edit-image {
+    height: 30px;
+    width: 30px;
+}
