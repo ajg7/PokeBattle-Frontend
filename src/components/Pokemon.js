@@ -91,20 +91,21 @@ const Pokemon = props => {
         setChosenPokemon(name);
         const pokemonTeamDataObject = {
             name: name,
-            type: type,
-            secondaryType: secondaryType,
-            imgs: imgs,
-            id: id,
+            type1: type,
+            type2: secondaryType,
+            imgURL: imgs,
+            number: id,
             height: height,
-            heightInFeet: heightInFeet,
+            // heightInFeet: heightInFeet,
             weight: weight,
-            abilities: abilities,
-            entries: entries,
+            // abilities: abilities,
+            entry: entries,
             habitat: habitat,
             legendary: legendary,
             mythical: mythical,
             ancient: ancient
         }
+        
         pokemonTeamMaker(chosenPokemon, pokemonTeamDataObject);
     }
 

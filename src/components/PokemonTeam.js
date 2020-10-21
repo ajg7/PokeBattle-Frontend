@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import "../css/teamStyles.css";
 
 const PokemonTeam = ({ pokemon, pokemonTeam, pokemonDataObject }) => {
@@ -49,9 +49,8 @@ const PokemonTeam = ({ pokemon, pokemonTeam, pokemonDataObject }) => {
     }
 
     const editNameHandler = event => {
-        const id = event.target.value;
         setActive(true)
-        setId(id)
+        setId(event.target.value)
     
     }
 
@@ -65,6 +64,7 @@ const PokemonTeam = ({ pokemon, pokemonTeam, pokemonDataObject }) => {
 
     const nickNameSubmit = async event => {
         event.preventDefault();
+        //Make sure to be this class in its own file
         class Changes {
             constructor(Name) {
                 this.Name = Name;
@@ -84,6 +84,7 @@ const PokemonTeam = ({ pokemon, pokemonTeam, pokemonDataObject }) => {
                             <div className="pokemon-team-members">
                                 <button onClick={editNameHandler} value={individualPokemon.id}>Add Nickname</button>
                                 {
+                                    // eslint-disable-next-line eqeqeq
                                     active && id == individualPokemon.id ? 
                                         <>
                                         <form onSubmit={nickNameSubmit}>
