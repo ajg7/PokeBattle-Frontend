@@ -1,17 +1,9 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { FormValues, initialFormValues } from "./classes/FormValuesClass"
 
 
 const Signup = props => {
-    class FormValues {
-        constructor(email, password, isAdmin){
-            this.email = email;
-            this.password = password;
-            this.isAdmin = isAdmin
-        }
-    }
-    
-    const initialFormValues = new FormValues("", "", false);
     
     const [formValues, setFormValues] = useState(initialFormValues);
 
@@ -28,19 +20,26 @@ const Signup = props => {
         inputChange(name, value)
     }
 
-    const addNewUser = async event => {
+    const addNewUser = event => {
         event.preventDefault();
         const newUser = new FormValues(formValues.email.trim(), formValues.password.trim(), false);
-        await axios.post("", newUser).then(response => {
-            setFormValues(initialFormValues)
-            console.log(response)
-        });
+        axios.post("", user)
+            .then(response => {
+                const token = response.data.token;
+                localStorage.setItem("Token", token)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+            .finally(() => {
+                setFormValues(initialFormValues)
+            })
     }
 
     return(
         <div>
             <h1>Gotta Catch 'em</h1>
-            <h3>My first major web app</h3>
+            <h3>Signup</h3>
             <form onSubmit={addNewUser}>
                 <label> email: 
                     <input 
