@@ -23,7 +23,7 @@ const Signup = props => {
     const addNewUser = event => {
         event.preventDefault();
         const newUser = new FormValues(formValues.email.trim(), formValues.password.trim(), false);
-        axios.post("", user)
+        axios.post("", newUser)
             .then(response => {
                 const token = response.data.token;
                 localStorage.setItem("Token", token)
