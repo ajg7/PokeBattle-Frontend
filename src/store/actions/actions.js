@@ -21,15 +21,15 @@ export const fetchPokemonList = url => {
 
 export const pokemonTeamMaker = (pokemon, pokemonDataObject) => {
     return dispatch => {
-        // const newPokemonDataObject = {
-        //     name: pokemonDataObject.name,
-        //     type1: pokemonDataObject.type,
-        //     type2: pokemonDataObject.secondaryType,
-        //     ImgUrl: pokemonDataObject.imgs,
-        //     PokemonNumber: pokemonDataObject.id
-        // }
+        const newPokemonDataObject = {
+            name: pokemonDataObject.name,
+            type1: pokemonDataObject.type,
+            type2: pokemonDataObject.secondaryType,
+            ImgUrl: pokemonDataObject.imgs,
+            PokemonNumber: pokemonDataObject.id
+        }
         console.log(pokemon)
-        axios.post("https://pokemon-server-ajg7.herokuapp.com/pokemon", pokemonDataObject)
+        axios.post("https://pokemon-server-ajg7.herokuapp.com/pokemon", newPokemonDataObject)
             .then(response => {
                 console.log(response.config);
                 dispatch({ type: MAKE_POKEMON_TEAM, payload: {name: pokemon, data: pokemonDataObject }})
