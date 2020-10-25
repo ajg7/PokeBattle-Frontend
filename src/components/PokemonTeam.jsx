@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { connect } from "react-redux";
+// import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import "../css/teamStyles.css";
 
@@ -116,14 +116,14 @@ const PokemonTeam = ({ pokemon, pokemonTeam, pokemonDataObject }) => {
     )
 }
  
-
+/*
 const mapStateToProps = state => {
     return {
         pokemon: state.pokemon,
         pokemonTeam: state.pokemonTeam,
         pokemonDataObject: state.pokemonDataObject
     }
-}
+}*/
 
 
-export default connect(mapStateToProps, {})(PokemonTeam);
+export default PokemonTeam;

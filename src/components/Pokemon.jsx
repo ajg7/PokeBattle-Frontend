@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import { connect } from "react-redux";
-import { pokemonTeamMaker } from "../store/actions";
+// import { connect } from "react-redux";
+// import { pokemonTeamMaker } from "../store/actions";
 import "../css/styles.css";
 import Pokeball from "../assets/Pokeball.png";
 import Greatball from "../assets/Greatball.png";
@@ -160,4 +160,4 @@ const Pokemon = props => {
     )
 }
 
-export default connect(null, { pokemonTeamMaker })(Pokemon);
+export default Pokemon;

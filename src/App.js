@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Link } from "react-router-dom";
-import { connect } from "react-redux";
+// import { connect } from "react-redux";
 import PokemonList from "./components/PokemonList";
 import PokemonTeam from "./components/PokemonTeam";
 import Signup from "./components/Signup";
@@ -14,6 +14,7 @@ const App = ({ pokemonTeam }) => {
     <>
       <Signup />
       <Login />
+      <PokemonList />
       {/*<header>
         <h1>Gotta Catch 'em All!</h1>
         <p>{pokemonTeam.length}</p>
@@ -28,10 +29,11 @@ const App = ({ pokemonTeam }) => {
   );
 }
 
+/*
 const mapStateToProps = state => {
   return {
     pokemonTeam: state.pokemonTeam
   }
-}
+}*/
 
-export default connect(mapStateToProps, {})(App);
+export default App;

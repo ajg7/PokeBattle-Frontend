@@ -25,7 +25,7 @@ const Signup = props => {
         axios.post("https://pokemon-server-ajg7.herokuapp.com/users/signup", newUser)
             .then(response => {
                 const token = response.data.token;
-                localStorage.setItem("Token", token)
+                localStorage.setItem("token", token)
             })
             .catch(error => {
                 console.log(error)

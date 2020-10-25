@@ -32,7 +32,7 @@ const Login = props => {
                 .then(response => {
                     console.log(response)
                     const token = response.data.token;
-                    localStorage.setItem("Token", token)
+                    localStorage.setItem("token", token)
                 })
                 .catch(error => {
                     console.log(error)
