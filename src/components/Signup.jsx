@@ -16,14 +16,13 @@ const Signup = props => {
 
     const changeHandler = event => {
         const { name, value } = event.target
-        console.log(name, value)
         inputChange(name, value)
     }
 
     const addNewUser = event => {
         event.preventDefault();
         const newUser = new FormValues(formValues.email.trim(), formValues.password.trim(), false);
-        axios.post("", newUser)
+        axios.post("https://pokemon-server-ajg7.herokuapp.com/users/signup", newUser)
             .then(response => {
                 const token = response.data.token;
                 localStorage.setItem("Token", token)
