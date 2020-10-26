@@ -5,6 +5,7 @@ import PokemonList from "./components/PokemonList";
 import PokemonTeam from "./components/PokemonTeam";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
+import "./css/reset.css";
 import "./css/styles.css";
 import PokeballStorage from "./assets/PokemonStorage.png"
 
