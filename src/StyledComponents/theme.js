@@ -1,4 +1,3 @@
-
 export const theme = {
     types: {
         grass: "#9BCC50",

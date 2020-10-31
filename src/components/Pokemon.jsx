@@ -4,30 +4,12 @@ import React, { useState, useEffect } from "react";
 // import { pokemonTeamMaker } from "../store/actions";
 import "../css/reset.css";
 import "../css/styles.css";
-// import Pokeball from "../assets/Pokeball.png";
-// import Greatball from "../assets/Greatball.png";
-// import Ultraball from "../assets/Ultraball.png";
-// import Masterball from "../assets/Masterball.png";
-// import styled from "styled-components";
+import { StyledThemePill as TypePills } from "../StyledComponents/TypePills"
 
 
 
 
-// const StyledThemePill = styled.div`
 
-//     .type-pill-primary {
-//         background-color: ${({ theme, type }) => {
-//             return theme.types[type];
-//         }};
-//         border-radius: 5px;
-//     }
-//     .type-pill-secondary {
-//         background-color: ${({ theme, secondaryType }) => {
-//             return theme.types[secondaryType];
-//         }};
-//         border-radius: 5px;
-//     }
-// `
 
 const Pokemon = props => {
     const { id, name, type1, type2, imgURL, height, weight, entry, habitat, legendary, mythical, ancient } = props;
@@ -48,14 +30,14 @@ const Pokemon = props => {
                         <div className="pokemon-data-container">
                             <h3 className="id">#{id}</h3>
                             <h3>{name}</h3>
-                            {/*<StyledThemePill type={type1} secondaryType={type2}>*/}
+                            <TypePills type={type1} secondaryType={type2}>
                                 <div className="type-pill-primary">
                                     <h3 className={type1} id="primary-type-title">{type1}</h3>
                                 </div>
                                 <div className="type-pill-secondary">
                                     <h3 className={type2} id="primary-type-title">{type2}</h3>
                                 </div>
-                            {/*</StyledThemePill>*/}
+                            </TypePills>
                             <div className="pokemon-team-button">
                                 <button onClick={addPokemonHandler}>Add Pokemon to Team</button>
                             </div>

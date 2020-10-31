@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 // import { Provider } from "react-redux";
-// import { ThemeProvider } from "styled-components";
-// import { theme } from "./StyledComponents/theme";
+import { ThemeProvider } from "styled-components";
+import { theme } from "./StyledComponents/theme";
 // import { createStore, applyMiddleware } from "redux";
 // import reducer from "./store/reducers/reducer"
 // import thunk from "redux-thunk";
@@ -15,9 +15,11 @@ import * as serviceWorker from './serviceWorker';
 
 
 ReactDOM.render(
+    <ThemeProvider theme={theme}>
       <Router>
         <App />
-      </Router>,
+      </Router>
+    </ThemeProvider>,
   document.getElementById('root')
 );
 
