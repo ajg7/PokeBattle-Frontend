@@ -7,6 +7,7 @@ Pokemon Cards
   --center: center;
   --cap: capitalize;
 }
+/*
 
 @keyframes bounce{
   0% {transform: translateY(0)}
@@ -33,9 +34,11 @@ header img {
   width: 50px;
 }
 
-.pokemon-app {
+*/
+
+.pokemon {
   display: flex;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
   justify-content: var(--center);
   font-family: "Flexo-Demi", arial, sans-serif;
   padding: 100px 0;

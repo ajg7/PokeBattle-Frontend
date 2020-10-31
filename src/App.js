@@ -1,14 +1,12 @@
 import React from "react";
 import { Route, Link } from "react-router-dom";
 // import { connect } from "react-redux";
-import PokemonList from "./components/PokemonList";
-import PokemonTeam from "./components/PokemonTeam";
+import LandingPage from "./components/LandingPage";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
+import PokemonList from "./components/PokemonList";
+// import PokemonTeam from "./components/PokemonTeam";
 import "./css/reset.css";
-import "./css/styles.css";
-import PokeballStorage from "./assets/PokemonStorage.png"
-import LandingPage from "./components/LandingPage";
 
 const App = ({ pokemonTeam }) => {
 

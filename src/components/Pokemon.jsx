@@ -2,9 +2,9 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 // import { connect } from "react-redux";
 // import { pokemonTeamMaker } from "../store/actions";
-import "../css/reset.css";
-import "../css/styles.css";
-import { StyledThemePill as TypePills } from "../StyledComponents/TypePills"
+// import "../css/styles.css";
+import { StyledThemePill as TypePills } from "../StyledComponents/TypePills";
+import { StyledCard } from "../StyledComponents/StyledCard";
 
 
 
@@ -14,13 +14,31 @@ import { StyledThemePill as TypePills } from "../StyledComponents/TypePills"
 const Pokemon = props => {
     const { id, name, type1, type2, imgURL, height, weight, entry, habitat, legendary, mythical, ancient } = props;
 
-    const addPokemonHandler = event => {
-        //Send this id into redux, which will then make the post to the teams table 
-        console.log(id)
-    }
-
     return(
-        <>
+        <section className="pokemon-cards">  
+            <StyledCard>
+                <div className="card">
+                    <div className="card-inner">
+                        <div className="card-front">
+                            <h3>Front Side</h3>
+                        </div>
+                        <div className="card-back">
+                            <h3>Back Side</h3>
+                        </div>
+                    </div>
+                </div>
+            </StyledCard>
+
+
+
+
+
+
+
+
+
+
+        {/*
             <div className="pokemon-card">
                 <div className="pokemon-card-inner">
                     <div className="pokemon-card-front">
@@ -39,7 +57,7 @@ const Pokemon = props => {
                                 </div>
                             </TypePills>
                             <div className="pokemon-team-button">
-                                <button onClick={addPokemonHandler}>Add Pokemon to Team</button>
+                                <button onClick={addPokemonHandler}>Flip Card</button>
                             </div>
                         </div>
                     </div>
@@ -58,7 +76,8 @@ const Pokemon = props => {
                     </div>
                 </div>
             </div>
-        </>
+        */}
+        </section>
     )
 }
 
