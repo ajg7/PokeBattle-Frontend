@@ -1,10 +1,14 @@
 import styled from "styled-components";
 
 export const StyledCard = styled.div`
+
+display: flex;
+
+
     .card {
         background-color: transparent;
-        width: 300px;
-        height: 200px;
+        width: 175px;
+        height: 225px;
         border: 1px solid #f1f1f1;
         perspective: 1000px;
     }
@@ -39,5 +43,5 @@ export const StyledCard = styled.div`
         color: white;
         transform: rotateY(180deg);
     }
-
+    
 `

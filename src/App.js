@@ -8,6 +8,7 @@ import PokemonList from "./components/PokemonList";
 // import PokemonTeam from "./components/PokemonTeam";
 import "./css/reset.css";
 
+
 const App = ({ pokemonTeam }) => {
 
   return (

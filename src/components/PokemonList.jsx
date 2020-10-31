@@ -4,8 +4,7 @@ import axios from "axios";
 // import { fetchPokemonList } from "../store/actions"
 import Pokemon from "./Pokemon";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
-import "../css/reset.css";
-
+import "../css/cards.css";
 
 const PokemonList = props => {
     // const { pokemon, fetchPokemonList } = props;
@@ -19,8 +18,9 @@ const PokemonList = props => {
             .catch(error => setError(true))
     }, [])
 
+
     return(
-        <>
+        <section className="pokemon-cards">
             {error ? <h2>Unable to Load Pokemon</h2> : null}
             {pokemonData.map(pokemon => {
                 return (
@@ -41,7 +41,7 @@ const PokemonList = props => {
                     />
                 )
             })}
-        </>
+        </section>
     )
 }
 

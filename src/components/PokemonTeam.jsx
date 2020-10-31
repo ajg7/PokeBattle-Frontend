@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 // import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
-import "../css/reset.css";
-import "../css/teamStyles.css";
 
 const PokemonTeam = ({ pokemon, pokemonTeam, pokemonDataObject }) => {
     const history = useHistory();
