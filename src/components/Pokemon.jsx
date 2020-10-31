@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 // import { connect } from "react-redux";
 // import { pokemonTeamMaker } from "../store/actions";
-import "../css/reset.css"
+import "../css/reset.css";
 import "../css/styles.css";
 // import Pokeball from "../assets/Pokeball.png";
 // import Greatball from "../assets/Greatball.png";
@@ -30,7 +30,12 @@ import "../css/styles.css";
 // `
 
 const Pokemon = props => {
-    const { name, type1, type2, imgURL, number, height, weight, entry, habitat, legendary, mythical, ancient } = props;
+    const { id, name, type1, type2, imgURL, height, weight, entry, habitat, legendary, mythical, ancient } = props;
+
+    const addPokemonHandler = event => {
+        //Send this id into redux, which will then make the post to the teams table 
+        console.log(id)
+    }
 
     return(
         <>
@@ -41,7 +46,7 @@ const Pokemon = props => {
                             <img src={imgURL} alt={name} />
                         </div>
                         <div className="pokemon-data-container">
-                            <h3 className="id">#{number}</h3>
+                            <h3 className="id">#{id}</h3>
                             <h3>{name}</h3>
                             {/*<StyledThemePill type={type1} secondaryType={type2}>*/}
                                 <div className="type-pill-primary">
@@ -52,14 +57,14 @@ const Pokemon = props => {
                                 </div>
                             {/*</StyledThemePill>*/}
                             <div className="pokemon-team-button">
-                                <button>Add Pokemon to Team</button>
+                                <button onClick={addPokemonHandler}>Add Pokemon to Team</button>
                             </div>
                         </div>
                     </div>
                     <div className="pokemon-card-back">
                         <div className="pokemon-stats-back">
-                            <h4>Height: {height} </h4>
-                            <h4>Weight: {weight} </h4>
+                            <h4>Height: {height * 10} cm </h4>
+                            <h4>Weight: {weight * 0.1} kg </h4>
                             <h4 className="habitat">Habitat: {habitat}</h4>
                             {legendary ? <h4>Legendary</h4> : null}
                             {mythical ? <h4>Mythical</h4> : null}

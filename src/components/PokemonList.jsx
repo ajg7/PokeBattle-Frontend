@@ -10,29 +10,28 @@ import "../css/styles.css";
 
 const PokemonList = props => {
     // const { pokemon, fetchPokemonList } = props;
-    const [pokemonData, setPokemonData] = useState([])
-    
-    
-    // useEffect(() => {
-    //     fetchPokemonList(currentList);
-    // }, [currentList, fetchPokemonList])
-
+    const [pokemonData, setPokemonData] = useState([]);
+    const [error, setError] = useState(false);
 
     useEffect(() => {
+        //convert this code into an action (fetchPokemon)
         axiosWithAuth().get("https://pokemon-server-ajg7.herokuapp.com/pokemon")
             .then(response => setPokemonData(response.data))
+            .catch(error => setError(true))
     }, [])
 
     return(
         <>
+            {error ? <h2>Unable to Load Pokemon</h2> : null}
             {pokemonData.map(pokemon => {
                 return (
                     <Pokemon 
+                    key={pokemon.id}
+                    id={pokemon.id}
                     name={pokemon.name}
                     type1={pokemon.type1}
                     type2={pokemon.type2}
                     imgURL={pokemon.imgURL}
-                    number={pokemon.number}
                     height={pokemon.height}
                     weight={pokemon.weight}
                     entry={pokemon.entry}

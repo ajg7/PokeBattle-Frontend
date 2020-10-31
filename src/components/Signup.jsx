@@ -1,10 +1,12 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import { FormValues, initialFormValues } from "./classes/FormValuesClass"
 
 
 const Signup = props => {
     
+    const history = useHistory();
     const [formValues, setFormValues] = useState(initialFormValues);
 
     const inputChange = (key, value) => {
@@ -24,20 +26,17 @@ const Signup = props => {
         const newUser = new FormValues(formValues.email.trim(), formValues.password.trim(), false);
         axios.post("https://pokemon-server-ajg7.herokuapp.com/users/signup", newUser)
             .then(response => {
-                const token = response.data.token;
-                localStorage.setItem("token", token)
+                setFormValues(initialFormValues)
+                history.push("/pokemon_list")
             })
             .catch(error => {
                 console.log(error)
-            })
-            .finally(() => {
-                setFormValues(initialFormValues)
             })
     }
 
     return(
         <div>
-            <h1>Gotta Catch 'em</h1>
+            <h1>Gotta Catch 'em All</h1>
             <h3>Signup</h3>
             <form onSubmit={addNewUser}>
                 <label> email: 

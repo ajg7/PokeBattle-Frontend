@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { FormValues, initialFormValues } from "./classes/FormValuesClass";
 
@@ -11,6 +12,7 @@ const Login = props => {
         4. Add yup form Validation or React Form Validation that Max talked about
     */
 
+    const history = useHistory();
     const [formValues, setFormValues] = useState(initialFormValues);
 
     const inputChange = (key, value) => {
@@ -39,12 +41,13 @@ const Login = props => {
                 })
                 .finally(() => {
                     setFormValues(initialFormValues)
+                    history.push("/pokemon_list")
                 })
     }  
 
     return(
         <div>
-            <h1>Gotta Catch 'em</h1>
+            <h1>Gotta Catch 'em All</h1>
             <h3>Login</h3>
             <form onSubmit={loginUser}>
                 <label> email: 
