@@ -18,7 +18,7 @@ export const StyledCard = styled.div`
         transform-style: preserve-3d;
     }
 
-    .card:hover .card-inner {
+    .flipped .card-inner {
         transform: rotateY(180deg);
     }
 
