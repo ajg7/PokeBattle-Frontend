@@ -3,6 +3,7 @@ import axios from "axios";
 // import { connect } from "react-redux";
 // import { fetchPokemonList } from "../store/actions"
 import Pokemon from "./Pokemon";
+import DropBar from "./DropBar";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import "../css/cards.css";
 
@@ -20,28 +21,33 @@ const PokemonList = props => {
 
 
     return(
-        <section className="pokemon-cards">
-            {error ? <h2>Unable to Load Pokemon</h2> : null}
-            {pokemonData.map(pokemon => {
-                return (
-                    <Pokemon 
-                    key={pokemon.id}
-                    id={pokemon.id}
-                    name={pokemon.name}
-                    type1={pokemon.type1}
-                    type2={pokemon.type2}
-                    imgURL={pokemon.imgURL}
-                    height={pokemon.height}
-                    weight={pokemon.weight}
-                    entry={pokemon.entry}
-                    habitat={pokemon.habitat}
-                    legendary={pokemon.legendary}
-                    mythical={pokemon.mythical}
-                    ancient={pokemon.ancient}
-                    />
-                )
-            })}
-        </section>
+        <>
+            <section className="drop-bar">
+                <DropBar />
+            </section>
+            <section className="pokemon-cards">
+                {error ? <h2>Unable to Load Pokemon</h2> : null}
+                {pokemonData.map(pokemon => {
+                    return (
+                        <Pokemon 
+                        key={pokemon.id}
+                        id={pokemon.id}
+                        name={pokemon.name}
+                        type1={pokemon.type1}
+                        type2={pokemon.type2}
+                        imgURL={pokemon.imgURL}
+                        height={pokemon.height}
+                        weight={pokemon.weight}
+                        entry={pokemon.entry}
+                        habitat={pokemon.habitat}
+                        legendary={pokemon.legendary}
+                        mythical={pokemon.mythical}
+                        ancient={pokemon.ancient}
+                        />
+                    )
+                })}
+            </section>
+        </>
     )
 }
 

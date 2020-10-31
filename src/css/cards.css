@@ -1,5 +1,9 @@
 .pokemon-cards {
     display:flex;
     flex-flow: row wrap;
-    justify-content: space-around;
+    justify-content: center;
+}
+
+.drop-bar {
+    background-color: red;
 }

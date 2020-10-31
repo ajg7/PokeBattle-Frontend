@@ -1,14 +1,10 @@
 import styled from "styled-components";
 
-export const StyledCard = styled.div`
-
-display: flex;
-
-
+export const CardFlipAnim = styled.div`
     .card {
         background-color: transparent;
-        width: 175px;
-        height: 225px;
+        width: 250px;
+        height: 315px;
         border: 1px solid #f1f1f1;
         perspective: 1000px;
     }
