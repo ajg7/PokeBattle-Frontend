@@ -5,7 +5,7 @@ import axios from "axios";
 import Pokemon from "./Pokemon";
 import DropBar from "./DropBar";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
-import "../css/cards.css";
+import "../css/styles.css";
 
 const PokemonList = props => {
     // const { pokemon, fetchPokemonList } = props;

@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 export const StyledThemePill = styled.div`
     display: flex;
+    text-transform: ${({ theme }) => theme.cap};
+    padding: 25px;
 
     .type-pill-primary {
         background-color: ${({ theme, type }) => {
@@ -14,7 +16,7 @@ export const StyledThemePill = styled.div`
             } else {
                 return "50%"
             }
-        }}
+        }};
     }
     .type-pill-secondary {
         background-color: ${({ theme, secondaryType }) => {
@@ -27,6 +29,6 @@ export const StyledThemePill = styled.div`
             } else {
                 return "50%"
             }
-        }}
+        }};
     }
 `

@@ -1,13 +1,7 @@
 import styled from "styled-components";
 
 export const CardFlipAnim = styled.div`
-    .card {
-        background-color: transparent;
-        width: 250px;
-        height: 315px;
-        border: 1px solid #f1f1f1;
-        perspective: 1000px;
-    }
+    
 
     .card-inner {
         position: relative;
@@ -29,15 +23,8 @@ export const CardFlipAnim = styled.div`
         backface-visibility: hidden;
     }
 
-    .card-front {
-        background-color: #bbb;
-        color: black;
-    }
-
     .card-back {
-        background-color: dodgerblue;
-        color: white;
-        transform: rotateY(180deg);
+        transform: ${({ theme }) => theme.rotateRight};
     }
     
 `
