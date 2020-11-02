@@ -2,21 +2,23 @@ import styled from "styled-components";
 
 export const StyledThemePill = styled.div`
     display: flex;
-    text-transform: ${({ theme }) => theme.cap};
-    padding: 25px;
+    justify-content: ${({ secondaryType }) => {
+        if (secondaryType !== null) {
+            return "space-around"
+        }
+    }};
+    margin: ${({ secondaryType }) => {
+        if (secondaryType === null) {
+            return "0 5px"
+        }
+    }};
 
     .type-pill-primary {
         background-color: ${({ theme, type }) => {
             return theme.types[type];
         }};
         border-radius: 5px;
-        width: ${({ secondaryType }) => {
-            if (secondaryType === null) {
-                return "100%"
-            } else {
-                return "50%"
-            }
-        }};
+        width: 45%;
     }
     .type-pill-secondary {
         background-color: ${({ theme, secondaryType }) => {
@@ -27,8 +29,9 @@ export const StyledThemePill = styled.div`
             if (secondaryType === null) {
                 return "0%"
             } else {
-                return "50%"
+                return "45%"
             }
         }};
+        
     }
 `

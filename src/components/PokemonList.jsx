@@ -5,7 +5,7 @@ import axios from "axios";
 import Pokemon from "./Pokemon";
 import DropBar from "./DropBar";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
-import "../css/styles.css";
+import { StyledCards } from "../StyledComponents/StyledCards";
 
 const PokemonList = props => {
     // const { pokemon, fetchPokemonList } = props;
@@ -26,6 +26,7 @@ const PokemonList = props => {
                 <DropBar />
             </section>
             <section className="pokemon-cards">
+            <StyledCards>
                 {error ? <h2>Unable to Load Pokemon</h2> : null}
                 {pokemonData.map(pokemon => {
                     return (
@@ -46,6 +47,7 @@ const PokemonList = props => {
                         />
                     )
                 })}
+            </StyledCards>
             </section>
         </>
     )

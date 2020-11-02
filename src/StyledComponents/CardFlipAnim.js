@@ -1,8 +1,6 @@
 import styled from "styled-components";
 
 export const CardFlipAnim = styled.div`
-    
-
     .card-inner {
         position: relative;
         width: 100%;

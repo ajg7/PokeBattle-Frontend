@@ -4,7 +4,6 @@ import React, { useState, useEffect } from "react";
 // import { pokemonTeamMaker } from "../store/actions";
 import { StyledThemePill as TypePills } from "../StyledComponents/TypePills";
 import { CardFlipAnim as CardFlip } from "../StyledComponents/CardFlipAnim";
-import { StyledCards } from "../StyledComponents/StyledCards";
 
 
 const Pokemon = props => {
@@ -17,7 +16,6 @@ const Pokemon = props => {
     return(
         <>
             <CardFlip onClick={flipHandler}>
-            <StyledCards>
                     <div className={flipped ? "card flipped" : "card"} onMouseLeave={mouseLeaveHandler}>
                         <div className="card-inner">
                             <section className="card-front">
@@ -54,7 +52,6 @@ const Pokemon = props => {
                             </section>
                         </div>
                     </div>
-                </StyledCards>
             </CardFlip>
         </>
     )

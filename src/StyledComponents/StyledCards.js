@@ -2,16 +2,17 @@ import styled from "styled-components";
 
 export const StyledCards = styled.div`
     display: flex;
-    flex-direction: wrap;
-    margin: 10px;
+    flex-flow: row wrap;
+    justify-content: space-between;
     text-transform: ${({ theme }) => theme.cap};
+    padding: 50px;
 
     .card {
         background-color: transparent;
-        width: 205px;
-        height: 325px;
+        width: 250px;
+        height: 375px;
         perspective: 1000px;
-        padding: 25px;
+        margin: 15px;
     }
 
     .card-inner {
@@ -23,4 +24,11 @@ export const StyledCards = styled.div`
     .card-front, .card-back {
         border-radius: ${({ theme }) => theme.rounded};
     }
+    
+    .card-front .image-container img {
+        height: 125px;
+        width: 125px;
+    }
+
+    
 `
