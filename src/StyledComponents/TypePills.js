@@ -4,7 +4,9 @@ export const StyledThemePill = styled.div`
     display: flex;
     justify-content: ${({ secondaryType }) => {
         if (secondaryType !== null) {
-            return "space-around"
+            return "space-evenly"
+        } else {
+            return "center"
         }
     }};
     margin: ${({ secondaryType }) => {
