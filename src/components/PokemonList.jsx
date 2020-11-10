@@ -1,25 +1,18 @@
-import React, { useState, useEffect } from "react";
-// import { connect } from "react-redux";
-// import { fetchPokemonList } from "../store/actions"
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import { fetchPokemon } from "../store/actions/actions";
 import Pokemon from "./Pokemon";
 import DropBar from "./DropBar";
-import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { StyledCards } from "../StyledComponents/StyledCards";
 import { StyledBar } from "../StyledComponents/StyledBar";
 
 
 const PokemonList = props => {
-    // const { pokemon, fetchPokemonList } = props;
-    const [pokemonData, setPokemonData] = useState([]);
-    const [error, setError] = useState(false);
+    const { pokemonData, fetchPokemon } = props;
 
     useEffect(() => {
-        //convert this code into an action (fetchPokemon)
-        axiosWithAuth().get("https://pokemon-server-ajg7.herokuapp.com/pokemon")
-            .then(response => setPokemonData(response.data))
-            .catch(error => setError(true))
-    }, [])
-
+        fetchPokemon()
+    }, [fetchPokemon])
 
     return(
         <>
@@ -30,7 +23,6 @@ const PokemonList = props => {
             </section>
             <section className="pokemon-cards">
             <StyledCards>
-                {error ? <h2>Unable to Load Pokemon</h2> : null}
                 {pokemonData.map(pokemon => {
                     return (
                         <Pokemon 
@@ -56,8 +48,11 @@ const PokemonList = props => {
     )
 }
 
+const mapStateToProps = state => {
+    return {
+        pokemonData: state.pokemonData
+    }
+}
 
 
-
-
-export default PokemonList;
+export default connect(mapStateToProps, { fetchPokemon })(PokemonList);
