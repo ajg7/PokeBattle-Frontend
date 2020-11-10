@@ -4,6 +4,7 @@ import { axiosWithAuth } from "../../utils/axiosWithAuth";
 export const FETCH_POKEMON = "FETCH_POKEMON_SUCCESS";
 export const ERROR_HANDLING = "ERROR_HANDLING";
 export const MAKE_TEAM = "MAKE_TEAM";
+export const DELETE_TEAM = "DELETE_TEAM";
 
 export const fetchPokemon = () => {
     return dispatch => {
@@ -30,6 +31,19 @@ export const makeTeam = () => {
             .catch(error => {
                 dispatch({ type: ERROR_HANDLING, payload: { message: "You blacked out!" }})
 
+            })
+    }
+}
+
+export const deleteTeam = id => {
+    return dispatch => {
+        axiosWithAuth().delete(`https://pokemon-server-ajg7.herokuapp.com/team/${id}`)
+            .then(response => {
+                console.log(response)
+                dispatch({ type: DELETE_TEAM, payload: "has been deleted"})
+            })
+            .catch(error => {
+                dispatch({ type: ERROR_HANDLING, payload: { message: "You blacked out!" }})
             })
     }
 }

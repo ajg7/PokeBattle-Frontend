@@ -1,13 +1,15 @@
 import {
     ERROR_HANDLING,
     FETCH_POKEMON,
-    MAKE_TEAM
+    MAKE_TEAM,
+    DELETE_TEAM
 } from "../actions"
 
 const initialState = {
     pokemonData: [],
     teamId: 0,
     userId: 0,
+    deletion: "",
     error: ""
 }
 
@@ -28,6 +30,11 @@ export default (state = initialState, action) => {
                 ...state,
                 teamId: action.payload.teamId,
                 userId: action.payload.userId
+            }
+        case DELETE_TEAM:
+            return {
+                ...state,
+                deletion: action.payload.message
             }
         default:
             return state;

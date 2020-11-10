@@ -1,7 +1,8 @@
 export {
     FETCH_POKEMON,
     ERROR_HANDLING,
-    MAKE_TEAM
+    MAKE_TEAM,
+    DELETE_TEAM
 } from "./actions";
 
 

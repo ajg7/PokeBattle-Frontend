@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { makeTeam } from "../store/actions/actions";
+import { makeTeam, deleteTeam } from "../store/actions/actions";
 import clearButton from "../assets/clearButton.png";
 import addButton from "../assets/addButton.png";
 import Poke_Ball from "../assets/Poke_Ball.png";
-import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 
 const DropBar = props => {
-    const { makeTeam, teamId, userId } = props;
+    const { makeTeam, deleteTeam, teamId, userId } = props;
     const [active, setActive] = useState(false);
 
     // const allowDrop = event => {
@@ -24,18 +23,23 @@ const DropBar = props => {
         
     // }
 
-    const clickHandler = event => {
+    const makeTeamHandler = event => {
         setActive(true);
         makeTeam();
+    }
+
+    const deleteTeamHandler = event => {
+        setActive(false);
+        deleteTeam(teamId)
     }
 
     return (
         <>
             <span>
-                <img src={Poke_Ball} alt="create team button" className="create-button" onClick={clickHandler} />
+                <img src={Poke_Ball} alt="create team button" className="create-button" onClick={makeTeamHandler} />
             </span>
             {active ? <div className="slot-container">
-                        <img src={clearButton} alt="clear team button" className="clear-button" />
+                        <img src={clearButton} alt="clear team button" className="clear-button" onClick={deleteTeamHandler} />
                         <div className="slot">
                         </div>
                         <div className="slot">
@@ -61,4 +65,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { makeTeam })(DropBar);
+export default connect(mapStateToProps, { makeTeam, deleteTeam })(DropBar);
