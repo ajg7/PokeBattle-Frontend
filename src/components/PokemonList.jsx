@@ -5,6 +5,9 @@ import Pokemon from "./Pokemon";
 import DropBar from "./DropBar";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { StyledCards } from "../StyledComponents/StyledCards";
+import { StyledBar } from "../StyledComponents/StyledBar";
+import "../css/styles.css";
+
 
 const PokemonList = props => {
     // const { pokemon, fetchPokemonList } = props;
@@ -22,7 +25,9 @@ const PokemonList = props => {
     return(
         <>
             <section className="drop-bar">
-                <DropBar />
+                <StyledBar>
+                    <DropBar />
+                </StyledBar>
             </section>
             <section className="pokemon-cards">
             <StyledCards>

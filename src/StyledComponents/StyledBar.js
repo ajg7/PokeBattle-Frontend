@@ -2,12 +2,17 @@ import styled from "styled-components";
 
 export const StyledBar = styled.div`
     background-color: red;
-    height: 25%;
+    width: 100%;
     padding: 50px 0;
-    div {
+    position: fixed;
+    top: 0;
+    z-index: 1;
+
+    .team-slots {
         display: flex;
         justify-content: space-evenly;
     }
+
     .clear-button, .add-button {
         height: 50px;
         width: 50px;
