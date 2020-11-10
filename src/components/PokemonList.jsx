@@ -8,7 +8,7 @@ import { StyledBar } from "../StyledComponents/StyledBar";
 
 
 const PokemonList = props => {
-    const { pokemonData, fetchPokemon } = props;
+    const { pokemonData, loading, error, fetchPokemon } = props;
 
     useEffect(() => {
         fetchPokemon()
@@ -22,6 +22,8 @@ const PokemonList = props => {
                 </StyledBar>
             </section>
             <section className="pokemon-cards">
+            {loading ? <h3>Loading...</h3> : null}
+            {error ? <h3>{error}</h3> : null}
             <StyledCards>
                 {pokemonData.map(pokemon => {
                     return (
@@ -50,7 +52,9 @@ const PokemonList = props => {
 
 const mapStateToProps = state => {
     return {
-        pokemonData: state.pokemonData
+        pokemonData: state.pokemonData,
+        loading: state.loadingPokemon,
+        error: state.error
     }
 }
 

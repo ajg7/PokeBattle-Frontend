@@ -7,7 +7,7 @@ import {
 const initialState = {
     pokemonData: [],
     loadingPokemon: false,
-    error: false
+    error: ""
 }
 
 export default (state = initialState, action) => {
@@ -26,7 +26,7 @@ export default (state = initialState, action) => {
         case ERROR_HANDLING:
             return {
                 ...state,
-                error: true,
+                error: action.payload.message,
                 loadingPokemon: false
             }
         default:
