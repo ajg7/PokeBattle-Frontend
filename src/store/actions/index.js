@@ -1,7 +1,7 @@
 export {
-    FETCH_POKEMON_SUCCESS,
-    FETCH_POKEMON_REQUEST,
-    ERROR_HANDLING
+    FETCH_POKEMON,
+    ERROR_HANDLING,
+    MAKE_TEAM
 } from "./actions";
 
 

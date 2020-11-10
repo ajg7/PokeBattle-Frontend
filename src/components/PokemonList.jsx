@@ -53,8 +53,7 @@ const PokemonList = props => {
 const mapStateToProps = state => {
     return {
         pokemonData: state.pokemonData,
-        loading: state.loadingPokemon,
-        error: state.error
+        error: state.error,
     }
 }
 

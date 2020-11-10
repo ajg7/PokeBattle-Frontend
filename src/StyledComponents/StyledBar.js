@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 export const StyledBar = styled.div`
     background-color: red;
-    width: 100%;
     padding: 50px 0;
+    width: 100%;
     position: fixed;
     top: 0;
     z-index: 1;
@@ -13,7 +13,7 @@ export const StyledBar = styled.div`
         justify-content: space-evenly;
     }
 
-    .clear-button, .add-button {
+    .clear-button, .add-button, .create-button {
         height: 50px;
         width: 50px;
     }

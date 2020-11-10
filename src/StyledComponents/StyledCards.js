@@ -6,7 +6,7 @@ export const StyledCards = styled.div`
     justify-content: space-between;
     text-transform: ${({ theme }) => theme.cap};
     padding: 50px;
-    padding-top: 250px;
+    padding-top: 300px;
 
     .card {
         background-color: transparent;

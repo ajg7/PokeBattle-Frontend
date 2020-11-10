@@ -1,33 +1,33 @@
 import {
     ERROR_HANDLING,
-    FETCH_POKEMON_SUCCESS,
-    FETCH_POKEMON_REQUEST
+    FETCH_POKEMON,
+    MAKE_TEAM
 } from "../actions"
 
 const initialState = {
     pokemonData: [],
-    loadingPokemon: false,
+    teamId: 0,
+    userId: 0,
     error: ""
 }
 
 export default (state = initialState, action) => {
     switch(action.type) {
-        case FETCH_POKEMON_REQUEST:
+        case FETCH_POKEMON:
             return {
                 ...state,
-                loadingPokemon: true
-            }
-        case FETCH_POKEMON_SUCCESS:
-            return {
-                ...state,
-                pokemonData: action.payload,
-                loadingPokemon: false
+                pokemonData: action.payload
             }
         case ERROR_HANDLING:
             return {
                 ...state,
                 error: action.payload.message,
-                loadingPokemon: false
+            }
+        case MAKE_TEAM:
+            return {
+                ...state,
+                teamId: action.payload.teamId,
+                userId: action.payload.userId
             }
         default:
             return state;

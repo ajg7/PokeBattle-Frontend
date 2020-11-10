@@ -1,21 +1,35 @@
 
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
 
-export const FETCH_POKEMON_SUCCESS = "FETCH_POKEMON_SUCCESS";
-export const FETCH_POKEMON_REQUEST = "FETCH_POKEMON_REQUEST";
-export const ERROR_HANDLING = "ERROR_HANDLING"
+export const FETCH_POKEMON = "FETCH_POKEMON_SUCCESS";
+export const ERROR_HANDLING = "ERROR_HANDLING";
+export const MAKE_TEAM = "MAKE_TEAM";
 
 export const fetchPokemon = () => {
     return dispatch => {
-        dispatch({ type: FETCH_POKEMON_REQUEST })
         axiosWithAuth().get("https://pokemon-server-ajg7.herokuapp.com/pokemon")
             .then(response => {
                 const data = response.data;
-                dispatch({ type: FETCH_POKEMON_SUCCESS, payload: data })
+                dispatch({ type: FETCH_POKEMON, payload: data })
             })
             .catch(error => {
                 console.log(error)
                 dispatch({ type: ERROR_HANDLING, payload: { message: "You blacked out!" }})
+            })
+    }
+}
+
+export const makeTeam = () => {
+    return dispatch => {
+        axiosWithAuth().post("https://pokemon-server-ajg7.herokuapp.com/team")
+            .then(response => {
+                const teamId = response.data.data.team_Id;
+                const userId = response.data.data.user_Id;
+                dispatch({ type: MAKE_TEAM, payload: { teamId: teamId, userId: userId }})
+            })
+            .catch(error => {
+                dispatch({ type: ERROR_HANDLING, payload: { message: "You blacked out!" }})
+
             })
     }
 }
