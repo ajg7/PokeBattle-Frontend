@@ -2,10 +2,25 @@ import React from "react";
 import clearButton from "../assets/clearButton.png";
 import addButton from "../assets/addButton.png";
 
+
 const DropBar = props => {
+
+    const allowDrop = event => {
+        event.preventDefault();
+    }
+
+    const drag = event => {
+
+    }
+
+    const drop = event => {
+        event.preventDefault();
+        
+    }
+
     return (
         <>
-            <div className="team-slots">
+            <div className="slot-container">
                 <img src={clearButton} alt="clear team button" className="clear-button" />
                 <div className="slot">
                 </div>

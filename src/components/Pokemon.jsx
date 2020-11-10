@@ -9,7 +9,7 @@ const Pokemon = props => {
     const { id, name, type1, type2, imgURL, height, weight, entry, habitat, legendary, mythical, ancient } = props;
     const [flipped, setFlipped] = useState(false);
 
-    const flipHandler = event => flipped !== true ? setFlipped(true) : setFlipped(false);
+    const flipHandler = event => !flipped ? setFlipped(true) : setFlipped(false);
     const mouseLeaveHandler = event => flipped ? setFlipped(false) : null
 
     return(
@@ -19,7 +19,7 @@ const Pokemon = props => {
                     <div className="card-inner">
                         <section className="card-front">
                             <div className="image-container">
-                                <img src={imgURL} alt={name} />
+                                <img src={imgURL} alt={name} value={id} />
                             </div>
                             <div className="pokemon-data-container">
                                 <h3 className="id">#{id}</h3>

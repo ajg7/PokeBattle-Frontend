@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const StyledThemePill = styled.div`
     display: flex;
+
     justify-content: ${({ secondaryType }) => {
         if (secondaryType !== null) {
             return "space-evenly"
@@ -9,6 +10,7 @@ export const StyledThemePill = styled.div`
             return "center"
         }
     }};
+
     margin: ${({ secondaryType }) => {
         if (secondaryType === null) {
             return "0 5px"
@@ -21,6 +23,30 @@ export const StyledThemePill = styled.div`
         }};
         border-radius: 5px;
         width: 45%;
+        color: ${({ type }) => {
+            switch(type) {
+                case "poison":
+                    return "white";
+                case "water":
+                    return "white";
+                case "fire":
+                    return "white";
+                case "bug":
+                    return "white";
+                case "fighting":
+                    return "white";
+                case "psychic":
+                    return "white";
+                case "rock":
+                    return "white";
+                case "ghost":
+                    return "white";
+                case "dragon":
+                    return "white";
+                default:
+                    return "black";
+            }
+        }};
     }
     .type-pill-secondary {
         background-color: ${({ theme, secondaryType }) => {
@@ -34,6 +60,29 @@ export const StyledThemePill = styled.div`
                 return "45%"
             }
         }};
-        
+        color: ${({ secondaryType }) => {
+            switch(secondaryType) {
+                case "poison":
+                    return "white";
+                case "water":
+                    return "white";
+                case "fire":
+                    return "white";
+                case "bug":
+                    return "white";
+                case "fighting":
+                    return "white";
+                case "psychic":
+                    return "white";
+                case "rock":
+                    return "white";
+                case "ghost":
+                    return "white";
+                case "dragon":
+                    return "white";
+                default:
+                    return "black";
+            }
+        }};
     }
 `

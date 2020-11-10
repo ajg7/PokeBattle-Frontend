@@ -8,7 +8,7 @@ export const StyledBar = styled.div`
     top: 0;
     z-index: 1;
 
-    .team-slots {
+    .slot-container{
         display: flex;
         justify-content: space-evenly;
     }

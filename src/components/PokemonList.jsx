@@ -6,7 +6,6 @@ import DropBar from "./DropBar";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { StyledCards } from "../StyledComponents/StyledCards";
 import { StyledBar } from "../StyledComponents/StyledBar";
-import "../css/styles.css";
 
 
 const PokemonList = props => {
