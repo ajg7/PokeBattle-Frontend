@@ -26,25 +26,25 @@ export const StyledThemePill = styled.div`
         color: ${({ type }) => {
             switch(type) {
                 case "poison":
-                    return "white";
+                    return "#fff";
                 case "water":
-                    return "white";
+                    return "#fff";
                 case "fire":
-                    return "white";
+                    return "#fff";
                 case "bug":
-                    return "white";
+                    return "#fff";
                 case "fighting":
-                    return "white";
+                    return "#fff";
                 case "psychic":
-                    return "white";
+                    return "#fff";
                 case "rock":
-                    return "white";
+                    return "#fff";
                 case "ghost":
-                    return "white";
+                    return "#fff";
                 case "dragon":
-                    return "white";
+                    return "#fff";
                 default:
-                    return "black";
+                    return "#212121";
             }
         }};
     }
@@ -63,25 +63,25 @@ export const StyledThemePill = styled.div`
         color: ${({ secondaryType }) => {
             switch(secondaryType) {
                 case "poison":
-                    return "white";
+                    return "#fff";
                 case "water":
-                    return "white";
+                    return "#fff";
                 case "fire":
-                    return "white";
+                    return "#fff";
                 case "bug":
-                    return "white";
+                    return "#fff";
                 case "fighting":
-                    return "white";
+                    return "#fff";
                 case "psychic":
-                    return "white";
+                    return "#fff";
                 case "rock":
-                    return "white";
+                    return "#fff";
                 case "ghost":
-                    return "white";
+                    return "#fff";
                 case "dragon":
-                    return "white";
+                    return "#fff";
                 default:
-                    return "black";
+                    return "#212121";
             }
         }};
     }
