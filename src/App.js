@@ -1,33 +1,32 @@
 import React from "react";
 import { Route, Link } from "react-router-dom";
-import { connect } from "react-redux";
+// import { connect } from "react-redux";
+import LandingPage from "./components/LandingPage";
+import Signup from "./components/Signup";
+import Login from "./components/Login";
 import PokemonList from "./components/PokemonList";
-import PokemonTeam from "./components/PokemonTeam";
-import "./css/styles.css";
-import PokeballStorage from "./assets/PokemonStorage.png"
+// import PokemonTeam from "./components/PokemonTeam";
+import "./css/reset.css";
+
 
 const App = ({ pokemonTeam }) => {
 
   return (
     <>
-      <header>
-        <h1>Gotta Catch 'em All!</h1>
-        <p>{pokemonTeam.length}</p>
-        <Link to="/pokemon_team"><img src={PokeballStorage} alt="storage for your pokemon team" /></Link>
-      </header>
-      <div className="pokemon-app">
-        <Route exact path="/" component={PokemonList} />
-      </div>
-        <Route exact path="/pokemon_team" component={PokemonTeam} />
-      
+      <Route exact path="/" component={LandingPage} />
+      <Route exact path="/signup" component={Signup} />
+      <Route exact path="/login" component={Login} />
+      {/*Pokemon List is a private route, fix later*/}
+      <Route exact path="/pokemon_list" component={PokemonList} />
     </>
   );
 }
 
+/*
 const mapStateToProps = state => {
   return {
     pokemonTeam: state.pokemonTeam
   }
-}
+}*/
 
-export default connect(mapStateToProps, {})(App);
+export default App;

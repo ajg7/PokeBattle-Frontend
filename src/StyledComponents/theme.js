@@ -1,4 +1,3 @@
-
 export const theme = {
     types: {
         grass: "#9BCC50",
@@ -19,5 +18,14 @@ export const theme = {
         fairy: "#FDB9E9",
         steel: "#9EB7B8",
         dark: "#707070"
-    }
+    },
+    colorThemes: {
+        primary: "red",
+        secondary: "white",
+        tertiary: "silver"
+    },
+    cap: "capitalize",
+    rounded: "3%",
+    rotateRight: "rotateY(180deg)",
+    rotateLeft: "rotateY(-180deg)"
 }

@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { connect } from "react-redux";
-import { useHistory, useParams } from "react-router-dom";
-import "../css/teamStyles.css";
+// import { connect } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 const PokemonTeam = ({ pokemon, pokemonTeam, pokemonDataObject }) => {
     const history = useHistory();
@@ -49,9 +48,8 @@ const PokemonTeam = ({ pokemon, pokemonTeam, pokemonDataObject }) => {
     }
 
     const editNameHandler = event => {
-        const id = event.target.value;
         setActive(true)
-        setId(id)
+        setId(event.target.value)
     
     }
 
@@ -65,18 +63,14 @@ const PokemonTeam = ({ pokemon, pokemonTeam, pokemonDataObject }) => {
 
     const nickNameSubmit = async event => {
         event.preventDefault();
+        //Make sure to be this class in its own file
         class Changes {
             constructor(Name) {
                 this.Name = Name;
             }
         }
-
         const nickNameSubmission = new Changes(nickName)
-        console.log(nickNameSubmission)
-        
-        
-        const editPokemonName = await axios.put(`https://pokemon-server-ajg7.herokuapp.com/pokemon_team_members/${id}`, nickNameSubmission)
-        console.log(editPokemonName)
+        await axios.put(`https://pokemon-server-ajg7.herokuapp.com/pokemon_team_members/${id}`, nickNameSubmission)
         history.go(0)
     }
 
@@ -86,24 +80,25 @@ const PokemonTeam = ({ pokemon, pokemonTeam, pokemonDataObject }) => {
                 {pokemonFetchData.map(individualPokemon => {
                     return (
                         <>
-                            <div>
-                                <button onClick={editNameHandler} value={individualPokemon.id}>Add Nickname</button>
-                                {active && id == individualPokemon.id ? 
-                                    <>
-                                    <form onSubmit={nickNameSubmit}>
-                                        <input 
-                                        type="textbox" 
-                                        placeholder={individualPokemon.Name}
-                                        onChange={changeHandler}
-                                        />
-                                        <button>Change</button>
-                                    </form> 
-                                    <button onClick={exitHandler}>Exit</button>
-                                    </>
-                                    : 
-                                    <p>{individualPokemon.Name}</p>}
-                            </div>
                             <div className="pokemon-team-members">
+                                <button onClick={editNameHandler} value={individualPokemon.id}>Add Nickname</button>
+                                {
+                                    // eslint-disable-next-line eqeqeq
+                                    active && id == individualPokemon.id ? 
+                                        <>
+                                        <form onSubmit={nickNameSubmit}>
+                                            <input 
+                                            type="textbox" 
+                                            placeholder={individualPokemon.Name}
+                                            onChange={changeHandler}
+                                            />
+                                            <button>Change</button>
+                                            <button onClick={exitHandler}>Exit</button>
+                                        </form> 
+                                        </>
+                                    : 
+                                        <p>{individualPokemon.Name}</p>
+                                }
                                 <img src={individualPokemon.ImgUrl} alt={individualPokemon.Name} />
                                 <p>{individualPokemon.Type1}</p>
                                 <p>{individualPokemon.Type2}</p>
@@ -120,14 +115,14 @@ const PokemonTeam = ({ pokemon, pokemonTeam, pokemonDataObject }) => {
     )
 }
  
-
+/*
 const mapStateToProps = state => {
     return {
         pokemon: state.pokemon,
         pokemonTeam: state.pokemonTeam,
         pokemonDataObject: state.pokemonDataObject
     }
-}
+}*/
 
 
-export default connect(mapStateToProps, {})(PokemonTeam);
+export default PokemonTeam;
