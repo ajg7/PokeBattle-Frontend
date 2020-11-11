@@ -24,7 +24,10 @@ const DropBar = props => {
     }
 
     const drop = event => {
-        
+        console.log(selectedPokemon)
+        setImg(selectedPokemon.img);
+        setName(selectedPokemon.name);
+        setId(selectedPokemon)
     }
 
     const dragOver = event => event.preventDefault();
@@ -37,9 +40,10 @@ const DropBar = props => {
             {active ? <div className="slot-container">
                         <img src={clearButton} alt="clear team button" className="clear-button" onClick={deleteTeamHandler} />
                         <div className="slot" onDragOver={dragOver} onDrop={drop}>
-                            
+                            {img ? <img src={img} alt={name} /> : null}
                         </div>
                         <div className="slot" onDragOver={dragOver} onDrop={drop}>
+                            {img ? <img src={img} alt={name} /> : null}
                         </div>
                         <div className="slot" onDragOver={dragOver} onDrop={drop}>
                         </div>

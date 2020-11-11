@@ -24,4 +24,9 @@ export const StyledBar = styled.div`
         border: 3px dotted black;
     }
 
+    .slot img {
+        height: 125px;
+        width: 125px;
+    }
+
 `

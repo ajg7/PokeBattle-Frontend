@@ -41,7 +41,7 @@ export default (state = initialState, action) => {
         case DRAGGED_POKEMON:
             return {
                 ...state,
-                selectedPokemon: state.selectedPokemon.length < 6 ? [...state.selectedPokemon, action.payload] : [...state.selectedPokemon]
+                selectedPokemon: action.payload //state.selectedPokemon.length < 6 ? [...state.selectedPokemon, action.payload] : [...state.selectedPokemon]
             }
         default:
             return state;
