@@ -2,7 +2,8 @@ import {
     ERROR_HANDLING,
     FETCH_POKEMON,
     MAKE_TEAM,
-    DELETE_TEAM
+    DELETE_TEAM,
+    DRAGGED_POKEMON
 } from "../actions"
 
 const initialState = {
@@ -10,7 +11,8 @@ const initialState = {
     teamId: 0,
     userId: 0,
     deletion: "",
-    error: ""
+    error: "",
+    selectedPokemon: []
 }
 
 export default (state = initialState, action) => {
@@ -34,7 +36,12 @@ export default (state = initialState, action) => {
         case DELETE_TEAM:
             return {
                 ...state,
-                deletion: action.payload.message
+                deletion: action.payload
+            }
+        case DRAGGED_POKEMON:
+            return {
+                ...state,
+                selectedPokemon: state.selectedPokemon.length < 6 ? [...state.selectedPokemon, action.payload] : [...state.selectedPokemon]
             }
         default:
             return state;

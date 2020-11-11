@@ -1,16 +1,19 @@
 import React, { useState } from "react";
-// import { connect } from "react-redux";
-// import { pokemonTeamMaker } from "../store/actions";
+import { connect } from "react-redux";
+import { fetchSelectedPokemon } from "../store/actions/actions";
 import { StyledThemePill as TypePills } from "../StyledComponents/TypePills";
 import { CardFlipAnim as CardFlip } from "../StyledComponents/CardFlipAnim";
 
 
 const Pokemon = props => {
-    const { id, name, type1, type2, imgURL, height, weight, entry, habitat, legendary, mythical, ancient } = props;
+    const { id, name, type1, type2, imgURL, height, weight, entry, habitat, legendary, mythical, ancient, fetchSelectedPokemon } = props;
     const [flipped, setFlipped] = useState(false);
 
     const flipHandler = event => !flipped ? setFlipped(true) : setFlipped(false);
     const mouseLeaveHandler = event => flipped ? setFlipped(false) : null
+    const dragStart = event => {
+        fetchSelectedPokemon({id: id, name: name, img: imgURL})
+    }
 
     return(
         <>
@@ -19,7 +22,7 @@ const Pokemon = props => {
                     <div className="card-inner">
                         <section className="card-front">
                             <div className="image-container">
-                                <img src={imgURL} alt={name} value={id} />
+                                <img src={imgURL} alt={name} value={id} onDragStart={dragStart} />
                             </div>
                             <div className="pokemon-data-container">
                                 <h3 className="id">#{id}</h3>
@@ -56,4 +59,4 @@ const Pokemon = props => {
     )
 }
 
-export default Pokemon;
+export default connect(null, { fetchSelectedPokemon })(Pokemon);

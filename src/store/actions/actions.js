@@ -5,6 +5,7 @@ export const FETCH_POKEMON = "FETCH_POKEMON_SUCCESS";
 export const ERROR_HANDLING = "ERROR_HANDLING";
 export const MAKE_TEAM = "MAKE_TEAM";
 export const DELETE_TEAM = "DELETE_TEAM";
+export const DRAGGED_POKEMON = "DRAGGED_POKEMON";
 
 export const fetchPokemon = () => {
     return dispatch => {
@@ -45,6 +46,13 @@ export const deleteTeam = id => {
             .catch(error => {
                 dispatch({ type: ERROR_HANDLING, payload: { message: "You blacked out!" }})
             })
+    }
+}
+
+export const fetchSelectedPokemon = selectedPokemon => {
+    return dispatch => {
+        console.log(selectedPokemon)
+        dispatch({ type: DRAGGED_POKEMON, payload: selectedPokemon})
     }
 }
 

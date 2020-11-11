@@ -7,21 +7,11 @@ import Poke_Ball from "../assets/Poke_Ball.png";
 
 
 const DropBar = props => {
-    const { makeTeam, deleteTeam, teamId, userId } = props;
+    const { makeTeam, deleteTeam, teamId, userId, selectedPokemon } = props;
     const [active, setActive] = useState(false);
-
-    // const allowDrop = event => {
-    //     event.preventDefault();
-    // }
-
-    // const drag = event => {
-
-    // }
-
-    // const drop = event => {
-    //     event.preventDefault();
-        
-    // }
+    const [img, setImg] = useState("");
+    const [name, setName] = useState("");
+    const [id, setId] = useState(null);
 
     const makeTeamHandler = event => {
         setActive(true);
@@ -33,6 +23,12 @@ const DropBar = props => {
         deleteTeam(teamId)
     }
 
+    const drop = event => {
+        
+    }
+
+    const dragOver = event => event.preventDefault();
+
     return (
         <>
             <span>
@@ -40,17 +36,18 @@ const DropBar = props => {
             </span>
             {active ? <div className="slot-container">
                         <img src={clearButton} alt="clear team button" className="clear-button" onClick={deleteTeamHandler} />
-                        <div className="slot">
+                        <div className="slot" onDragOver={dragOver} onDrop={drop}>
+                            
                         </div>
-                        <div className="slot">
+                        <div className="slot" onDragOver={dragOver} onDrop={drop}>
                         </div>
-                        <div className="slot">
+                        <div className="slot" onDragOver={dragOver} onDrop={drop}>
                         </div>
-                        <div className="slot">
+                        <div className="slot" onDragOver={dragOver} onDrop={drop}>
                         </div>
-                        <div className="slot">
+                        <div className="slot" onDragOver={dragOver} onDrop={drop}>
                         </div>
-                        <div className="slot">
+                        <div className="slot" onDragOver={dragOver} onDrop={drop}>
                         </div>
                         <img src={addButton} alt="make team button" className="add-button" />
                       </div> : null}
@@ -61,7 +58,8 @@ const DropBar = props => {
 const mapStateToProps = state => {
     return {
         teamId: state.teamId,
-        userId: state.userId
+        userId: state.userId,
+        selectedPokemon: state.selectedPokemon
     }
 }
 
