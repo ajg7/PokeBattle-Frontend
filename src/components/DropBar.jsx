@@ -11,6 +11,9 @@ const DropBar = props => {
     const [active, setActive] = useState(false);
     const [isSwapping, setIsSwapping] = useState(false);
     const [pokemonToBeSwapped, setPokemonToBeSwapped] = useState({});
+    const [prevPokemon, setPrevPokemon] = useState({});
+    const [prevIndex, setPrevIndex] = useState(0);
+    const [nextIndex, setNextIndex] = useState(0);
 
     const makeTeamHandler = event => {
         setActive(true);
@@ -25,19 +28,25 @@ const DropBar = props => {
     const drop = event => {
         const index = event.target.id;
         addPokemon(selectedPokemon, index);
-        setSelectedPokemon();
+        setSelectedPokemon(null);
         if (isSwapping) {
-            swapPokemon(pokemonToBeSwapped, index)
+            setSelectedPokemon(pokemonToBeSwapped)
+            swapPokemon(prevPokemon, pokemonToBeSwapped, prevIndex, nextIndex)
             setIsSwapping(false);
+            console.log(prevPokemon)
         }
     }
 
-    const dragOver = event => event.preventDefault();
+    const dragOver = event => {
+        event.preventDefault();
+        setNextIndex(event.target.id);
+        setPrevPokemon({id: event.target.id, name: event.target.alt, img: event.target.src})
+    }
 
-    const dragStart = event => {
-        const pokemonObj = {id: event.target.id, name: event.target.alt, img: event.target.src}
+    const dragStart = event => { 
         setIsSwapping(true);
-        setPokemonToBeSwapped(pokemonObj)
+        setPokemonToBeSwapped({id: event.target.id, name: event.target.alt, img: event.target.src})
+        setPrevIndex(event.target.id);
     }
 
     return (

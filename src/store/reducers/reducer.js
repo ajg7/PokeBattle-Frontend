@@ -5,7 +5,8 @@ import {
     DELETE_TEAM,
     DRAGGED_POKEMON,
     ADD_POKEMON,
-    SWAP_POKEMON
+    SWAP_POKEMON,
+    REMOVE_POKEMON
 } from "../actions"
 
 const initialState = {
@@ -52,15 +53,23 @@ export default (state = initialState, action) => {
             state.team[index] = pokemon 
             return {
                 ...state,
-                team: state.team 
+                team: state.team,
             }
         case SWAP_POKEMON:
-            const i = +action.payload.index;
-            const poke = action.payload.pokemon;
-            state.team[i] = poke
+            const i1 = action.payload.prevIndex;
+            const i2 = action.payload.nextIndex;
+            const prevPoke = action.payload.prevPokemon;
+            const poke = action.payload.newPokemon;
+            console.log(i2, prevPoke, i1, poke)
+            state.team[i2] = poke;
+            state.team[i1] = prevPoke;
             return{
                 ...state,
                 team: state.team
+            }
+        case REMOVE_POKEMON:
+            return {
+                ...state
             }
         default:
             return state;

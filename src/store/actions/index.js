@@ -5,5 +5,6 @@ export {
     DELETE_TEAM,
     DRAGGED_POKEMON,
     ADD_POKEMON,
-    SWAP_POKEMON
+    SWAP_POKEMON,
+    REMOVE_POKEMON
 } from "./actions";
