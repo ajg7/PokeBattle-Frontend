@@ -8,6 +8,8 @@ export const DELETE_TEAM = "DELETE_TEAM";
 export const DRAGGED_POKEMON = "DRAGGED_POKEMON";
 export const ADD_POKEMON = "ADD_POKEMON";
 export const SWAP_POKEMON = "SWAP_POKEMON";
+export const UPDATE_CURR_INDEX = "UPDATE_CURR_INDEX";
+export const REMOVE_POKEMON = "REMOVE_POKEMON";
 
 export const fetchPokemon = () => {
     return dispatch => {
@@ -64,11 +66,22 @@ export const addPokemon = (pokemon, index) => {
     }
 }
 
-export const swapPokemon = (pokemon, index) => {
+export const swapPokemon = (prevPokemon, pokemon, prevIndex, nextIndex) => {
     return dispatch => {
-        const i = +index;
-        // console.log(pokemon, i)
-        dispatch({type: SWAP_POKEMON, payload: {pokemon: pokemon, index: i}})
+        const i1 = +prevIndex;
+        const i2 = +nextIndex;
+        dispatch({type: SWAP_POKEMON, payload: {prevPokemon: prevPokemon, newPokemon: pokemon, prevIndex: i1, nextIndex: i2}})
     }
 }
 
+export const updateCurrIndex = index => {
+    return dispatch => {
+        dispatch({type: UPDATE_CURR_INDEX, payload: index})
+    }
+}
+
+export const removePokemon = index => {
+    return dispatch => {
+        dispatch({type: REMOVE_POKEMON, payload: index})
+    }
+}

@@ -14,6 +14,7 @@ const Pokemon = props => {
     const dragStart = event => {
         setSelectedPokemon({id: id, name: name, img: imgURL});
     }
+    const dragOver = event => event.preventDefault();
 
     return(
         <>
@@ -22,7 +23,7 @@ const Pokemon = props => {
                     <div className="card-inner">
                         <section className="card-front">
                             <div className="image-container">
-                                <img src={imgURL} alt={name} value={id} onDragStart={dragStart} />
+                                <img src={imgURL} alt={name} value={id} onDragStart={dragStart} onDragOver={dragOver} />
                             </div>
                             <div className="pokemon-data-container">
                                 <h3 className="id">#{id}</h3>

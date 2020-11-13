@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { fetchPokemon } from "../store/actions/actions";
+import { fetchPokemon, removePokemon, setSelectedPokemon } from "../store/actions/actions";
 import Pokemon from "./Pokemon";
 import DropBar from "./DropBar";
 import { StyledCards } from "../StyledComponents/StyledCards";
@@ -8,7 +8,14 @@ import { StyledBar } from "../StyledComponents/StyledBar";
 
 
 const PokemonList = props => {
-    const { pokemonData, loading, error, fetchPokemon } = props;
+    const { pokemonData, loading, error, currIndex, fetchPokemon, removePokemon, setSelectedPokemon } = props;
+
+    const dragOver = event => event.preventDefault();
+
+    const drop = event => {
+        removePokemon(currIndex);
+        setSelectedPokemon({});
+    }
 
     useEffect(() => {
         fetchPokemon()
@@ -21,7 +28,7 @@ const PokemonList = props => {
                     <DropBar />
                 </StyledBar>
             </section>
-            <section className="pokemon-cards">
+            <section className="pokemon-cards" onDragOver={dragOver} onDrop={drop}>
             {loading ? <h3>Loading...</h3> : null}
             {error ? <h3>{error}</h3> : null}
             <StyledCards>
@@ -53,9 +60,10 @@ const PokemonList = props => {
 const mapStateToProps = state => {
     return {
         pokemonData: state.pokemonData,
-        error: state.error,
+        error: state.error, 
+        currIndex: state.currIndex
     }
 }
 
 
-export default connect(mapStateToProps, { fetchPokemon })(PokemonList);
+export default connect(mapStateToProps, { fetchPokemon, removePokemon, setSelectedPokemon })(PokemonList);
