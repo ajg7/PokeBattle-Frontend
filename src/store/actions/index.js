@@ -6,5 +6,6 @@ export {
     DRAGGED_POKEMON,
     ADD_POKEMON,
     SWAP_POKEMON,
+    UPDATE_CURR_INDEX,
     REMOVE_POKEMON
 } from "./actions";

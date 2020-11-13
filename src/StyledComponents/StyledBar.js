@@ -29,4 +29,8 @@ export const StyledBar = styled.div`
         width: 125px;
     }
 
+    .poke-ball-filler {
+        visibility: hidden;
+    }
+
 `
