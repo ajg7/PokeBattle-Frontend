@@ -3,16 +3,7 @@ export {
     ERROR_HANDLING,
     MAKE_TEAM,
     DELETE_TEAM,
-    DRAGGED_POKEMON
+    DRAGGED_POKEMON,
+    ADD_POKEMON,
+    SWAP_POKEMON
 } from "./actions";
-
-
-
-// export {
-//     FETCH_POKEMON_LIST,
-//     FETCH_POKEMON_LIST_SUCCESS,
-//     FETCH_POKEMON_LIST_ERROR,
-//     MAKE_POKEMON_TEAM,
-//     fetchPokemonList,
-//     pokemonTeamMaker
-// } from "./actions";

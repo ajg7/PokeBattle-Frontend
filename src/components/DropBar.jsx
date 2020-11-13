@@ -1,17 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
-import { makeTeam, deleteTeam } from "../store/actions/actions";
+import { makeTeam, deleteTeam, addPokemon, setSelectedPokemon, swapPokemon } from "../store/actions/actions";
 import clearButton from "../assets/clearButton.png";
 import addButton from "../assets/addButton.png";
 import Poke_Ball from "../assets/Poke_Ball.png";
 
 
 const DropBar = props => {
-    const { makeTeam, deleteTeam, teamId, userId, selectedPokemon } = props;
+    const { makeTeam, deleteTeam, addPokemon, setSelectedPokemon, swapPokemon, teamId, team, selectedPokemon } = props;
     const [active, setActive] = useState(false);
-    const [img, setImg] = useState("");
-    const [name, setName] = useState("");
-    const [id, setId] = useState(null);
+    const [isSwapping, setIsSwapping] = useState(false);
+    const [pokemonToBeSwapped, setPokemonToBeSwapped] = useState({});
 
     const makeTeamHandler = event => {
         setActive(true);
@@ -24,13 +23,22 @@ const DropBar = props => {
     }
 
     const drop = event => {
-        console.log(selectedPokemon)
-        setImg(selectedPokemon.img);
-        setName(selectedPokemon.name);
-        setId(selectedPokemon)
+        const index = event.target.id;
+        addPokemon(selectedPokemon, index);
+        setSelectedPokemon();
+        if (isSwapping) {
+            swapPokemon(pokemonToBeSwapped, index)
+            setIsSwapping(false);
+        }
     }
 
     const dragOver = event => event.preventDefault();
+
+    const dragStart = event => {
+        const pokemonObj = {id: event.target.id, name: event.target.alt, img: event.target.src}
+        setIsSwapping(true);
+        setPokemonToBeSwapped(pokemonObj)
+    }
 
     return (
         <>
@@ -39,20 +47,13 @@ const DropBar = props => {
             </span>
             {active ? <div className="slot-container">
                         <img src={clearButton} alt="clear team button" className="clear-button" onClick={deleteTeamHandler} />
-                        <div className="slot" onDragOver={dragOver} onDrop={drop}>
-                            {img ? <img src={img} alt={name} /> : null}
-                        </div>
-                        <div className="slot" onDragOver={dragOver} onDrop={drop}>
-                            {img ? <img src={img} alt={name} /> : null}
-                        </div>
-                        <div className="slot" onDragOver={dragOver} onDrop={drop}>
-                        </div>
-                        <div className="slot" onDragOver={dragOver} onDrop={drop}>
-                        </div>
-                        <div className="slot" onDragOver={dragOver} onDrop={drop}>
-                        </div>
-                        <div className="slot" onDragOver={dragOver} onDrop={drop}>
-                        </div>
+                        {team.map((pokemon, i) => {
+                            return (
+                                <div className="slot" id={i} onDragOver={dragOver} onDrop={drop}>
+                                    {pokemon ? <img src={pokemon.img} alt={pokemon.name} id={i} onDragStart={dragStart} /> : null}
+                                </div>
+                            )
+                        })}
                         <img src={addButton} alt="make team button" className="add-button" />
                       </div> : null}
         </>
@@ -63,8 +64,9 @@ const mapStateToProps = state => {
     return {
         teamId: state.teamId,
         userId: state.userId,
-        selectedPokemon: state.selectedPokemon
+        selectedPokemon: state.selectedPokemon,
+        team: state.team
     }
 }
 
-export default connect(mapStateToProps, { makeTeam, deleteTeam })(DropBar);
+export default connect(mapStateToProps, { makeTeam, deleteTeam, addPokemon, setSelectedPokemon, swapPokemon })(DropBar);

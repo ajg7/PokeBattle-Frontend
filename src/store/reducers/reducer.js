@@ -3,7 +3,9 @@ import {
     FETCH_POKEMON,
     MAKE_TEAM,
     DELETE_TEAM,
-    DRAGGED_POKEMON
+    DRAGGED_POKEMON,
+    ADD_POKEMON,
+    SWAP_POKEMON
 } from "../actions"
 
 const initialState = {
@@ -12,7 +14,8 @@ const initialState = {
     userId: 0,
     deletion: "",
     error: "",
-    selectedPokemon: []
+    selectedPokemon: [],
+    team: Array(6).fill(null)
 }
 
 export default (state = initialState, action) => {
@@ -41,48 +44,25 @@ export default (state = initialState, action) => {
         case DRAGGED_POKEMON:
             return {
                 ...state,
-                selectedPokemon: action.payload //state.selectedPokemon.length < 6 ? [...state.selectedPokemon, action.payload] : [...state.selectedPokemon]
+                selectedPokemon: action.payload
+            }
+        case ADD_POKEMON:
+            const index = +action.payload.index;
+            const pokemon = action.payload.pokemon;
+            state.team[index] = pokemon 
+            return {
+                ...state,
+                team: state.team 
+            }
+        case SWAP_POKEMON:
+            const i = +action.payload.index;
+            const poke = action.payload.pokemon;
+            state.team[i] = poke
+            return{
+                ...state,
+                team: state.team
             }
         default:
             return state;
     }
 }
-
-// const initialState = {
-//     pokemon: [],
-//     isLoading: true,
-//     errorMessage: "",
-//     pokemonTeam: [],
-//     pokemonDataObject: []
-// }
-
-// export default (state = initialState, action) => {
-//     switch(action.type) {
-//         case FETCH_POKEMON_LIST:
-//             return {
-//                 ...state,
-//                 isLoading: true
-//             }
-//         case FETCH_POKEMON_LIST_SUCCESS:
-//             return {
-//                 ...state,
-//                 pokemon: action.payload.results,
-//                 isLoading: false,
-//             }
-//         case FETCH_POKEMON_LIST_ERROR:
-//             return {
-//                 ...state,
-//                 isLoading: false,
-//                 errorMessage: action.payload.message
-//             }
-//         case MAKE_POKEMON_TEAM:
-//             return {
-//                 ...state,
-//                 pokemonTeam: state.pokemonTeam.length < 6 ? [...state.pokemonTeam, action.payload.name] : state.pokemonTeam,
-//                 pokemonDataObject: [...state.pokemonDataObject, action.payload.data],
-//                 isLoading: false
-//             }
-//         default:
-//             return state;
-//     }
-// }

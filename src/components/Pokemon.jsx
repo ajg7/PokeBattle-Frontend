@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { fetchSelectedPokemon } from "../store/actions/actions";
+import { setSelectedPokemon } from "../store/actions/actions";
 import { StyledThemePill as TypePills } from "../StyledComponents/TypePills";
 import { CardFlipAnim as CardFlip } from "../StyledComponents/CardFlipAnim";
 
 
 const Pokemon = props => {
-    const { id, name, type1, type2, imgURL, height, weight, entry, habitat, legendary, mythical, ancient, fetchSelectedPokemon } = props;
+    const { id, name, type1, type2, imgURL, height, weight, entry, habitat, legendary, mythical, ancient, setSelectedPokemon } = props;
     const [flipped, setFlipped] = useState(false);
 
     const flipHandler = event => !flipped ? setFlipped(true) : setFlipped(false);
     const mouseLeaveHandler = event => flipped ? setFlipped(false) : null
     const dragStart = event => {
-        fetchSelectedPokemon({id: id, name: name, img: imgURL})
+        setSelectedPokemon({id: id, name: name, img: imgURL});
     }
 
     return(
@@ -59,4 +59,4 @@ const Pokemon = props => {
     )
 }
 
-export default connect(null, { fetchSelectedPokemon })(Pokemon);
+export default connect(null, { setSelectedPokemon })(Pokemon);
