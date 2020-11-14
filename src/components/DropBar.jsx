@@ -40,18 +40,17 @@ const DropBar = props => {
     const dragOver = event => {
         event.preventDefault();
         setNextIndex(event.target.id);
-        setPrevPokemon({id: event.target.id, name: event.target.alt, img: event.target.src})
+        setPrevPokemon({id: event.target.id, name: event.target.alt, img: event.target.src, number: +event.target.getAttribute("number")})
     }
 
     const dragStart = event => { 
         setIsSwapping(true);
-        setPokemonToBeSwapped({id: event.target.id, name: event.target.alt, img: event.target.src})
+        setPokemonToBeSwapped({id: event.target.id, name: event.target.alt, img: event.target.src, number: +event.target.getAttribute("number")})
         setPrevIndex(event.target.id);
         setCurrIndex(event.target.id);
     }
 
     const dragLeave = event => {
-        console.log(currIndex)
         updateCurrIndex(currIndex)
     }
 
@@ -67,7 +66,8 @@ const DropBar = props => {
                                 <div className="slot" id={i} onDragOver={dragOver} onDrop={drop} onDragLeave={dragLeave}>
                                     {pokemon ? <img src={pokemon.img ? pokemon.img : Poke_Ball} 
                                                     alt={pokemon.name} 
-                                                    id={i} 
+                                                    id={i}
+                                                    number={pokemon.number} 
                                                     onDragStart={dragStart} 
                                                     draggable={pokemon.img ? "true" : "false"}
                                                     className={pokemon.img ? "pokemon-team-member" : "poke-ball-filler"} /> : null}
