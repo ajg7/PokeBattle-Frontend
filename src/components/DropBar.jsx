@@ -33,6 +33,7 @@ const DropBar = props => {
         if (isSwapping) {
             setSelectedPokemon(pokemonToBeSwapped)
             swapPokemon(prevPokemon, pokemonToBeSwapped, prevIndex, nextIndex)
+            setSelectedPokemon({})
             setIsSwapping(false);
         }
     }
@@ -40,7 +41,7 @@ const DropBar = props => {
     const dragOver = event => {
         event.preventDefault();
         setNextIndex(event.target.id);
-        setPrevPokemon({id: event.target.id, name: event.target.alt, img: event.target.src, number: +event.target.getAttribute("number")})
+        setPrevPokemon({id: event.target.id, name: event.target.alt, img: event.target.src, number: +event.target.getAttribute("number")});
     }
 
     const dragStart = event => { 
@@ -70,7 +71,8 @@ const DropBar = props => {
                                                     number={pokemon.number} 
                                                     onDragStart={dragStart} 
                                                     draggable={pokemon.img ? "true" : "false"}
-                                                    className={pokemon.img ? "pokemon-team-member" : "poke-ball-filler"} /> : null}
+                                                    className={pokemon.img ? "pokemon-team-member" : "poke-ball-filler"} /> 
+                                            : null}
                                 </div>
                             )
                         })}

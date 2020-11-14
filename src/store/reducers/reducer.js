@@ -52,7 +52,7 @@ export default (state = initialState, action) => {
         case ADD_POKEMON:
             const index = +action.payload.index;
             const pokemon = action.payload.pokemon;
-            state.team[index] = pokemon 
+            state.team[index] = pokemon;
             return {
                 ...state,
                 selectedPokemon: action.payload.pokemon,
@@ -75,8 +75,8 @@ export default (state = initialState, action) => {
                 currIndex: action.payload
             }
         case REMOVE_POKEMON:
-            const currIndex = action.payload
-            state.team[currIndex] = null
+            const currIndex = action.payload;
+            state.team[currIndex] = null;
             return {
                 ...state,
                 team: state.team
