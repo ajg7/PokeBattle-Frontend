@@ -6,14 +6,17 @@ import { CardFlipAnim as CardFlip } from "../StyledComponents/CardFlipAnim";
 
 
 const Pokemon = props => {
-    const { id, name, type1, type2, imgURL, height, weight, entry, habitat, legendary, mythical, ancient, setSelectedPokemon } = props;
+    const { id, name, number, type1, type2, imgURL, height, weight, entry, habitat, legendary, mythical, ancient, setSelectedPokemon } = props;
     const [flipped, setFlipped] = useState(false);
 
     const flipHandler = event => !flipped ? setFlipped(true) : setFlipped(false);
-    const mouseLeaveHandler = event => flipped ? setFlipped(false) : null
+    
+    const mouseLeaveHandler = event => flipped ? setFlipped(false) : null;
+
     const dragStart = event => {
-        setSelectedPokemon({id: id, name: name, img: imgURL});
+        setSelectedPokemon({id: id, name: name, img: imgURL, number: number});
     }
+
     const dragOver = event => event.preventDefault();
 
     return(
