@@ -7,7 +7,10 @@ import {
     ADD_POKEMON,
     SWAP_POKEMON,
     REMOVE_POKEMON,
-    UPDATE_CURR_INDEX
+    UPDATE_CURR_INDEX,
+    IS_ADDING,
+    IS_SWAPPING,
+    IS_REMOVING
 } from "../actions"
 
 const initialState = {
@@ -19,6 +22,9 @@ const initialState = {
     selectedPokemon: [],
     currIndex: 0,
     pokemonHasBeenRemoved: false,
+    isAdding: false,
+    isSwapping: false,
+    isRemoving: false,
     team: Array(6).fill(null)
 }
 
@@ -56,6 +62,7 @@ export default (state = initialState, action) => {
             state.team[index] = pokemon;
             return {
                 ...state,
+                selectedPokemon: state.selectedPokemon,
                 team: state.team
             }
         case SWAP_POKEMON:
@@ -74,6 +81,7 @@ export default (state = initialState, action) => {
             return{
                 ...state,
                 selectedPokemon: state.selectedPokemon,
+                pokemonHasBeenRemoved: false,
                 team: state.team
             }
         case UPDATE_CURR_INDEX:
@@ -88,6 +96,27 @@ export default (state = initialState, action) => {
                 ...state,
                 pokemonHasBeenRemoved: true,
                 team: state.team
+            }
+        case IS_ADDING:
+            return {
+                ...state,
+                isAdding: action.payload.add,
+                isSwapping: action.payload.swap,
+                isRemoving: false
+            }
+        case IS_SWAPPING:
+            return {
+                ...state,
+                isAdding: false,
+                isSwapping: action.payload,
+                isRemoving: false
+            }
+        case IS_REMOVING:
+            return {
+                ...state,
+                isAdding: false,
+                isSwapping: false,
+                isRemoving: action.payload
             }
         default:
             return state;

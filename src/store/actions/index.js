@@ -7,5 +7,8 @@ export {
     ADD_POKEMON,
     SWAP_POKEMON,
     UPDATE_CURR_INDEX,
-    REMOVE_POKEMON
+    REMOVE_POKEMON,
+    IS_ADDING,
+    IS_SWAPPING,
+    IS_REMOVING
 } from "./actions";

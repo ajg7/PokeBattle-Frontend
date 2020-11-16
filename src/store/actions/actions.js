@@ -10,6 +10,9 @@ export const ADD_POKEMON = "ADD_POKEMON";
 export const SWAP_POKEMON = "SWAP_POKEMON";
 export const UPDATE_CURR_INDEX = "UPDATE_CURR_INDEX";
 export const REMOVE_POKEMON = "REMOVE_POKEMON";
+export const IS_ADDING = "IS_ADDING";
+export const IS_SWAPPING = "IS_SWAPPING";
+export const IS_REMOVING = "IS_REMOVING";
 
 export const fetchPokemon = () => {
     return dispatch => {
@@ -66,7 +69,7 @@ export const addPokemon = (pokemon, index) => {
     }
 }
 
-export const swapPokemon = (prevPokemon, pokemon, prevIndex, nextIndex, isSwapping) => {
+export const swapPokemon = (prevPokemon, pokemon, prevIndex, nextIndex) => {
     return dispatch => {
         const i1 = +prevIndex;
         const i2 = +nextIndex;
@@ -83,5 +86,24 @@ export const updateCurrIndex = index => {
 export const removePokemon = index => {
     return dispatch => {
         dispatch({type: REMOVE_POKEMON, payload: index})
+    }
+}
+
+export const setIsAdding = (bool1, bool2) => {
+    return dispatch => {
+        dispatch({type: IS_ADDING, payload: {add: bool1, swap: bool2}})
+    }
+}
+
+export const setIsSwapping = () => {
+    return dispatch => {
+        console.log("hello")
+        dispatch({type: IS_ADDING, payload: true})
+    }
+}
+
+export const setIsRemoving = () => {
+    return dispatch => {
+        dispatch({type: IS_ADDING, payload: true})
     }
 }
