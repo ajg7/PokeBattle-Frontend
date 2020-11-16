@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { fetchPokemon, removePokemon, setSelectedPokemon } from "../store/actions/actions";
 import Pokemon from "./Pokemon";
@@ -8,12 +8,16 @@ import { StyledBar } from "../StyledComponents/StyledBar";
 
 
 const PokemonList = props => {
-    const { pokemonData, loading, error, currIndex, fetchPokemon, removePokemon, setSelectedPokemon } = props;
+    const { pokemonData, loading, error, currIndex, setSelectedPokemon, fetchPokemon, removePokemon } = props;
+    const [pokemonHasBeenRemoved, setPokemonHasBeenRemoved] = useState(false);
 
     const dragOver = event => event.preventDefault();
+    
+    const dragEnd = event => setPokemonHasBeenRemoved(true);
 
     const drop = event => {
-        removePokemon(currIndex);
+        removePokemon(currIndex, pokemonHasBeenRemoved);
+        setPokemonHasBeenRemoved(false);
         setSelectedPokemon({});
     }
 

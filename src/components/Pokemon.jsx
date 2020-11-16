@@ -1,23 +1,23 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { setSelectedPokemon } from "../store/actions/actions";
+import { setSelectedPokemon, setIsAdding } from "../store/actions/actions";
 import { StyledThemePill as TypePills } from "../StyledComponents/TypePills";
 import { CardFlipAnim as CardFlip } from "../StyledComponents/CardFlipAnim";
 
 
 const Pokemon = props => {
-    const { id, name, number, type1, type2, imgURL, height, weight, entry, habitat, legendary, mythical, ancient, setSelectedPokemon } = props;
+    const { id, name, number, type1, type2, imgURL, height, weight, 
+            entry, habitat, legendary, mythical, ancient, setSelectedPokemon, setIsAdding } = props;
     const [flipped, setFlipped] = useState(false);
 
     const flipHandler = event => !flipped ? setFlipped(true) : setFlipped(false);
     
     const mouseLeaveHandler = event => flipped ? setFlipped(false) : null;
 
-    const dragStart = event => {
+    const dragStart = event =>{ 
+        setIsAdding(true, false);
         setSelectedPokemon({id: id, name: name, img: imgURL, number: number});
     }
-
-    const dragOver = event => event.preventDefault();
 
     return(
         <>
@@ -25,8 +25,8 @@ const Pokemon = props => {
                 <div className={flipped ? "card flipped" : "card"} onMouseLeave={mouseLeaveHandler}>
                     <div className="card-inner">
                         <section className="card-front">
-                            <div className="image-container">
-                                <img src={imgURL} alt={name} value={id} onDragStart={dragStart} onDragOver={dragOver} />
+                            <div className="image-container" onDragStart={dragStart}>
+                                <img src={imgURL} alt={name} value={id} />
                             </div>
                             <div className="pokemon-data-container">
                                 <h3 className="id">#{id}</h3>
@@ -63,4 +63,4 @@ const Pokemon = props => {
     )
 }
 
-export default connect(null, { setSelectedPokemon })(Pokemon);
+export default connect(null, { setSelectedPokemon, setIsAdding })(Pokemon);

@@ -45,6 +45,8 @@ export const StyledThemePill = styled.div`
                     return "#fff";
                 case "ice":
                     return "#fff";
+                case "flying":
+                    return "#fff";
                 default:
                     return "#212121";
             }
@@ -83,6 +85,8 @@ export const StyledThemePill = styled.div`
                 case "dragon":
                     return "#fff";
                 case "ice":
+                    return "#fff";
+                case "flying":
                     return "#fff";
                 default:
                     return "#212121";
