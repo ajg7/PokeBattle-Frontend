@@ -57,8 +57,23 @@ export const deleteTeam = id => {
     }
 }
 
-export const saveTeam = () => {
+export const saveTeam = team => {
     return dispatch => {
+        const ids = team.map(member => {
+            if (member === null) {
+                return null
+            } else {
+                return member.number
+            }
+        })
+        console.log(ids[0])
+        axiosWithAuth().post(`/pokemon_team/${ids[0]}`)
+            .then(response => {
+                console.log(response)
+            })
+            .catch(error => {
+                dispatch({ type: ERROR_HANDLING, payload: { message: "You blacked out!" }})
+            })
     }
 }
 

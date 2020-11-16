@@ -32,7 +32,7 @@ const DropBar = props => {
     }
 
     const saveTeamHandler = event => {
-        saveTeam()
+        saveTeam(team)
         //Add confirmation alert
         history.push("/pokemon_list/deck") 
     }
