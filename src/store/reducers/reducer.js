@@ -18,6 +18,7 @@ const initialState = {
     error: "",
     selectedPokemon: [],
     currIndex: 0,
+    pokemonHasBeenRemoved: false,
     team: Array(6).fill(null)
 }
 
@@ -55,7 +56,6 @@ export default (state = initialState, action) => {
             state.team[index] = pokemon;
             return {
                 ...state,
-                selectedPokemon: action.payload.pokemon,
                 team: state.team
             }
         case SWAP_POKEMON:
@@ -63,10 +63,17 @@ export default (state = initialState, action) => {
             const i2 = action.payload.nextIndex;
             const prevPoke = action.payload.prevPokemon;
             const poke = action.payload.newPokemon;
-            state.team[i2] = poke;
-            state.team[i1] = prevPoke;
+            if (!state.pokemonHasBeenRemoved) {
+                state.team[i2] = poke;
+                state.team[i1] = prevPoke;
+            } else {
+                state.pokemonHasBeenRemoved = false;
+                state.team[i2] = poke;
+                state.team[i1] = null;
+            }
             return{
                 ...state,
+                selectedPokemon: state.selectedPokemon,
                 team: state.team
             }
         case UPDATE_CURR_INDEX:
@@ -79,6 +86,7 @@ export default (state = initialState, action) => {
             state.team[currIndex] = null;
             return {
                 ...state,
+                pokemonHasBeenRemoved: true,
                 team: state.team
             }
         default:

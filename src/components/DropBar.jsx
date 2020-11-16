@@ -31,9 +31,8 @@ const DropBar = props => {
         addPokemon(selectedPokemon, index);
         setSelectedPokemon({});
         if (isSwapping) {
-            setSelectedPokemon(pokemonToBeSwapped)
-            swapPokemon(prevPokemon, pokemonToBeSwapped, prevIndex, nextIndex)
-            setSelectedPokemon({})
+            setSelectedPokemon(pokemonToBeSwapped);
+            swapPokemon(prevPokemon, pokemonToBeSwapped, prevIndex, nextIndex);
             setIsSwapping(false);
         }
     }
@@ -51,9 +50,7 @@ const DropBar = props => {
         setCurrIndex(event.target.id);
     }
 
-    const dragLeave = event => {
-        updateCurrIndex(currIndex)
-    }
+    const dragLeave = event => updateCurrIndex(currIndex);
 
     return (
         <>

@@ -13,9 +13,7 @@ const Pokemon = props => {
     
     const mouseLeaveHandler = event => flipped ? setFlipped(false) : null;
 
-    const dragStart = event => {
-        setSelectedPokemon({id: id, name: name, img: imgURL, number: number});
-    }
+    const dragStart = event => setSelectedPokemon({id: id, name: name, img: imgURL, number: number});
 
     const dragOver = event => event.preventDefault();
 

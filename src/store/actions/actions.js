@@ -66,7 +66,7 @@ export const addPokemon = (pokemon, index) => {
     }
 }
 
-export const swapPokemon = (prevPokemon, pokemon, prevIndex, nextIndex) => {
+export const swapPokemon = (prevPokemon, pokemon, prevIndex, nextIndex, isSwapping) => {
     return dispatch => {
         const i1 = +prevIndex;
         const i2 = +nextIndex;
