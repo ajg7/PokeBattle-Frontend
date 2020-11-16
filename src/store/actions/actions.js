@@ -59,7 +59,6 @@ export const deleteTeam = id => {
 
 export const saveTeam = () => {
     return dispatch => {
-        console.log("darkness")
     }
 }
 

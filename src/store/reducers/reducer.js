@@ -45,7 +45,8 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 teamId: action.payload.teamId,
-                userId: action.payload.userId
+                userId: action.payload.userId,
+                team: Array(6).fill(null)
             }
         case DELETE_TEAM:
             return {

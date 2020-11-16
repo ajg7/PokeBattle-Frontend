@@ -33,7 +33,8 @@ const DropBar = props => {
 
     const saveTeamHandler = event => {
         saveTeam()
-        history.push("/pokemon_list/deck")
+        //Add confirmation alert
+        history.push("/pokemon_list/deck") 
     }
 
     const drop = event => {
