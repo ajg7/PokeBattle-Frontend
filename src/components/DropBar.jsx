@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { makeTeam, deleteTeam, addPokemon, setSelectedPokemon, swapPokemon, updateCurrIndex, setIsAdding, setIsSwapping } from "../store/actions/actions";
+import { makeTeam, deleteTeam, addPokemon, setSelectedPokemon, swapPokemon, updateCurrIndex, setIsAdding, setIsSwapping, saveTeam } from "../store/actions/actions";
+import { useHistory } from "react-router-dom";
 import clearButton from "../assets/clearButton.png";
 import addButton from "../assets/addButton.png";
 import Poke_Ball from "../assets/Poke_Ball.png";
@@ -10,7 +11,9 @@ const DropBar = props => {
     const { makeTeam, deleteTeam, addPokemon, 
             setSelectedPokemon, isAdding, isSwapping, 
             setIsSwapping, setIsAdding, swapPokemon, 
-            updateCurrIndex, teamId, team, selectedPokemon } = props;
+            updateCurrIndex, teamId, team, selectedPokemon, 
+            saveTeam } = props;
+    const history = useHistory();
     const [active, setActive] = useState(false);
     const [pokemonToBeSwapped, setPokemonToBeSwapped] = useState({});
     const [prevPokemon, setPrevPokemon] = useState({});
@@ -26,6 +29,11 @@ const DropBar = props => {
     const deleteTeamHandler = event => {
         setActive(false);
         deleteTeam(teamId)
+    }
+
+    const saveTeamHandler = event => {
+        saveTeam()
+        history.push("/pokemon_list/deck")
     }
 
     const drop = event => {
@@ -77,7 +85,7 @@ const DropBar = props => {
                                 </div>
                             )
                         })}
-                        <img src={addButton} alt="make team button" className="add-button" />
+                        <img src={addButton} alt="make team button" className="add-button" onClick={saveTeamHandler} />
                       </div> : null}
         </div>
     )
@@ -94,4 +102,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { makeTeam, deleteTeam, addPokemon, setSelectedPokemon, swapPokemon, updateCurrIndex, setIsAdding, setIsSwapping })(DropBar);
+export default connect(mapStateToProps, { makeTeam, deleteTeam, addPokemon, setSelectedPokemon, swapPokemon, updateCurrIndex, setIsAdding, setIsSwapping, saveTeam })(DropBar);

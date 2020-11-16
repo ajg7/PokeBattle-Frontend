@@ -3,6 +3,7 @@ import {
     FETCH_POKEMON,
     MAKE_TEAM,
     DELETE_TEAM,
+    SAVE_TEAM,
     DRAGGED_POKEMON,
     ADD_POKEMON,
     SWAP_POKEMON,
