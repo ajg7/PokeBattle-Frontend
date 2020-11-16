@@ -49,7 +49,8 @@ export default (state = initialState, action) => {
         case DELETE_TEAM:
             return {
                 ...state,
-                deletion: action.payload
+                deletion: action.payload,
+                team: Array(6).fill(null)
             }
         case DRAGGED_POKEMON:
             return {
@@ -102,6 +103,7 @@ export default (state = initialState, action) => {
                 ...state,
                 isAdding: action.payload.add,
                 isSwapping: action.payload.swap,
+                pokemonHasBeenRemoved: false,
                 isRemoving: false
             }
         case IS_SWAPPING:
