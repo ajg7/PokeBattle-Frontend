@@ -1,8 +1,12 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {connect} from "react-redux";
 
 const OnDeck = props => {
-    const { team } = props;
+    const { teamData, team } = props;
+
+    useEffect(() => {
+        console.log(teamData)
+    },[teamData])
 
     return (
         <>

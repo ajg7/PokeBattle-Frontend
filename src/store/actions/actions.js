@@ -31,7 +31,7 @@ export const fetchPokemon = () => {
 
 export const makeTeam = () => {
     return dispatch => {
-        axiosWithAuth().post("https://pokemon-server-ajg7.herokuapp.com/team")
+        axiosWithAuth().post("/team/")
             .then(response => {
                 const teamId = response.data.data.team_Id;
                 const userId = response.data.data.user_Id;
@@ -46,7 +46,7 @@ export const makeTeam = () => {
 
 export const deleteTeam = id => {
     return dispatch => {
-        axiosWithAuth().delete(`https://pokemon-server-ajg7.herokuapp.com/team/${id}`)
+        axiosWithAuth().delete(`/team/${id}`)
             .then(response => {
                 console.log(response)
                 dispatch({ type: DELETE_TEAM, payload: "has been deleted"})
@@ -57,8 +57,28 @@ export const deleteTeam = id => {
     }
 }
 
-export const saveTeam = () => {
+export const saveTeam = team => {
     return dispatch => {
+        const ids = team.map(member => {
+            if (member === null) {
+                return null
+            } else {
+                return member.number
+            }
+        })
+        let post1 = axiosWithAuth().post(`/pokemon_team/${ids[0]}`)
+        let post2 = axiosWithAuth().post(`/pokemon_team/${ids[1]}`)
+        let post3 = axiosWithAuth().post(`/pokemon_team/${ids[2]}`)
+        let post4 = axiosWithAuth().post(`/pokemon_team/${ids[3]}`)
+        let post5 = axiosWithAuth().post(`/pokemon_team/${ids[4]}`)
+        let post6 = axiosWithAuth().post(`/pokemon_team/${ids[5]}`)
+
+        Promise.all([post1, post2, post3, post4, post5, post6])
+            .then(response => {
+                const data = response.map(individualResponse => individualResponse.data)
+                console.log(data)
+                dispatch({type: SAVE_TEAM, payload: data})
+            })
     }
 }
 

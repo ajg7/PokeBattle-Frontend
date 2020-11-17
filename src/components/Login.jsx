@@ -30,7 +30,8 @@ const Login = props => {
     const loginUser = event => {
         event.preventDefault();
         const user = new FormValues(formValues.email.trim(), formValues.password.trim(), false);
-        axios.post("https://pokemon-server-ajg7.herokuapp.com/users/login", user)
+        // https://pokemon-server-ajg7.herokuapp.com/users/login
+        axios.post("http://localhost:7000/users/login", user)
                 .then(response => {
                     console.log(response)
                     const token = response.data.token;
