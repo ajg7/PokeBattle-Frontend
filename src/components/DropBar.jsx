@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { makeTeam, deleteTeam, addPokemon, setSelectedPokemon, swapPokemon, updateCurrIndex, setIsAdding, setIsSwapping, saveTeam } from "../store/actions/actions";
+import { deleteTeam, addPokemon, setSelectedPokemon, swapPokemon, updateCurrIndex, setIsAdding, setIsSwapping, saveTeam } from "../store/actions/actions";
 import { useHistory } from "react-router-dom";
 import clearButton from "../assets/clearButton.png";
 import addButton from "../assets/addButton.png";
@@ -9,8 +9,7 @@ import Poke_Ball from "../assets/Poke_Ball.png";
 
 const DropBar = props => {
     const { makeTeam, deleteTeam, addPokemon, 
-            setSelectedPokemon, isAdding, isSwapping, 
-            setIsSwapping, setIsAdding, swapPokemon, 
+            setSelectedPokemon, isAdding, isSwapping, setIsAdding, swapPokemon, 
             updateCurrIndex, teamId, team, selectedPokemon, 
             saveTeam } = props;
     const history = useHistory();
@@ -24,9 +23,8 @@ const DropBar = props => {
         deleteTeam(teamId)
     }
 
-    const saveTeamHandler = async event => {
-        makeTeam()
-        await saveTeam(team)
+    const saveTeamHandler = event => {
+        saveTeam(team)
         //Add confirmation alert
         history.push("/pokemon_list/deck") 
     }
@@ -94,4 +92,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { makeTeam, deleteTeam, addPokemon, setSelectedPokemon, swapPokemon, updateCurrIndex, setIsAdding, setIsSwapping, saveTeam })(DropBar);
+export default connect(mapStateToProps, { deleteTeam, addPokemon, setSelectedPokemon, swapPokemon, updateCurrIndex, setIsAdding, setIsSwapping, saveTeam })(DropBar);

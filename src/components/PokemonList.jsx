@@ -65,6 +65,7 @@ const PokemonList = props => {
 const mapStateToProps = state => {
     return {
         pokemonData: state.pokemonData,
+        teamId: state.teamId,
         error: state.error, 
         currIndex: state.currIndex
     }

@@ -6,6 +6,7 @@ export const ERROR_HANDLING = "ERROR_HANDLING";
 export const MAKE_TEAM = "MAKE_TEAM";
 export const DELETE_TEAM = "DELETE_TEAM";
 export const SAVE_TEAM = "SAVE_TEAM";
+export const FETCH_POKEMON_TEAM = "FETCH_POKEMON_TEAM";
 export const DRAGGED_POKEMON = "DRAGGED_POKEMON";
 export const ADD_POKEMON = "ADD_POKEMON";
 export const SWAP_POKEMON = "SWAP_POKEMON";
@@ -17,7 +18,7 @@ export const IS_REMOVING = "IS_REMOVING";
 
 export const fetchPokemon = () => {
     return dispatch => {
-        axiosWithAuth().get("https://pokemon-server-ajg7.herokuapp.com/pokemon")
+        axiosWithAuth().get("/pokemon")
             .then(response => {
                 const data = response.data;
                 dispatch({ type: FETCH_POKEMON, payload: data })
@@ -39,7 +40,6 @@ export const makeTeam = () => {
             })
             .catch(error => {
                 dispatch({ type: ERROR_HANDLING, payload: { message: "You blacked out!" }})
-
             })
     }
 }
@@ -76,8 +76,22 @@ export const saveTeam = team => {
         Promise.all([post1, post2, post3, post4, post5, post6])
             .then(response => {
                 const data = response.map(individualResponse => individualResponse.data)
-                console.log(data)
+                console.log("post", data)
                 dispatch({type: SAVE_TEAM, payload: data})
+            })
+    }
+}
+
+export const fetchPokemonTeam = teamId => {
+    return dispatch => {
+        console.log(teamId)
+        axiosWithAuth().get(`/pokemon_team/${teamId}`)
+            .then(response => {
+                console.log("fetch", response.data)
+                dispatch({type: FETCH_POKEMON_TEAM, payload: response.data})
+            })
+            .catch(error => {
+                dispatch({ type: ERROR_HANDLING, payload: { message: "You blacked out!" }})
             })
     }
 }
