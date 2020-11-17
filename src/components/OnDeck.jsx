@@ -1,30 +1,35 @@
-import React, {useEffect} from "react";
+import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import {connect} from "react-redux";
+import { fetchPokemonTeam } from "../store/actions/actions";
+import CardsOnDeck from "./CardsOnDeck";
 
 const OnDeck = props => {
-    const { teamData, team } = props;
+    const { teamData, teamId, fetchPokemonTeam } = props;
+
+    const history = useHistory();
+
+    const goBackHandler = event => {
+        history.goBack()
+    }
 
     useEffect(() => {
-        console.log(teamData)
-    },[teamData])
+        const currTeamId = localStorage.getItem("teamId");
+        fetchPokemonTeam(currTeamId);
+    },[fetchPokemonTeam])
 
     return (
         <>
             <h2>Ready to Battle?</h2>
             <div>
-                {team.map(member => {
-                    if (member === null) {
-                        return null
-                    } else {
-                        return(
-                            <div>
-                                <h2>{member.name}</h2>
-                                <h2>{member.number}</h2>
-                                <img src={member.img} alt={member.name} />
-                            </div>
-                        )
-                    }
-                })}
+                {/*teamData.newData.map(member => {
+                    return (
+                        <CardsOnDeck 
+                            name={member.name}
+                        />
+                    )
+                })*/}
+                <button onClick={goBackHandler}>Go Back</button>
             </div>
         </>
     )
@@ -32,8 +37,10 @@ const OnDeck = props => {
 
 const mapStateToProps = state => {
     return {
-        team: state.team
+        team: state.team,
+        teamId: state.teamId,
+        teamData: state.teamData
     }
 }
 
-export default connect(mapStateToProps, {})(OnDeck);
+export default connect(mapStateToProps, { fetchPokemonTeam })(OnDeck);

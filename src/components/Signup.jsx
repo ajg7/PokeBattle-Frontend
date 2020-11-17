@@ -1,11 +1,13 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { makeTeam } from "../store/actions/actions";
+import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { FormValues, initialFormValues } from "./classes/FormValuesClass"
 
 
 const Signup = props => {
-    
+    const { makeTeam } = props; 
     const history = useHistory();
     const [formValues, setFormValues] = useState(initialFormValues);
 
@@ -27,7 +29,11 @@ const Signup = props => {
         //https://pokemon-server-ajg7.herokuapp.com/users/signup
         axios.post("http://localhost:7000/users/signup", newUser)
             .then(response => {
-                setFormValues(initialFormValues)
+                setFormValues(initialFormValues);
+                const token = response.data.token;
+                localStorage.setItem("token", token);
+                makeTeam();
+                history.push("/pokemon_list");
             })
             .catch(error => {
                 console.log(error)
@@ -61,4 +67,4 @@ const Signup = props => {
     )
 }
 
-export default Signup;
+export default connect(null, {makeTeam})(Signup);
