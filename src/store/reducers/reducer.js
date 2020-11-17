@@ -26,7 +26,8 @@ const initialState = {
     isAdding: false,
     isSwapping: false,
     isRemoving: false,
-    team: Array(6).fill(null)
+    team: Array(6).fill(null),
+    teamData: []
 }
 
 export default (state = initialState, action) => {
@@ -47,6 +48,11 @@ export default (state = initialState, action) => {
                 teamId: action.payload.teamId,
                 userId: action.payload.userId,
                 team: Array(6).fill(null)
+            }
+        case SAVE_TEAM:
+            return {
+                ...state,
+                teamData: action.payload
             }
         case DELETE_TEAM:
             return {

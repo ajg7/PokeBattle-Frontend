@@ -14,25 +14,19 @@ const DropBar = props => {
             updateCurrIndex, teamId, team, selectedPokemon, 
             saveTeam } = props;
     const history = useHistory();
-    const [active, setActive] = useState(false);
     const [pokemonToBeSwapped, setPokemonToBeSwapped] = useState({});
     const [prevPokemon, setPrevPokemon] = useState({});
     const [prevIndex, setPrevIndex] = useState(0);
     const [nextIndex, setNextIndex] = useState(0);
     const [currIndex, setCurrIndex] = useState(0);
 
-    const makeTeamHandler = event => {
-        setActive(true);
-        makeTeam();
-    }
-
     const deleteTeamHandler = event => {
-        setActive(false);
         deleteTeam(teamId)
     }
 
-    const saveTeamHandler = event => {
-        saveTeam(team)
+    const saveTeamHandler = async event => {
+        makeTeam()
+        await saveTeam(team)
         //Add confirmation alert
         history.push("/pokemon_list/deck") 
     }
@@ -67,27 +61,24 @@ const DropBar = props => {
 
     return (
         <div>
-            <span>
-                <img src={Poke_Ball} alt="create team button" className="create-button" onClick={makeTeamHandler} />
-            </span>
-            {active ? <div className="slot-container">
-                        <img src={clearButton} alt="clear team button" className="clear-button" onClick={deleteTeamHandler} />
-                        {team.map((pokemon, i) => {
-                            return (
-                                <div className="slot" id={i} onDragOver={dragOver} onDrop={drop} onDragLeave={dragLeave} >
-                                    {pokemon ? <img src={pokemon.img ? pokemon.img : Poke_Ball} 
-                                                    alt={pokemon.name} 
-                                                    id={i}
-                                                    number={pokemon.number} 
-                                                    onDragStart={dragStart}
-                                                    draggable={pokemon.img ? "true" : "false"}
-                                                    className={pokemon.img ? "pokemon-team-member" : "poke-ball-filler"} /> 
-                                            : null}
-                                </div>
-                            )
-                        })}
-                        <img src={addButton} alt="make team button" className="add-button" onClick={saveTeamHandler} />
-                      </div> : null}
+            <div className="slot-container">
+                <img src={clearButton} alt="clear team button" className="clear-button" onClick={deleteTeamHandler} />
+                {team.map((pokemon, i) => {
+                    return (
+                        <div className="slot" id={i} onDragOver={dragOver} onDrop={drop} onDragLeave={dragLeave} >
+                            {pokemon ? <img src={pokemon.img ? pokemon.img : Poke_Ball} 
+                                            alt={pokemon.name} 
+                                            id={i}
+                                            number={pokemon.number} 
+                                            onDragStart={dragStart}
+                                            draggable={pokemon.img ? "true" : "false"}
+                                            className={pokemon.img ? "pokemon-team-member" : "poke-ball-filler"} /> 
+                                    : null}
+                        </div>
+                    )
+                })}
+                <img src={addButton} alt="make team button" className="add-button" onClick={saveTeamHandler} />
+            </div>
         </div>
     )
 }

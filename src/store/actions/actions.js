@@ -77,6 +77,7 @@ export const saveTeam = team => {
             .then(response => {
                 const data = response.map(individualResponse => individualResponse.data)
                 console.log(data)
+                dispatch({type: SAVE_TEAM, payload: data})
             })
     }
 }
