@@ -7,6 +7,7 @@ import Login from "./components/Login";
 import PokemonList from "./components/PokemonList";
 import OnDeck from "./components/OnDeck";
 import "./css/reset.css";
+import BattlePage from "./components/BattlePage";
 
 
 const App = () => {
@@ -19,6 +20,7 @@ const App = () => {
       {/*Pokemon List is a private route, fix later*/}
       <Route exact path="/pokemon_list" component={PokemonList} />
       <Route exact path="/pokemon_list/deck" component={OnDeck} />
+      <Route exact path="/battle" component={BattlePage} />
     </>
   );
 }

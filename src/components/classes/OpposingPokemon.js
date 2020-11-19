@@ -9,4 +9,5 @@ export class OpposingPokemon {
         this.legendary = legendary;
         this.mythical = mythical
     }
+
 }
