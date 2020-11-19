@@ -104,7 +104,6 @@ export const setSelectedPokemon = selectedPokemon => {
 
 export const addPokemon = (pokemon, index) => {
     return dispatch => {
-        
         dispatch({ type: ADD_POKEMON, payload: {pokemon: pokemon, index: index }})
     }
 }
