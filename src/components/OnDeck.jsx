@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import {connect} from "react-redux";
 import { fetchPokemonTeam } from "../store/actions/actions";
 import { StyledOnDeck } from "../StyledComponents/StyledOnDeck";
+import editIcon from "../assets/editIcon.png"
 
 const OnDeck = props => {
     const { teamData, teamId, fetchPokemonTeam } = props;
@@ -11,6 +12,10 @@ const OnDeck = props => {
 
     const goBackHandler = event => {
         history.goBack()
+    }
+    
+    const editNameHandler = event => {
+        console.log("It works!")
     }
 
     useEffect(() => {
@@ -29,7 +34,10 @@ const OnDeck = props => {
                                     <img src={member.imgURL} alt={member.name} />
                                 </div> 
                                 <h3>{member.pokemon_Id}</h3>
-                                <h2>{member.nickname ? member.nickname : member.name}</h2>
+                                <span className="pokemon-name">
+                                    <img src={editIcon} alt="edit name icon" onClick={editNameHandler} />
+                                    <h2>{member.nickname ? member.nickname : member.name}</h2>
+                                </span>
                                 <h3>{member.type1}</h3>
                                 <h3>{member.type2}</h3>
                             </div>
@@ -37,6 +45,7 @@ const OnDeck = props => {
                 })}
             </StyledOnDeck>
             <button onClick={goBackHandler}>Go Back</button>
+            <button>Battle!</button>
         </>
     )
 }

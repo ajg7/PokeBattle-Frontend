@@ -5,9 +5,12 @@ export const StyledOnDeck = styled.div`
     flex-flow: row wrap;
     justify-content: space-evenly;
     text-transform: capitalize;
-    text-align: center;
     .cards {
         border: 1px red solid;
     }    
+    .pokemon-name img {
+        height: 10px;
+        width: 10px;
+    }
 
 `
