@@ -12,5 +12,6 @@ export {
     REMOVE_POKEMON,
     IS_ADDING,
     IS_SWAPPING,
-    IS_REMOVING
+    IS_REMOVING,
+    FETCH_OPPONENT_TEAM
 } from "./actions";

@@ -26,7 +26,7 @@ const DropBar = props => {
     const saveTeamHandler = event => {
         saveTeam(team)
         //Add confirmation alert
-        history.push("/pokemon_list/deck") 
+        history.push("/on_deck") 
     }
 
     const drop = event => {

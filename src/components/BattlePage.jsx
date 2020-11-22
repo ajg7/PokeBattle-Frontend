@@ -1,12 +1,15 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { fetchPokemon } from "../store/actions/actions";
-import { OpposingPokemon } from "../components/classes/OpposingPokemon";
-import { BattleManager } from "../components/classes/BattleManager";
+import { fetchPokemon, fetchPokemonTeam, fetchOpponentTeam } from "../store/actions/actions";
+import { OpposingPokemon } from "../classes/OpposingPokemon";
+import { BattleManager } from "../classes/BattleManager";
+import { StyledOnDeck as StyledBattleCards } from "../StyledComponents/StyledOnDeck";
+import { StyledCanvas } from "../StyledComponents/StyledCanvas";
+
 
 const BattlePage = props => {
 
-    const { fetchPokemon, pokemonData } = props;
+    const { fetchPokemon, fetchPokemonTeam, fetchOpponentTeam, pokemonData, teamData, opponentTeam } = props;
     /*
     Using the OpposingPokemon Class, I need to fetch data from db. Using a random number generator, select the index, 
     then fill out a new class instance with the pokemon's data
@@ -14,31 +17,67 @@ const BattlePage = props => {
     
     
     */
+    useEffect(() => {
+        const currTeamId = localStorage.getItem("teamId");
+        fetchPokemonTeam(currTeamId);
+        fetchOpponentTeam()
+    },[fetchPokemonTeam, fetchOpponentTeam, fetchPokemon])
 
-
-    const player = new BattleManager(0)
-    const opponent = new BattleManager(0);
-    console.log(player.theScore = 1)
-
-
-        const opponentTeam = [
-            pokemonData[BattleManager.random()], pokemonData[BattleManager.random()], pokemonData[BattleManager.random()],
-            pokemonData[BattleManager.random()], pokemonData[BattleManager.random()], pokemonData[BattleManager.random()]
-        ]
-        console.log(opponentTeam)
     
 
     return (
         <>
-        <button>Make Random Team</button>
+        <StyledBattleCards>
+                {teamData.map(member => {
+                    return (
+                            <div className="cards">
+                                <div>
+                                    <img src={member.imgURL} alt={member.name} />
+                                </div> 
+                                <h3>{member.pokemon_Id}</h3>
+                                <span className="pokemon-name">
+                                    <h2>{member.nickname ? member.nickname : member.name}</h2>
+                                </span>
+                                <h3>{member.type1}</h3>
+                                <h3>{member.type2}</h3>
+                            </div>
+                    )
+                })}
+            </StyledBattleCards>
+            <StyledCanvas>
+                <canvas>
+                
+                
+                </canvas>
+            </StyledCanvas>
+            <StyledBattleCards>
+                {opponentTeam.map(member => {
+                    return (
+                        <div className="cards">
+                            <div>
+                                <img src={member.imgURL} alt={member.name} />
+                            </div> 
+                            <h3>{member.pokemon_Id}</h3>
+                            <span className="pokemon-name">
+                                <h2>{member.nickname ? member.nickname : member.name}</h2>
+                            </span>
+                            <h3>{member.type1}</h3>
+                            <h3>{member.type2}</h3>
+                        </div>
+                    )
+                })}
+            
+            </StyledBattleCards>
         </>
     )
 }
 
 const mapStateToProps = state => {
     return {
-        pokemonData: state.pokemonData
+        pokemonData: state.pokemonData,
+        teamData: state.teamData,
+        opponentTeam: state.opponentTeam
     }
 }
 
-export default connect(mapStateToProps, { fetchPokemon })(BattlePage);
+export default connect(mapStateToProps, { fetchPokemon, fetchPokemonTeam, fetchOpponentTeam })(BattlePage);

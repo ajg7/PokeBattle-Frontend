@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 import { fetchPokemonTeam } from "../store/actions/actions";
 import { StyledOnDeck } from "../StyledComponents/StyledOnDeck";
 import editIcon from "../assets/editIcon.png"
@@ -16,6 +16,10 @@ const OnDeck = props => {
     
     const editNameHandler = event => {
         console.log("It works!")
+    }
+
+    const battlePageHandler = event => {
+        history.push("/battle");
     }
 
     useEffect(() => {
@@ -45,7 +49,7 @@ const OnDeck = props => {
                 })}
             </StyledOnDeck>
             <button onClick={goBackHandler}>Go Back</button>
-            <button>Battle!</button>
+            <button onClick={battlePageHandler}>Battle!</button>
         </>
     )
 }

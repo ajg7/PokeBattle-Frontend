@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
-import { FormValues, initialFormValues } from "./classes/FormValuesClass";
+import { FormValues, initialFormValues } from "../classes/FormValuesClass";
 
 const Login = props => {
 
