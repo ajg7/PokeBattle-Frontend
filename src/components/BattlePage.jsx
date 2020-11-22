@@ -4,7 +4,7 @@ import { fetchPokemon, fetchPokemonTeam, fetchOpponentTeam } from "../store/acti
 import { OpposingPokemon } from "../classes/OpposingPokemon";
 import { BattleManager } from "../classes/BattleManager";
 import { StyledOnDeck as StyledBattleCards } from "../StyledComponents/StyledOnDeck";
-import { StyledCanvas } from "../StyledComponents/StyledCanvas";
+import { StyledArena } from "../StyledComponents/StyledArena";
 
 
 const BattlePage = props => {
@@ -44,12 +44,14 @@ const BattlePage = props => {
                     )
                 })}
             </StyledBattleCards>
-            <StyledCanvas>
-                <canvas>
+            <StyledArena>
+                <div className="player-team-slot">
+
+                </div>
+                <div className="opponent-team-slot">
                 
-                
-                </canvas>
-            </StyledCanvas>
+                </div>
+            </StyledArena>
             <StyledBattleCards>
                 {opponentTeam.map(member => {
                     return (
