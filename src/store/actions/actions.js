@@ -1,5 +1,6 @@
 
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
+import { BattleManager } from "../../classes/BattleManager";
 
 export const FETCH_POKEMON = "FETCH_POKEMON_SUCCESS";
 export const ERROR_HANDLING = "ERROR_HANDLING";
@@ -15,6 +16,7 @@ export const REMOVE_POKEMON = "REMOVE_POKEMON";
 export const IS_ADDING = "IS_ADDING";
 export const IS_SWAPPING = "IS_SWAPPING";
 export const IS_REMOVING = "IS_REMOVING";
+export const FETCH_OPPONENT_TEAM = "FETCH_OPPONENT_TEAM";
 
 export const fetchPokemon = () => {
     return dispatch => {
@@ -104,7 +106,6 @@ export const setSelectedPokemon = selectedPokemon => {
 
 export const addPokemon = (pokemon, index) => {
     return dispatch => {
-        
         dispatch({ type: ADD_POKEMON, payload: {pokemon: pokemon, index: index }})
     }
 }
@@ -145,5 +146,25 @@ export const setIsSwapping = () => {
 export const setIsRemoving = () => {
     return dispatch => {
         dispatch({type: IS_ADDING, payload: true})
+    }
+}
+
+export const fetchOpponentTeam = () => {
+    return dispatch => {
+        axiosWithAuth().get("/pokemon")
+            .then(response => {
+                const data = response.data;
+                const member1 = data[BattleManager.random()]
+                const member2 = data[BattleManager.random()]
+                const member3 = data[BattleManager.random()]
+                const member4 = data[BattleManager.random()]
+                const member5 = data[BattleManager.random()]
+                const member6 = data[BattleManager.random()]
+                dispatch({ type: FETCH_OPPONENT_TEAM, payload: [member1, member2, member3, member4, member5, member6] })
+            })
+            .catch(error => {
+                console.log(error)
+                dispatch({ type: ERROR_HANDLING, payload: { message: "You blacked out!" }})
+            })
     }
 }

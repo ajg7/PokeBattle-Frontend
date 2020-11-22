@@ -12,7 +12,8 @@ import {
     UPDATE_CURR_INDEX,
     IS_ADDING,
     IS_SWAPPING,
-    IS_REMOVING
+    IS_REMOVING,
+    FETCH_OPPONENT_TEAM
 } from "../actions"
 
 const initialState = {
@@ -28,7 +29,8 @@ const initialState = {
     isSwapping: false,
     isRemoving: false,
     team: Array(6).fill(null),
-    teamData: []
+    teamData: [],
+    opponentTeam: []
 }
 
 export default (state = initialState, action) => {
@@ -134,6 +136,11 @@ export default (state = initialState, action) => {
                 isAdding: false,
                 isSwapping: false,
                 isRemoving: action.payload
+            }
+        case FETCH_OPPONENT_TEAM:
+            return {
+                ...state,
+                opponentTeam: action.payload
             }
         default:
             return state;

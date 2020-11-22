@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 import { fetchPokemonTeam } from "../store/actions/actions";
-import CardsOnDeck from "./CardsOnDeck";
+import { StyledOnDeck } from "../StyledComponents/StyledOnDeck";
+import editIcon from "../assets/editIcon.png"
 
 const OnDeck = props => {
     const { teamData, teamId, fetchPokemonTeam } = props;
@@ -11,6 +12,14 @@ const OnDeck = props => {
 
     const goBackHandler = event => {
         history.goBack()
+    }
+    
+    const editNameHandler = event => {
+        console.log("It works!")
+    }
+
+    const battlePageHandler = event => {
+        history.push("/battle");
     }
 
     useEffect(() => {
@@ -21,16 +30,26 @@ const OnDeck = props => {
     return (
         <>
             <h2>Ready to Battle?</h2>
-            <div>
-                {/*teamData.newData.map(member => {
+            <StyledOnDeck>
+                {teamData.map(member => {
                     return (
-                        <CardsOnDeck 
-                            name={member.name}
-                        />
+                            <div className="cards">
+                                <div>
+                                    <img src={member.imgURL} alt={member.name} />
+                                </div> 
+                                <h3>{member.pokemon_Id}</h3>
+                                <span className="pokemon-name">
+                                    <img src={editIcon} alt="edit name icon" onClick={editNameHandler} />
+                                    <h2>{member.nickname ? member.nickname : member.name}</h2>
+                                </span>
+                                <h3>{member.type1}</h3>
+                                <h3>{member.type2}</h3>
+                            </div>
                     )
-                })*/}
-                <button onClick={goBackHandler}>Go Back</button>
-            </div>
+                })}
+            </StyledOnDeck>
+            <button onClick={goBackHandler}>Go Back</button>
+            <button onClick={battlePageHandler}>Battle!</button>
         </>
     )
 }
