@@ -20,7 +20,8 @@ const OnDeck = props => {
 
     const battlePageHandler = event => {
         makeOpponentTeam();
-        history.push("/loading");
+        history.push("/battle");
+        window.location.reload();
     }
 
     useEffect(() => {
