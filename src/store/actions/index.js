@@ -13,5 +13,6 @@ export {
     IS_ADDING,
     IS_SWAPPING,
     IS_REMOVING,
+    MAKE_OPPONENT_TEAM,
     FETCH_OPPONENT_TEAM
 } from "./actions";

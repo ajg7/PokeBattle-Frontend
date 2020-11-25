@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
-import { fetchPokemonTeam, fetchOpponentTeam } from "../store/actions/actions";
+import { fetchPokemonTeam, makeOpponentTeam } from "../store/actions/actions";
 import { StyledOnDeck } from "../StyledComponents/StyledOnDeck";
 import editIcon from "../assets/editIcon.png"
 
 const OnDeck = props => {
-    const { teamData, teamId, opponentTeam, fetchPokemonTeam } = props;
+    const { teamData, fetchPokemonTeam, makeOpponentTeam } = props;
 
     const history = useHistory();
 
@@ -19,7 +19,8 @@ const OnDeck = props => {
     }
 
     const battlePageHandler = event => {
-        history.push("/battle");
+        makeOpponentTeam();
+        history.push("/loading");
     }
 
     useEffect(() => {
@@ -63,4 +64,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { fetchPokemonTeam })(OnDeck);
+export default connect(mapStateToProps, { fetchPokemonTeam, makeOpponentTeam })(OnDeck);
