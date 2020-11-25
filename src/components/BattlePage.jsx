@@ -33,7 +33,7 @@ const BattlePage = props => {
     const drop = event => {
         setPlay(true);
         console.log(playedPokemon, opponentPokemon)
-        // BattleManager.evaluator(playedPokemon, opponentPokemon)
+        BattleManager.evaluator(playedPokemon, opponentPokemon)
     }
 
     const dragOver = event => event.preventDefault();

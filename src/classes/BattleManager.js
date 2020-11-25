@@ -17,7 +17,7 @@ export class BattleManager {
 
     static evaluator(player, opponent) {
 
-        console.log(player.type1, opponent.type1)
+        console.log(player.type1, player.type2, opponent.type1, opponent.type2)
         /*
         Normal > Ghost, Psychic [Kanto has no Dark Pokemon, so I decided to give Dark Type's Strengths to the Normal Type]
         Fighting > Normal, Rock, Steel, Ice, Dark
