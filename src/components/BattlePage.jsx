@@ -3,14 +3,15 @@ import { connect } from "react-redux";
 import { fetchPokemon, fetchPokemonTeam, fetchOpponentTeam } from "../store/actions/actions";
 import { StyledOnDeck as StyledBattleCards } from "../StyledComponents/StyledOnDeck";
 import { StyledArena } from "../StyledComponents/StyledArena";
+import { BattleManager } from "../classes/BattleManager";
 
 
 const BattlePage = props => {
 
-    const { fetchPokemon, fetchPokemonTeam, fetchOpponentTeam, pokemonData, teamData, opponentTeam, opponentTeamData } = props;
-    const [playedPokemon, setPlayedPokemon] = useState("");
+    const { fetchPokemon, fetchPokemonTeam, fetchOpponentTeam, pokemonData, teamData, opponentTeamData } = props;
+    const [playedPokemon, setPlayedPokemon] = useState({});
     const [play, setPlay] = useState(false);
-    const [opponent, setOpponent] = useState([]);
+    const [opponentPokemon, setOpponentPokemon] = useState({});
 
     /*
     Using the OpposingPokemon Class, I need to fetch data from db. Using a random number generator, select the index, 
@@ -22,13 +23,17 @@ const BattlePage = props => {
 
     const dragStart = event => {
         const pokemon = event.target.src;
+        const type1 = event.target.getAttribute("type1");
+        const type2 = event.target.getAttribute("type2");
+        const pokeOpponent = opponentTeamData[Math.round(Math.random() * 5)]
         setPlay(false);
-        setPlayedPokemon(pokemon)
-
+        setPlayedPokemon({img: pokemon, type1: type1, type2: type2})
+        setOpponentPokemon(pokeOpponent)
     }
 
     const drop = event => {
         setPlay(true);
+        console.log(playedPokemon, opponentPokemon)
     }
 
     const dragOver = event => event.preventDefault();
@@ -48,7 +53,7 @@ const BattlePage = props => {
                     return (
                             <div className="cards">
                                 <div>
-                                    <img src={member.imgURL} alt={member.name} onDragStart={dragStart} />
+                                    <img src={member.imgURL} alt={member.name} type1={member.type1} type2={member.type2} onDragStart={dragStart} />
                                 </div> 
                                 <h3>{member.pokemon_Id}</h3>
                                 <span className="pokemon-name">
@@ -62,7 +67,7 @@ const BattlePage = props => {
             </StyledBattleCards>
             <StyledArena>
             <div className="player-team-slot" onDragOver={dragOver} onDrop={drop}>
-                    {play ? <img src={playedPokemon} alt="player's pokemon" /> : null}
+                    {play ? <img src={playedPokemon.img} alt="player's pokemon" /> : null}
                 </div>
                 <div className="opponent-team-slot">
                     {play ? <img src={opponentTeamData[Math.round(Math.random() * 5)].imgURL} alt="opponent's pokemon" /> : null}
