@@ -3,19 +3,21 @@ export class BattleManager {
         this.score = score;
     }
 
-    get theScore() {
-        return this.score
-    }
+    // get theScore() {
+    //     return this.score
+    // }
 
-    set theScore(score) {
-        this.score = score
-    }
+    // set theScore(score) {
+    //     this.score = score
+    // }
 
     static random() {
         return Math.round(Math.random() * 150);
     }
 
-    static evaluator(playerType1, playerType2, opponentType1, opponentType2) {
+    static evaluator(player, opponent) {
+
+        console.log(player.type1, opponent.type1)
         /*
         Normal > Ghost, Psychic [Kanto has no Dark Pokemon, so I decided to give Dark Type's Strengths to the Normal Type]
         Fighting > Normal, Rock, Steel, Ice, Dark

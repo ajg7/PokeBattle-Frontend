@@ -25,15 +25,15 @@ const BattlePage = props => {
         const pokemon = event.target.src;
         const type1 = event.target.getAttribute("type1");
         const type2 = event.target.getAttribute("type2");
-        const pokeOpponent = opponentTeamData[Math.round(Math.random() * 5)]
         setPlay(false);
         setPlayedPokemon({img: pokemon, type1: type1, type2: type2})
-        setOpponentPokemon(pokeOpponent)
+        setOpponentPokemon(opponentTeamData[Math.round(Math.random() * 5)])
     }
 
     const drop = event => {
         setPlay(true);
         console.log(playedPokemon, opponentPokemon)
+        // BattleManager.evaluator(playedPokemon, opponentPokemon)
     }
 
     const dragOver = event => event.preventDefault();
@@ -70,7 +70,7 @@ const BattlePage = props => {
                     {play ? <img src={playedPokemon.img} alt="player's pokemon" /> : null}
                 </div>
                 <div className="opponent-team-slot">
-                    {play ? <img src={opponentTeamData[Math.round(Math.random() * 5)].imgURL} alt="opponent's pokemon" /> : null}
+                    {play ? <img src={opponentPokemon.imgURL} alt="opponent's pokemon" /> : null}
                 </div>
             </StyledArena>
             <StyledBattleCards>
