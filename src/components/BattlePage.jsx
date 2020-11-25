@@ -7,7 +7,7 @@ import { StyledArena } from "../StyledComponents/StyledArena";
 
 const BattlePage = props => {
 
-    const { fetchPokemon, fetchPokemonTeam, fetchOpponentTeam, pokemonData, teamData, opponentTeam } = props;
+    const { fetchPokemon, fetchPokemonTeam, fetchOpponentTeam, pokemonData, teamData, opponentTeam, opponentTeamData } = props;
     const [playedPokemon, setPlayedPokemon] = useState("");
     const [play, setPlay] = useState(false);
     const [opponent, setOpponent] = useState([]);
@@ -69,7 +69,7 @@ const BattlePage = props => {
                 </div>
             </StyledArena>
             <StyledBattleCards>
-                {opponentTeam.map(member => {
+                {opponentTeamData.map(member => {
                     return (
                         <div className="cards">
                             <div>
@@ -94,7 +94,8 @@ const mapStateToProps = state => {
     return {
         pokemonData: state.pokemonData,
         teamData: state.teamData,
-        opponentTeam: state.opponentTeam
+        opponentTeam: state.opponentTeam,
+        opponentTeamData: state.opponentTeamData
     }
 }
 

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
-import { fetchPokemonTeam, makeOpponentTeam } from "../store/actions/actions";
+import { fetchOpponentTeam, fetchPokemonTeam, makeOpponentTeam } from "../store/actions/actions";
 import { StyledOnDeck } from "../StyledComponents/StyledOnDeck";
 import editIcon from "../assets/editIcon.png"
 
@@ -21,7 +21,6 @@ const OnDeck = props => {
     const battlePageHandler = event => {
         makeOpponentTeam();
         history.push("/battle");
-        window.location.reload();
     }
 
     useEffect(() => {

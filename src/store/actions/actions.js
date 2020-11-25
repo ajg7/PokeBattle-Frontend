@@ -90,7 +90,6 @@ export const fetchPokemonTeam = teamId => {
         console.log(teamId)
         axiosWithAuth().get(`/pokemon_team/${teamId}`)
             .then(response => {
-                console.log("fetch", response.data)
                 dispatch({type: FETCH_POKEMON_TEAM, payload: response.data})
             })
             .catch(error => {

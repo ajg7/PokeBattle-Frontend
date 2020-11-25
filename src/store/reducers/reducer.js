@@ -31,7 +31,7 @@ const initialState = {
     isRemoving: false,
     team: Array(6).fill(null),
     teamData: [],
-    opponentTeam: []
+    opponentTeamData: []
 }
 
 export default (state = initialState, action) => {
@@ -141,15 +141,14 @@ export default (state = initialState, action) => {
         case MAKE_OPPONENT_TEAM:
             return {
                 ...state,
-                opponentTeam: action.payload
+                opponentTeamData: action.payload.data
             }
         case FETCH_OPPONENT_TEAM: 
             const opponents = localStorage.getItem("opponents")
             const opponentList = JSON.parse(opponents);
-            console.log(opponentList.data)
             return {
                 ...state,
-                opponentTeam: opponentList.data
+                opponentTeamData: opponentList.data
             }
         default:
             return state;
