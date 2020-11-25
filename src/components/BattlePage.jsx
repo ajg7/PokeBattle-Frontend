@@ -20,18 +20,18 @@ const BattlePage = props => {
     
     */
 
-    // const dragStart = event => {
-    //     const pokemon = event.target.src;
-    //     setPlay(false);
-    //     setPlayedPokemon(pokemon)
+    const dragStart = event => {
+        const pokemon = event.target.src;
+        setPlay(false);
+        setPlayedPokemon(pokemon)
 
-    // }
+    }
 
-    // const drop = event => {
-    //     setPlay(true);
-    // }
+    const drop = event => {
+        setPlay(true);
+    }
 
-    // const dragOver = event => event.preventDefault();
+    const dragOver = event => event.preventDefault();
 
     useEffect(() => {
         const currTeamId = localStorage.getItem("teamId");
@@ -48,7 +48,7 @@ const BattlePage = props => {
                     return (
                             <div className="cards">
                                 <div>
-                                    <img src={member.imgURL} alt={member.name} />
+                                    <img src={member.imgURL} alt={member.name} onDragStart={dragStart} />
                                 </div> 
                                 <h3>{member.pokemon_Id}</h3>
                                 <span className="pokemon-name">
@@ -61,11 +61,11 @@ const BattlePage = props => {
                 })}
             </StyledBattleCards>
             <StyledArena>
-            <div className="player-team-slot">
+            <div className="player-team-slot" onDragOver={dragOver} onDrop={drop}>
                     {play ? <img src={playedPokemon} alt="player's pokemon" /> : null}
                 </div>
                 <div className="opponent-team-slot">
-                    {play ? <img src={opponentTeam[Math.round(Math.random() * 5)].imgURL} alt="opponent's pokemon" /> : null}
+                    {play ? <img src={opponentTeamData[Math.round(Math.random() * 5)].imgURL} alt="opponent's pokemon" /> : null}
                 </div>
             </StyledArena>
             <StyledBattleCards>
