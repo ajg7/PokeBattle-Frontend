@@ -17,30 +17,91 @@ export class BattleManager {
 
     static evaluator(player, opponent) {
 
-        console.log(player.type1, player.type2, opponent.type1, opponent.type2)
-        /*
-        Normal > Ghost, Psychic [Kanto has no Dark Pokemon, so I decided to give Dark Type's Strengths to the Normal Type]
-        Fighting > Normal, Rock, Steel, Ice, Dark
-        Flying > Fighting, Bug, Grass
-        Poison > Grass, Fairy
-        Ground > Poison, Rock, Steel, Fire, Electric
-        Rock > Flying, Bug, Fire, ICe
-        Bug > Grass, Psychic, Dark
-        Ghost > Ghost, Psychic
-        Steel > Rock, Ice, Fairy
-        Fire > Bug, Steel, Grass, Ice
-        Water > Ground, Rock, Fire
-        Grass > Water, Ground, Rock
-        Electric > Flying, Water
-        Psychic > Fighting, Poison
-        Ice > Flying, Ground, Grass, Dragon
-        Dragon > Dragon
-        Fairy > Fighting, Dragon, Dark
-        
-        
-        
-        
-        */
+        const winningTypes = 
+        [
+            {
+                fighting: ["normal", "rock", "steel", "ice", "dark"]
+            },
+            {
+                flying: ["fighting", "bug", "grass"]
+            },
+            {
+                poison: ["grass", "fairy"]
+            },
+            {
+                ground: ["poison", "rock","steel", "fire", "electric"]
+            },
+            {
+                rock: ["flying", "bug", "fire", "ice"]
+            },
+            {
+                bug: ["grass", "psychic"]
+            },
+            {
+                ghost: ["ghost", "psychic"]
+            },
+            {
+                steel: ["rock", "ice", "fairy"]
+            },
+            {
+                fire: ["bug", "steel", "grass", "ice"]
+            },
+            {
+                water: ["ground", "rock", "fire"]
+            },
+            {
+                grass: ["water", "ground", "rock"]
+            },
+            {
+                electric: ["flying", "water"]
+            },
+            {
+                psychic: ["fighting", "poison"]
+            },
+            {
+                ice: ["flying", "ground", "grass", "dragon"]
+            },
+            {
+                dragon: ["dragon"]
+            },
+            {
+                fairy: ["fighting", "dragon"]
+            }
+        ]
+
+        const playerTypeStrengths = winningTypes.filter(ele => Object.keys(ele)[0] === player.type1 || Object.keys(ele)[0] === player.type2);
+
+        const opponentTypeStrengths = winningTypes.filter(ele => Object.keys(ele)[0] === opponent.type1 || Object.keys(ele)[0] === opponent.type2);
+        // console.log(playerTypeStrengths, opponentTypeStrengths)
+        // console.log(player.type1, player.type2, opponent.type1, opponent.type2)
+
+        let awarded = false;
+
+        for (const typeStrength of playerTypeStrengths) {
+            for (const type of Object.values(typeStrength)[0]) {
+                if (type === opponent.type1 || type === opponent.type2) {
+                    console.log("player wins")
+                    awarded = true;
+                }
+            }
+        }
+        for (const typeStrength of opponentTypeStrengths) {
+            for (const type of Object.values(typeStrength)[0]) {
+                if (type === player.type1 || type === player.type2) {
+                    console.log("opponent wins")
+                    awarded = true;
+                }
+            }
+        }
+        if (!awarded) {
+            console.log("draw");
+            const tieBreaker = Math.round(Math.random())
+            if (tieBreaker === 0) {
+                console.log("player wins tiebreaker!")
+            } else {
+                console.log("opponent wins tiebreaker!")
+            }
+        }
     }
 
 }
