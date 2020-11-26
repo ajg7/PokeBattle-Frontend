@@ -25,8 +25,9 @@ const BattlePage = props => {
         const pokemon = event.target.src;
         const type1 = event.target.getAttribute("type1");
         const type2 = event.target.getAttribute("type2");
+        const name = event.target.alt;
         setPlay(false);
-        setPlayedPokemon({img: pokemon, type1: type1, type2: type2})
+        setPlayedPokemon({name: name, img: pokemon, type1: type1, type2: type2})
         setOpponentPokemon(opponentTeamData[Math.round(Math.random() * 5)])
     }
 

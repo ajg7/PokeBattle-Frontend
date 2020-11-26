@@ -16,7 +16,7 @@ export class BattleManager {
     }
 
     static evaluator(player, opponent) {
-
+        console.log(player, opponent)
         const winningTypes = 
         [
             {
@@ -81,7 +81,7 @@ export class BattleManager {
             for (const type of Object.values(typeStrength)[0]) {
                 if (type === opponent.type1 || type === opponent.type2) {
                     awarded = true;
-                    return "player wins"
+                    return {message: "player wins", loser: opponent.name}
                 }
             }
         }
@@ -89,16 +89,16 @@ export class BattleManager {
             for (const type of Object.values(typeStrength)[0]) {
                 if (type === player.type1 || type === player.type2) {
                     awarded = true;
-                    return "opponent wins"
+                    return {message: "opponent wins", loser: player.name}
                 }
             }
         }
         if (!awarded) {
             const tieBreaker = Math.round(Math.random())
             if (tieBreaker === 0) {
-                return "draw- player wins tiebreaker"
+                return {message: "draw- player wins tiebreaker", loser: opponent.name}
             } else {
-                return "draw- opponent wins tiebreaker"
+                return {message: "draw- opponent wins tiebreaker", loser: player.name}
             }
         }
     }

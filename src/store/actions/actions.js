@@ -180,7 +180,7 @@ export const fetchOpponentTeam = () => {
 
 export const battle = outcome => {
     return dispatch => {
-        
-        dispatch({ type: BATTLE, payload: outcome })
+
+        dispatch({ type: BATTLE, payload: {message: outcome.message, loser: outcome.loser }})
     }
 }

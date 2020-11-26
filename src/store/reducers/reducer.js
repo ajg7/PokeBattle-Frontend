@@ -153,9 +153,14 @@ export default (state = initialState, action) => {
                 opponentTeamData: opponentList.data
             }
         case BATTLE:
+            const newTeam = state.teamData.filter(member => member.name !== action.payload.loser)
+            const newOpponentTeam = state.opponentTeamData.filter(member => member.name !== action.payload.loser)
+            console.log(newTeam, newOpponentTeam)
             return {
                 ...state,
-                outcome: action.payload
+                outcome: action.payload.message,
+                teamData: newTeam,
+                opponentTeamData: newOpponentTeam
             }
         default:
             return state;
