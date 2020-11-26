@@ -14,7 +14,8 @@ import {
     IS_SWAPPING,
     IS_REMOVING,
     MAKE_OPPONENT_TEAM,
-    FETCH_OPPONENT_TEAM
+    FETCH_OPPONENT_TEAM,
+    BATTLE
 } from "../actions"
 
 const initialState = {
@@ -31,7 +32,8 @@ const initialState = {
     isRemoving: false,
     team: Array(6).fill(null),
     teamData: [],
-    opponentTeamData: []
+    opponentTeamData: [],
+    outcome: ""
 }
 
 export default (state = initialState, action) => {
@@ -149,6 +151,11 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 opponentTeamData: opponentList.data
+            }
+        case BATTLE:
+            return {
+                ...state,
+                outcome: action.payload
             }
         default:
             return state;

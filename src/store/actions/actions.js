@@ -18,6 +18,7 @@ export const IS_SWAPPING = "IS_SWAPPING";
 export const IS_REMOVING = "IS_REMOVING";
 export const MAKE_OPPONENT_TEAM = "MAKE_OPPONENT_TEAM";
 export const FETCH_OPPONENT_TEAM = "FETCH_OPPONENT_TEAM";
+export const BATTLE = "BATTLE";
 
 export const fetchPokemon = () => {
     return dispatch => {
@@ -174,5 +175,12 @@ export const makeOpponentTeam = () => {
 export const fetchOpponentTeam = () => {
     return dispatch => {
         dispatch({ type: FETCH_OPPONENT_TEAM })
+    }
+}
+
+export const battle = outcome => {
+    return dispatch => {
+        
+        dispatch({ type: BATTLE, payload: outcome })
     }
 }

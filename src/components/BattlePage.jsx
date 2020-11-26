@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { fetchPokemon, fetchPokemonTeam, fetchOpponentTeam } from "../store/actions/actions";
+import { fetchPokemon, fetchPokemonTeam, fetchOpponentTeam, battle } from "../store/actions/actions";
 import { StyledOnDeck as StyledBattleCards } from "../StyledComponents/StyledOnDeck";
 import { StyledArena } from "../StyledComponents/StyledArena";
 import { BattleManager } from "../classes/BattleManager";
@@ -8,7 +8,7 @@ import { BattleManager } from "../classes/BattleManager";
 
 const BattlePage = props => {
 
-    const { fetchPokemon, fetchPokemonTeam, fetchOpponentTeam, pokemonData, teamData, opponentTeamData } = props;
+    const { fetchPokemon, fetchPokemonTeam, fetchOpponentTeam, pokemonData, battle, outcome, teamData, opponentTeamData } = props;
     const [playedPokemon, setPlayedPokemon] = useState({});
     const [play, setPlay] = useState(false);
     const [opponentPokemon, setOpponentPokemon] = useState({});
@@ -32,8 +32,8 @@ const BattlePage = props => {
 
     const drop = event => {
         setPlay(true);
-        console.log(playedPokemon, opponentPokemon)
-        BattleManager.evaluator(playedPokemon, opponentPokemon)
+        const outcome = BattleManager.evaluator(playedPokemon, opponentPokemon);
+        battle(outcome);
     }
 
     const dragOver = event => event.preventDefault();
@@ -66,11 +66,14 @@ const BattlePage = props => {
                 })}
             </StyledBattleCards>
             <StyledArena>
-            <div className="player-team-slot" onDragOver={dragOver} onDrop={drop}>
+                <div className="player-team-slot" onDragOver={dragOver} onDrop={drop}>
                     {play ? <img src={playedPokemon.img} alt="player's pokemon" /> : null}
                 </div>
                 <div className="opponent-team-slot">
                     {play ? <img src={opponentPokemon.imgURL} alt="opponent's pokemon" /> : null}
+                </div>
+                <div>
+                    <h3>{outcome}</h3>
                 </div>
             </StyledArena>
             <StyledBattleCards>
@@ -78,7 +81,7 @@ const BattlePage = props => {
                     return (
                         <div className="cards">
                             <div>
-                                <img src={member.imgURL} alt={member.name} />
+                                <img src={member.imgURL} alt={member.name} draggable="false" />
                             </div> 
                             <h3>{member.pokemon_Id}</h3>
                             <span className="pokemon-name">
@@ -100,8 +103,9 @@ const mapStateToProps = state => {
         pokemonData: state.pokemonData,
         teamData: state.teamData,
         opponentTeam: state.opponentTeam,
-        opponentTeamData: state.opponentTeamData
+        opponentTeamData: state.opponentTeamData,
+        outcome: state.outcome
     }
 }
 
-export default connect(mapStateToProps, { fetchPokemon, fetchPokemonTeam, fetchOpponentTeam })(BattlePage);
+export default connect(mapStateToProps, { fetchPokemon, fetchPokemonTeam, fetchOpponentTeam, battle })(BattlePage);
