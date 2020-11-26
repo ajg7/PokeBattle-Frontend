@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { fetchPokemon, fetchPokemonTeam, fetchOpponentTeam } from "../store/actions/actions";
+import { fetchPokemon, fetchPokemonTeam, fetchOpponentTeam, battle } from "../store/actions/actions";
 import { StyledOnDeck as StyledBattleCards } from "../StyledComponents/StyledOnDeck";
 import { StyledArena } from "../StyledComponents/StyledArena";
 import { BattleManager } from "../classes/BattleManager";
@@ -8,7 +8,7 @@ import { BattleManager } from "../classes/BattleManager";
 
 const BattlePage = props => {
 
-    const { fetchPokemon, fetchPokemonTeam, fetchOpponentTeam, pokemonData, teamData, opponentTeamData } = props;
+    const { fetchPokemon, fetchPokemonTeam, fetchOpponentTeam, pokemonData, battle, outcome, teamData, opponentTeamData } = props;
     const [playedPokemon, setPlayedPokemon] = useState({});
     const [play, setPlay] = useState(false);
     const [opponentPokemon, setOpponentPokemon] = useState({});
@@ -25,15 +25,20 @@ const BattlePage = props => {
         const pokemon = event.target.src;
         const type1 = event.target.getAttribute("type1");
         const type2 = event.target.getAttribute("type2");
+        const name = event.target.alt;
         setPlay(false);
-        setPlayedPokemon({img: pokemon, type1: type1, type2: type2})
-        setOpponentPokemon(opponentTeamData[Math.round(Math.random() * 5)])
+        setPlayedPokemon({name: name, img: pokemon, type1: type1, type2: type2})
+        setOpponentPokemon(opponentTeamData[Math.round(Math.random() * (opponentTeamData.length - 1))])
     }
 
     const drop = event => {
         setPlay(true);
         console.log(playedPokemon, opponentPokemon)
-        BattleManager.evaluator(playedPokemon, opponentPokemon)
+        if (teamData.length > 0 || opponentTeamData.length > 0) {
+            const outcome = BattleManager.evaluator(playedPokemon, opponentPokemon);
+            battle(outcome);
+        }
+        console.log(teamData.length)
     }
 
     const dragOver = event => event.preventDefault();
@@ -44,7 +49,7 @@ const BattlePage = props => {
         fetchOpponentTeam();
     },[fetchPokemonTeam, fetchOpponentTeam, fetchPokemon])
 
-    
+    const restart = event => window.location.reload();    
 
     return (
         <>
@@ -66,11 +71,14 @@ const BattlePage = props => {
                 })}
             </StyledBattleCards>
             <StyledArena>
-            <div className="player-team-slot" onDragOver={dragOver} onDrop={drop}>
+                <div className="player-team-slot" onDragOver={dragOver} onDrop={drop}>
                     {play ? <img src={playedPokemon.img} alt="player's pokemon" /> : null}
                 </div>
                 <div className="opponent-team-slot">
                     {play ? <img src={opponentPokemon.imgURL} alt="opponent's pokemon" /> : null}
+                </div>
+                <div>
+                    <h3>{outcome}</h3>
                 </div>
             </StyledArena>
             <StyledBattleCards>
@@ -78,7 +86,7 @@ const BattlePage = props => {
                     return (
                         <div className="cards">
                             <div>
-                                <img src={member.imgURL} alt={member.name} />
+                                <img src={member.imgURL} alt={member.name} draggable="false" />
                             </div> 
                             <h3>{member.pokemon_Id}</h3>
                             <span className="pokemon-name">
@@ -89,8 +97,8 @@ const BattlePage = props => {
                         </div>
                     )
                 })}
-            
             </StyledBattleCards>
+            <button onClick={restart}>Restart Battle</button>
         </>
     )
 }
@@ -100,8 +108,9 @@ const mapStateToProps = state => {
         pokemonData: state.pokemonData,
         teamData: state.teamData,
         opponentTeam: state.opponentTeam,
-        opponentTeamData: state.opponentTeamData
+        opponentTeamData: state.opponentTeamData,
+        outcome: state.outcome
     }
 }
 
-export default connect(mapStateToProps, { fetchPokemon, fetchPokemonTeam, fetchOpponentTeam })(BattlePage);
+export default connect(mapStateToProps, { fetchPokemon, fetchPokemonTeam, fetchOpponentTeam, battle })(BattlePage);

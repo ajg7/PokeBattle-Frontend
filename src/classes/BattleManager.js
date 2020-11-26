@@ -16,7 +16,7 @@ export class BattleManager {
     }
 
     static evaluator(player, opponent) {
-
+        console.log(player, opponent)
         const winningTypes = 
         [
             {
@@ -69,37 +69,36 @@ export class BattleManager {
             }
         ]
 
+        // Convert to a Hash Map when you refactor
+
         const playerTypeStrengths = winningTypes.filter(ele => Object.keys(ele)[0] === player.type1 || Object.keys(ele)[0] === player.type2);
 
         const opponentTypeStrengths = winningTypes.filter(ele => Object.keys(ele)[0] === opponent.type1 || Object.keys(ele)[0] === opponent.type2);
-        // console.log(playerTypeStrengths, opponentTypeStrengths)
-        // console.log(player.type1, player.type2, opponent.type1, opponent.type2)
 
         let awarded = false;
 
         for (const typeStrength of playerTypeStrengths) {
             for (const type of Object.values(typeStrength)[0]) {
                 if (type === opponent.type1 || type === opponent.type2) {
-                    console.log("player wins")
                     awarded = true;
+                    return {message: "player wins", loser: opponent.name}
                 }
             }
         }
         for (const typeStrength of opponentTypeStrengths) {
             for (const type of Object.values(typeStrength)[0]) {
                 if (type === player.type1 || type === player.type2) {
-                    console.log("opponent wins")
                     awarded = true;
+                    return {message: "opponent wins", loser: player.name}
                 }
             }
         }
         if (!awarded) {
-            console.log("draw");
             const tieBreaker = Math.round(Math.random())
             if (tieBreaker === 0) {
-                console.log("player wins tiebreaker!")
+                return {message: "draw- player wins tiebreaker", loser: opponent.name}
             } else {
-                console.log("opponent wins tiebreaker!")
+                return {message: "draw- opponent wins tiebreaker", loser: player.name}
             }
         }
     }
