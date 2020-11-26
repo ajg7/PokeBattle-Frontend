@@ -16,6 +16,7 @@ export const REMOVE_POKEMON = "REMOVE_POKEMON";
 export const IS_ADDING = "IS_ADDING";
 export const IS_SWAPPING = "IS_SWAPPING";
 export const IS_REMOVING = "IS_REMOVING";
+export const MAKE_OPPONENT_TEAM = "MAKE_OPPONENT_TEAM";
 export const FETCH_OPPONENT_TEAM = "FETCH_OPPONENT_TEAM";
 
 export const fetchPokemon = () => {
@@ -89,7 +90,6 @@ export const fetchPokemonTeam = teamId => {
         console.log(teamId)
         axiosWithAuth().get(`/pokemon_team/${teamId}`)
             .then(response => {
-                console.log("fetch", response.data)
                 dispatch({type: FETCH_POKEMON_TEAM, payload: response.data})
             })
             .catch(error => {
@@ -149,7 +149,7 @@ export const setIsRemoving = () => {
     }
 }
 
-export const fetchOpponentTeam = () => {
+export const makeOpponentTeam = () => {
     return dispatch => {
         axiosWithAuth().get("/pokemon")
             .then(response => {
@@ -160,11 +160,19 @@ export const fetchOpponentTeam = () => {
                 const member4 = data[BattleManager.random()]
                 const member5 = data[BattleManager.random()]
                 const member6 = data[BattleManager.random()]
-                dispatch({ type: FETCH_OPPONENT_TEAM, payload: [member1, member2, member3, member4, member5, member6] })
+                const opponents = {data: [member1, member2, member3, member4, member5, member6]};
+                localStorage.setItem("opponents", JSON.stringify(opponents));
+                dispatch({ type: MAKE_OPPONENT_TEAM, payload: opponents })
             })
             .catch(error => {
                 console.log(error)
                 dispatch({ type: ERROR_HANDLING, payload: { message: "You blacked out!" }})
             })
+    }
+}
+
+export const fetchOpponentTeam = () => {
+    return dispatch => {
+        dispatch({ type: FETCH_OPPONENT_TEAM })
     }
 }

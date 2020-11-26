@@ -18,4 +18,9 @@ export const StyledArena = styled.div`
         margin: 25px 0;
     }
 
+    img {
+        height: 100px;
+        width: 100px;
+    }
+
 `

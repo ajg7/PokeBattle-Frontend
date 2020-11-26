@@ -1,15 +1,18 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { fetchPokemon, fetchPokemonTeam, fetchOpponentTeam } from "../store/actions/actions";
-import { OpposingPokemon } from "../classes/OpposingPokemon";
-import { BattleManager } from "../classes/BattleManager";
 import { StyledOnDeck as StyledBattleCards } from "../StyledComponents/StyledOnDeck";
 import { StyledArena } from "../StyledComponents/StyledArena";
+import { BattleManager } from "../classes/BattleManager";
 
 
 const BattlePage = props => {
 
-    const { fetchPokemon, fetchPokemonTeam, fetchOpponentTeam, pokemonData, teamData, opponentTeam } = props;
+    const { fetchPokemon, fetchPokemonTeam, fetchOpponentTeam, pokemonData, teamData, opponentTeamData } = props;
+    const [playedPokemon, setPlayedPokemon] = useState({});
+    const [play, setPlay] = useState(false);
+    const [opponentPokemon, setOpponentPokemon] = useState({});
+
     /*
     Using the OpposingPokemon Class, I need to fetch data from db. Using a random number generator, select the index, 
     then fill out a new class instance with the pokemon's data
@@ -17,10 +20,28 @@ const BattlePage = props => {
     
     
     */
+
+    const dragStart = event => {
+        const pokemon = event.target.src;
+        const type1 = event.target.getAttribute("type1");
+        const type2 = event.target.getAttribute("type2");
+        setPlay(false);
+        setPlayedPokemon({img: pokemon, type1: type1, type2: type2})
+        setOpponentPokemon(opponentTeamData[Math.round(Math.random() * 5)])
+    }
+
+    const drop = event => {
+        setPlay(true);
+        console.log(playedPokemon, opponentPokemon)
+        BattleManager.evaluator(playedPokemon, opponentPokemon)
+    }
+
+    const dragOver = event => event.preventDefault();
+
     useEffect(() => {
         const currTeamId = localStorage.getItem("teamId");
         fetchPokemonTeam(currTeamId);
-        fetchOpponentTeam()
+        fetchOpponentTeam();
     },[fetchPokemonTeam, fetchOpponentTeam, fetchPokemon])
 
     
@@ -32,7 +53,7 @@ const BattlePage = props => {
                     return (
                             <div className="cards">
                                 <div>
-                                    <img src={member.imgURL} alt={member.name} />
+                                    <img src={member.imgURL} alt={member.name} type1={member.type1} type2={member.type2} onDragStart={dragStart} />
                                 </div> 
                                 <h3>{member.pokemon_Id}</h3>
                                 <span className="pokemon-name">
@@ -45,15 +66,15 @@ const BattlePage = props => {
                 })}
             </StyledBattleCards>
             <StyledArena>
-                <div className="player-team-slot">
-
+            <div className="player-team-slot" onDragOver={dragOver} onDrop={drop}>
+                    {play ? <img src={playedPokemon.img} alt="player's pokemon" /> : null}
                 </div>
                 <div className="opponent-team-slot">
-                
+                    {play ? <img src={opponentPokemon.imgURL} alt="opponent's pokemon" /> : null}
                 </div>
             </StyledArena>
             <StyledBattleCards>
-                {opponentTeam.map(member => {
+                {opponentTeamData.map(member => {
                     return (
                         <div className="cards">
                             <div>
@@ -78,7 +99,8 @@ const mapStateToProps = state => {
     return {
         pokemonData: state.pokemonData,
         teamData: state.teamData,
-        opponentTeam: state.opponentTeam
+        opponentTeam: state.opponentTeam,
+        opponentTeamData: state.opponentTeamData
     }
 }
 

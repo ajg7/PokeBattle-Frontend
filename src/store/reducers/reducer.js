@@ -13,6 +13,7 @@ import {
     IS_ADDING,
     IS_SWAPPING,
     IS_REMOVING,
+    MAKE_OPPONENT_TEAM,
     FETCH_OPPONENT_TEAM
 } from "../actions"
 
@@ -30,7 +31,7 @@ const initialState = {
     isRemoving: false,
     team: Array(6).fill(null),
     teamData: [],
-    opponentTeam: []
+    opponentTeamData: []
 }
 
 export default (state = initialState, action) => {
@@ -137,10 +138,17 @@ export default (state = initialState, action) => {
                 isSwapping: false,
                 isRemoving: action.payload
             }
-        case FETCH_OPPONENT_TEAM:
+        case MAKE_OPPONENT_TEAM:
             return {
                 ...state,
-                opponentTeam: action.payload
+                opponentTeamData: action.payload.data
+            }
+        case FETCH_OPPONENT_TEAM: 
+            const opponents = localStorage.getItem("opponents")
+            const opponentList = JSON.parse(opponents);
+            return {
+                ...state,
+                opponentTeamData: opponentList.data
             }
         default:
             return state;
