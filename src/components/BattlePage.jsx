@@ -28,13 +28,17 @@ const BattlePage = props => {
         const name = event.target.alt;
         setPlay(false);
         setPlayedPokemon({name: name, img: pokemon, type1: type1, type2: type2})
-        setOpponentPokemon(opponentTeamData[Math.round(Math.random() * 5)])
+        setOpponentPokemon(opponentTeamData[Math.round(Math.random() * (opponentTeamData.length - 1))])
     }
 
     const drop = event => {
         setPlay(true);
-        const outcome = BattleManager.evaluator(playedPokemon, opponentPokemon);
-        battle(outcome);
+        console.log(playedPokemon, opponentPokemon)
+        if (teamData.length > 0 || opponentTeamData.length > 0) {
+            const outcome = BattleManager.evaluator(playedPokemon, opponentPokemon);
+            battle(outcome);
+        }
+        console.log(teamData.length)
     }
 
     const dragOver = event => event.preventDefault();
@@ -45,7 +49,7 @@ const BattlePage = props => {
         fetchOpponentTeam();
     },[fetchPokemonTeam, fetchOpponentTeam, fetchPokemon])
 
-    
+    const restart = event => window.location.reload();    
 
     return (
         <>
@@ -93,8 +97,8 @@ const BattlePage = props => {
                         </div>
                     )
                 })}
-            
             </StyledBattleCards>
+            <button onClick={restart}>Restart Battle</button>
         </>
     )
 }
