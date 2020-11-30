@@ -16,8 +16,8 @@ export const REMOVE_POKEMON = "REMOVE_POKEMON";
 export const IS_ADDING = "IS_ADDING";
 export const IS_SWAPPING = "IS_SWAPPING";
 export const IS_REMOVING = "IS_REMOVING";
-export const MAKE_OPPONENT_TEAM = "MAKE_OPPONENT_TEAM";
-export const FETCH_OPPONENT_TEAM = "FETCH_OPPONENT_TEAM";
+export const MAKE_CHALLENGER_TEAM = "MAKE_CHALLENGER_TEAM";
+export const FETCH_CHALLENGER_TEAM = "FETCH_CHALLENGER_TEAM";
 export const BATTLE = "BATTLE";
 
 export const fetchPokemon = () => {
@@ -150,7 +150,7 @@ export const setIsRemoving = () => {
     }
 }
 
-export const makeOpponentTeam = () => {
+export const makeChallengerTeam = () => {
     return dispatch => {
         axiosWithAuth().get("/pokemon")
             .then(response => {
@@ -161,9 +161,9 @@ export const makeOpponentTeam = () => {
                 const member4 = data[BattleManager.random()]
                 const member5 = data[BattleManager.random()]
                 const member6 = data[BattleManager.random()]
-                const opponents = {data: [member1, member2, member3, member4, member5, member6]};
-                localStorage.setItem("opponents", JSON.stringify(opponents));
-                dispatch({ type: MAKE_OPPONENT_TEAM, payload: opponents })
+                const challengers = {data: [member1, member2, member3, member4, member5, member6]};
+                localStorage.setItem("challengers", JSON.stringify(challengers));
+                dispatch({ type: MAKE_CHALLENGER_TEAM, payload: challengers })
             })
             .catch(error => {
                 console.log(error)
@@ -172,9 +172,9 @@ export const makeOpponentTeam = () => {
     }
 }
 
-export const fetchOpponentTeam = () => {
+export const fetchChallengerTeam = () => {
     return dispatch => {
-        dispatch({ type: FETCH_OPPONENT_TEAM })
+        dispatch({ type: FETCH_CHALLENGER_TEAM })
     }
 }
 
