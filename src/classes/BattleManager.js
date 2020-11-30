@@ -1,20 +1,13 @@
 export class BattleManager {
-    constructor(score) {
-        this.score = score;
+    constructor(playerScore, opponentScore) {
+        this.playerScore = playerScore;
+        this.opponentScore = opponentScore;
     }
-
-    // get theScore() {
-    //     return this.score
-    // }
-
-    // set theScore(score) {
-    //     this.score = score
-    // }
 
     static random() {
         return Math.round(Math.random() * 150);
     }
-
+    
     static evaluator(player, opponent) {
         console.log(player, opponent)
         const winningTypes = 
@@ -70,7 +63,6 @@ export class BattleManager {
         ]
 
         // Convert to a Hash Map when you refactor
-
         const playerTypeStrengths = winningTypes.filter(ele => Object.keys(ele)[0] === player.type1 || Object.keys(ele)[0] === player.type2);
 
         const opponentTypeStrengths = winningTypes.filter(ele => Object.keys(ele)[0] === opponent.type1 || Object.keys(ele)[0] === opponent.type2);
@@ -102,5 +94,6 @@ export class BattleManager {
             }
         }
     }
-
 }
+
+export const scores = new BattleManager(0, 0)
