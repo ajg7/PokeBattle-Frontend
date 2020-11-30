@@ -10,7 +10,7 @@ export const StyledArena = styled.div`
     background-color: limegreen;
     margin: 15px 0;
 
-    .player-team-slot, .opponent-team-slot {
+    .player-team-slot, .challenger-team-slot {
         height: 100px;
         width: 100px;
         border: 5px dotted blue;

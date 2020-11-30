@@ -1,15 +1,14 @@
 export class BattleManager {
-    constructor(playerScore, opponentScore) {
+    constructor(playerScore, challengerScore) {
         this.playerScore = playerScore;
-        this.opponentScore = opponentScore;
+        this.challengerScore = challengerScore;
     }
 
     static random() {
         return Math.round(Math.random() * 150);
     }
     
-    static evaluator(player, opponent) {
-        console.log(player, opponent)
+    static evaluator(player, challenger) {
         const winningTypes = 
         [
             {
@@ -65,32 +64,32 @@ export class BattleManager {
         // Convert to a Hash Map when you refactor
         const playerTypeStrengths = winningTypes.filter(ele => Object.keys(ele)[0] === player.type1 || Object.keys(ele)[0] === player.type2);
 
-        const opponentTypeStrengths = winningTypes.filter(ele => Object.keys(ele)[0] === opponent.type1 || Object.keys(ele)[0] === opponent.type2);
+        const challengerTypeStrengths = winningTypes.filter(ele => Object.keys(ele)[0] === challenger.type1 || Object.keys(ele)[0] === challenger.type2);
 
         let awarded = false;
 
         for (const typeStrength of playerTypeStrengths) {
             for (const type of Object.values(typeStrength)[0]) {
-                if (type === opponent.type1 || type === opponent.type2) {
+                if (type === challenger.type1 || type === challenger.type2) {
                     awarded = true;
-                    return {message: "player wins", loser: opponent.name}
+                    return {message: "player wins", loser: challenger.name}
                 }
             }
         }
-        for (const typeStrength of opponentTypeStrengths) {
+        for (const typeStrength of challengerTypeStrengths) {
             for (const type of Object.values(typeStrength)[0]) {
                 if (type === player.type1 || type === player.type2) {
                     awarded = true;
-                    return {message: "opponent wins", loser: player.name}
+                    return {message: "challenger wins", loser: player.name}
                 }
             }
         }
         if (!awarded) {
             const tieBreaker = Math.round(Math.random())
             if (tieBreaker === 0) {
-                return {message: "draw- player wins tiebreaker", loser: opponent.name}
+                return {message: "draw- player wins tiebreaker", loser: challenger.name}
             } else {
-                return {message: "draw- opponent wins tiebreaker", loser: player.name}
+                return {message: "draw- challenger wins tiebreaker", loser: player.name}
             }
         }
     }

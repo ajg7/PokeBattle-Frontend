@@ -13,8 +13,8 @@ import {
     IS_ADDING,
     IS_SWAPPING,
     IS_REMOVING,
-    MAKE_OPPONENT_TEAM,
-    FETCH_OPPONENT_TEAM,
+    MAKE_CHALLENGER_TEAM,
+    FETCH_CHALLENGER_TEAM,
     BATTLE
 } from "../actions"
 
@@ -32,7 +32,7 @@ const initialState = {
     isRemoving: false,
     team: Array(6).fill(null),
     teamData: [],
-    opponentTeamData: [],
+    challengerTeamData: [],
     outcome: ""
 }
 
@@ -140,27 +140,26 @@ export default (state = initialState, action) => {
                 isSwapping: false,
                 isRemoving: action.payload
             }
-        case MAKE_OPPONENT_TEAM:
+        case MAKE_CHALLENGER_TEAM:
             return {
                 ...state,
-                opponentTeamData: action.payload.data
+                challengerTeamData: action.payload.data
             }
-        case FETCH_OPPONENT_TEAM: 
-            const opponents = localStorage.getItem("opponents")
-            const opponentList = JSON.parse(opponents);
+        case FETCH_CHALLENGER_TEAM: 
+            const challengers = localStorage.getItem("challengers")
+            const challengerList = JSON.parse(challengers);
             return {
                 ...state,
-                opponentTeamData: opponentList.data
+                challengerTeamData: challengerList.data
             }
         case BATTLE:
             const newTeam = state.teamData.filter(member => member.name !== action.payload.loser)
-            const newOpponentTeam = state.opponentTeamData.filter(member => member.name !== action.payload.loser)
-            console.log(newTeam, newOpponentTeam)
+            const newChallengerTeam = state.challengerTeamData.filter(member => member.name !== action.payload.loser)
             return {
                 ...state,
                 outcome: action.payload.message,
                 teamData: newTeam,
-                opponentTeamData: newOpponentTeam
+                challengerTeamData: newChallengerTeam
             }
         default:
             return state;

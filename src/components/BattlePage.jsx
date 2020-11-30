@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { fetchPokemon, fetchPokemonTeam, fetchOpponentTeam, battle } from "../store/actions/actions";
+import { fetchPokemon, fetchPokemonTeam, fetchChallengerTeam, battle } from "../store/actions/actions";
 import { StyledOnDeck as StyledBattleCards } from "../StyledComponents/StyledOnDeck";
 import { StyledArena } from "../StyledComponents/StyledArena";
 import { BattleManager, scores } from "../classes/BattleManager";
@@ -8,10 +8,10 @@ import { BattleManager, scores } from "../classes/BattleManager";
 
 const BattlePage = props => {
 
-    const { fetchPokemon, fetchPokemonTeam, fetchOpponentTeam, pokemonData, battle, outcome, teamData, opponentTeamData } = props;
+    const { fetchPokemon, fetchPokemonTeam, fetchChallengerTeam, pokemonData, battle, outcome, teamData, challengerTeamData } = props;
     const [playedPokemon, setPlayedPokemon] = useState({});
     const [play, setPlay] = useState(false);
-    const [opponentPokemon, setOpponentPokemon] = useState({});
+    const [challengerPokemon, setChallengerPokemon] = useState({});
     const [victor, setVictor] = useState(null);
 
     const dragStart = event => {
@@ -21,24 +21,24 @@ const BattlePage = props => {
         const name = event.target.alt;
         setPlay(false);
         setPlayedPokemon({name: name, img: pokemon, type1: type1, type2: type2})
-        setOpponentPokemon(opponentTeamData[Math.round(Math.random() * (opponentTeamData.length - 1))])
+        setChallengerPokemon(challengerTeamData[Math.round(Math.random() * (challengerTeamData.length - 1))])
     }
 
     const drop = event => {
         setPlay(true);
-        if (teamData.length > 0 || opponentTeamData.length > 0) {
-            const outcome = BattleManager.evaluator(playedPokemon, opponentPokemon);
+        if (teamData.length > 0 || challengerTeamData.length > 0) {
+            const outcome = BattleManager.evaluator(playedPokemon, challengerPokemon);
             battle(outcome);
             if (outcome.message === "player wins" || outcome.message === "draw- player wins tiebreaker") {
                 scores.playerScore++;
             } else {
-                scores.opponentScore++;
+                scores.challengerScore++;
             }
         }
         if (scores.playerScore === 6) {
             setVictor("Player is the Pokemon Master!")
-        } else if (scores.opponentScore === 6) {
-            setVictor("Opponent is the Pokemon Master!")
+        } else if (scores.challengerScore === 6) {
+            setVictor("Challenger is the Pokemon Master!")
         }
     }
 
@@ -47,8 +47,8 @@ const BattlePage = props => {
     useEffect(() => {
         const currTeamId = localStorage.getItem("teamId");
         fetchPokemonTeam(currTeamId);
-        fetchOpponentTeam();
-    },[fetchPokemonTeam, fetchOpponentTeam, fetchPokemon])
+        fetchChallengerTeam();
+    },[fetchPokemonTeam, fetchChallengerTeam, fetchPokemon])
 
     const restart = event => window.location.reload();    
 
@@ -75,8 +75,8 @@ const BattlePage = props => {
                 <div className="player-team-slot" onDragOver={dragOver} onDrop={drop}>
                     {play ? <img src={playedPokemon.img} alt="player's pokemon" /> : null}
                 </div>
-                <div className="opponent-team-slot">
-                    {play ? <img src={opponentPokemon.imgURL} alt="opponent's pokemon" /> : null}
+                <div className="challenger-team-slot">
+                    {play ? <img src={challengerPokemon.imgURL} alt="challenger's pokemon" /> : null}
                 </div>
                 <div>
                     <h3>{victor}</h3>
@@ -85,14 +85,14 @@ const BattlePage = props => {
                     <h3>Player: {scores.playerScore}</h3>
                 </div>
                 <div>
-                    <h3>Opponent: {scores.opponentScore}</h3>
+                    <h3>Challenger: {scores.challengerScore}</h3>
                 </div>
                 <div>
                     <h3>{!victor ? outcome : null}</h3>
                 </div>
             </StyledArena>
             <StyledBattleCards>
-                {opponentTeamData.map(member => {
+                {challengerTeamData.map(member => {
                     return (
                         <div className="cards">
                             <div>
@@ -117,10 +117,10 @@ const mapStateToProps = state => {
     return {
         pokemonData: state.pokemonData,
         teamData: state.teamData,
-        opponentTeam: state.opponentTeam,
-        opponentTeamData: state.opponentTeamData,
+        challengerTeam: state.challengerTeam,
+        challengerTeamData: state.challengerTeamData,
         outcome: state.outcome
     }
 }
 
-export default connect(mapStateToProps, { fetchPokemon, fetchPokemonTeam, fetchOpponentTeam, battle })(BattlePage);
+export default connect(mapStateToProps, { fetchPokemon, fetchPokemonTeam, fetchChallengerTeam, battle })(BattlePage);
