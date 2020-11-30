@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { fetchPokemon, fetchPokemonTeam, fetchOpponentTeam, battle } from "../store/actions/actions";
 import { StyledOnDeck as StyledBattleCards } from "../StyledComponents/StyledOnDeck";
 import { StyledArena } from "../StyledComponents/StyledArena";
-import { BattleManager } from "../classes/BattleManager";
+import { BattleManager, scores } from "../classes/BattleManager";
 
 
 const BattlePage = props => {
@@ -12,14 +12,7 @@ const BattlePage = props => {
     const [playedPokemon, setPlayedPokemon] = useState({});
     const [play, setPlay] = useState(false);
     const [opponentPokemon, setOpponentPokemon] = useState({});
-
-    /*
-    Using the OpposingPokemon Class, I need to fetch data from db. Using a random number generator, select the index, 
-    then fill out a new class instance with the pokemon's data
-    
-    
-    
-    */
+    const [victor, setVictor] = useState(null);
 
     const dragStart = event => {
         const pokemon = event.target.src;
@@ -33,12 +26,20 @@ const BattlePage = props => {
 
     const drop = event => {
         setPlay(true);
-        console.log(playedPokemon, opponentPokemon)
         if (teamData.length > 0 || opponentTeamData.length > 0) {
             const outcome = BattleManager.evaluator(playedPokemon, opponentPokemon);
             battle(outcome);
+            if (outcome.message === "player wins" || outcome.message === "draw- player wins tiebreaker") {
+                scores.playerScore++;
+            } else {
+                scores.opponentScore++;
+            }
         }
-        console.log(teamData.length)
+        if (scores.playerScore === 6) {
+            setVictor("Player is the Pokemon Master!")
+        } else if (scores.opponentScore === 6) {
+            setVictor("Opponent is the Pokemon Master!")
+        }
     }
 
     const dragOver = event => event.preventDefault();
@@ -78,7 +79,16 @@ const BattlePage = props => {
                     {play ? <img src={opponentPokemon.imgURL} alt="opponent's pokemon" /> : null}
                 </div>
                 <div>
-                    <h3>{outcome}</h3>
+                    <h3>{victor}</h3>
+                </div>
+                <div>
+                    <h3>Player: {scores.playerScore}</h3>
+                </div>
+                <div>
+                    <h3>Opponent: {scores.opponentScore}</h3>
+                </div>
+                <div>
+                    <h3>{!victor ? outcome : null}</h3>
                 </div>
             </StyledArena>
             <StyledBattleCards>
