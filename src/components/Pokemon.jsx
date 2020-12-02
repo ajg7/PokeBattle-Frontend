@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { setSelectedPokemon, setIsAdding } from "../store/actions/actions";
-import { StyledThemePill as TypePills } from "../StyledComponents/TypePills";
-import { CardFlipAnim as CardFlip } from "../StyledComponents/CardFlipAnim";
+import { StyledThemePill as TypePills } from "../styles/StyledComponents/TypePills";
+import { CardFlipAnim as CardFlip } from "../styles/StyledComponents/CardFlipAnim";
 
 
 const Pokemon = props => {

@@ -6,7 +6,7 @@ import Signup from "./components/Signup";
 import Login from "./components/Login";
 import PokemonList from "./components/PokemonList";
 import OnDeck from "./components/OnDeck";
-import "./css/reset.css";
+import "./styles/css/reset.css";
 import BattlePage from "./components/BattlePage";
 
 
