@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
+import { fetchPokemon } from "../store/actions/actions"
 import { useHistory } from "react-router-dom";
+import { StyledLandingPage } from "../styles/StyledComponents/StyledLandingPage";
+import { StyledBar } from "../styles/StyledComponents/StyledBar";
+import { BattleManager } from "../classes/BattleManager";
 
 const LandingPage = props => {
 
+    const { fetchPokemon, pokemonData } = props;
     const history = useHistory();
     
     const signupHandler = event => {
@@ -13,13 +19,27 @@ const LandingPage = props => {
         history.push("/login")
     }
 
+    useEffect(() => {
+        fetchPokemon()
+    }, [fetchPokemon])
+
     return(
-        <>
-            <p>This will be the main page, where you can either signup or login to the app</p>
-            <button onClick={signupHandler}>Sign Up</button>
-            <button onClick={loginHandler}>Login</button>
-        </>
+        <div>
+            <nav>PokeApp!</nav>
+            <StyledLandingPage>
+                
+                <h2>Wanna battle with the original 151 Pokemon? Come on in!</h2>
+                <button onClick={signupHandler}>Sign Up</button>
+                <button onClick={loginHandler}>Login</button>
+            </StyledLandingPage>
+        </div>
     )
 }
 
-export default LandingPage;
+const mapStateToProps = state => {
+    return {
+        pokemonData: state.pokemonData
+    }
+} 
+
+export default connect(mapStateToProps, { fetchPokemon })(LandingPage);

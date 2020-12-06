@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const StyledBar = styled.div`
-    background-color: red;
+    background-color: ${({ theme }) => theme.colorThemes.primary};
     padding: 50px 0;
     width: 100%;
     position: fixed;
