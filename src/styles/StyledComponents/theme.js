@@ -20,9 +20,12 @@ export const theme = {
         dark: "#707070"
     },
     colorThemes: {
-        primary: "red",
-        secondary: "white",
-        tertiary: "silver"
+        primary: "#FF0000",
+        secondary: "#CC0000",
+        tertiary: "#3B4CCA",
+        quaternary: "#FFDE00",
+        quinary: "#B3A125"
+
     },
     cap: "capitalize",
     rounded: "3%",

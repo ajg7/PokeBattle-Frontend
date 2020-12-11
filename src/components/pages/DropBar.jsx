@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { deleteTeam, addPokemon, setSelectedPokemon, swapPokemon, updateCurrIndex, setIsAdding, setIsSwapping, saveTeam } from "../store/actions/actions";
+import { deleteTeam, addPokemon, setSelectedPokemon, swapPokemon, updateCurrIndex, setIsAdding, setIsSwapping, saveTeam } from "../../store/actions/actions";
 import { useHistory } from "react-router-dom";
-import clearButton from "../assets/clearButton.png";
-import addButton from "../assets/addButton.png";
-import Poke_Ball from "../assets/Poke_Ball.png";
+import clearButton from "../../assets/clearButton.png";
+import addButton from "../../assets/addButton.png";
+import Poke_Ball from "../../assets/Poke_Ball.png";
 
 
 const DropBar = props => {
