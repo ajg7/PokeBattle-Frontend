@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { setSelectedPokemon, setIsAdding } from "../../store/actions/actions";
-import { StyledThemePill as TypePills } from "../../styles/StyledComponents/common/TypePills";
-import { CardFlipAnim as CardFlip } from "../../styles/StyledComponents/common/CardFlipAnim";
+import { StyledThemePill as TypePills } from "../../styles/StyledComponents/styledCommon/TypePills";
+import { CardFlipAnim as CardFlip } from "../../styles/StyledComponents/styledCommon/CardFlipAnim";
 
 
 const Pokemon = props => {
     const { id, name, number, type1, type2, imgURL, height, weight, 
-            entry, habitat, legendary, mythical, ancient, setSelectedPokemon, setIsAdding } = props;
+            entry, habitat, legendary, mythical, ancient, 
+            setSelectedPokemon, setIsAdding } = props;
     const [flipped, setFlipped] = useState(false);
 
     const flipHandler = event => !flipped ? setFlipped(true) : setFlipped(false);

@@ -2,7 +2,8 @@ import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchPokemonTeam, makeChallengerTeam } from "../../store/actions/actions";
-import { StyledOnDeck } from "../../styles/StyledComponents/styledpages/StyledOnDeck";
+import { StyledCards } from "../../styles/StyledComponents/styledCommon/StyledCards";
+import { Pokemon } from "../common";
 import editIcon from "../../assets/editIcon.png"
 
 const OnDeck = props => {
@@ -31,10 +32,34 @@ const OnDeck = props => {
     return (
         <>
             <h2>Ready to Battle?</h2>
-            <StyledOnDeck>
+            <StyledCards>
                 {teamData.map(member => {
                     return (
-                            <div className="cards">
+                            <>
+                                <Pokemon 
+                                key={member.id}
+                                id={member.id}
+                                name={member.name}
+                                number={member.number}
+                                type1={member.type1}
+                                type2={member.type2}
+                                imgURL={member.imgURL}
+                                height={member.height}
+                                weight={member.weight}
+                                entry={member.entry}
+                                habitat={member.habitat}
+                                legendary={member.legendary}
+                                mythical={member.mythical}
+                                ancient={member.ancient}
+                                />
+                                <img src={editIcon} alt="edit-nickname" className="edit-icon" />
+                            </>
+                    )
+                })}
+            </StyledCards>
+            <button onClick={goBackHandler}>Go Back</button>
+            <button onClick={battlePageHandler}>Battle!</button>
+            {/*<div className="cards">
                                 <div>
                                     <img src={member.imgURL} alt={member.name} />
                                 </div> 
@@ -45,14 +70,10 @@ const OnDeck = props => {
                                 </span>
                                 <h3>{member.type1}</h3>
                                 <h3>{member.type2}</h3>
-                            </div>
-                    )
-                })}
-            </StyledOnDeck>
-            <button onClick={goBackHandler}>Go Back</button>
-            <button onClick={battlePageHandler}>Battle!</button>
+                    </div>*/}
         </>
     )
+    
 }
 
 const mapStateToProps = state => {
