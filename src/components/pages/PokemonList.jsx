@@ -3,8 +3,8 @@ import { connect } from "react-redux";
 import { fetchPokemon, removePokemon, setSelectedPokemon } from "../../store/actions/actions";
 import { Pokemon } from "../common";
 import { DropBar } from "../pages";
-import { StyledCards } from "../../styles/StyledComponents/styledCommon/StyledCards";
-import { StyledBar } from "../../styles/StyledComponents/styledPages/StyledBar";
+import { StyledCards } from "../../styles/StyledComponents/styledCommon";
+import { StyledBar } from "../../styles/StyledComponents/styledPages";
 
 
 const PokemonList = props => {

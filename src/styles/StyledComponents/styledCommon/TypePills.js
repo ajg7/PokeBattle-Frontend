@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledThemePill = styled.div`
+export const TypePills = styled.div`
     display: flex;
 
     justify-content: ${({ secondaryType }) => {
