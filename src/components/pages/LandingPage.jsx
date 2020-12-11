@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { fetchPokemon } from "../../store/actions/actions"
 import { useHistory } from "react-router-dom";
-import { StyledLandingPage } from "../../styles/StyledComponents/StyledLandingPage";
-import { StyledBar } from "../../styles/StyledComponents/StyledBar";
+import { StyledLandingPage } from "../../styles/StyledComponents/styledpages/StyledLandingPage";
+import { StyledBar } from "../../styles/StyledComponents/styledpages/StyledBar";
 import { BattleManager } from "../../classes/BattleManager";
 
 const LandingPage = props => {
