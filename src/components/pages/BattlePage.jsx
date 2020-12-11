@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { fetchPokemon, fetchPokemonTeam, fetchChallengerTeam, battle } from "../store/actions/actions";
-import { StyledOnDeck as StyledBattleCards } from "../styles/StyledComponents/StyledOnDeck";
-import { StyledArena } from "../styles/StyledComponents/StyledArena";
-import { BattleManager, scores } from "../classes/BattleManager";
+import { fetchPokemon, fetchPokemonTeam, fetchChallengerTeam, battle } from "../../store/actions/actions";
+import { StyledOnDeck as StyledBattleCards } from "../../styles/StyledComponents/StyledOnDeck";
+import { StyledArena } from "../../styles/StyledComponents/StyledArena";
+import { BattleManager, scores } from "../../classes/BattleManager";
 
 
 const BattlePage = props => {
