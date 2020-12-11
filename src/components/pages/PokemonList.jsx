@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { fetchPokemon, removePokemon, setSelectedPokemon } from "../../store/actions/actions";
-import Pokemon from "../common/Pokemon";
+import { Pokemon } from "../common/";
 import DropBar from "./DropBar";
 import { StyledCards } from "../../styles/StyledComponents/common/StyledCards";
 import { StyledBar } from "../../styles/StyledComponents/styledpages/StyledBar";
