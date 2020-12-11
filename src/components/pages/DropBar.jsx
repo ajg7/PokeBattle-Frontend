@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import { deleteTeam, addPokemon, setSelectedPokemon, swapPokemon, updateCurrIndex, setIsAdding, setIsSwapping, saveTeam } from "../../store/actions/actions";
 import { useHistory } from "react-router-dom";
@@ -8,7 +8,7 @@ import Poke_Ball from "../../assets/Poke_Ball.png";
 
 
 const DropBar = props => {
-    const { makeTeam, deleteTeam, addPokemon, 
+    const { deleteTeam, addPokemon, 
             setSelectedPokemon, isAdding, isSwapping, setIsAdding, swapPokemon, 
             updateCurrIndex, teamId, team, selectedPokemon, 
             saveTeam } = props;

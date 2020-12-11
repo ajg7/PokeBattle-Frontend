@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { setSelectedPokemon, setIsAdding } from "../../store/actions/actions";
-import { StyledThemePill as TypePills } from "../../styles/StyledComponents/styledpages/TypePills";
-import { CardFlipAnim as CardFlip } from "../../styles/StyledComponents/styledpages/CardFlipAnim";
+import { TypePills, CardFlipAnim } from "../../styles/StyledComponents/styledCommon";
 
 
 const Pokemon = props => {
     const { id, name, number, type1, type2, imgURL, height, weight, 
-            entry, habitat, legendary, mythical, ancient, setSelectedPokemon, setIsAdding } = props;
+            entry, habitat, legendary, mythical, ancient, 
+            setSelectedPokemon, setIsAdding } = props;
     const [flipped, setFlipped] = useState(false);
 
     const flipHandler = event => !flipped ? setFlipped(true) : setFlipped(false);
@@ -21,7 +21,7 @@ const Pokemon = props => {
 
     return(
         <>
-            <CardFlip onClick={flipHandler}>
+            <CardFlipAnim onClick={flipHandler}>
                 <div className={flipped ? "card flipped" : "card"} onMouseLeave={mouseLeaveHandler}>
                     <div className="card-inner">
                         <section className="card-front">
@@ -58,7 +58,7 @@ const Pokemon = props => {
                         </section>
                     </div>
                 </div>
-            </CardFlip>
+            </CardFlipAnim>
         </>
     )
 }
