@@ -59,18 +59,6 @@ const OnDeck = props => {
             </StyledCards>
             <button onClick={goBackHandler}>Go Back</button>
             <button onClick={battlePageHandler}>Battle!</button>
-            {/*<div className="cards">
-                                <div>
-                                    <img src={member.imgURL} alt={member.name} />
-                                </div> 
-                                <h3>{member.pokemon_Id}</h3>
-                                <span className="pokemon-name">
-                                    <img src={editIcon} alt="edit name icon" onClick={editNameHandler} />
-                                    <h2>{member.nickname ? member.nickname : member.name}</h2>
-                                </span>
-                                <h3>{member.type1}</h3>
-                                <h3>{member.type2}</h3>
-                    </div>*/}
         </>
     )
     

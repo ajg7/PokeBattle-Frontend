@@ -4,7 +4,6 @@ import LandingPage from "./LandingPage";
 import Login from "./Login";
 import OnDeck from "./OnDeck";
 import PokemonList from "./PokemonList";
-import PokemonTeam from "./PokemonTeam";
 import Signup from "./Signup";
 
 export {
@@ -14,6 +13,5 @@ export {
     Login,
     OnDeck,
     PokemonList,
-    PokemonTeam,
     Signup
 }

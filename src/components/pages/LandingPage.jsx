@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { fetchPokemon } from "../../store/actions/actions"
 import { useHistory } from "react-router-dom";
-import { StyledLandingPage } from "../../styles/StyledComponents/styledpages/StyledLandingPage";
+import { StyledLandingPage } from "../../styles/StyledComponents/styledPages/StyledLandingPage";
 
 const LandingPage = props => {
 
