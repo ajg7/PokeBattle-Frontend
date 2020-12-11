@@ -1,14 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { fetchPokemon } from "../../store/actions/actions"
 import { useHistory } from "react-router-dom";
 import { StyledLandingPage } from "../../styles/StyledComponents/styledpages/StyledLandingPage";
-import { StyledBar } from "../../styles/StyledComponents/styledpages/StyledBar";
-import { BattleManager } from "../../classes/BattleManager";
 
 const LandingPage = props => {
 
-    const { fetchPokemon, pokemonData } = props;
+    const { fetchPokemon } = props;
     const history = useHistory();
     
     const signupHandler = event => {

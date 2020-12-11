@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
-import { fetchChallengerTeam, fetchPokemonTeam, makeChallengerTeam } from "../../store/actions/actions";
+import { fetchPokemonTeam, makeChallengerTeam } from "../../store/actions/actions";
 import { StyledOnDeck } from "../../styles/StyledComponents/styledpages/StyledOnDeck";
 import editIcon from "../../assets/editIcon.png"
 

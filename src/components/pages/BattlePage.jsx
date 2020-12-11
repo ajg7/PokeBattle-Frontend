@@ -8,7 +8,7 @@ import { BattleManager, scores } from "../../classes/BattleManager";
 
 const BattlePage = props => {
 
-    const { fetchPokemon, fetchPokemonTeam, fetchChallengerTeam, pokemonData, battle, outcome, teamData, challengerTeamData } = props;
+    const { fetchPokemon, fetchPokemonTeam, fetchChallengerTeam, battle, outcome, teamData, challengerTeamData } = props;
     const [playedPokemon, setPlayedPokemon] = useState({});
     const [play, setPlay] = useState(false);
     const [challengerPokemon, setChallengerPokemon] = useState({});
