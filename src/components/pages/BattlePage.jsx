@@ -74,6 +74,7 @@ const BattlePage = props => {
                         mythical={member.mythical}
                         ancient={member.ancient}
                         className="player-pokemon"
+                        dragStart={dragStart}
                         />
                     )
                 })}
