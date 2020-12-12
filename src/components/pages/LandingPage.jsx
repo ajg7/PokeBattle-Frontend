@@ -24,28 +24,22 @@ const LandingPage = props => {
     }, [fetchPokemon])
 
     return(
-        <div>
-            <nav>PokeApp!</nav>
-            <StyledLandingPage>
-                <h2>Wanna battle with the original 151 Pokemon? Come on in!</h2>
+        <StyledLandingPage>
+            <div>
+                <Button 
+                handleClick={signupHandler}
+                isDisabled={false}
+                classType="signup-button"
+                buttonText={"Sign Up"}
+                />
                 <Button 
                 handleClick={loginHandler}
                 isDisabled={false}
                 classType="login-button"
-                img={pokeBall}
-                alt="pokeball"
                 buttonText={"Login"}
                 />
-                <Button 
-                handleClick={loginHandler}
-                isDisabled={false}
-                classType="signup-button"
-                img={pokeBall}
-                alt="pokeball"
-                buttonText={"Signup"}
-                />
-            </StyledLandingPage>
-        </div>
+            </div>
+        </StyledLandingPage>
     )
 }
 

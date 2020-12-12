@@ -4,6 +4,7 @@ import { makeTeam } from "../../store/actions/actions";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { FormValues, initialFormValues } from "../../classes/FormValuesClass";
+import { Button } from "../common";
 
 
 const Signup = props => {
@@ -43,7 +44,7 @@ const Signup = props => {
     return(
         <div>
             <h1>Gotta Catch 'em All</h1>
-            <h3>Signup</h3>
+            <h3>Sign Up</h3>
             <form onSubmit={addNewUser}>
                 <label> email: 
                     <input 
@@ -61,7 +62,11 @@ const Signup = props => {
                     onChange={changeHandler}
                     />
                 </label>
-                <button>Submit</button>
+                <Button 
+                isDisabled={false}
+                classType={"submit-button"}
+                buttonText={"Submit"}
+                />
             </form>
         </div>
     )

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { FormValues, initialFormValues } from "../../classes/FormValuesClass";
+import { Button } from "../common";
 
 const Login = props => {
 
@@ -67,7 +68,11 @@ const Login = props => {
                     onChange={changeHandler}
                     />
                 </label>
-                <button>Submit</button>
+                <Button 
+                isDisabled={false}
+                classType={"submit-button"}
+                buttonText={"Submit"}
+                />
             </form>
         </div>
     )

@@ -4,7 +4,7 @@ import { fetchPokemon, fetchPokemonTeam, fetchChallengerTeam, battle } from "../
 import { StyledCards } from "../../styles/StyledComponents/styledCommon";
 import { StyledArena } from "../../styles/StyledComponents/styledPages";
 import { BattleManager, scores } from "../../classes/BattleManager";
-import { Pokemon } from "../common";
+import { Pokemon, Button } from "../common";
 
 
 const BattlePage = props => {
@@ -122,7 +122,12 @@ const BattlePage = props => {
                     )
                 })}
             </StyledCards>
-            <button onClick={restart}>Restart Battle</button>
+            <Button 
+            handleClick={restart}
+            isDisabled={false}
+            classType="restart-button"
+            buttonText={"Restart Battle!"}
+            />
         </>
     )
 }

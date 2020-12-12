@@ -24,7 +24,8 @@ export const theme = {
         secondary: "#CC0000",
         tertiary: "#3B4CCA",
         quaternary: "#FFDE00",
-        quinary: "#B3A125"
+        quinary: "#B3A125",
+        white: "#F0EAD6",
 
     },
     cap: "capitalize",
