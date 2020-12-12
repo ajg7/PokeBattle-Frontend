@@ -15,5 +15,6 @@ export {
     IS_REMOVING,
     MAKE_CHALLENGER_TEAM,
     FETCH_CHALLENGER_TEAM,
-    BATTLE
+    BATTLE,
+    FETCH_TEAM_ID
 } from "./actions";

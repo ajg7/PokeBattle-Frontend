@@ -19,6 +19,7 @@ export const IS_REMOVING = "IS_REMOVING";
 export const MAKE_CHALLENGER_TEAM = "MAKE_CHALLENGER_TEAM";
 export const FETCH_CHALLENGER_TEAM = "FETCH_CHALLENGER_TEAM";
 export const BATTLE = "BATTLE";
+export const FETCH_TEAM_ID = "FETCH_TEAM_ID";
 
 export const fetchPokemon = () => {
     return dispatch => {
@@ -180,7 +181,20 @@ export const fetchChallengerTeam = () => {
 
 export const battle = outcome => {
     return dispatch => {
-
         dispatch({ type: BATTLE, payload: {message: outcome.message, loser: outcome.loser }})
+    }
+}
+
+export const fetchTeamId = userId => {
+    return dispatch => {
+        axiosWithAuth().get(`/team/${userId}`)
+            .then(response => {
+                console.log(response)
+                dispatch({ type: FETCH_TEAM_ID, payload: response.data.teamId })
+            })
+            .catch(error => {
+                console.log(error)
+                dispatch({ type: ERROR_HANDLING, payload: { message: "You blacked out!" }})
+            })
     }
 }

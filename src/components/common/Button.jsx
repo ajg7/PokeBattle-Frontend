@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { StyledButton } from "../../styles/StyledComponents/styledCommon";
 import pikachu from "../../assets/pika.png";
@@ -11,7 +11,7 @@ const Button = props => {
         <StyledButton>
             <button
                 onClick={handleClick}
-                disbaled={isDisabled}
+                disabled={isDisabled}
                 className={classType || null}
             >
                 <img src={pikachu} alt={"pikachu"} />

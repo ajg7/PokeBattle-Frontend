@@ -51,7 +51,10 @@ const BattlePage = props => {
         fetchChallengerTeam();
     },[fetchPokemonTeam, fetchChallengerTeam, fetchPokemon])
 
-    const restart = event => window.location.reload();    
+    const restart = event => {
+        window.location.reload();
+        window.scrollTo(0, 0);
+    }    
 
     return (
         <>
@@ -126,7 +129,7 @@ const BattlePage = props => {
             handleClick={restart}
             isDisabled={false}
             classType="restart-button"
-            buttonText={"Restart Battle!"}
+            buttonText={"Restart!"}
             />
         </>
     )
