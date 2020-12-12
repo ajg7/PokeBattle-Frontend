@@ -3,8 +3,8 @@ import { connect } from "react-redux";
 import { fetchPokemon } from "../../store/actions/actions"
 import { useHistory } from "react-router-dom";
 import { StyledLandingPage } from "../../styles/StyledComponents/styledPages";
-import { Button } from "../common";
-import pokeBall from "../../assets/Poke_Ball.png";
+import { StyledMainHeader } from "../../styles/StyledComponents/styledCommon";
+import { Button, MainHeader } from "../common";
 
 const LandingPage = props => {
 
@@ -25,6 +25,9 @@ const LandingPage = props => {
 
     return(
         <StyledLandingPage>
+            <StyledMainHeader>
+                <MainHeader text={"PokeBattle"} classType={"title"} />
+            </StyledMainHeader>
             <div>
                 <Button 
                 handleClick={signupHandler}
