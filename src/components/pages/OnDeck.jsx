@@ -5,6 +5,7 @@ import { fetchPokemonTeam, makeChallengerTeam } from "../../store/actions/action
 import { StyledCards } from "../../styles/StyledComponents/styledCommon/StyledCards";
 import { Pokemon } from "../common";
 import editIcon from "../../assets/editIcon.png"
+import { Button } from "../common";
 
 const OnDeck = props => {
     const { teamData, fetchPokemonTeam, makeChallengerTeam } = props;
@@ -57,8 +58,18 @@ const OnDeck = props => {
                     )
                 })}
             </StyledCards>
-            <button onClick={goBackHandler}>Go Back</button>
-            <button onClick={battlePageHandler}>Battle!</button>
+            <Button 
+            handleClick={goBackHandler}
+            isDisabled={false}
+            classType="go back button"
+            buttonText={"Go Back"} 
+            />
+            <Button 
+            handleClick={battlePageHandler}
+            isDisabled={false}
+            classType="go to battle page"
+            buttonText={"Battle!"} 
+            />
         </>
     )
     

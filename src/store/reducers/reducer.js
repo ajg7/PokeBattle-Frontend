@@ -15,7 +15,8 @@ import {
     IS_REMOVING,
     MAKE_CHALLENGER_TEAM,
     FETCH_CHALLENGER_TEAM,
-    BATTLE
+    BATTLE,
+    FETCH_TEAM_ID
 } from "../actions"
 
 const initialState = {
@@ -160,6 +161,12 @@ export default (state = initialState, action) => {
                 outcome: action.payload.message,
                 teamData: newTeam,
                 challengerTeamData: newChallengerTeam
+            }
+        case FETCH_TEAM_ID:
+            return {
+                ...state,
+                teamId: action.payload.teamId,
+                userId: +action.payload.userId
             }
         default:
             return state;

@@ -24,11 +24,13 @@ export const theme = {
         secondary: "#CC0000",
         tertiary: "#3B4CCA",
         quaternary: "#FFDE00",
-        quinary: "#B3A125"
+        quinary: "#B3A125",
+        white: "#F0EAD6",
 
     },
     cap: "capitalize",
     rounded: "3%",
     rotateRight: "rotateY(180deg)",
-    rotateLeft: "rotateY(-180deg)"
+    rotateLeft: "rotateY(-180deg)",
+    pokeFont: "sigmar one",
 }

@@ -2,9 +2,13 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { FormValues, initialFormValues } from "../../classes/FormValuesClass";
+import { Button } from "../common";
+import { connect } from "react-redux";
+import { fetchTeamId } from "../../store/actions/actions";
 
 const Login = props => {
 
+    const { fetchTeamId, teamId } = props;
     /*
         1. Make Form Values (make a separate file for class, so I can import into Login Component)
         2. Essentially, login should be just like Signup, except token should be stored in localStorage
@@ -30,12 +34,13 @@ const Login = props => {
     const loginUser = event => {
         event.preventDefault();
         const user = new FormValues(formValues.email.trim(), formValues.password.trim(), false);
-        // https://pokemon-server-ajg7.herokuapp.com/users/login
         axios.post("http://localhost:7000/users/login", user)
                 .then(response => {
                     console.log(response)
                     const token = response.data.token;
-                    localStorage.setItem("token", token)
+                    const userId = response.data.userId;
+                    localStorage.setItem("token", token);
+                    fetchTeamId(userId);
                 })
                 .catch(error => {
                     console.log(error)
@@ -48,7 +53,6 @@ const Login = props => {
 
     return(
         <div>
-            <h1>Gotta Catch 'em All</h1>
             <h3>Login</h3>
             <form onSubmit={loginUser}>
                 <label> email: 
@@ -67,11 +71,22 @@ const Login = props => {
                     onChange={changeHandler}
                     />
                 </label>
-                <button>Submit</button>
+                <Button 
+                isDisabled={false}
+                classType={"submit-button"}
+                buttonText={"Submit"}
+                />
             </form>
         </div>
     )
 }
 
 
-export default Login;
+const mapStateToProps = state => {
+    return {
+        teamId: state.teamId
+    }
+}
+
+
+export default connect(mapStateToProps, { fetchTeamId })(Login);

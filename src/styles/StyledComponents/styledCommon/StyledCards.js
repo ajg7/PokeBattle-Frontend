@@ -6,6 +6,7 @@ export const StyledCards = styled.div`
     justify-content: space-between;
     text-transform: ${({ theme }) => theme.cap};
     padding: 50px;
+    padding-top: ${props => props.page ? "300px" : null};
 
     .card {
         background-color: transparent;
@@ -30,5 +31,8 @@ export const StyledCards = styled.div`
         width: 125px;
     }
 
-    
+    .edit-icon {
+        height: 15px;
+        width: 15px;
+    }
 `

@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import { fetchPokemon } from "../../store/actions/actions"
 import { useHistory } from "react-router-dom";
 import { StyledLandingPage } from "../../styles/StyledComponents/styledPages";
+import { Button } from "../common";
+import pokeBall from "../../assets/Poke_Ball.png";
 
 const LandingPage = props => {
 
@@ -22,15 +24,22 @@ const LandingPage = props => {
     }, [fetchPokemon])
 
     return(
-        <div>
-            <nav>PokeApp!</nav>
-            <StyledLandingPage>
-                
-                <h2>Wanna battle with the original 151 Pokemon? Come on in!</h2>
-                <button onClick={signupHandler}>Sign Up</button>
-                <button onClick={loginHandler}>Login</button>
-            </StyledLandingPage>
-        </div>
+        <StyledLandingPage>
+            <div>
+                <Button 
+                handleClick={signupHandler}
+                isDisabled={false}
+                classType="signup-button"
+                buttonText={"Sign Up"}
+                />
+                <Button 
+                handleClick={loginHandler}
+                isDisabled={false}
+                classType="login-button"
+                buttonText={"Login"}
+                />
+            </div>
+        </StyledLandingPage>
     )
 }
 
