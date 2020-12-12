@@ -31,5 +31,6 @@ export const theme = {
     cap: "capitalize",
     rounded: "3%",
     rotateRight: "rotateY(180deg)",
-    rotateLeft: "rotateY(-180deg)"
+    rotateLeft: "rotateY(-180deg)",
+    pokeFont: "sigmar one",
 }

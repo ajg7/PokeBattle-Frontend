@@ -43,7 +43,6 @@ const Signup = props => {
 
     return(
         <div>
-            <h1>Gotta Catch 'em All</h1>
             <h3>Sign Up</h3>
             <form onSubmit={addNewUser}>
                 <label> email: 

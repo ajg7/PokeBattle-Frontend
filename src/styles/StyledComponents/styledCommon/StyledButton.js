@@ -5,7 +5,6 @@ export const StyledButton = styled.div`
 img {
     height: 30px;
     width: 30px;
-
 }
 
 button {
@@ -17,7 +16,7 @@ button {
     background-color: ${({ theme }) => theme.colorThemes.secondary};
     color: ${({ theme }) => theme.colorThemes.white};
     border-radius: 16px;
-    font-weight: bold;
+    font: 20px ${({ theme }) => theme.pokeFont};
 
     &:hover {
         background-color: ${({ theme }) => theme.colorThemes.primary};

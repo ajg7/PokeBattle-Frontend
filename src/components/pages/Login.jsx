@@ -49,7 +49,6 @@ const Login = props => {
 
     return(
         <div>
-            <h1>Gotta Catch 'em All</h1>
             <h3>Login</h3>
             <form onSubmit={loginUser}>
                 <label> email: 
