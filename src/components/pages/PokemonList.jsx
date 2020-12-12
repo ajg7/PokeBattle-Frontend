@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { fetchPokemon, removePokemon, setSelectedPokemon } from "../../store/actions/actions";
+import { fetchPokemon, removePokemon, setSelectedPokemon, fetchTeamId } from "../../store/actions/actions";
 import { Pokemon } from "../common";
 import { DropBar } from "../pages";
 import { StyledCards } from "../../styles/StyledComponents/styledCommon";
@@ -23,7 +23,7 @@ const PokemonList = props => {
     }
 
     useEffect(() => {
-        fetchPokemon()
+        fetchPokemon();
     }, [fetchPokemon])
 
     return(
@@ -73,4 +73,4 @@ const mapStateToProps = state => {
 }
 
 
-export default connect(mapStateToProps, { fetchPokemon, removePokemon, setSelectedPokemon })(PokemonList);
+export default connect(mapStateToProps, { fetchPokemon, removePokemon, setSelectedPokemon, fetchTeamId })(PokemonList);

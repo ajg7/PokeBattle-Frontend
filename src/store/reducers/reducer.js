@@ -165,7 +165,8 @@ export default (state = initialState, action) => {
         case FETCH_TEAM_ID:
             return {
                 ...state,
-                teamId: action.payload
+                teamId: action.payload.teamId,
+                userId: +action.payload.userId
             }
         default:
             return state;

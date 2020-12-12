@@ -190,7 +190,7 @@ export const fetchTeamId = userId => {
         axiosWithAuth().get(`/team/${userId}`)
             .then(response => {
                 console.log(response)
-                dispatch({ type: FETCH_TEAM_ID, payload: response.data.teamId })
+                dispatch({ type: FETCH_TEAM_ID, payload: {teamId: response.data.teamId, userId: response.data.userId} })
             })
             .catch(error => {
                 console.log(error)

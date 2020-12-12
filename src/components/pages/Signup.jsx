@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { makeTeam } from "../../store/actions/actions";
+import { fetchTeamId, makeTeam } from "../../store/actions/actions";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { FormValues, initialFormValues } from "../../classes/FormValuesClass";
