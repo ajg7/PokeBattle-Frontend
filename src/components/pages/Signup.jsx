@@ -27,7 +27,6 @@ const Signup = props => {
     const addNewUser = event => {
         event.preventDefault();
         const newUser = new FormValues(formValues.email.trim(), formValues.password.trim(), false);
-        //https://pokemon-server-ajg7.herokuapp.com/users/signup
         axios.post("http://localhost:7000/users/signup", newUser)
             .then(response => {
                 setFormValues(initialFormValues);
