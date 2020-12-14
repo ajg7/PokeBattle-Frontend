@@ -4,7 +4,7 @@ import { fetchPokemon } from "../../store/actions/actions"
 import { useHistory } from "react-router-dom";
 import { StyledLandingPage } from "../../styles/StyledComponents/styledPages";
 import { StyledMainHeading } from "../../styles/StyledComponents/styledCommon";
-import { Button, MainHeading, FeaturedPokemon } from "../common";
+import { Button, MainHeading, FeaturedPokemon, Wallpaper } from "../common";
 
 const LandingPage = props => {
 
@@ -19,8 +19,10 @@ const LandingPage = props => {
         fetchPokemon();
     }, [fetchPokemon])
 
+
     return(
         <StyledLandingPage>
+            <Wallpaper />
             <header>
                 <StyledMainHeading>
                     <MainHeading text={"PokéBattle"} classType={"title"} />
@@ -49,6 +51,7 @@ const LandingPage = props => {
                     </nav>
                 </div>
             </footer>
+            <Wallpaper />
         </StyledLandingPage>
     )
 }
