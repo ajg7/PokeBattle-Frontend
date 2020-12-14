@@ -34,4 +34,5 @@ export const theme = {
     rotateLeft: "rotateY(-180deg)",
     pokeFont: "sigmar one",
     pokeTextFont: "pokemon-font",
+    pokeTitleFont: "pokeTitleFont"
 }

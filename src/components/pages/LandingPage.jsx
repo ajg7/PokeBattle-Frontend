@@ -26,7 +26,7 @@ const LandingPage = props => {
     return(
         <StyledLandingPage>
             <StyledMainHeader>
-                <MainHeader text={"PokeBattle"} classType={"title"} />
+                <MainHeader text={"PokéBattle"} classType={"title"} />
             </StyledMainHeader>
             <div>
                 <Button 

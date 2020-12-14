@@ -49,3 +49,7 @@ table {
 
 /*Font Import*/
 @import url("https:fonts.googleapis.com/css?family=Sigmar+One");
+@font-face {
+	font-family: pokeTitleFont;
+	src: url("../../assets/PocketMonk-15ze.ttf");
+  }
