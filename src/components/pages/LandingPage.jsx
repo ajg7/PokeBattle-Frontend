@@ -21,38 +21,40 @@ const LandingPage = props => {
 
 
     return(
-        <StyledLandingPage>
-            <Wallpaper />
-            <header>
-                <StyledMainHeading>
-                    <MainHeading text={"PokéBattle"} classType={"title"} />
-                </StyledMainHeading>
-            </header>
-            <section>
-                <FeaturedPokemon />
-                <Button 
-                handleClick={signupHandler}
-                isDisabled={false}
-                classType="signup-button"
-                buttonText={"Sign Up"}
-                />
-                <Button 
-                handleClick={loginHandler}
-                isDisabled={false}
-                classType="login-button"
-                buttonText={"Login"}
-                />
-            </section>
-            <footer>
-                <div>
-                    <nav>
-                        <h3>Contact Me</h3>
-                        <h3>About</h3>
-                    </nav>
-                </div>
-            </footer>
-            <Wallpaper />
-        </StyledLandingPage>
+        <div>
+            <StyledLandingPage>
+                <Wallpaper />
+                <header>
+                    <StyledMainHeading>
+                        <MainHeading text={"PokéBattle"} classType={"title"} />
+                    </StyledMainHeading>
+                </header>
+                <section>
+                    <FeaturedPokemon />
+                    <Button 
+                    handleClick={signupHandler}
+                    isDisabled={false}
+                    classType="signup-button"
+                    buttonText={"Sign Up"}
+                    />
+                    <Button 
+                    handleClick={loginHandler}
+                    isDisabled={false}
+                    classType="login-button"
+                    buttonText={"Login"}
+                    />
+                </section>
+                <footer>
+                    <div>
+                        <nav>
+                            <h3>Contact Me</h3>
+                            <h3>About</h3>
+                        </nav>
+                    </div>
+                </footer>
+                <Wallpaper />
+            </StyledLandingPage>
+        </div>
     )
 }
 

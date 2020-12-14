@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { setFeaturedPokemon } from "../../store/actions/actions";
+import { StyledFeaturedPokemon } from "../../styles/StyledComponents/styledCommon";
 
 const FeaturedPokemon = props => {
     const { setFeaturedPokemon, featuredPokemon } = props;
@@ -11,7 +12,9 @@ const FeaturedPokemon = props => {
 
     return (
         <div>
-            <img src={featuredPokemon} alt="featured pokemon" />
+            <StyledFeaturedPokemon>
+                <img src={featuredPokemon} alt="featured pokemon" />
+            </StyledFeaturedPokemon>
         </div>
     )
 }

@@ -9,4 +9,6 @@ export const StyledLandingPage = styled.div`
         font-size: 18px;
         font-family: ${({ theme }) => theme.pokeTextFont}, monospace;
     }
+
+    
 `

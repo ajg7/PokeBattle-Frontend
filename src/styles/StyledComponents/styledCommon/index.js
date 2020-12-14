@@ -4,6 +4,7 @@ import { TypePills } from "./TypePills";
 import { StyledButton } from "./StyledButton";
 import { StyledMainHeading } from "./StyledMainHeading";
 import { StyledWallpaper } from "./StyledWallpaper";
+import { StyledFeaturedPokemon } from "./StyledFeaturedPokemon";
 
 export {
     StyledCards,
@@ -11,5 +12,6 @@ export {
     TypePills,
     StyledButton,
     StyledMainHeading,
-    StyledWallpaper
+    StyledWallpaper,
+    StyledFeaturedPokemon
 }
