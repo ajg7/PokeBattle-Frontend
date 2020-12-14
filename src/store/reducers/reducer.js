@@ -16,7 +16,8 @@ import {
     MAKE_CHALLENGER_TEAM,
     FETCH_CHALLENGER_TEAM,
     BATTLE,
-    FETCH_TEAM_ID
+    FETCH_TEAM_ID,
+    SET_FEATURED_POKEMON 
 } from "../actions"
 
 const initialState = {
@@ -34,7 +35,8 @@ const initialState = {
     team: Array(6).fill(null),
     teamData: [],
     challengerTeamData: [],
-    outcome: ""
+    outcome: "",
+    featuredPokemon: {}
 }
 
 export default (state = initialState, action) => {
@@ -167,6 +169,11 @@ export default (state = initialState, action) => {
                 ...state,
                 teamId: action.payload.teamId,
                 userId: +action.payload.userId
+            }
+        case SET_FEATURED_POKEMON:
+            return {
+                ...state,
+                featuredPokemon: action.payload
             }
         default:
             return state;

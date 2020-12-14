@@ -4,7 +4,7 @@ import { fetchPokemon } from "../../store/actions/actions"
 import { useHistory } from "react-router-dom";
 import { StyledLandingPage } from "../../styles/StyledComponents/styledPages";
 import { StyledMainHeading } from "../../styles/StyledComponents/styledCommon";
-import { Button, MainHeading } from "../common";
+import { Button, MainHeading, FeaturedPokemon } from "../common";
 
 const LandingPage = props => {
 
@@ -16,7 +16,7 @@ const LandingPage = props => {
     const loginHandler = event => history.push("/login");
 
     useEffect(() => {
-        fetchPokemon()
+        fetchPokemon();
     }, [fetchPokemon])
 
     return(
@@ -27,6 +27,7 @@ const LandingPage = props => {
                 </StyledMainHeading>
             </header>
             <section>
+                <FeaturedPokemon />
                 <Button 
                 handleClick={signupHandler}
                 isDisabled={false}
