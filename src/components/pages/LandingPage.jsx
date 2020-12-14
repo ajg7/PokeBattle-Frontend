@@ -3,21 +3,17 @@ import { connect } from "react-redux";
 import { fetchPokemon } from "../../store/actions/actions"
 import { useHistory } from "react-router-dom";
 import { StyledLandingPage } from "../../styles/StyledComponents/styledPages";
-import { StyledMainHeader } from "../../styles/StyledComponents/styledCommon";
-import { Button, MainHeader } from "../common";
+import { StyledMainHeading } from "../../styles/StyledComponents/styledCommon";
+import { Button, MainHeading } from "../common";
 
 const LandingPage = props => {
 
     const { fetchPokemon } = props;
     const history = useHistory();
     
-    const signupHandler = event => {
-        history.push("/signup")
-    }
+    const signupHandler = event => history.push("/signup");
 
-    const loginHandler = event => {
-        history.push("/login")
-    }
+    const loginHandler = event => history.push("/login");
 
     useEffect(() => {
         fetchPokemon()
@@ -25,10 +21,12 @@ const LandingPage = props => {
 
     return(
         <StyledLandingPage>
-            <StyledMainHeader>
-                <MainHeader text={"PokéBattle"} classType={"title"} />
-            </StyledMainHeader>
-            <div>
+            <header>
+                <StyledMainHeading>
+                    <MainHeading text={"PokéBattle"} classType={"title"} />
+                </StyledMainHeading>
+            </header>
+            <section>
                 <Button 
                 handleClick={signupHandler}
                 isDisabled={false}
@@ -41,7 +39,15 @@ const LandingPage = props => {
                 classType="login-button"
                 buttonText={"Login"}
                 />
-            </div>
+            </section>
+            <footer>
+                <div>
+                    <nav>
+                        <h3>Contact Me</h3>
+                        <h3>About</h3>
+                    </nav>
+                </div>
+            </footer>
         </StyledLandingPage>
     )
 }

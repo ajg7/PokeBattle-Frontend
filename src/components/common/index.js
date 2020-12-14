@@ -1,11 +1,11 @@
 import Pokemon from "./Pokemon";
 import Button from "./Button";
 import CardButton from "./CardButton";
-import MainHeader from "./MainHeader";
+import MainHeading from "./MainHeading";
 
 export {
     Pokemon,
     Button,
     CardButton,
-    MainHeader
+    MainHeading
 }
