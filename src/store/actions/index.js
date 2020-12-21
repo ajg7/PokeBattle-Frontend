@@ -16,5 +16,6 @@ export {
     MAKE_CHALLENGER_TEAM,
     FETCH_CHALLENGER_TEAM,
     BATTLE,
-    FETCH_TEAM_ID
+    FETCH_TEAM_ID,
+    SET_FEATURED_POKEMON 
 } from "./actions";

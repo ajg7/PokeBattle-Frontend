@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
 export const StyledCards = styled.div`
+    * {
+        font-family: "pokemon-font", monospace;
+    }
+
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;

@@ -2,10 +2,16 @@ import { StyledCards } from "./StyledCards";
 import { CardFlipAnim } from "./CardFlipAnim";
 import { TypePills } from "./TypePills";
 import { StyledButton } from "./StyledButton";
+import { StyledMainHeading } from "./StyledMainHeading";
+import { StyledWallpaper } from "./StyledWallpaper";
+import { StyledFeaturedPokemon } from "./StyledFeaturedPokemon";
 
 export {
     StyledCards,
     CardFlipAnim,
     TypePills,
-    StyledButton
+    StyledButton,
+    StyledMainHeading,
+    StyledWallpaper,
+    StyledFeaturedPokemon
 }

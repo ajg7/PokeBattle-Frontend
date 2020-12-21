@@ -1,4 +1,4 @@
-
+import axios from "axios";
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
 import { BattleManager } from "../../classes/BattleManager";
 
@@ -20,10 +20,11 @@ export const MAKE_CHALLENGER_TEAM = "MAKE_CHALLENGER_TEAM";
 export const FETCH_CHALLENGER_TEAM = "FETCH_CHALLENGER_TEAM";
 export const BATTLE = "BATTLE";
 export const FETCH_TEAM_ID = "FETCH_TEAM_ID";
+export const SET_FEATURED_POKEMON = "FEATURED_POKEMON";
 
 export const fetchPokemon = () => {
     return dispatch => {
-        axiosWithAuth().get("/pokemon")
+        axios.get("http://localhost:7000/pokemon")
             .then(response => {
                 const data = response.data;
                 dispatch({ type: FETCH_POKEMON, payload: data })
@@ -191,6 +192,21 @@ export const fetchTeamId = userId => {
             .then(response => {
                 console.log(response)
                 dispatch({ type: FETCH_TEAM_ID, payload: {teamId: response.data.teamId, userId: response.data.userId} })
+            })
+            .catch(error => {
+                console.log(error)
+                dispatch({ type: ERROR_HANDLING, payload: { message: "You blacked out!" }})
+            })
+    }
+}
+
+export const setFeaturedPokemon = () => {
+    return dispatch => {
+        const randomNum = BattleManager.random();
+        axios.get(`http://localhost:7000/pokemon/${randomNum}`)
+            .then(response => {
+                const { imgURL } = response.data[0];
+                dispatch({ type: SET_FEATURED_POKEMON, payload: imgURL })
             })
             .catch(error => {
                 console.log(error)
