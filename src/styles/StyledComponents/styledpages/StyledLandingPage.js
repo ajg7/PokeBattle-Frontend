@@ -5,10 +5,6 @@ export const StyledLandingPage = styled.div`
     background-color: ${({ theme }) => theme.colorThemes.tertiary};
     color: ${({ theme }) => theme.colorThemes.quaternary};
 
-    header {
-
-    }
-
     section {
         display: flex;
         justify-content: center;
@@ -22,12 +18,6 @@ export const StyledLandingPage = styled.div`
         display: flex;
         flex-direction: column-reverse;
         justify-content: space-evenly;
-    }
-
-
-    footer {
-        font-size: 18px;
-        font-family: ${({ theme }) => theme.pokeTextFont}, monospace;
     }
 
     

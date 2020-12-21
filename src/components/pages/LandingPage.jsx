@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { fetchPokemon } from "../../store/actions/actions"
 import { useHistory } from "react-router-dom";
-import { StyledLandingPage } from "../../styles/StyledComponents/styledPages";
 import { StyledMainHeading } from "../../styles/StyledComponents/styledCommon";
+import { StyledLandingPage } from "../../styles/StyledComponents/styledPages";
 import { Button, MainHeading, FeaturedPokemon, Wallpaper } from "../common";
 
 const LandingPage = props => {
@@ -21,7 +21,8 @@ const LandingPage = props => {
 
 
     return(
-        <StyledLandingPage>
+        <>
+            <StyledLandingPage>
                 <header>
                     <StyledMainHeading>
                         <MainHeading text={"PokéBattle"} classType={"title"} />
@@ -46,15 +47,8 @@ const LandingPage = props => {
                         />
                     </div>
                 </section>
-                <footer>
-                    <div>
-                        <nav>
-                            <h3>Contact Me</h3>
-                            <h3>About</h3>
-                        </nav>
-                    </div>
-                </footer>
-        </StyledLandingPage>
+            </StyledLandingPage>
+        </>
     )
 }
 
