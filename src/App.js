@@ -1,6 +1,7 @@
 import React from "react";
 import { Route } from "react-router-dom";
 import "./styles/css/reset.css";
+import "./styles/css/global.css";
 import { LandingPage, Signup, Login, PokemonList, OnDeck, BattlePage } from "./components/pages";
 
 

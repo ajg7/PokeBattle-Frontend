@@ -5,7 +5,6 @@ import { useHistory } from "react-router-dom";
 import { StyledMainHeading } from "../../styles/StyledComponents/styledCommon";
 import { StyledLandingPage } from "../../styles/StyledComponents/styledPages";
 import { Button, MainHeading, FeaturedPokemon, Wallpaper } from "../common";
-// import "../../styles/css/background.css";
 
 const LandingPage = props => {
 
