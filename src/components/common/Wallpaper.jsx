@@ -8,9 +8,7 @@ const Wallpaper = props => {
     return (
         
         <StyledWallpaper>
-            <h2>
-            abcdefghijklmnopqrstuvwxyziwannabetheverybestlikenooneeverwastocatchthemismyrealtesttotrainthemismycausepokemongottacatchemallpipikapizyxwvutsrqponmlkjihgfedcba
-            </h2>
+            
         </StyledWallpaper>
     )
 }

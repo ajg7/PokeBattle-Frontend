@@ -3,8 +3,8 @@ import styled from "styled-components";
 export const StyledFeaturedPokemon = styled.div`
 
 img {
-    height: 300px;
-    width: 300px;
+    height: 250px;
+    width: 250px;
 }
 
 `

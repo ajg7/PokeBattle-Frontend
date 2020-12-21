@@ -21,28 +21,30 @@ const LandingPage = props => {
 
 
     return(
-        <div>
-            <StyledLandingPage>
-                <Wallpaper />
+        <StyledLandingPage>
                 <header>
                     <StyledMainHeading>
                         <MainHeading text={"PokéBattle"} classType={"title"} />
                     </StyledMainHeading>
                 </header>
-                <section>
-                    <FeaturedPokemon />
-                    <Button 
-                    handleClick={signupHandler}
-                    isDisabled={false}
-                    classType="signup-button"
-                    buttonText={"Sign Up"}
-                    />
-                    <Button 
-                    handleClick={loginHandler}
-                    isDisabled={false}
-                    classType="login-button"
-                    buttonText={"Login"}
-                    />
+                <section className="call-to-action">
+                    <div className="featured-pokemon">
+                        <FeaturedPokemon />
+                    </div>
+                    <div className="call-to-action-buttons">
+                        <Button 
+                        handleClick={signupHandler}
+                        isDisabled={false}
+                        classType="signup-button"
+                        buttonText={"Sign Up"}
+                        />
+                        <Button 
+                        handleClick={loginHandler}
+                        isDisabled={false}
+                        classType="login-button"
+                        buttonText={"Login"}
+                        />
+                    </div>
                 </section>
                 <footer>
                     <div>
@@ -52,9 +54,7 @@ const LandingPage = props => {
                         </nav>
                     </div>
                 </footer>
-                <Wallpaper />
-            </StyledLandingPage>
-        </div>
+        </StyledLandingPage>
     )
 }
 
