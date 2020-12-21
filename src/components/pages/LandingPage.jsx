@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom";
 import { StyledMainHeading } from "../../styles/StyledComponents/styledCommon";
 import { StyledLandingPage } from "../../styles/StyledComponents/styledPages";
 import { Button, MainHeading, FeaturedPokemon, Wallpaper } from "../common";
+// import "../../styles/css/background.css";
 
 const LandingPage = props => {
 
@@ -21,34 +22,32 @@ const LandingPage = props => {
 
 
     return(
-        <>
-            <StyledLandingPage>
-                <header>
-                    <StyledMainHeading>
-                        <MainHeading text={"PokéBattle"} classType={"title"} />
-                    </StyledMainHeading>
-                </header>
-                <section className="call-to-action">
-                    <div className="featured-pokemon">
-                        <FeaturedPokemon />
-                    </div>
-                    <div className="call-to-action-buttons">
-                        <Button 
-                        handleClick={signupHandler}
-                        isDisabled={false}
-                        classType="signup-button"
-                        buttonText={"Sign Up"}
-                        />
-                        <Button 
-                        handleClick={loginHandler}
-                        isDisabled={false}
-                        classType="login-button"
-                        buttonText={"Login"}
-                        />
-                    </div>
-                </section>
-            </StyledLandingPage>
-        </>
+        <StyledLandingPage>
+            <header>
+                <StyledMainHeading>
+                    <MainHeading text={"PokéBattle"} classType={"title"} />
+                </StyledMainHeading>
+            </header>
+            <section className="call-to-action">
+                <div className="featured-pokemon">
+                    <FeaturedPokemon />
+                </div>
+                <div className="call-to-action-buttons">
+                    <Button 
+                    handleClick={signupHandler}
+                    isDisabled={false}
+                    classType="signup-button"
+                    buttonText={"Sign Up"}
+                    />
+                    <Button 
+                    handleClick={loginHandler}
+                    isDisabled={false}
+                    classType="login-button"
+                    buttonText={"Login"}
+                    />
+                </div>
+            </section>
+        </StyledLandingPage>
     )
 }
 
