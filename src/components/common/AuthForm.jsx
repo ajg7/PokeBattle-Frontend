@@ -3,11 +3,15 @@ import { FormValues } from "../../classes/FormValuesClass";
 // import PropTypes from "prop-types";
 // import { FormValues, initialFormValues } from "../../classes/FormValuesClass";
 import { Button } from "../common";
-
+import { connect } from "react-redux";
+import { login } from "../../store/actions/actions";
+import { useHistory } from "react-router-dom";
 
 
 const Form = props => {
 
+    const { login, formType } = props;
+    const history = useHistory();
     const emailRef = useRef();
     const passwordRef = useRef();
 
@@ -60,7 +64,11 @@ const Form = props => {
         event.preventDefault();
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
-        const user = new FormValues(email, password, false);
+        const user = new FormValues(email.trim(), password.trim(), false);
+        console.log(user);
+        if (formType === "Login") login(user)
+        if (formType === "Signup") //signup(newUser)
+        history.push("/pokemon_team");
     }
 
     return (
@@ -68,21 +76,25 @@ const Form = props => {
             <form onSubmit={submitHandler}>
                 <label>
                 Email:
-                <input 
-                placeholder="Enter Email"
-                type="text"
-                ref={emailRef}
-                />
+                    <input 
+                    placeholder="Enter Email"
+                    type="text"
+                    ref={emailRef}
+                    />
                 </label>
                 <label>
                 Password:
-                <input 
-                placeholder="Enter Password"
-                type="password"
-                ref={passwordRef}
-                />
+                    <input 
+                    placeholder="Enter Password"
+                    type="password"
+                    ref={passwordRef}
+                    />
                 </label>
-                <button>Submit</button>
+                <Button 
+                isDisabled={false}
+                classType="submit-button"
+                buttonText={"Submit"}
+                />
             </form>
 
 
@@ -121,7 +133,7 @@ const Form = props => {
     )
 }
 
-export default Form;
+export default connect(null, { login })(Form);
 
 
 /*

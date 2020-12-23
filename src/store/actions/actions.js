@@ -21,6 +21,8 @@ export const FETCH_CHALLENGER_TEAM = "FETCH_CHALLENGER_TEAM";
 export const BATTLE = "BATTLE";
 export const FETCH_TEAM_ID = "FETCH_TEAM_ID";
 export const SET_FEATURED_POKEMON = "FEATURED_POKEMON";
+export const LOGIN = "LOGIN";
+export const SIGNUP = "SIGNUP";
 
 export const fetchPokemon = () => {
     return dispatch => {
@@ -212,5 +214,20 @@ export const setFeaturedPokemon = () => {
                 console.log(error)
                 dispatch({ type: ERROR_HANDLING, payload: { message: "You blacked out!" }})
             })
+    }
+}
+
+export const login = user => {
+    return dispatch => {
+        axios.post("http://localhost:7000/users/login", user)
+        .then(response => {
+            console.log(response)
+            const token = response.data.token;
+            const userId = response.data.userId;
+            localStorage.setItem("token", token);
+            dispatch({type: LOGIN, payload: { userId: userId }})
+            fetchTeamId(userId);
+        })
+        .catch(error => console.log(error))
     }
 }

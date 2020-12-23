@@ -17,7 +17,9 @@ import {
     FETCH_CHALLENGER_TEAM,
     BATTLE,
     FETCH_TEAM_ID,
-    SET_FEATURED_POKEMON 
+    SET_FEATURED_POKEMON, 
+    LOGIN,
+    SIGNUP
 } from "../actions"
 
 const initialState = {
@@ -174,6 +176,11 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 featuredPokemon: action.payload
+            }
+        case LOGIN:
+            return {
+                ...state,
+                userId: action.payload.userId
             }
         default:
             return state;

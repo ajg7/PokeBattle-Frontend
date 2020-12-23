@@ -42,9 +42,7 @@ const Login = props => {
     return(
         <div>
             <AuthForm 
-            classType={"login-form"}
-            headerText={"Login"}
-            submitCallback={loginUser}
+            formType="Login"
             />
             {/*
             <h3>Login</h3>
