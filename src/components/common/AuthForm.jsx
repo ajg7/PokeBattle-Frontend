@@ -22,53 +22,21 @@ const Form = props => {
         4. Add yup form Validation or React Form Validation that Max talked about
     */
     
-    // const { classType, headerText, submitCallback } = props;
-    // const [formValues, setFormValues] = useState(initialFormValues);
-    // const [disabled, setDisabled] = useState(true);
-    // const emailRef = useRef();
-    // const passwordRef = useRef();
-
-    // const inputChange = (key, value) => {
-    //     setFormValues({
-    //         ...formValues,
-    //         [key]: value
-    //     })
-    // }
-
-    // const changeHandler = event => {
-    //     const { name, value } = event.target
-    //     inputChange(name, value)
-    // }
-
-    // const loginUser = event => {
-    //     event.preventDefault();
-    //     const user = new FormValues(formValues.email.trim(), formValues.password.trim(), false);
-    //     axios.post("http://localhost:7000/users/login", user)
-    //             .then(response => {
-    //                 console.log(response)
-    //                 const token = response.data.token;
-    //                 const userId = response.data.userId;
-    //                 localStorage.setItem("token", token);
-    //                 fetchTeamId(userId);
-    //             })
-    //             .catch(error => {
-    //                 console.log(error)
-    //             })
-    //             .finally(() => {
-    //                 setFormValues(initialFormValues)
-    //                 history.push("/pokemon_list")
-    //             })
-// }       
-    
-    const submitHandler = event => {
+    const submitHandler = async event => {
         event.preventDefault();
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
         const user = new FormValues(email.trim(), password.trim(), false);
         console.log(user);
-        if (formType === "Login") login(user)
-        if (formType === "Signup") //signup(newUser)
-        history.push("/pokemon_team");
+        if (formType === "Login") {
+            login(user)
+            history.push("/pokemon_list");
+        };
+        // if (formType === "Signup") {
+        //     signup(newUser)
+        //     history.push("/pokemon_list")
+        // }
+
     }
 
     return (
