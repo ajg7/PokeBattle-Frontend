@@ -44,7 +44,7 @@ const Signup = props => {
         <div>
             <h3>Sign Up</h3>
             <form onSubmit={addNewUser}>
-                <label> email: 
+                <label> Email: 
                     <input 
                     name="email"
                     type="text"
@@ -52,7 +52,7 @@ const Signup = props => {
                     onChange={changeHandler}
                     />
                 </label>
-                <label> password: 
+                <label> Password: 
                     <input 
                     name="password"
                     type="password"

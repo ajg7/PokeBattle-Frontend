@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { FormValues, initialFormValues } from "../../classes/FormValuesClass";
-import { Button } from "../common";
+import { Button, AuthForm, FormLabels } from "../common";
 import { connect } from "react-redux";
 import { fetchTeamId } from "../../store/actions/actions";
 
@@ -18,18 +18,6 @@ const Login = props => {
 
     const history = useHistory();
     const [formValues, setFormValues] = useState(initialFormValues);
-
-    const inputChange = (key, value) => {
-        setFormValues({
-            ...formValues,
-            [key]: value
-        })
-    }
-
-    const changeHandler = event => {
-        const { name, value } = event.target
-        inputChange(name, value)
-    }
 
     const loginUser = event => {
         event.preventDefault();
@@ -53,9 +41,15 @@ const Login = props => {
 
     return(
         <div>
+            <AuthForm 
+            classType={"login-form"}
+            headerText={"Login"}
+            submitCallback={loginUser}
+            />
+            {/*
             <h3>Login</h3>
             <form onSubmit={loginUser}>
-                <label> email: 
+                <label> Email: 
                     <input 
                     name="email"
                     type="text"
@@ -63,7 +57,7 @@ const Login = props => {
                     onChange={changeHandler}
                     />
                 </label>
-                <label> password: 
+                <label> Password: 
                     <input 
                     name="password"
                     type="password"
@@ -77,6 +71,7 @@ const Login = props => {
                 buttonText={"Submit"}
                 />
             </form>
+            */}
         </div>
     )
 }
