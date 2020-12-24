@@ -2,7 +2,6 @@ import React from "react";
 import { AuthForm } from "../common";
 
 const Login = props => {
-
     return(
         <div>
             <AuthForm 

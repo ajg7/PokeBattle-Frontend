@@ -170,7 +170,8 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 teamId: action.payload.teamId,
-                userId: +action.payload.userId
+                userId: +action.payload.userId,
+                error: ""
             }
         case SET_FEATURED_POKEMON:
             return {

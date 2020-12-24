@@ -3,7 +3,6 @@ import { AuthForm } from "../common";
 
 
 const Signup = props => {
-
     return(
         <div>
             <AuthForm 

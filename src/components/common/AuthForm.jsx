@@ -4,13 +4,13 @@ import { FormValues } from "../../classes/FormValuesClass";
 // import { FormValues, initialFormValues } from "../../classes/FormValuesClass";
 import { Button } from "../common";
 import { connect } from "react-redux";
-import { login, signup, makeTeam } from "../../store/actions/actions";
+import { login, signup, makeTeam, fetchTeamId } from "../../store/actions/actions";
 import { useHistory } from "react-router-dom";
 
 
 const Form = props => {
 
-    const { login, signup, makeTeam, formType } = props;
+    const { login, signup, makeTeam, fetchTeamId, userId, formType } = props;
     const history = useHistory();
     const emailRef = useRef();
     const passwordRef = useRef();
@@ -27,9 +27,8 @@ const Form = props => {
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
         const user = new FormValues(email.trim(), password.trim(), false);
-        console.log(user);
         if (formType === "Login") {
-            login(user)
+            login(user);
             history.push("/pokemon_list");
         };
         if (formType === "Signup") {
@@ -102,7 +101,14 @@ const Form = props => {
     )
 }
 
-export default connect(null, { login, signup, makeTeam })(Form);
+
+const mapStateToProps = state => {
+    return {
+        userId: state.userId
+    }
+}
+
+export default connect(mapStateToProps, { login, signup, makeTeam, fetchTeamId })(Form);
 
 
 /*
