@@ -19,7 +19,7 @@ const WhosThatPokemon = props => {
         const submission = nameRef.current.value.toLowerCase();
         const filterResult = pokemonData.filter(pokemon => submission === pokemon.name);
         // Bug- If a name is misspelled, the render crashes because the filterResult[0].imgURL is undefined
-        if (filterResult[0].imgURL === featuredPokemon) {
+        if (filterResult[0].imgURL === featuredPokemon.imgURL) {
             console.log("Won!")
         } else {
             console.log("Lost!")
@@ -36,6 +36,7 @@ const WhosThatPokemon = props => {
             classType="whos-that-pokemon-header"
             />
             <FeaturedPokemon />
+            <h4>{featuredPokemon.entry}</h4>
             <form onSubmit={evaluator}>
                 <label>
                     <input 
