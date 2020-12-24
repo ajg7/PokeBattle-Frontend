@@ -23,9 +23,7 @@ const LandingPage = props => {
     return(
         <StyledLandingPage>
             <header>
-                <StyledMainHeading>
-                    <MainHeading text={"PokéBattle"} classType={"title"} />
-                </StyledMainHeading>
+                <MainHeading text={"PokéBattle"} classType={"title"} />
             </header>
             <section className="call-to-action">
                 <div className="featured-pokemon">
