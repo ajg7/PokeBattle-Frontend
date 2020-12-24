@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { fetchPokemon } from "../../store/actions/actions";
 import { StyledWhosThatPokemon } from "../../styles/StyledComponents/styledPages";
 import { FeaturedPokemon, MainHeading, Button } from "../common";
@@ -6,22 +6,34 @@ import { connect } from "react-redux";
 
 const WhosThatPokemon = props => {
 
-    const { fetchPokemon, pokemonData } = props;
+    const { fetchPokemon, pokemonData, featuredPokemon } = props;
+    const [revealed, setRevealed] = useState(false);
     const nameRef = useRef();
 
     useEffect(() => {
         fetchPokemon()
-    }, [fetchPokemon])
+    }, [fetchPokemon]);
+
+    const evaluator = event => {
+        event.preventDefault();
+        const submission = nameRef.current.value.toLowerCase();
+        const filterResult = pokemonData.filter(pokemon => submission === pokemon.name)
+        if (filterResult[0].imgURL === featuredPokemon) {
+            console.log("Won!")
+        } else {
+            console.log("Lost!")
+        }
+        setRevealed(true);
+    }
 
     return (
-        <StyledWhosThatPokemon>
+        <StyledWhosThatPokemon revealed={revealed}>
             <MainHeading 
             text={"Who's That Pokemon!"}
             classType="whos-that-pokemon-header"
             />
-            <FeaturedPokemon 
-            />
-            <form>
+            <FeaturedPokemon />
+            <form onSubmit={evaluator}>
                 <label>
                     <input 
                     placeholder="Enter Name of Pokemon"
@@ -41,7 +53,8 @@ const WhosThatPokemon = props => {
 
 const mapStateToProps = state => {
     return {
-        pokemonData: state.pokemonData
+        pokemonData: state.pokemonData,
+        featuredPokemon: state.featuredPokemon
     }
 }
 
