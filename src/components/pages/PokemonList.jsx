@@ -24,8 +24,7 @@ const PokemonList = props => {
 
     useEffect(() => {
         fetchPokemon();
-        fetchTeamId(userId);
-    }, [fetchPokemon, fetchTeamId, userId])
+    }, [fetchPokemon])
 
     return(
         <>

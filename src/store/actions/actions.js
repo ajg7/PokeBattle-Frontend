@@ -218,14 +218,14 @@ export const fetchTeamId = userId => {
     }
 }
 
+// API Calls
+
 export const login = user => {
     return dispatch => {
         axios.post("http://localhost:7000/users/login", user)
         .then(response => {
             const token = response.data.token;
-            const userId = response.data.userId;
             localStorage.setItem("token", token);
-            dispatch({type: LOGIN, payload: { userId: userId }})
         })
         .catch(error => console.log(error))
     }
@@ -239,7 +239,6 @@ export const signup = newUser => {
                 const token = response.data.token;
                 const userId = response.data.data.id;
                 localStorage.setItem("token", token);
-                dispatch({type: SIGNUP, payload: { userId: userId }})
             })
             .catch(error => console.log(error));
     }
