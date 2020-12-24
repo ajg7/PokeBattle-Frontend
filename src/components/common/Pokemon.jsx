@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { setSelectedPokemon, setIsAdding } from "../../store/actions/actions";
 import { TypePills, CardFlipAnim } from "../../styles/StyledComponents/styledCommon";
-import { CardButton } from "../common";
+import { CardButton, LikeHearts } from "../common";
 
 
 const Pokemon = props => {
@@ -43,6 +43,7 @@ const Pokemon = props => {
                                 <CardButton 
                                 buttonText={"Add Pokemon"}
                                 />
+                                <LikeHearts />
                             </div>
                         </section>
                         <section className="card-back">

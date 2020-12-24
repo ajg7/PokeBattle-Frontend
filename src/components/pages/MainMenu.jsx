@@ -31,10 +31,11 @@ const MainMenu = props => {
                             add pokemon via drag-and-drop, and look at their cards
                             When clicked, it should show a modal that confirms whether you want to make a new team or not
                             if (answer === yes) then push to pokemon list & make team
+                            Where you can add nicknames, delete members, delete teams, and search for new pokemon to add to a team
                         </p>
                     </section>
                     <section>
-                        <h3>Battle!</h3>
+                        <h3>Battle Random Team!</h3>
                         <p>
                             A modal will pop up, where you can select your team, which will then send you to OnDeck page, where you will confirm
                         </p>
@@ -46,8 +47,8 @@ const MainMenu = props => {
                         <p>Mini game where you have to guess the name of the pokemon</p>
                     </section>
                     <section>
-                        <h3>Edit Team</h3>
-                        <p>Where you can add nicknames, delete members, delete teams, and search for new pokemon to add to a team</p>
+                        <h3>Battle Others!</h3>
+                        <p>Here is where you can battle other users</p>
                     </section>
                 </div>
             </section>
