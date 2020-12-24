@@ -28,12 +28,12 @@ const Form = props => {
         const user = new FormValues(email.trim(), password.trim(), false);
         if (formType === "Login") {
             login(user);
-            history.push("/pokemon_list");
+            history.push("/main_menu");
         };
         if (formType === "Signup") {
             signup(user);
             makeTeam();
-            history.push("/pokemon_list");
+            history.push("/main_menu");
         }
 
     }
