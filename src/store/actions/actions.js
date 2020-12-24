@@ -21,6 +21,8 @@ export const FETCH_CHALLENGER_TEAM = "FETCH_CHALLENGER_TEAM";
 export const BATTLE = "BATTLE";
 export const FETCH_TEAM_ID = "FETCH_TEAM_ID";
 export const SET_FEATURED_POKEMON = "FEATURED_POKEMON";
+export const LOGIN = "LOGIN";
+export const SIGNUP = "SIGNUP";
 
 export const fetchPokemon = () => {
     return dispatch => {
@@ -40,6 +42,7 @@ export const makeTeam = () => {
     return dispatch => {
         axiosWithAuth().post("/team/")
             .then(response => {
+                console.log(response.data.data.user_Id)
                 const teamId = response.data.data.team_Id;
                 const userId = response.data.data.user_Id;
                 dispatch({ type: MAKE_TEAM, payload: { teamId: teamId, userId: userId }})
@@ -169,7 +172,7 @@ export const makeChallengerTeam = () => {
             })
             .catch(error => {
                 console.log(error)
-                dispatch({ type: ERROR_HANDLING, payload: { message: "You blacked out!" }})
+                dispatch({ type: ERROR_HANDLING, payload: { message: "You blacked out! (Make Challenger Team)" }})
             })
     }
 }
@@ -186,20 +189,6 @@ export const battle = outcome => {
     }
 }
 
-export const fetchTeamId = userId => {
-    return dispatch => {
-        axiosWithAuth().get(`/team/${userId}`)
-            .then(response => {
-                console.log(response)
-                dispatch({ type: FETCH_TEAM_ID, payload: {teamId: response.data.teamId, userId: response.data.userId} })
-            })
-            .catch(error => {
-                console.log(error)
-                dispatch({ type: ERROR_HANDLING, payload: { message: "You blacked out!" }})
-            })
-    }
-}
-
 export const setFeaturedPokemon = () => {
     return dispatch => {
         const randomNum = BattleManager.random();
@@ -210,7 +199,47 @@ export const setFeaturedPokemon = () => {
             })
             .catch(error => {
                 console.log(error)
-                dispatch({ type: ERROR_HANDLING, payload: { message: "You blacked out!" }})
+                dispatch({ type: ERROR_HANDLING, payload: { message: "You blacked out! (setFeaturedPokemon)" }})
             })
+    }
+}
+
+export const fetchTeamId = userId => {
+    return dispatch => {
+        axiosWithAuth().get(`/team/${userId}`)
+            .then(response => {
+                console.log(response, "fetchTeamId")
+                dispatch({ type: FETCH_TEAM_ID, payload: {teamId: response.data.teamId, userId: response.data.userId} })
+            })
+            .catch(error => {
+                console.log(error)
+                dispatch({ type: ERROR_HANDLING, payload: { message: "You blacked out! (FetchTeamId)" }})
+            })
+    }
+}
+
+// API Calls
+
+export const login = user => {
+    return dispatch => {
+        axios.post("http://localhost:7000/users/login", user)
+        .then(response => {
+            const token = response.data.token;
+            localStorage.setItem("token", token);
+        })
+        .catch(error => console.log(error))
+    }
+}
+
+export const signup = newUser => {
+    return dispatch => {
+        axios.post("http://localhost:7000/users/signup", newUser)
+            .then(response => {
+                console.log(response, 'signup')
+                const token = response.data.token;
+                const userId = response.data.data.id;
+                localStorage.setItem("token", token);
+            })
+            .catch(error => console.log(error));
     }
 }

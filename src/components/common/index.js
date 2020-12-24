@@ -4,6 +4,7 @@ import CardButton from "./CardButton";
 import MainHeading from "./MainHeading";
 import FeaturedPokemon from "./FeaturedPokemon";
 import Wallpaper from "./Wallpaper";
+import AuthForm from "./AuthForm";
 
 export {
     Pokemon,
@@ -11,5 +12,6 @@ export {
     CardButton,
     MainHeading,
     FeaturedPokemon,
-    Wallpaper
+    Wallpaper,
+    AuthForm
 }

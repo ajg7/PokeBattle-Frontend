@@ -20,5 +20,4 @@ export const StyledLandingPage = styled.div`
         justify-content: space-evenly;
     }
 
-    
 `

@@ -8,7 +8,7 @@ import { StyledBar } from "../../styles/StyledComponents/styledPages";
 
 
 const PokemonList = props => {
-    const { pokemonData, loading, error, currIndex, setSelectedPokemon, fetchPokemon, removePokemon } = props;
+    const { pokemonData, loading, error, currIndex, userId, setSelectedPokemon, fetchPokemon, removePokemon, fetchTeamId } = props;
     const [pokemonHasBeenRemoved, setPokemonHasBeenRemoved] = useState(false);
     const [page, setPage] = useState(true);
 
@@ -67,6 +67,7 @@ const mapStateToProps = state => {
     return {
         pokemonData: state.pokemonData,
         teamId: state.teamId,
+        userId: state.userId,
         error: state.error, 
         currIndex: state.currIndex
     }
