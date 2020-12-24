@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 
 const WhosThatPokemon = props => {
 
-    const { fetchPokemon, pokemonData, featuredPokemon } = props;
+    const { fetchPokemon, featuredPokemon } = props;
     const [revealed, setRevealed] = useState(false);
     const nameRef = useRef();
 
@@ -17,13 +17,7 @@ const WhosThatPokemon = props => {
     const evaluator = event => {
         event.preventDefault();
         const submission = nameRef.current.value.toLowerCase();
-        const filterResult = pokemonData.filter(pokemon => submission === pokemon.name);
-        // Bug- If a name is misspelled, the render crashes because the filterResult[0].imgURL is undefined
-        if (filterResult[0].imgURL === featuredPokemon.imgURL) {
-            console.log("Won!")
-        } else {
-            console.log("Lost!")
-        }
+        submission === featuredPokemon.name ? console.log("You win") : console.log("you lose");
         setRevealed(true);
     }
 
@@ -63,8 +57,7 @@ const WhosThatPokemon = props => {
 
 const mapStateToProps = state => {
     return {
-        pokemonData: state.pokemonData,
-        featuredPokemon: state.featuredPokemon
+        featuredPokemon: state.featuredPokemon,
     }
 }
 

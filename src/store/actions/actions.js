@@ -199,8 +199,8 @@ export const setFeaturedPokemon = () => {
         const randomNum = BattleManager.random();
         axios.get(`http://localhost:7000/pokemon/${randomNum}`)
             .then(response => {
-                const { imgURL, entry } = response.data[0];
-                dispatch({ type: SET_FEATURED_POKEMON, payload: { imgURL, entry } })
+                const { imgURL, entry, name } = response.data[0];
+                dispatch({ type: SET_FEATURED_POKEMON, payload: { imgURL, entry, name } })
             })
             .catch(error => {
                 console.log(error)
