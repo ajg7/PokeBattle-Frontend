@@ -12,6 +12,7 @@ export const StyledMainMenu = styled.div`
     
     .top-sections section, .bottom-sections section {
         border: 3px red solid;
+        width: 100%;
     }
 
 
