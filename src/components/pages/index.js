@@ -6,6 +6,7 @@ import OnDeck from "./OnDeck";
 import PokemonList from "./PokemonList";
 import Signup from "./Signup";
 import MainMenu from "./MainMenu";
+import WhosThatPokemon from "./WhosThatPokemon";
 
 export {
     BattlePage,
@@ -15,5 +16,6 @@ export {
     OnDeck,
     PokemonList,
     Signup,
-    MainMenu
+    MainMenu,
+    WhosThatPokemon
 }
