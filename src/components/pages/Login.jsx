@@ -44,32 +44,6 @@ const Login = props => {
             <AuthForm 
             formType="Login"
             />
-            {/*
-            <h3>Login</h3>
-            <form onSubmit={loginUser}>
-                <label> Email: 
-                    <input 
-                    name="email"
-                    type="text"
-                    value={formValues.email}
-                    onChange={changeHandler}
-                    />
-                </label>
-                <label> Password: 
-                    <input 
-                    name="password"
-                    type="password"
-                    value={formValues.password}
-                    onChange={changeHandler}
-                    />
-                </label>
-                <Button 
-                isDisabled={false}
-                classType={"submit-button"}
-                buttonText={"Submit"}
-                />
-            </form>
-            */}
         </div>
     )
 }

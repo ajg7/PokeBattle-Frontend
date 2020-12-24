@@ -4,13 +4,13 @@ import { FormValues } from "../../classes/FormValuesClass";
 // import { FormValues, initialFormValues } from "../../classes/FormValuesClass";
 import { Button } from "../common";
 import { connect } from "react-redux";
-import { login } from "../../store/actions/actions";
+import { login, signup, makeTeam } from "../../store/actions/actions";
 import { useHistory } from "react-router-dom";
 
 
 const Form = props => {
 
-    const { login, formType } = props;
+    const { login, signup, makeTeam, formType } = props;
     const history = useHistory();
     const emailRef = useRef();
     const passwordRef = useRef();
@@ -32,10 +32,11 @@ const Form = props => {
             login(user)
             history.push("/pokemon_list");
         };
-        // if (formType === "Signup") {
-        //     signup(newUser)
-        //     history.push("/pokemon_list")
-        // }
+        if (formType === "Signup") {
+            signup(user);
+            makeTeam();
+            history.push("/pokemon_list");
+        }
 
     }
 
@@ -101,7 +102,7 @@ const Form = props => {
     )
 }
 
-export default connect(null, { login })(Form);
+export default connect(null, { login, signup, makeTeam })(Form);
 
 
 /*
