@@ -1,6 +1,6 @@
 import React from "react";
 import { StyledMainMenu } from "../../styles/StyledComponents/styledPages";
-import { MainHeading } from "../common";
+import { MainHeading, Modal } from "../common";
 import { useHistory } from "react-router-dom";
 
 const MainMenu = props => {
@@ -8,7 +8,7 @@ const MainMenu = props => {
     const history = useHistory();
 
     const makeTeamHandler = event => {
-        history.push("/pokemon_list");
+
     }
 
     const whosThatPokemonHandler = event => {
