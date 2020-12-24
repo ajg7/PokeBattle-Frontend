@@ -5,7 +5,6 @@ import MainHeading from "./MainHeading";
 import FeaturedPokemon from "./FeaturedPokemon";
 import Wallpaper from "./Wallpaper";
 import AuthForm from "./AuthForm";
-import FormLabels from "./FormLabels";
 
 export {
     Pokemon,
@@ -14,6 +13,5 @@ export {
     MainHeading,
     FeaturedPokemon,
     Wallpaper,
-    AuthForm,
-    FormLabels
+    AuthForm
 }
