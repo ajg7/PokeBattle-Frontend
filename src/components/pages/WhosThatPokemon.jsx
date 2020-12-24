@@ -32,7 +32,7 @@ const WhosThatPokemon = props => {
     return (
         <StyledWhosThatPokemon revealed={revealed}>
             <MainHeading 
-            text={"Who's That Pokemon!"}
+            text={"Who's That Pokemon?"}
             classType="whos-that-pokemon-header"
             />
             <FeaturedPokemon />

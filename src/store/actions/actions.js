@@ -29,7 +29,12 @@ export const fetchPokemon = () => {
         axios.get("http://localhost:7000/pokemon")
             .then(response => {
                 const data = response.data;
-                dispatch({ type: FETCH_POKEMON, payload: data })
+                const map = {};
+                for (const pokemon of data) {
+                    map[pokemon.name] = pokemon;
+                }
+                console.log(map)
+                dispatch({ type: FETCH_POKEMON, payload: { data, map } })
             })
             .catch(error => {
                 console.log(error)

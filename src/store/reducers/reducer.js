@@ -22,6 +22,7 @@ import {
 
 const initialState = {
     pokemonData: [],
+    mappedPokemonData: [],
     teamId: 0,
     userId: 0,
     deletion: "",
@@ -44,7 +45,8 @@ export default (state = initialState, action) => {
         case FETCH_POKEMON:
             return {
                 ...state,
-                pokemonData: action.payload
+                pokemonData: action.payload.data,
+                mappedPokemonData: action.payload.map
             }
         case ERROR_HANDLING:
             return {
