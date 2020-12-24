@@ -26,6 +26,8 @@ const WhosThatPokemon = props => {
         setRevealed(true);
     }
 
+    const newPokemon = event => window.location.reload();
+
     return (
         <StyledWhosThatPokemon revealed={revealed}>
             <MainHeading 
@@ -47,6 +49,12 @@ const WhosThatPokemon = props => {
                 buttonText={"Submit"}
                 />
             </form>
+            <Button 
+            handleClick={newPokemon}
+            isDisabled={false}
+            classType={"resetButton"}
+            buttonText={"Again?"}
+            />
         </StyledWhosThatPokemon>
     )
 }
