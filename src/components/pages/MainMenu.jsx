@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyledMainMenu } from "../../styles/StyledComponents/styledPages";
 import { MainHeading, Modal } from "../common";
 import { useHistory } from "react-router-dom";
@@ -6,10 +6,11 @@ import { useHistory } from "react-router-dom";
 const MainMenu = props => {
 
     const history = useHistory();
+    const [modalOpen, setModalOpen] = useState(false);
 
     const makeTeamHandler = event => {
-
-    }
+        setModalOpen(true)
+    } 
 
     const whosThatPokemonHandler = event => {
         history.push("/guess_pokemon");
@@ -18,6 +19,10 @@ const MainMenu = props => {
 
 
     return (
+        <div>
+        {modalOpen ? <div>
+            <Modal modalOpen={modalOpen} />
+        </div> : null}
         <StyledMainMenu>
             <MainHeading
             classType={"main-menu-header"}
@@ -53,6 +58,7 @@ const MainMenu = props => {
                 </div>
             </section>
         </StyledMainMenu>
+        </div>
     )
 }
 
