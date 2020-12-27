@@ -35,17 +35,16 @@
 
 import * as pokemon from "./pokemonActions";
 import * as battle from "./battleActions";
+import * as team from "./teamActions";
 
 export {
     pokemon,
-    battle
+    battle,
+    team
 }
 
 export {
     ERROR_HANDLING,
-    MAKE_TEAM,
-    DELETE_TEAM,
-    SAVE_TEAM,
     FETCH_POKEMON_TEAM,
     DRAGGED_POKEMON,
     ADD_POKEMON,
@@ -55,8 +54,5 @@ export {
     IS_ADDING,
     IS_SWAPPING,
     IS_REMOVING,
-    MAKE_CHALLENGER_TEAM,
-    FETCH_CHALLENGER_TEAM,
-    BATTLE,
     FETCH_TEAM_ID,
 } from "./actions";

@@ -1,9 +1,7 @@
 import {
     ERROR_HANDLING,
     pokemon,
-    MAKE_TEAM,
-    DELETE_TEAM,
-    SAVE_TEAM,
+    team,
     FETCH_POKEMON_TEAM,
     DRAGGED_POKEMON,
     ADD_POKEMON,
@@ -50,25 +48,25 @@ export default (state = initialState, action) => {
                 ...state,
                 error: action.payload.message,
             }
-        case MAKE_TEAM:
+        case team.MAKE_TEAM:
             localStorage.setItem("teamId", action.payload.teamId)
             return {
                 ...state,
                 teamId: action.payload.teamId,
                 userId: action.payload.userId
             }
-        case FETCH_POKEMON_TEAM:
+        case team.FETCH_POKEMON_TEAM:
             return {
                 ...state,
                 teamData: action.payload
             }
-        case SAVE_TEAM:
+        case team.SAVE_TEAM:
             localStorage.setItem("team", state.team)
             return {
                 ...state,
                 teamData: action.payload
             }
-        case DELETE_TEAM:
+        case team.DELETE_TEAM:
             return {
                 ...state,
                 deletion: action.payload,
