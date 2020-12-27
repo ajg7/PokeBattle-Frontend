@@ -6,6 +6,7 @@ import { StyledMainHeading } from "./StyledMainHeading";
 import { StyledWallpaper } from "./StyledWallpaper";
 import { StyledFeaturedPokemon } from "./StyledFeaturedPokemon";
 import { GlobalStyles } from "./GlobalStyles";
+import { StyledModal } from "./StyledModal";
 
 export {
     StyledCards,
@@ -15,5 +16,6 @@ export {
     StyledMainHeading,
     StyledWallpaper,
     StyledFeaturedPokemon,
-    GlobalStyles
+    GlobalStyles,
+    StyledModal
 }

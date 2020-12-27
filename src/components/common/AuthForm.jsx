@@ -1,10 +1,9 @@
 import React, { useState, useRef } from "react";
 import { FormValues } from "../../classes/FormValuesClass";
-// import PropTypes from "prop-types";
-// import { FormValues, initialFormValues } from "../../classes/FormValuesClass";
+import { login, signup } from "../../api/";
 import { Button } from "../common";
 import { connect } from "react-redux";
-import { login, signup, makeTeam, fetchTeamId } from "../../store/actions/actions";
+import { makeTeam, fetchTeamId } from "../../store/actions/actions";
 import { useHistory } from "react-router-dom";
 
 
@@ -29,12 +28,12 @@ const Form = props => {
         const user = new FormValues(email.trim(), password.trim(), false);
         if (formType === "Login") {
             login(user);
-            history.push("/pokemon_list");
+            history.push("/main_menu");
         };
         if (formType === "Signup") {
             signup(user);
             makeTeam();
-            history.push("/pokemon_list");
+            history.push("/main_menu");
         }
 
     }
@@ -64,39 +63,6 @@ const Form = props => {
                 buttonText={"Submit"}
                 />
             </form>
-
-
-
-
-
-
-
-
-
-            {/*<h2 className={classType || null}> {headerText} </h2>
-            <form onSubmit={submitCallback}>
-                <label>
-                Email:
-                    <input 
-                    placeholder="Enter Email"
-                    type="text"
-                    ref={emailRef}
-                    />
-                </label>
-                <label>
-                Password:
-                    <input 
-                    placeholder="Enter Password"
-                    type="password"
-                    ref={passwordRef}
-                    />
-                </label>
-                <Button 
-                isDisabled={disabled}
-                classType={"submit-button"}
-                buttonText={"Enter"}
-                />
-    </form>*/}
         </div>
     )
 }

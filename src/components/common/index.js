@@ -5,6 +5,8 @@ import MainHeading from "./MainHeading";
 import FeaturedPokemon from "./FeaturedPokemon";
 import Wallpaper from "./Wallpaper";
 import AuthForm from "./AuthForm";
+import LikeHearts from "./LikeHearts";
+import Modal from "./Modal";
 
 export {
     Pokemon,
@@ -13,5 +15,7 @@ export {
     MainHeading,
     FeaturedPokemon,
     Wallpaper,
-    AuthForm
+    AuthForm,
+    LikeHearts,
+    Modal
 }

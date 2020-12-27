@@ -29,7 +29,12 @@ export const fetchPokemon = () => {
         axios.get("http://localhost:7000/pokemon")
             .then(response => {
                 const data = response.data;
-                dispatch({ type: FETCH_POKEMON, payload: data })
+                const map = {};
+                for (const pokemon of data) {
+                    map[pokemon.name] = pokemon;
+                }
+                console.log(map)
+                dispatch({ type: FETCH_POKEMON, payload: { data, map } })
             })
             .catch(error => {
                 console.log(error)
@@ -194,8 +199,8 @@ export const setFeaturedPokemon = () => {
         const randomNum = BattleManager.random();
         axios.get(`http://localhost:7000/pokemon/${randomNum}`)
             .then(response => {
-                const { imgURL } = response.data[0];
-                dispatch({ type: SET_FEATURED_POKEMON, payload: imgURL })
+                const { imgURL, entry, name } = response.data[0];
+                dispatch({ type: SET_FEATURED_POKEMON, payload: { imgURL, entry, name } })
             })
             .catch(error => {
                 console.log(error)
@@ -208,38 +213,11 @@ export const fetchTeamId = userId => {
     return dispatch => {
         axiosWithAuth().get(`/team/${userId}`)
             .then(response => {
-                console.log(response, "fetchTeamId")
                 dispatch({ type: FETCH_TEAM_ID, payload: {teamId: response.data.teamId, userId: response.data.userId} })
             })
             .catch(error => {
                 console.log(error)
                 dispatch({ type: ERROR_HANDLING, payload: { message: "You blacked out! (FetchTeamId)" }})
             })
-    }
-}
-
-// API Calls
-
-export const login = user => {
-    return dispatch => {
-        axios.post("http://localhost:7000/users/login", user)
-        .then(response => {
-            const token = response.data.token;
-            localStorage.setItem("token", token);
-        })
-        .catch(error => console.log(error))
-    }
-}
-
-export const signup = newUser => {
-    return dispatch => {
-        axios.post("http://localhost:7000/users/signup", newUser)
-            .then(response => {
-                console.log(response, 'signup')
-                const token = response.data.token;
-                const userId = response.data.data.id;
-                localStorage.setItem("token", token);
-            })
-            .catch(error => console.log(error));
     }
 }
