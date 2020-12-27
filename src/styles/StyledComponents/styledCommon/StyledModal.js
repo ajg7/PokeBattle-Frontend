@@ -21,12 +21,10 @@ export const StyledModal = styled.div`
   padding: 20px;
   border: 1px solid #888;
   width: 80%; /* Could be more or less, depending on screen size */
-  text-align: right;
 }
 
 .modal-container {
     color: black;
-    text-align: left;
 }
 
 img {
@@ -34,9 +32,5 @@ img {
     width: 25px;
 }
 
-.new-team-button {
-    display: flex;
-    justify-content: flex-start;
-}
 
 `
