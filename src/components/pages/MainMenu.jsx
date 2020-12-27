@@ -27,9 +27,6 @@ const MainMenu = props => {
                     <section onClick={modalHandler}>
                         <h3>Make a Team!</h3>
                         <p>
-                            add pokemon via drag-and-drop, and look at their cards
-                            When clicked, it should show a modal that confirms whether you want to make a new team or not
-                            if (answer === yes) then push to pokemon list & make team
                             Where you can add nicknames, delete members, delete teams, and search for new pokemon to add to a team
                         </p>
                     </section>
