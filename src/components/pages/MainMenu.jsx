@@ -8,15 +8,9 @@ const MainMenu = props => {
     const history = useHistory();
     const [modalOpen, setModalOpen] = useState(false);
 
-    const modalHandler = event => {
-        setModalOpen(!modalOpen)
-    } 
+    const modalHandler = event => setModalOpen(!modalOpen);
 
-    const whosThatPokemonHandler = event => {
-        history.push("/guess_pokemon");
-    }
-
-
+    const whosThatPokemonHandler = event => history.push("/guess_pokemon");
 
     return (
         <div>
