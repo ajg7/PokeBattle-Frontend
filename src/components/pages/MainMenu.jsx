@@ -19,9 +19,9 @@ const MainMenu = props => {
 
 
     return (
-        <div onClick={modalHandler}>
+        <div>
         {modalOpen ? <div>
-            <Modal modalOpen={modalOpen} />
+            <Modal modalHandler={modalHandler} />
         </div> : null}
         <StyledMainMenu>
             <MainHeading
