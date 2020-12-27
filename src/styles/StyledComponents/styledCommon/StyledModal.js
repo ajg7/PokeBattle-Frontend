@@ -32,5 +32,10 @@ img {
     width: 25px;
 }
 
+.exit-button {
+    height: 50px;
+    width: 50px;
+}
+
 
 `

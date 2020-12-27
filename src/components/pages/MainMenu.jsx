@@ -20,7 +20,7 @@ const MainMenu = props => {
 
     return (
         <div>
-        {modalOpen ? <div>
+        {modalOpen ? <div onClick={modalHandler}>
             <Modal modalHandler={modalHandler} />
         </div> : null}
         <StyledMainMenu>
