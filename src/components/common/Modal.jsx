@@ -6,7 +6,9 @@ const Modal = props => {
         <StyledModal>
         <div className="modal">
             <div className="modal-content">
-                <p>test</p>
+                <div className="modal-container">
+                    <p>test</p>
+                </div>
             </div>
         </div>
         </StyledModal>

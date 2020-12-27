@@ -8,8 +8,8 @@ const MainMenu = props => {
     const history = useHistory();
     const [modalOpen, setModalOpen] = useState(false);
 
-    const makeTeamHandler = event => {
-        setModalOpen(true)
+    const modalHandler = event => {
+        setModalOpen(!modalOpen)
     } 
 
     const whosThatPokemonHandler = event => {
@@ -19,7 +19,7 @@ const MainMenu = props => {
 
 
     return (
-        <div>
+        <div onClick={modalHandler}>
         {modalOpen ? <div>
             <Modal modalOpen={modalOpen} />
         </div> : null}
@@ -30,7 +30,7 @@ const MainMenu = props => {
             />
             <section className="main-menu-table">
                 <div className="top-sections">
-                    <section onClick={makeTeamHandler}>
+                    <section onClick={modalHandler}>
                         <h3>Make a Team!</h3>
                         <p>
                             add pokemon via drag-and-drop, and look at their cards
