@@ -1,6 +1,6 @@
 import {
     ERROR_HANDLING,
-    FETCH_POKEMON,
+    pokemon,
     MAKE_TEAM,
     DELETE_TEAM,
     SAVE_TEAM,
@@ -17,7 +17,6 @@ import {
     FETCH_CHALLENGER_TEAM,
     BATTLE,
     FETCH_TEAM_ID,
-    SET_FEATURED_POKEMON, 
 } from "../actions"
 
 const initialState = {
@@ -42,7 +41,7 @@ const initialState = {
 
 export default (state = initialState, action) => {
     switch(action.type) {
-        case FETCH_POKEMON:
+        case pokemon.FETCH_POKEMON:
             return {
                 ...state,
                 pokemonData: action.payload.data,
@@ -173,7 +172,7 @@ export default (state = initialState, action) => {
                 userId: +action.payload.userId,
                 error: ""
             }
-        case SET_FEATURED_POKEMON:
+        case pokemon.SET_FEATURED_POKEMON:
             return {
                 ...state,
                 featuredPokemon: action.payload

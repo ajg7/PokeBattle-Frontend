@@ -21,8 +21,6 @@ export const FETCH_CHALLENGER_TEAM = "FETCH_CHALLENGER_TEAM";
 export const BATTLE = "BATTLE";
 export const FETCH_TEAM_ID = "FETCH_TEAM_ID";
 export const SET_FEATURED_POKEMON = "FEATURED_POKEMON";
-export const LOGIN = "LOGIN";
-export const SIGNUP = "SIGNUP";
 
 export const fetchPokemon = () => {
     return dispatch => {
