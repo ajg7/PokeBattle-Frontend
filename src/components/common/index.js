@@ -7,6 +7,7 @@ import Wallpaper from "./Wallpaper";
 import AuthForm from "./AuthForm";
 import LikeHearts from "./LikeHearts";
 import Modal from "./Modal";
+import Team from "./Team";
 
 export {
     Pokemon,
@@ -17,5 +18,6 @@ export {
     Wallpaper,
     AuthForm,
     LikeHearts,
-    Modal
+    Modal,
+    Team
 }

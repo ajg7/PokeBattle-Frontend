@@ -7,6 +7,7 @@ import { StyledWallpaper } from "./StyledWallpaper";
 import { StyledFeaturedPokemon } from "./StyledFeaturedPokemon";
 import { GlobalStyles } from "./GlobalStyles";
 import { StyledModal } from "./StyledModal";
+import { StyledTeam } from "./StyledTeam";
 
 export {
     StyledCards,
@@ -17,5 +18,6 @@ export {
     StyledWallpaper,
     StyledFeaturedPokemon,
     GlobalStyles,
-    StyledModal
+    StyledModal,
+    StyledTeam
 }
