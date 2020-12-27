@@ -13,9 +13,7 @@ import {
     IS_ADDING,
     IS_SWAPPING,
     IS_REMOVING,
-    MAKE_CHALLENGER_TEAM,
-    FETCH_CHALLENGER_TEAM,
-    BATTLE,
+    battle,
     FETCH_TEAM_ID,
 } from "../actions"
 
@@ -144,19 +142,19 @@ export default (state = initialState, action) => {
                 isSwapping: false,
                 isRemoving: action.payload
             }
-        case MAKE_CHALLENGER_TEAM:
+        case battle.MAKE_CHALLENGER_TEAM:
             return {
                 ...state,
                 challengerTeamData: action.payload.data
             }
-        case FETCH_CHALLENGER_TEAM: 
+        case battle.FETCH_CHALLENGER_TEAM: 
             const challengers = localStorage.getItem("challengers")
             const challengerList = JSON.parse(challengers);
             return {
                 ...state,
                 challengerTeamData: challengerList.data
             }
-        case BATTLE:
+        case battle.BATTLE:
             const newTeam = state.teamData.filter(member => member.name !== action.payload.loser)
             const newChallengerTeam = state.challengerTeamData.filter(member => member.name !== action.payload.loser)
             return {

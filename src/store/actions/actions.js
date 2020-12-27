@@ -163,12 +163,12 @@ export const makeChallengerTeam = () => {
         axiosWithAuth().get("/pokemon")
             .then(response => {
                 const data = response.data;
-                const member1 = data[BattleManager.random()]
-                const member2 = data[BattleManager.random()]
-                const member3 = data[BattleManager.random()]
-                const member4 = data[BattleManager.random()]
-                const member5 = data[BattleManager.random()]
-                const member6 = data[BattleManager.random()]
+                const member1 = data[BattleManager.random()];
+                const member2 = data[BattleManager.random()];
+                const member3 = data[BattleManager.random()];
+                const member4 = data[BattleManager.random()];
+                const member5 = data[BattleManager.random()];
+                const member6 = data[BattleManager.random()];
                 const challengers = {data: [member1, member2, member3, member4, member5, member6]};
                 localStorage.setItem("challengers", JSON.stringify(challengers));
                 dispatch({ type: MAKE_CHALLENGER_TEAM, payload: challengers })

@@ -1,12 +1,7 @@
 import axios from "axios";
 import { BattleManager } from "../../classes/BattleManager";
 
-/*
-FetchPokemon
-SetFeaturedPokemon
-*/
-
-export const FETCH_POKEMON = "FETCH_POKEMON_SUCCESS";
+export const FETCH_POKEMON = "FETCH_POKEMON";
 export const fetchPokemon = () => async dispatch => {
     const map = {};
     const { data } = await axios.get("http://localhost:7000/pokemon");

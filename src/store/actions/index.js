@@ -34,9 +34,11 @@
 */
 
 import * as pokemon from "./pokemonActions";
+import * as battle from "./battleActions";
 
 export {
-    pokemon
+    pokemon,
+    battle
 }
 
 export {
