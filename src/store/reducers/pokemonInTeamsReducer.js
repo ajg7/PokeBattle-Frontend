@@ -1,31 +1,16 @@
-import {
-    pokemon,
-    team,
-    pokemonInTeams,
-    battle,
-} from "../actions"
+import { pokemonInTeams } from "../actions";
 
 const initialState = {
-    pokemonData: [],
-    mappedPokemonData: [],
-    teamId: 0,
-    userId: 0,
-    deletion: "",
     selectedPokemon: [],
-    currIndex: 0,
+    team: Array(6).fill(null),
     pokemonHasBeenRemoved: false,
     isAdding: false,
     isSwapping: false,
     isRemoving: false,
-    team: Array(6).fill(null),
-    teamData: [],
-    challengerTeamData: [],
-    outcome: "",
-    featuredPokemon: {}
 }
 
-export default (state = initialState, action) => {
-    switch(action.type) {
+export const reducer = (state = initialState, action) => {  
+    switch (action.type) {
         case pokemonInTeams.DRAGGED_POKEMON:
             return {
                 ...state,
@@ -95,6 +80,6 @@ export default (state = initialState, action) => {
                 isRemoving: action.payload
             }
         default:
-            return state;
+            return state
     }
 }

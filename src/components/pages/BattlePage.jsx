@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { fetchPokemon, fetchPokemonTeam, fetchChallengerTeam, battle } from "../../store/actions/actions";
+import { fetchPokemon, fetchPokemonTeam, fetchChallengerTeam, battle } from "../../store/actions";
 import { StyledCards } from "../../styles/StyledComponents/styledCommon";
 import { StyledArena } from "../../styles/StyledComponents/styledPages";
 import { BattleManager, scores } from "../../classes/BattleManager";
