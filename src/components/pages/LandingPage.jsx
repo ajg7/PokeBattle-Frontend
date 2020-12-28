@@ -27,7 +27,7 @@ const LandingPage = props => {
             </header>
             <section className="call-to-action">
                 <div className="featured-pokemon">
-                    <FeaturedPokemon pokemonData={pokemonData}/>
+                    <FeaturedPokemon />
                 </div>
                 <div className="call-to-action-buttons">
                     <Button 

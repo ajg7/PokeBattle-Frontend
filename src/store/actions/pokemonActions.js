@@ -21,8 +21,8 @@ export const setFeaturedPokemon = () => async dispatch => {
     const randomNum = BattleManager.random();
     const result = await axios.get(`http://localhost:7000/pokemon/${randomNum}`)
     const { imgURL, entry, name } = result.data[0];
+    console.log(imgURL)
     try {
-        console.log(imgURL, entry, name)
         dispatch({ type: SET_FEATURED_POKEMON, payload: {imgURL, entry, name} })
     }
     catch {

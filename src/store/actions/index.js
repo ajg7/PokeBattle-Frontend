@@ -1,8 +1,9 @@
 /*
-1) Divide up actions
-2) Divide up reducers
-3) Make an index js for the store
-4) Refactor the Backend
+4a) Fix the FeaturedPokemon Component
+4b) Refactor the Backend
+    -Organize all CURD operations into reusable code
+    -Move db to Postgres
+    -Make sophisticated SQL queries
 5) If not already made, make a route that can get the teams associated with a user, post a new team, and delete a team
 6) Map over team data in the main menu component
 7) Add functionality to make a new team and delete a new team
