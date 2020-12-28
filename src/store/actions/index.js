@@ -36,16 +36,16 @@
 import * as pokemon from "./pokemonActions";
 import * as battle from "./battleActions";
 import * as team from "./teamActions";
+import * as pokemonInTeams from "./pokemonInTeamsActions";
 
 export {
     pokemon,
     battle,
-    team
+    team, 
+    pokemonInTeams
 }
 
 export {
-    ERROR_HANDLING,
-    FETCH_POKEMON_TEAM,
     DRAGGED_POKEMON,
     ADD_POKEMON,
     SWAP_POKEMON,

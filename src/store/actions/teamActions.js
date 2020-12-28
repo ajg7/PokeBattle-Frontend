@@ -59,3 +59,14 @@ export const fetchPokemonTeam = teamId => async dispatch => {
         throw new Error();
     }
 }
+
+export const FETCH_TEAM_ID = "FETCH_TEAM_ID";
+export const fetchTeamId = userId => async dispatch => {
+        const response = await axiosWithAuth().get(`/team/${userId}`)
+        try {
+            dispatch({ type: FETCH_TEAM_ID, payload: {teamId: response.data.teamId, userId: response.data.userId} });
+        }
+        catch {
+            throw new Error();
+        }
+}

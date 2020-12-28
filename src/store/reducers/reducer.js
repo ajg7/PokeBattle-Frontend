@@ -1,8 +1,6 @@
 import {
-    ERROR_HANDLING,
     pokemon,
     team,
-    FETCH_POKEMON_TEAM,
     DRAGGED_POKEMON,
     ADD_POKEMON,
     SWAP_POKEMON,
@@ -21,7 +19,6 @@ const initialState = {
     teamId: 0,
     userId: 0,
     deletion: "",
-    error: "",
     selectedPokemon: [],
     currIndex: 0,
     pokemonHasBeenRemoved: false,
@@ -42,11 +39,6 @@ export default (state = initialState, action) => {
                 ...state,
                 pokemonData: action.payload.data,
                 mappedPokemonData: action.payload.map
-            }
-        case ERROR_HANDLING:
-            return {
-                ...state,
-                error: action.payload.message,
             }
         case team.MAKE_TEAM:
             localStorage.setItem("teamId", action.payload.teamId)
