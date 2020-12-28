@@ -3,7 +3,7 @@ import { FormValues } from "../../classes/FormValuesClass";
 import { login, signup } from "../../api/";
 import { Button } from "../common";
 import { connect } from "react-redux";
-import { makeTeam, fetchTeamId } from "../../store/actions/actions";
+import { team } from "../../store/actions/";
 import { useHistory } from "react-router-dom";
 
 
@@ -74,7 +74,13 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { login, signup, makeTeam, fetchTeamId })(Form);
+export default connect(
+    state => ({
+        userId: state.userId
+    }), { 
+        makeTeam: team.makeTeam,
+        fetchTeamId: team.fetchTeamId 
+    })(Form);
 
 
 /*

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { deleteTeam, addPokemon, setSelectedPokemon, swapPokemon, updateCurrIndex, setIsAdding, setIsSwapping, saveTeam } from "../../store/actions/actions";
+import { team, pokemonInTeams } from "../../store/actions/";
 import { useHistory } from "react-router-dom";
 import clearButton from "../../assets/clearButton.png";
 import addButton from "../../assets/addButton.png";
@@ -81,15 +81,23 @@ const DropBar = props => {
     )
 }
 
-const mapStateToProps = state => {
-    return {
+
+export default connect(
+    state => ({
         teamId: state.teamId,
         userId: state.userId,
         selectedPokemon: state.selectedPokemon,
         isAdding: state.isAdding,
         isSwapping: state.isSwapping,
         team: state.team
-    }
-}
-
-export default connect(mapStateToProps, { deleteTeam, addPokemon, setSelectedPokemon, swapPokemon, updateCurrIndex, setIsAdding, setIsSwapping, saveTeam })(DropBar);
+    }), 
+    { 
+        deleteTeam: team.deleteTeam,
+        addPokemon: pokemonInTeams.addPokemon, 
+        setSelectedPokemon: pokemonInTeams.setSelectedPokemon,
+        swapPokemon: pokemonInTeams.swapPokemon, 
+        updateCurrIndex: pokemonInTeams.updateCurrIndex, 
+        setIsAdding: pokemonInTeams.setIsAdding, 
+        setIsSwapping: pokemonInTeams.setIsSwapping, 
+        saveTeam: team.saveTeam 
+    })(DropBar);

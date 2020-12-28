@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
-import { fetchPokemonTeam, makeChallengerTeam } from "../../store/actions/actions";
+import { team, battle } from "../../store/actions/";
 import { StyledCards } from "../../styles/StyledComponents/styledCommon/StyledCards";
 import { Pokemon } from "../common";
 import editIcon from "../../assets/editIcon.png"
@@ -84,4 +84,12 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { fetchPokemonTeam, makeChallengerTeam })(OnDeck);
+export default connect(state => ({
+    team: state.team,
+    teamId: state.teamId,
+    teamData: state.teamData,
+    challengerTeam: state.challengerTeam
+}), { 
+    fetchPokemonTeam: team.fetchPokemonTeam, 
+    makeChallengerTeam: battle.makeChallengerTeam 
+})(OnDeck);

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { setSelectedPokemon, setIsAdding } from "../../store/actions/actions";
+import { pokemonInTeams } from "../../store/actions/";
 import { TypePills, CardFlipAnim } from "../../styles/StyledComponents/styledCommon";
 import { CardButton, LikeHearts } from "../common";
 
@@ -68,4 +68,4 @@ const Pokemon = props => {
     )
 }
 
-export default connect(null, { setSelectedPokemon, setIsAdding })(Pokemon);
+export default connect(null, { setSelectedPokemon: pokemonInTeams.setSelectedPokemon, setIsAdding: pokemonInTeams.setIsAdding })(Pokemon);

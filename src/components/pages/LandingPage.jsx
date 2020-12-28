@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { fetchPokemon } from "../../store/actions/actions"
+import { pokemon } from "../../store/actions/"
 import { useHistory } from "react-router-dom";
 import { StyledMainHeading } from "../../styles/StyledComponents/styledCommon";
 import { StyledLandingPage } from "../../styles/StyledComponents/styledPages";
@@ -8,7 +8,7 @@ import { Button, MainHeading, FeaturedPokemon, Wallpaper } from "../common";
 
 const LandingPage = props => {
 
-    const { fetchPokemon } = props;
+    const { fetchPokemon, pokemonData } = props;
     const history = useHistory();
     
     const signupHandler = event => history.push("/signup");
@@ -27,7 +27,7 @@ const LandingPage = props => {
             </header>
             <section className="call-to-action">
                 <div className="featured-pokemon">
-                    <FeaturedPokemon />
+                    <FeaturedPokemon pokemonData={pokemonData}/>
                 </div>
                 <div className="call-to-action-buttons">
                     <Button 
@@ -48,10 +48,9 @@ const LandingPage = props => {
     )
 }
 
-const mapStateToProps = state => {
-    return {
-        pokemonData: state.pokemonData
-    }
-} 
-
-export default connect(mapStateToProps, { fetchPokemon })(LandingPage);
+export default connect(
+    state => ({
+        pokemonData: state.pokemonData,
+}), { 
+    fetchPokemon: pokemon.fetchPokemon 
+})(LandingPage);

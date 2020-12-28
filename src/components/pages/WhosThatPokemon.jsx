@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { fetchPokemon } from "../../store/actions/actions";
+import { pokemon } from "../../store/actions/";
 import { StyledWhosThatPokemon } from "../../styles/StyledComponents/styledPages";
 import { FeaturedPokemon, MainHeading, Button } from "../common";
 import { connect } from "react-redux";
@@ -61,4 +61,9 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { fetchPokemon })(WhosThatPokemon);
+export default connect(
+    state => ({
+        featuredPokemon: state.featuredPokemon
+}), { 
+    fetchPokemon: pokemon.fetchPokemon 
+})(WhosThatPokemon);
