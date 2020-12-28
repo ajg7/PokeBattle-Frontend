@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { fetchPokemon, fetchPokemonTeam, fetchChallengerTeam, battle } from "../../store/actions/actions";
+import { pokemon, battle, team } from "../../store/actions/";
 import { StyledCards } from "../../styles/StyledComponents/styledCommon";
 import { StyledArena } from "../../styles/StyledComponents/styledPages";
 import { BattleManager, scores } from "../../classes/BattleManager";
@@ -145,4 +145,16 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { fetchPokemon, fetchPokemonTeam, fetchChallengerTeam, battle })(BattlePage);
+export default connect(
+    state => ({
+        pokemonData: state.pokemonData,
+        teamData: state.teamData,
+        challengerTeam: state.challengerTeam,
+        challengerTeamData: state.challengerTeamData,
+        outcome: state.outcome
+    }), { 
+        fetchPokemon: pokemon.fetchPokemon, 
+        fetchPokemonTeam: team.fetchPokemonTeam, 
+        fetchChallengerTeam: battle.fetchChallengerTeam, 
+        battle: battle.battle 
+    })(BattlePage);

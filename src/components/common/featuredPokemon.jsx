@@ -1,28 +1,28 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { setFeaturedPokemon } from "../../store/actions/actions";
+import { pokemon } from "../../store/actions/";
 import { StyledFeaturedPokemon } from "../../styles/StyledComponents/styledCommon";
 
 const FeaturedPokemon = props => {
     const { setFeaturedPokemon, featuredPokemon } = props;
 
-    useEffect(()=>{
+    useEffect(() => {
         setFeaturedPokemon();
     }, [setFeaturedPokemon]);
 
     return (
         <div>
             <StyledFeaturedPokemon>
-                <img src={featuredPokemon.imgURL} alt="featured pokemon" className="featured-pokemon-img" />
+                <img src={""} alt="featured pokemon" className="featured-pokemon-img" />
             </StyledFeaturedPokemon>
         </div>
     )
 }
 
-const mapStateToProps = state => {
-    return {
-        featuredPokemon: state.featuredPokemon
-    }
-}
 
-export default connect(mapStateToProps, { setFeaturedPokemon })(FeaturedPokemon);
+export default connect(
+    state => ({
+        featuredPokemon: state.featuredPokemon
+    }), { 
+        setFeaturedPokemon: pokemon.setFeaturedPokemon 
+    })(FeaturedPokemon);
