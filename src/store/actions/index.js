@@ -1,5 +1,4 @@
 /*
-4a) Fix the FeaturedPokemon Component
 4b) Refactor the Backend
     -Organize all CURD operations into reusable code
     -Move db to Postgres

@@ -9,7 +9,7 @@ import { useHistory } from "react-router-dom";
 
 const Form = props => {
 
-    const { login, signup, makeTeam, fetchTeamId, userId, formType } = props;
+    const { makeTeam, fetchTeamId, userId, formType } = props;
     const history = useHistory();
     const emailRef = useRef();
     const passwordRef = useRef();

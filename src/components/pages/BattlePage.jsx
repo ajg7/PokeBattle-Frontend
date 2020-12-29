@@ -147,11 +147,11 @@ const mapStateToProps = state => {
 
 export default connect(
     state => ({
-        pokemonData: state.pokemonData,
-        teamData: state.teamData,
-        challengerTeam: state.challengerTeam,
-        challengerTeamData: state.challengerTeamData,
-        outcome: state.outcome
+        pokemonData: state.pokemon.pokemonData,
+        teamData: state.team.teamData,
+        challengerTeam: state.battle.challengerTeam,
+        challengerTeamData: state.battle.challengerTeamData,
+        outcome: state.battle.outcome
     }), { 
         fetchPokemon: pokemon.fetchPokemon, 
         fetchPokemonTeam: team.fetchPokemonTeam, 
