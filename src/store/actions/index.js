@@ -1,8 +1,9 @@
 /*
 4b) Refactor the Backend
-    -Organize all CURD operations into reusable code
-    -Move db to Postgres
     -Make sophisticated SQL queries
+    -Refactor authentication
+    -Set up OAuth
+4c) Add Secure Routes and refactor routing in Frontend
 5) If not already made, make a route that can get the teams associated with a user, post a new team, and delete a team
 6) Map over team data in the main menu component
 7) Add functionality to make a new team and delete a new team
@@ -21,16 +22,19 @@
     - Legendary
     - Ancient
     - Mythical
-15) Add Error Handling (like the API folder)
-16) Research Styled Components Global Styled
-17) Style Landing Page Footer
-18) Style Signup and Login [both will have same styling]
-19) Style Pokemon List
-20) Style Main Menu
-21) Style OnDeck 
-22) Style Battle Page
-23) Style Winner Page
-24) Make shiny Overlay for Legendary, Mythical, and Ancient Pokemon
+15) Add Like Pokemon Functionality
+16) Add Error Handling (like the API folder)
+17) Add Backend Tests
+18) Add Frontend Tests
+19) Research Styled Components Global Styled
+20) Style Landing Page Footer
+21) Style Signup and Login [both will have same styling]
+22) Style Pokemon List
+23) Style Main Menu
+24) Style OnDeck 
+25) Style Battle Page
+26) Style Winner Page
+27) Make shiny Overlay for Legendary, Mythical, and Ancient Pokemon
 */
 
 import * as pokemon from "./pokemonActions";

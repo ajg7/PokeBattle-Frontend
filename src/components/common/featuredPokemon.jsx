@@ -13,7 +13,7 @@ const FeaturedPokemon = props => {
     return (
         <div>
             <StyledFeaturedPokemon>
-                <img src={featuredPokemon.imgURL} alt={featuredPokemon.name} className="featured-pokemon-img" />
+                <img src={featuredPokemon.modern_imgURL} alt={featuredPokemon.name} className="featured-pokemon-img" />
             </StyledFeaturedPokemon>
         </div>
     )

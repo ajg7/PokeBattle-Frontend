@@ -55,15 +55,9 @@ const WhosThatPokemon = props => {
     )
 }
 
-const mapStateToProps = state => {
-    return {
-        featuredPokemon: state.featuredPokemon,
-    }
-}
-
 export default connect(
     state => ({
-        featuredPokemon: state.featuredPokemon
+        featuredPokemon: state.pokemon.featuredPokemon
 }), { 
     fetchPokemon: pokemon.fetchPokemon 
 })(WhosThatPokemon);
