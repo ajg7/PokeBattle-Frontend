@@ -15,7 +15,6 @@ export const signup = newUser => {
         .then(response => {
             console.log(response.data)
             const token = response.data.token;
-            const userId = response.data.data.id;
             localStorage.setItem("token", token);
         })
         .catch(error => console.log(error));

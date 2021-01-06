@@ -26,18 +26,18 @@ const Form = props => {
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
         const user = new FormValues(email.trim(), password.trim());
-        console.log(user)
         if (formType === "Login") {
             login(user);
-            // history.push("/main_menu");
+            history.push("/main_menu");
         }
         if (formType === "Signup") {
             signup(user);
-            // makeTeam();
-            // history.push("/main_menu");
+            history.push("/main_menu");
         }
 
     }
+
+    const toLoginHandler = event => history.push("/login");
 
     return (
         <div>
@@ -58,6 +58,10 @@ const Form = props => {
                     ref={passwordRef}
                     />
                 </label>
+                {formType === "Login" 
+                    ? <h3>Forgot your email or password?</h3> 
+                    : <h3 onClick={toLoginHandler}>Login instead?</h3>
+                }
                 <Button 
                 isDisabled={false}
                 classType="submit-button"
