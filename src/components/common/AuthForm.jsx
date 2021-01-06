@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import { FormValues } from "../../classes/FormValuesClass";
-import { login, signup } from "../../api/";
+import { login, signup } from "../../api/auth_api";
 import { Button } from "../common";
 import { connect } from "react-redux";
 import { team } from "../../store/actions/";
@@ -21,19 +21,20 @@ const Form = props => {
         4. Add yup form Validation or React Form Validation that Max talked about
     */
     
-    const submitHandler = async event => {
+    const submitHandler = event => {
         event.preventDefault();
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
-        const user = new FormValues(email.trim(), password.trim(), false);
+        const user = new FormValues(email.trim(), password.trim());
+        console.log(user)
         if (formType === "Login") {
             login(user);
-            history.push("/main_menu");
-        };
+            // history.push("/main_menu");
+        }
         if (formType === "Signup") {
             signup(user);
-            makeTeam();
-            history.push("/main_menu");
+            // makeTeam();
+            // history.push("/main_menu");
         }
 
     }
@@ -65,13 +66,6 @@ const Form = props => {
             </form>
         </div>
     )
-}
-
-
-const mapStateToProps = state => {
-    return {
-        userId: state.userId
-    }
 }
 
 export default connect(

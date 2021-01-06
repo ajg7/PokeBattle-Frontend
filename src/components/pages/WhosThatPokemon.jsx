@@ -55,6 +55,7 @@ const WhosThatPokemon = props => {
     )
 }
 
+
 export default connect(
     state => ({
         featuredPokemon: state.pokemon.featuredPokemon

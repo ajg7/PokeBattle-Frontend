@@ -9,17 +9,17 @@ export const makeTeam = () => dispatch => {
             dispatch({ type: MAKE_TEAM, payload: { teamId: teamId, userId: userId }})
         })
         .catch(error => {
-            throw new Error();
+            console.error()
         })
 }
 export const DELETE_TEAM = "DELETE_TEAM";
-export const deleteTeam = id => dispatch => {
+export const deleteTeam = id => async dispatch => {
         axiosWithAuth().delete(`/team/${id}`)
         try {
             dispatch({ type: DELETE_TEAM, payload: "has been deleted"})
         }
         catch {
-            throw new Error();
+            console.error()
         }
             
 }
@@ -46,7 +46,7 @@ export const saveTeam = team => async dispatch => {
                 dispatch({type: SAVE_TEAM, payload: data})
             }
             catch {
-                throw new Error();
+                console.error()
             }
 }
 export const FETCH_POKEMON_TEAM = "FETCH_POKEMON_TEAM";
@@ -56,7 +56,7 @@ export const fetchPokemonTeam = teamId => async dispatch => {
         dispatch({type: FETCH_POKEMON_TEAM, payload: teamData.data});
     }
     catch {
-        throw new Error();
+        console.error()
     }
 }
 
@@ -67,6 +67,6 @@ export const fetchTeamId = userId => async dispatch => {
             dispatch({ type: FETCH_TEAM_ID, payload: {teamId: response.data.teamId, userId: response.data.userId} });
         }
         catch {
-            throw new Error();
+            console.error()
         }
 }

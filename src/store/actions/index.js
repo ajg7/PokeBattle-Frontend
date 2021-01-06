@@ -1,8 +1,4 @@
 /*
-4b) Refactor the Backend
-    -Make sophisticated SQL queries
-    -Refactor authentication
-    -Set up OAuth
 4c) Add Secure Routes and refactor routing in Frontend
 5) If not already made, make a route that can get the teams associated with a user, post a new team, and delete a team
 6) Map over team data in the main menu component
@@ -34,7 +30,10 @@
 24) Style OnDeck 
 25) Style Battle Page
 26) Style Winner Page
-27) Make shiny Overlay for Legendary, Mythical, and Ancient Pokemon
+27) Make a Classic Filter in Pokemon List
+    27a) Switches between modern and classic sprites
+28) Make shiny Overlay for Legendary, Mythical, and Ancient Pokemon
+29) Responsive Design and Accessibility 
 */
 
 import * as pokemon from "./pokemonActions";

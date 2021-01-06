@@ -46,7 +46,7 @@ const PokemonList = props => {
                         number={pokemon.number}
                         type1={pokemon.type1}
                         type2={pokemon.type2}
-                        imgURL={pokemon.imgURL}
+                        imgURL={pokemon.modern_imgURL}
                         height={pokemon.height}
                         weight={pokemon.weight}
                         entry={pokemon.entry}
