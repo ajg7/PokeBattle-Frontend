@@ -9,6 +9,7 @@ import AuthForm from "./AuthForm";
 import LikeHearts from "./LikeHearts";
 import Modal from "./Modal";
 import Team from "./Team";
+import GeneralForm from "./GeneralForm";
 
 export {
     Pokemon,
@@ -21,5 +22,6 @@ export {
     AuthForm,
     LikeHearts,
     Modal,
-    Team
+    Team,
+    GeneralForm
 }

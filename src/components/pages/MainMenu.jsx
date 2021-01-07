@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { StyledMainMenu } from "../../styles/StyledComponents/styledPages";
 import { team, teamMembers } from "../../store/actions";
-import { MainHeading, Modal, Team, Button } from "../common";
+import { MainHeading, Modal, Team, Button, GeneralForm } from "../common";
 import { useHistory } from "react-router-dom";
 import { deleteAccount } from "../../api"
 import { fetchTeamId } from "../../store/actions/teamActions";
@@ -15,6 +15,7 @@ const MainMenu = props => {
     // const modalHandler = event => setModalOpen(!modalOpen);
 
     const { teamData, team, fetchPokemonTeam, fetchTeamMembers, makeTeam } = props;
+    const [active, setActive] = useState(false);
 
     useEffect(() => {
         const userId = localStorage.getItem("userId");
@@ -24,7 +25,7 @@ const MainMenu = props => {
     }, [fetchPokemonTeam, fetchTeamMembers])
 
     const makeTeamHandler = event => {
-        makeTeam("Light3");
+        makeTeam("Spock");
     }
     // const whosThatPokemonHandler = event => history.push("/guess_pokemon");
 
@@ -40,6 +41,8 @@ const MainMenu = props => {
         history.push("/");
     }
 
+    const teamNameHandler = event => setActive(!active);
+
     return (
         <div>
         {/*modalOpen ? <div onClick={modalHandler}>
@@ -54,11 +57,19 @@ const MainMenu = props => {
             <h3 onClick={deleteAccountHandler}>Delete Account</h3>
         </header>
         <section>
-            <h3>Make New Team</h3>
+            <h3 onClick={teamNameHandler}>Make New Team</h3>
             {teamData.map(team => {
-                return <Team 
-                        name={team.team_name}
-                        />
+                return (
+                        <>
+                            <Team 
+                            name={team.team_name}
+                            />
+                            {active ? <GeneralForm 
+                            label={"Team Name"}
+                            placeholder={"Write Team Name Here"}
+                            /> : null}
+                        </>
+                        )
             })}
             {team.map(pokemon => {
                 return (
