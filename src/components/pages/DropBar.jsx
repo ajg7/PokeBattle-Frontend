@@ -61,7 +61,7 @@ const DropBar = props => {
         <div>
             <div className="slot-container">
                 <img src={clearButton} alt="clear team button" className="clear-button" onClick={deleteTeamHandler} />
-                {team.map((pokemon, i) => {
+                {/*team.map((pokemon, i) => {
                     return (
                         <div className="slot" id={i} onDragOver={dragOver} onDrop={drop} onDragLeave={dragLeave} >
                             {pokemon ? <img src={pokemon.img ? pokemon.img : Poke_Ball} 
@@ -74,7 +74,7 @@ const DropBar = props => {
                                     : null}
                         </div>
                     )
-                })}
+                })*/}
                 <img src={addButton} alt="make team button" className="add-button" onClick={saveTeamHandler} />
             </div>
         </div>

@@ -34,7 +34,7 @@ const OnDeck = props => {
         <>
             <h2>Ready to Battle?</h2>
             <StyledCards>
-                {teamData.map(member => {
+                {/*teamData.map(member => {
                     return (
                             <>
                                 <Pokemon 
@@ -56,7 +56,7 @@ const OnDeck = props => {
                                 <img src={editIcon} alt="edit-nickname" className="edit-icon" />
                             </>
                     )
-                })}
+                })*/}
             </StyledCards>
             <Button 
             handleClick={goBackHandler}

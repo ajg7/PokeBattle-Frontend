@@ -65,7 +65,7 @@ const PokemonList = props => {
 
 export default connect(
     state => ({
-        pokemonData: state.pokemonData,
+        pokemonData: state.pokemon.pokemonData,
         teamId: state.teamId,
         userId: state.userId,
         currIndex: state.currIndex
