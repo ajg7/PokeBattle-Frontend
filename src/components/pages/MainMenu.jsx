@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { StyledMainMenu } from "../../styles/StyledComponents/styledPages";
+import { team } from "../../store/actions";
 import { MainHeading, Modal, Team, Button } from "../common";
 import { useHistory } from "react-router-dom";
 import { deleteAccount } from "../../api"
@@ -12,7 +13,15 @@ const MainMenu = props => {
 
     // const modalHandler = event => setModalOpen(!modalOpen);
 
+    const { teamData, fetchPokemonTeam } = props;
+
+    useEffect(() => {
+        const userId = localStorage.getItem("userId");
+        fetchPokemonTeam(userId);
+    }, [fetchPokemonTeam])
+
     const whosThatPokemonHandler = event => history.push("/guess_pokemon");
+
     const deleteAccountHandler = event => {
         const userId = localStorage.getItem("userId");
         deleteAccount(userId);
@@ -40,7 +49,11 @@ const MainMenu = props => {
         </header>
         <section>
             <h3>Make New Team</h3>
-            <Team />
+            {teamData.map(team => {
+                return <Team 
+                        name={team.team_name}
+                        />
+            })}
             {/* There will be JSON that will contain your teams, and I will map over and insert into the Team Component */}
         </section>
         <footer>
@@ -57,5 +70,8 @@ const MainMenu = props => {
 }
 
 export default connect(state => ({
+    teamData: state.team.teamData,
     userId: state.team.userId
-}), {})(MainMenu);
+}), {
+    fetchPokemonTeam: team.fetchPokemonTeam
+})(MainMenu);

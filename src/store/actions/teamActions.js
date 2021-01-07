@@ -50,10 +50,10 @@ export const saveTeam = team => async dispatch => {
             }
 }
 export const FETCH_POKEMON_TEAM = "FETCH_POKEMON_TEAM";
-export const fetchPokemonTeam = teamId => async dispatch => {
-    const { teamData } = await axiosWithAuth().get(`/pokemon_team/${teamId}`);
+export const fetchPokemonTeam = userId => async dispatch => {
+    const teamData = await axiosWithAuth().get(`/team/${userId}`);
     try {
-        dispatch({type: FETCH_POKEMON_TEAM, payload: teamData.data});
+        dispatch({type: FETCH_POKEMON_TEAM, payload: teamData.data.teamData});
     }
     catch {
         console.error()

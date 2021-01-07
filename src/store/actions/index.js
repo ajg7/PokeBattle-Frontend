@@ -17,6 +17,7 @@
     - Legendary
     - Ancient
     - Mythical
+    -All imgs (classic, modern, or shiny)
 15) Add Like Pokemon Functionality
 16) Add Error Handling (like the API folder)
 17) Add Backend Tests
