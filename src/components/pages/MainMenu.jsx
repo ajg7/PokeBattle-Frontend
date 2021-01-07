@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { StyledMainMenu } from "../../styles/StyledComponents/styledPages";
-import { MainHeading, Modal, Team } from "../common";
+import { MainHeading, Modal, Team, Button } from "../common";
 import { useHistory } from "react-router-dom";
 import { deleteAccount } from "../../api"
 
@@ -16,6 +16,12 @@ const MainMenu = props => {
     const deleteAccountHandler = event => {
         const userId = localStorage.getItem("userId");
         deleteAccount(userId);
+        history.push("/");
+    }
+
+    const logoutHandler = event => {
+        localStorage.removeItem("token");
+        localStorage.removeItem("userId");
         history.push("/");
     }
 
@@ -35,10 +41,15 @@ const MainMenu = props => {
         <section>
             <h3>Make New Team</h3>
             <Team />
-            {/* There will be JSON that will contain your teams, and I will map over and insert into the Team COmponent */}
+            {/* There will be JSON that will contain your teams, and I will map over and insert into the Team Component */}
         </section>
         <footer>
-        
+        <Button 
+            handleClick={logoutHandler}
+            isDisabled={false}
+            classType={"logout"}
+            buttonText={"Logout"}
+        />
         </footer>
         </StyledMainMenu>
         </div>

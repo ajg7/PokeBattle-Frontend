@@ -46,7 +46,7 @@ const PokemonList = props => {
                         number={pokemon.number}
                         type1={pokemon.type1}
                         type2={pokemon.type2}
-                        imgURL={pokemon.modern_imgURL}
+                        imgURL={pokemon.imgURL}
                         height={pokemon.height}
                         weight={pokemon.weight}
                         entry={pokemon.entry}
@@ -68,7 +68,6 @@ export default connect(
         pokemonData: state.pokemonData,
         teamId: state.teamId,
         userId: state.userId,
-        error: state.error, 
         currIndex: state.currIndex
     }), { 
         fetchPokemon: pokemon.fetchPokemon, 

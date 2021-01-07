@@ -4,6 +4,7 @@ const initialState = {
     selectedPokemon: [],
     team: Array(6).fill(null),
     pokemonHasBeenRemoved: false,
+    currIndex: 0,
     isAdding: false,
     isSwapping: false,
     isRemoving: false,

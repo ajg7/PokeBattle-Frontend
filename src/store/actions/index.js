@@ -1,8 +1,7 @@
 /*
-4d) Add deleting your account
-5) If not already made, make a route that can get the teams associated with a user, post a new team, and delete a team
-6) Map over team data in the main menu component
-7) Add functionality to make a new team and delete a new team
+5a) If not already made, make a route that can get the teams associated with a user, post a new team, and delete a team
+5b) Map over team data in the main menu component
+5c) Add functionality to make a new team and delete a new team
 8) Add functionality to select a team and take it to the OnDeck Page
 9) Add functionality that allows you to simply go to the Pokemon List, so that you can "like" pokemon
 10) When you make a team, you should be able to edit the team
