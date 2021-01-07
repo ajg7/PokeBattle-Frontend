@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
 import { StyledMainMenu } from "../../styles/StyledComponents/styledPages";
 import { MainHeading, Modal, Team } from "../common";
 import { useHistory } from "react-router-dom";
+import { deleteAccount } from "../../api"
 
 const MainMenu = props => {
 
@@ -11,6 +13,11 @@ const MainMenu = props => {
     // const modalHandler = event => setModalOpen(!modalOpen);
 
     const whosThatPokemonHandler = event => history.push("/guess_pokemon");
+    const deleteAccountHandler = event => {
+        const userId = localStorage.getItem("userId");
+        deleteAccount(userId);
+        history.push("/");
+    }
 
     return (
         <div>
@@ -23,6 +30,7 @@ const MainMenu = props => {
             classType={"main-menu-header"}
             text={"Main Menu"}
             />
+            <h3 onClick={deleteAccountHandler}>Delete Account</h3>
         </header>
         <section>
             <h3>Make New Team</h3>
@@ -37,4 +45,6 @@ const MainMenu = props => {
     )
 }
 
-export default MainMenu;
+export default connect(state => ({
+    userId: state.team.userId
+}), {})(MainMenu);

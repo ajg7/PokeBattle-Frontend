@@ -1,7 +1,5 @@
 /*
-4c) Add Secure Routes and refactor routing in Frontend
 4d) Add deleting your account
-4e) Make a Settings Page
 5) If not already made, make a route that can get the teams associated with a user, post a new team, and delete a team
 6) Map over team data in the main menu component
 7) Add functionality to make a new team and delete a new team

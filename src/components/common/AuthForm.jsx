@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import { Redirect } from "react-router-dom";
 import { FormValues } from "../../classes/FormValuesClass";
 import { login, signup } from "../../api/auth_api";
 import { Button } from "../common";
@@ -21,23 +22,20 @@ const Form = props => {
         4. Add yup form Validation or React Form Validation that Max talked about
     */
     
-    const submitHandler = event => {
+    const submitHandler = async event => {
         event.preventDefault();
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
         const user = new FormValues(email.trim(), password.trim());
-        if (formType === "Login") {
-            login(user);
+        try {
+            if (formType === "Login") login(user);
+            if (formType === "Signup") signup(user);
+        }
+        finally {
             history.push("/main_menu");
         }
-        if (formType === "Signup") {
-            signup(user);
-            history.push("/main_menu");
-        }
-
     }
 
-    const toLoginHandler = event => history.push("/login");
 
     return (
         <div>
