@@ -1,4 +1,5 @@
 import Pokemon from "./Pokemon";
+import PrivateRoute from "./PrivateRoute";
 import Button from "./Button";
 import CardButton from "./CardButton";
 import MainHeading from "./MainHeading";
@@ -11,6 +12,7 @@ import Team from "./Team";
 
 export {
     Pokemon,
+    PrivateRoute,
     Button,
     CardButton,
     MainHeading,
