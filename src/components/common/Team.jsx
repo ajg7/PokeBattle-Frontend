@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
-import addButton from "../../assets/addButton.png";
+import { connect } from "react-redux";
+import { team } from "../../store/actions";
+import { Button } from "../common";
 import { StyledTeam } from "../../styles/StyledComponents/styledCommon";
 
 const Team = props => {
@@ -9,7 +11,6 @@ const Team = props => {
         <StyledTeam>
             <div>
                 <h4>{name}</h4>
-                
                 
             </div>
         

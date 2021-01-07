@@ -5,6 +5,7 @@ import { team, teamMembers } from "../../store/actions";
 import { MainHeading, Modal, Team, Button } from "../common";
 import { useHistory } from "react-router-dom";
 import { deleteAccount } from "../../api"
+import { fetchTeamId } from "../../store/actions/teamActions";
 
 const MainMenu = props => {
 
@@ -13,15 +14,19 @@ const MainMenu = props => {
 
     // const modalHandler = event => setModalOpen(!modalOpen);
 
-    const { teamData, team, fetchPokemonTeam, fetchTeamMembers } = props;
+    const { teamData, team, fetchPokemonTeam, fetchTeamMembers, makeTeam } = props;
 
     useEffect(() => {
         const userId = localStorage.getItem("userId");
         fetchPokemonTeam(userId);
-        fetchTeamMembers(10);
+        // fetchTeamId(userId);
+        // fetchTeamMembers(2);
     }, [fetchPokemonTeam, fetchTeamMembers])
 
-    const whosThatPokemonHandler = event => history.push("/guess_pokemon");
+    const makeTeamHandler = event => {
+        makeTeam("Light3");
+    }
+    // const whosThatPokemonHandler = event => history.push("/guess_pokemon");
 
     const deleteAccountHandler = event => {
         const userId = localStorage.getItem("userId");
@@ -63,6 +68,12 @@ const MainMenu = props => {
                     </div>
                 )
             })}
+            <Button 
+                handleClick={makeTeamHandler}
+                isDisabled={false}
+                classType={"make-team-button"}
+                buttonText={"Make Team"}
+            />
         </section>
         <footer>
         <Button 
@@ -80,8 +91,10 @@ const MainMenu = props => {
 export default connect(state => ({
     teamData: state.team.teamData,
     userId: state.team.userId,
-    team: state.teamMembers.team
+    team: state.teamMembers.team,
+    teamId: state.team.teamId
 }), {
     fetchPokemonTeam: team.fetchPokemonTeam,
-    fetchTeamMembers: teamMembers.fetchTeamMembers
+    fetchTeamMembers: teamMembers.fetchTeamMembers,
+    makeTeam: team.makeTeam
 })(MainMenu);

@@ -1,8 +1,10 @@
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
 
 export const MAKE_TEAM = "MAKE_TEAM";
-export const makeTeam = () => dispatch => {
-    axiosWithAuth().post("/team/")
+export const makeTeam = teamName => dispatch => {
+    const userId = localStorage.getItem("userId");
+    const newTeam = { userId, teamName: teamName };
+    axiosWithAuth().post("/team/", newTeam)
         .then(response => {
             const teamId = response.data.data.team_Id;
             const userId = response.data.data.user_Id;
