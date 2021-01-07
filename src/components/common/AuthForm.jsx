@@ -58,10 +58,6 @@ const Form = props => {
                     ref={passwordRef}
                     />
                 </label>
-                {formType === "Login" 
-                    ? <h3>Forgot your email or password?</h3> 
-                    : <h3 onClick={toLoginHandler}>Login instead?</h3>
-                }
                 <Button 
                 isDisabled={false}
                 classType="submit-button"

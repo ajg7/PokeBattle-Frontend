@@ -1,8 +1,7 @@
 /*
 4c) Add Secure Routes and refactor routing in Frontend
 4d) Add deleting your account
-4e) Add updating your account
-4f) Add a forgot your email or password
+4e) Make a Settings Page
 5) If not already made, make a route that can get the teams associated with a user, post a new team, and delete a team
 6) Map over team data in the main menu component
 7) Add functionality to make a new team and delete a new team
@@ -13,7 +12,7 @@
 11) When you make a team, you can add a nickname (Happens in the OnDeck Page)
 12) Refactor Evaluator to make it O(n)
 13) Make a Winner Page that displays your team, and updates win/losses table
-14) Make Search Functionality in Pokemon List Page
+14) Make Filter Functionality in Pokemon List Page
     -A - Z
     -Z - A
     -Liked first, then the rest

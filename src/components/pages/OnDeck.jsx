@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
-import { team, battle } from "../../store/actions/";
+import { team, battle } from "../../store/actions";
 import { StyledCards } from "../../styles/StyledComponents/styledCommon/StyledCards";
 import { Pokemon } from "../common";
 import editIcon from "../../assets/editIcon.png"

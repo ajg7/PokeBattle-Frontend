@@ -135,16 +135,6 @@ const BattlePage = props => {
     )
 }
 
-const mapStateToProps = state => {
-    return {
-        pokemonData: state.pokemonData,
-        teamData: state.teamData,
-        challengerTeam: state.challengerTeam,
-        challengerTeamData: state.challengerTeamData,
-        outcome: state.outcome
-    }
-}
-
 export default connect(
     state => ({
         pokemonData: state.pokemon.pokemonData,
