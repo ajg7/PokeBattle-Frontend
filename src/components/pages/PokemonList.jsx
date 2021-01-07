@@ -8,7 +8,7 @@ import { StyledBar } from "../../styles/StyledComponents/styledPages";
 
 
 const PokemonList = props => {
-    const { pokemonData, loading, error, currIndex, userId, setSelectedPokemon, fetchPokemon, removePokemon, fetchTeamId } = props;
+    const { pokemonData, loading, currIndex, userId, setSelectedPokemon, fetchPokemon, removePokemon, fetchTeamId } = props;
     const [pokemonHasBeenRemoved, setPokemonHasBeenRemoved] = useState(false);
     const [page, setPage] = useState(true);
 
@@ -35,7 +35,6 @@ const PokemonList = props => {
             </section>
             <section className="pokemon-cards" onDragOver={dragOver} onDrop={drop}>
             {loading ? <h3>Loading...</h3> : null}
-            {error ? <h3>{error}</h3> : null}
             <StyledCards page={page}>
                 {pokemonData.map(pokemon => {
                     return (

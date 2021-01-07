@@ -2,7 +2,7 @@ import { teamMembers } from "../actions";
 
 const initialState = {
     selectedPokemon: [],
-    team: Array(6).fill(null),
+    team: [],
     pokemonHasBeenRemoved: false,
     currIndex: 0,
     isAdding: false,
@@ -25,6 +25,11 @@ export const reducer = (state = initialState, action) => {
                 ...state,
                 selectedPokemon: state.selectedPokemon,
                 team: state.team
+            }
+        case teamMembers.FETCH_TEAM_MEMBERS:
+            return {
+                ...state,
+                team: action.payload
             }
         case teamMembers.SWAP_POKEMON:
             const i1 = action.payload.prevIndex;
