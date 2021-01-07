@@ -17,7 +17,8 @@ const LandingPage = props => {
 
     useEffect(() => {
         fetchPokemon();
-    }, [fetchPokemon])
+        if (localStorage.getItem("token")) history.push("/main_menu")
+    }, [fetchPokemon, history])
 
 
     return(
