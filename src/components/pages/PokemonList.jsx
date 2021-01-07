@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { team, pokemonInTeams, pokemon } from "../../store/actions";
+import { team, teamMembers, pokemon } from "../../store/actions";
 import { Pokemon } from "../common";
 import { DropBar } from "../pages";
 import { StyledCards } from "../../styles/StyledComponents/styledCommon";
@@ -71,7 +71,7 @@ export default connect(
         currIndex: state.currIndex
     }), { 
         fetchPokemon: pokemon.fetchPokemon, 
-        removePokemon: pokemonInTeams.removePokemon,
-        setSelectedPokemon: pokemonInTeams.setSelectedPokemon, 
+        removePokemon: teamMembers.removePokemon,
+        setSelectedPokemon: teamMembers.setSelectedPokemon, 
         fetchTeamId: team.fetchTeamId
     })(PokemonList);

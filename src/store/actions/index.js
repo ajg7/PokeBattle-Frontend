@@ -38,11 +38,11 @@
 import * as pokemon from "./pokemonActions";
 import * as battle from "./battleActions";
 import * as team from "./teamActions";
-import * as pokemonInTeams from "./pokemonInTeamsActions";
+import * as teamMembers from "./teamMembersActions";
 
 export {
     pokemon,
     battle,
     team, 
-    pokemonInTeams
+    teamMembers
 }
