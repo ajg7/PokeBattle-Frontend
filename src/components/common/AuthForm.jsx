@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
+import { Redirect } from "react-router-dom";
 import { FormValues } from "../../classes/FormValuesClass";
-import { login, signup } from "../../api/";
+import { login, signup } from "../../api/auth_api";
 import { Button } from "../common";
 import { connect } from "react-redux";
 import { team } from "../../store/actions/";
@@ -9,7 +10,7 @@ import { useHistory } from "react-router-dom";
 
 const Form = props => {
 
-    const { login, signup, makeTeam, fetchTeamId, userId, formType } = props;
+    const { makeTeam, fetchTeamId, userId, formType } = props;
     const history = useHistory();
     const emailRef = useRef();
     const passwordRef = useRef();
@@ -25,18 +26,16 @@ const Form = props => {
         event.preventDefault();
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
-        const user = new FormValues(email.trim(), password.trim(), false);
-        if (formType === "Login") {
-            login(user);
-            history.push("/main_menu");
-        };
-        if (formType === "Signup") {
-            signup(user);
-            makeTeam();
+        const user = new FormValues(email.trim(), password.trim());
+        try {
+            if (formType === "Login") login(user);
+            if (formType === "Signup") signup(user);
+        }
+        finally {
             history.push("/main_menu");
         }
-
     }
+
 
     return (
         <div>
@@ -65,13 +64,6 @@ const Form = props => {
             </form>
         </div>
     )
-}
-
-
-const mapStateToProps = state => {
-    return {
-        userId: state.userId
-    }
 }
 
 export default connect(

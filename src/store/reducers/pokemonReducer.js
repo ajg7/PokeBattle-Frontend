@@ -15,6 +15,7 @@ export const reducer = (state = initialState, action) => {
                 mappedPokemonData: action.payload.map
             }
         case pokemon.SET_FEATURED_POKEMON:
+            console.log(action.payload)
             return {
                 ...state,
                 featuredPokemon: action.payload

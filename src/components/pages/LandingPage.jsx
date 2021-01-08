@@ -17,7 +17,8 @@ const LandingPage = props => {
 
     useEffect(() => {
         fetchPokemon();
-    }, [fetchPokemon])
+        if (localStorage.getItem("token")) history.push("/main_menu")
+    }, [fetchPokemon, history])
 
 
     return(
@@ -27,7 +28,7 @@ const LandingPage = props => {
             </header>
             <section className="call-to-action">
                 <div className="featured-pokemon">
-                    <FeaturedPokemon pokemonData={pokemonData}/>
+                    <FeaturedPokemon />
                 </div>
                 <div className="call-to-action-buttons">
                     <Button 

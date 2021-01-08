@@ -13,7 +13,7 @@ const FeaturedPokemon = props => {
     return (
         <div>
             <StyledFeaturedPokemon>
-                <img src={""} alt="featured pokemon" className="featured-pokemon-img" />
+                <img src={featuredPokemon.modern_imgURL} alt={featuredPokemon.name} className="featured-pokemon-img" />
             </StyledFeaturedPokemon>
         </div>
     )
@@ -22,7 +22,8 @@ const FeaturedPokemon = props => {
 
 export default connect(
     state => ({
-        featuredPokemon: state.featuredPokemon
-    }), { 
+        featuredPokemon: state.pokemon.featuredPokemon
+    }), 
+    { 
         setFeaturedPokemon: pokemon.setFeaturedPokemon 
     })(FeaturedPokemon);

@@ -15,7 +15,7 @@ export const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 teamId: action.payload.teamId,
-                userId: action.payload.userId
+                userId: +action.payload.userId
             }
         case team.FETCH_POKEMON_TEAM:
             return {

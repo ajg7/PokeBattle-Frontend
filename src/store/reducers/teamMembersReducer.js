@@ -1,37 +1,23 @@
-import {
-    pokemon,
-    team,
-    pokemonInTeams,
-    battle,
-} from "../actions"
+import { teamMembers } from "../actions";
 
 const initialState = {
-    pokemonData: [],
-    mappedPokemonData: [],
-    teamId: 0,
-    userId: 0,
-    deletion: "",
     selectedPokemon: [],
-    currIndex: 0,
+    team: [],
     pokemonHasBeenRemoved: false,
+    currIndex: 0,
     isAdding: false,
     isSwapping: false,
     isRemoving: false,
-    team: Array(6).fill(null),
-    teamData: [],
-    challengerTeamData: [],
-    outcome: "",
-    featuredPokemon: {}
 }
 
-export default (state = initialState, action) => {
-    switch(action.type) {
-        case pokemonInTeams.DRAGGED_POKEMON:
+export const reducer = (state = initialState, action) => {  
+    switch (action.type) {
+        case teamMembers.DRAGGED_POKEMON:
             return {
                 ...state,
                 selectedPokemon: action.payload
             }
-        case pokemonInTeams.ADD_POKEMON:
+        case teamMembers.ADD_POKEMON:
             const index = +action.payload.index;
             const pokemon = action.payload.pokemon;
             state.team[index] = pokemon;
@@ -40,7 +26,12 @@ export default (state = initialState, action) => {
                 selectedPokemon: state.selectedPokemon,
                 team: state.team
             }
-        case pokemonInTeams.SWAP_POKEMON:
+        case teamMembers.FETCH_TEAM_MEMBERS:
+            return {
+                ...state,
+                team: action.payload
+            }
+        case teamMembers.SWAP_POKEMON:
             const i1 = action.payload.prevIndex;
             const i2 = action.payload.nextIndex;
             const prevPoke = action.payload.prevPokemon;
@@ -59,12 +50,12 @@ export default (state = initialState, action) => {
                 pokemonHasBeenRemoved: false,
                 team: state.team
             }
-        case pokemonInTeams.UPDATE_CURR_INDEX:
+        case teamMembers.UPDATE_CURR_INDEX:
             return {
                 ...state,
                 currIndex: action.payload
             }
-        case pokemonInTeams.REMOVE_POKEMON:
+        case teamMembers.REMOVE_POKEMON:
             const currIndex = action.payload;
             state.team[currIndex] = null;
             return {
@@ -72,7 +63,7 @@ export default (state = initialState, action) => {
                 pokemonHasBeenRemoved: true,
                 team: state.team
             }
-        case pokemonInTeams.IS_ADDING:
+        case teamMembers.IS_ADDING:
             return {
                 ...state,
                 isAdding: action.payload.add,
@@ -80,14 +71,14 @@ export default (state = initialState, action) => {
                 pokemonHasBeenRemoved: false,
                 isRemoving: false
             }
-        case pokemonInTeams.IS_SWAPPING:
+        case teamMembers.IS_SWAPPING:
             return {
                 ...state,
                 isAdding: false,
                 isSwapping: action.payload,
                 isRemoving: false
             }
-        case pokemonInTeams.IS_REMOVING:
+        case teamMembers.IS_REMOVING:
             return {
                 ...state,
                 isAdding: false,
@@ -95,6 +86,6 @@ export default (state = initialState, action) => {
                 isRemoving: action.payload
             }
         default:
-            return state;
+            return state
     }
 }

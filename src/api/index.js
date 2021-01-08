@@ -1,6 +1,7 @@
-import { login, signup } from "./auth_api";
+import { login, signup, deleteAccount } from "./auth_api";
 
 export {
     login,
-    signup
+    signup,
+    deleteAccount
 }

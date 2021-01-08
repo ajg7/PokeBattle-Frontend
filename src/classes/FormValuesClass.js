@@ -1,10 +1,9 @@
 export class FormValues {
-    constructor(email, password, isAdmin){
+    constructor(email, password){
         this.email = email;
         this.password = password;
-        this.isAdmin = isAdmin
     }
 }
 
-export const initialFormValues = new FormValues("", "", false);
+export const initialFormValues = new FormValues("", "");
 

@@ -1,25 +1,40 @@
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
 
 export const MAKE_TEAM = "MAKE_TEAM";
-export const makeTeam = () => dispatch => {
-    axiosWithAuth().post("/team/")
+export const makeTeam = teamName => dispatch => {
+    const userId = localStorage.getItem("userId");
+    const newTeam = { userId, teamName: teamName };
+    axiosWithAuth().post("/team/", newTeam)
         .then(response => {
             const teamId = response.data.data.team_Id;
             const userId = response.data.data.user_Id;
             dispatch({ type: MAKE_TEAM, payload: { teamId: teamId, userId: userId }})
         })
         .catch(error => {
-            throw new Error();
+            console.error()
         })
 }
+
+export const EDIT_TEAM_NAME = "EDIT_TEAM_NAME";
+export const editTeamName = (teamName, teamId) => dispatch => {
+    const newTeamName = {team_name: teamName}
+    axiosWithAuth().put(`/team/${teamId}`, newTeamName)
+        .then(response => {
+            console.log(response)
+        })
+        .catch(error => {
+            console.log(error);
+        })
+}
+
 export const DELETE_TEAM = "DELETE_TEAM";
-export const deleteTeam = id => dispatch => {
+export const deleteTeam = id => async dispatch => {
         axiosWithAuth().delete(`/team/${id}`)
         try {
             dispatch({ type: DELETE_TEAM, payload: "has been deleted"})
         }
         catch {
-            throw new Error();
+            console.error()
         }
             
 }
@@ -46,17 +61,17 @@ export const saveTeam = team => async dispatch => {
                 dispatch({type: SAVE_TEAM, payload: data})
             }
             catch {
-                throw new Error();
+                console.error()
             }
 }
 export const FETCH_POKEMON_TEAM = "FETCH_POKEMON_TEAM";
-export const fetchPokemonTeam = teamId => async dispatch => {
-    const { teamData } = await axiosWithAuth().get(`/pokemon_team/${teamId}`);
+export const fetchPokemonTeam = userId => async dispatch => {
+    const teamData = await axiosWithAuth().get(`/team/${userId}`);
     try {
-        dispatch({type: FETCH_POKEMON_TEAM, payload: teamData.data});
+        dispatch({type: FETCH_POKEMON_TEAM, payload: teamData.data.teamData});
     }
     catch {
-        throw new Error();
+        console.error()
     }
 }
 
@@ -67,6 +82,6 @@ export const fetchTeamId = userId => async dispatch => {
             dispatch({ type: FETCH_TEAM_ID, payload: {teamId: response.data.teamId, userId: response.data.userId} });
         }
         catch {
-            throw new Error();
+            console.error()
         }
 }

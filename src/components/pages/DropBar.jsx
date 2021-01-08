@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { team, pokemonInTeams } from "../../store/actions/";
+import { team, teamMembers } from "../../store/actions/";
 import { useHistory } from "react-router-dom";
 import clearButton from "../../assets/clearButton.png";
 import addButton from "../../assets/addButton.png";
@@ -61,7 +61,7 @@ const DropBar = props => {
         <div>
             <div className="slot-container">
                 <img src={clearButton} alt="clear team button" className="clear-button" onClick={deleteTeamHandler} />
-                {team.map((pokemon, i) => {
+                {/*team.map((pokemon, i) => {
                     return (
                         <div className="slot" id={i} onDragOver={dragOver} onDrop={drop} onDragLeave={dragLeave} >
                             {pokemon ? <img src={pokemon.img ? pokemon.img : Poke_Ball} 
@@ -74,7 +74,7 @@ const DropBar = props => {
                                     : null}
                         </div>
                     )
-                })}
+                })*/}
                 <img src={addButton} alt="make team button" className="add-button" onClick={saveTeamHandler} />
             </div>
         </div>
@@ -93,11 +93,11 @@ export default connect(
     }), 
     { 
         deleteTeam: team.deleteTeam,
-        addPokemon: pokemonInTeams.addPokemon, 
-        setSelectedPokemon: pokemonInTeams.setSelectedPokemon,
-        swapPokemon: pokemonInTeams.swapPokemon, 
-        updateCurrIndex: pokemonInTeams.updateCurrIndex, 
-        setIsAdding: pokemonInTeams.setIsAdding, 
-        setIsSwapping: pokemonInTeams.setIsSwapping, 
+        addPokemon: teamMembers.addPokemon, 
+        setSelectedPokemon: teamMembers.setSelectedPokemon,
+        swapPokemon: teamMembers.swapPokemon, 
+        updateCurrIndex: teamMembers.updateCurrIndex, 
+        setIsAdding: teamMembers.setIsAdding, 
+        setIsSwapping: teamMembers.setIsSwapping, 
         saveTeam: team.saveTeam 
     })(DropBar);

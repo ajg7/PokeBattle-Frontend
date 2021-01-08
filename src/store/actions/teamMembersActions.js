@@ -1,7 +1,19 @@
+import { axiosWithAuth } from "../../utils/axiosWithAuth";
 export const DRAGGED_POKEMON = "DRAGGED_POKEMON";
 export const setSelectedPokemon = selectedPokemon => dispatch => {
     try {
         dispatch({ type: DRAGGED_POKEMON, payload: selectedPokemon});
+    }
+    catch {
+        throw new Error();
+    }
+}
+
+export const FETCH_TEAM_MEMBERS = "FETCH_TEAM_MEMBERS";
+export const fetchTeamMembers = teamId => async dispatch => {
+    try {
+        const { data } = await axiosWithAuth().get(`http://localhost:7000/team_members/${teamId}`);
+        dispatch({ type: FETCH_TEAM_MEMBERS, payload: data});
     }
     catch {
         throw new Error();

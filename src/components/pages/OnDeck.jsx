@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
-import { team, battle } from "../../store/actions/";
+import { team, battle } from "../../store/actions";
 import { StyledCards } from "../../styles/StyledComponents/styledCommon/StyledCards";
 import { Pokemon } from "../common";
 import editIcon from "../../assets/editIcon.png"
@@ -34,7 +34,7 @@ const OnDeck = props => {
         <>
             <h2>Ready to Battle?</h2>
             <StyledCards>
-                {teamData.map(member => {
+                {/*teamData.map(member => {
                     return (
                             <>
                                 <Pokemon 
@@ -56,7 +56,7 @@ const OnDeck = props => {
                                 <img src={editIcon} alt="edit-nickname" className="edit-icon" />
                             </>
                     )
-                })}
+                })*/}
             </StyledCards>
             <Button 
             handleClick={goBackHandler}
