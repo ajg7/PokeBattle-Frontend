@@ -14,6 +14,19 @@ export const makeTeam = teamName => dispatch => {
             console.error()
         })
 }
+
+export const EDIT_TEAM_NAME = "EDIT_TEAM_NAME";
+export const editTeamName = (teamName, teamId) => dispatch => {
+    const newTeamName = {team_name: teamName}
+    axiosWithAuth().put(`/team/${teamId}`, newTeamName)
+        .then(response => {
+            console.log(response)
+        })
+        .catch(error => {
+            console.log(error);
+        })
+}
+
 export const DELETE_TEAM = "DELETE_TEAM";
 export const deleteTeam = id => async dispatch => {
         axiosWithAuth().delete(`/team/${id}`)

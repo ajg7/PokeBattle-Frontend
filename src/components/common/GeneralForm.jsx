@@ -1,14 +1,18 @@
 import React, { useRef } from "react";
+import { connect } from "react-redux";
+import { team } from "../../store/actions";
 
 const GeneralForm = props => {
 
-    const { label, placeholder } = props;
+    const { label, placeholder, teamId, editTeamName } = props;
 
     const inputRef = useRef();
 
     const submitHandler = event => {
         event.preventDefault();
         const input = inputRef.current.value;
+        console.log(input)
+        editTeamName(input, teamId)
     }
 
     return (
@@ -22,6 +26,7 @@ const GeneralForm = props => {
                     ref={inputRef}
                     />
                 </label>
+                <button>Submit</button>
             </form>
         </div>
     )
@@ -29,4 +34,8 @@ const GeneralForm = props => {
 
 }
 
-export default GeneralForm;
+export default connect(state => ({
+    
+}), {
+    editTeamName: team.editTeamName
+})(GeneralForm);

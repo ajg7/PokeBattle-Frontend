@@ -63,11 +63,8 @@ const MainMenu = props => {
                         <>
                             <Team 
                             name={team.team_name}
+                            id={team.id}
                             />
-                            {active ? <GeneralForm 
-                            label={"Team Name"}
-                            placeholder={"Write Team Name Here"}
-                            /> : null}
                         </>
                         )
             })}
