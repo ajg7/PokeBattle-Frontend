@@ -52,5 +52,3 @@ export const GlobalReset = createGlobalStyle`
     }
 
 `;
-
-export default GlobalReset;
