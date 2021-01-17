@@ -17,7 +17,7 @@ const Signup = () => {
             </section>
 			<footer>
 				<p>
-					Already have an account? <a>Log In</a>
+					Already have an account? <a href="/login">Log In</a>
 				</p>
 			</footer>
 		</div>

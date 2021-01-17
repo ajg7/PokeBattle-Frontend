@@ -1,6 +1,7 @@
 import React from "react";
 
 const Login = () => {
+
 	return (
 		<div>
 			<header>
@@ -17,7 +18,7 @@ const Login = () => {
             </section>
 			<footer>
 				<p>
-					Already have an account? <a>Sign Up</a>
+					Already have an account? <a href="/signup">Sign Up</a>
 				</p>
 			</footer>
 		</div>
