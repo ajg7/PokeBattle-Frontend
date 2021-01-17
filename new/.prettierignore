@@ -5,4 +5,5 @@ package-lock.json
 /build
 /public
 .eslintrc.js
+.eslintcache
 .prettierrc.json
