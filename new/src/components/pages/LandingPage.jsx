@@ -16,7 +16,9 @@ const LandingPage = () => {
 			<footer>
 				<h3>Created By: A.J. Gebara</h3>
 				<h3>Special Thanks to PokeApi for the Data</h3>
-				<h4>Check them out at <a href="https://pokeapi.co/">https://pokeapi.co/</a></h4>
+				<h4>
+					Check them out at <a href="https://pokeapi.co/">https://pokeapi.co/</a>
+				</h4>
 			</footer>
 		</div>
 	);
