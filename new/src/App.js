@@ -1,11 +1,14 @@
 import React from "react";
+import { GlobalReset } from "./styles/global";
+import { LandingPage } from "./components/pages";
 
-function App() {
+const App = () => {
 	return (
-		<div>
-			<h3>it works!!!</h3>
-		</div>
+		<>
+			<GlobalReset />
+			<LandingPage />
+		</>
 	);
-}
+};
 
 export default App;
