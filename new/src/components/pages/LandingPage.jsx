@@ -8,11 +8,11 @@ const LandingPage = props => {
 	const history = useHistory();
 	const signupRouteHandler = () => history.push("/signup");
 	const loginRouteHandler = () => history.push("/login");
-	const { fetchPokemonOfTheDay, pokemonOfTheDay } = props;
+	const { fetchFeaturedPokemon, featuredPokemon } = props;
 
 	useEffect(() => {
-		fetchPokemonOfTheDay();
-	}, [fetchPokemonOfTheDay]);
+		fetchFeaturedPokemon();
+	}, [fetchFeaturedPokemon]);
 
 	return (
 		<div className="landing-page">
@@ -24,7 +24,7 @@ const LandingPage = props => {
 				</nav>
 			</header>
 			<section>
-				<img src={`${pokemonOfTheDay}`} alt="pokemon of the day" />
+				<img src={`${featuredPokemon}`} alt="featured pokemon" />
 			</section>
 			<footer>
 				<h3>Created By: A.J. Gebara</h3>
@@ -38,15 +38,15 @@ const LandingPage = props => {
 };
 
 LandingPage.propTypes = {
-	fetchPokemonOfTheDay: PropTypes.func,
-	pokemonOfTheDay: PropTypes.object,
+	fetchFeaturedPokemon: PropTypes.func,
+	featuredPokemon: PropTypes.string,
 };
 
 export default connect(
 	state => ({
-		pokemonOfTheDay: state.pokemon.pokemonOfTheDay,
+		featuredPokemon: state.pokemon.featuredPokemon,
 	}),
 	{
-		fetchPokemonOfTheDay: pokemon.fetchPokemonOfTheDay,
+		fetchFeaturedPokemon: pokemon.fetchFeaturedPokemon,
 	}
 )(LandingPage);

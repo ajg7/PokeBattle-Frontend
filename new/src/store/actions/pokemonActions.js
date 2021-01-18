@@ -1,10 +1,9 @@
 import axios from "axios";
 
-export const FETCH_POKEMON_OF_THE_DAY = "FETCH_POKEMON_OF_THE_DAY";
-export const fetchPokemonOfTheDay = () => async dispatch => {
+export const FETCH_FEATURED_POKEMON = "FETCH_FEATURED_POKEMON";
+export const fetchFeaturedPokemon = () => async dispatch => {
 	const { data } = await axios("http://localhost:7000/pokemon");
-	const date = new Date();
-	const day = date.getDate();
-	const { modern_imgURL } = data[day];
-	dispatch({ type: FETCH_POKEMON_OF_THE_DAY, payload: modern_imgURL });
+	const randomNumber = Math.round(Math.random() * (151 - 1) + 1);
+	const { modern_imgURL } = data[randomNumber];
+	dispatch({ type: FETCH_FEATURED_POKEMON, payload: modern_imgURL });
 };
