@@ -37,16 +37,16 @@ const LandingPage = props => {
 	);
 };
 
-
 LandingPage.propTypes = {
 	fetchPokemonOfTheDay: PropTypes.func,
-	pokemonOfTheDay: PropTypes.object
+	pokemonOfTheDay: PropTypes.object,
 };
 
-
 export default connect(
-    state => ({
-        pokemonOfTheDay: state.pokemon.pokemonOfTheDay,
-}), { 
-    fetchPokemonOfTheDay: pokemon.fetchPokemonOfTheDay
-})(LandingPage);
+	state => ({
+		pokemonOfTheDay: state.pokemon.pokemonOfTheDay,
+	}),
+	{
+		fetchPokemonOfTheDay: pokemon.fetchPokemonOfTheDay,
+	}
+)(LandingPage);
