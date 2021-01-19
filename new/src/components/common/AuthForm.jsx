@@ -2,12 +2,14 @@ import React, { useState, useRef } from "react";
 import PropTypes from "prop-types";
 import { signUp, login } from "../../api/auth";
 import { authSchema } from "../../utils/formSchemas";
+import { useHistory } from "react-router-dom";
 
 const AuthForm = props => {
 	const emailRef = useRef();
 	const passwordRef = useRef();
     const { formType } = props;
     const [authErrors, setAuthErrors] = useState("");
+    const history = useHistory();
     
 	const submitHandler = async event => {
 		event.preventDefault();
@@ -24,6 +26,7 @@ const AuthForm = props => {
             setAuthErrors("");
             emailRef.current.value = "";
             passwordRef.current.value = "";
+            history.push("/loading");
         } 
 	};
 
