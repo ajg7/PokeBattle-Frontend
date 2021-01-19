@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import PropTypes from "prop-types";
+import { signUp, login } from "../../api/auth";
 import { authSchema } from "../../utils/formSchemas";
 
 const AuthForm = props => {
@@ -16,8 +17,8 @@ const AuthForm = props => {
 		try {
             const valid = await authSchema.isValid(user);
             authSchema.validate(user).catch(error => setAuthErrors(error.errors));
-			if (formType === "Login" && valid) console.log(user, "login");
-			if (formType === "Signup" && valid) console.log(user, "signup");
+			if (formType === "Login" && valid) login(user);
+			if (formType === "Signup" && valid) signUp(user);
         } 
         finally {
             setAuthErrors("");
@@ -31,11 +32,11 @@ const AuthForm = props => {
 			<form onSubmit={submitHandler}>
 				<label>
 					Email:
-					<input placeholder="Enter Email" type="text" ref={emailRef} />
+					<input placeholder="Email" type="text" ref={emailRef} />
 				</label>
 				<label>
 					Password:
-					<input placeholder="Enter Password" type="password" ref={passwordRef} />
+					<input placeholder="Password" type="password" ref={passwordRef} />
                 </label>
                 <p>{authErrors}</p>
                 <button>Submit</button>
