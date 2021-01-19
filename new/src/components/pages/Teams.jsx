@@ -13,9 +13,7 @@ const Teams = () => {
 			</header>
 			<section>
 				<h2>Teams</h2>
-				<div>
-					
-				</div>
+				<div></div>
 			</section>
 			<footer></footer>
 		</div>

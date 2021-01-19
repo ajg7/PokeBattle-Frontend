@@ -15,10 +15,10 @@ const App = () => {
 				<Route path="/signup">
 					<Signup />
 				</Route>
-				<Route path="/pokedex/:userId">
+				<Route path="/pokedex">
 					<Pokedex />
 				</Route>
-				<Route path="/teams/:userId">
+				<Route path="/teams">
 					<Teams />
 				</Route>
 				<Route path="/loading">

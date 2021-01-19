@@ -9,9 +9,7 @@ const Signup = () => {
 			</header>
 			<section>
 				<h2>Sign Up</h2>
-				<AuthForm 
-				formType="Signup"
-				/>
+				<AuthForm formType="Signup" />
 			</section>
 			<footer>
 				<p>

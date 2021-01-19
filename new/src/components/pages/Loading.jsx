@@ -4,10 +4,8 @@ import { useHistory } from "react-router-dom";
 
 const Loading = () => {
 	const history = useHistory();
-	const userId = localStorage.getItem("userId");
-	console.log(userId);
 	useEffect(() => {
-		setTimeout(() => history.push(`/teams/${userId}`), 3000);
+		setTimeout(() => history.push("/teams/"), 1000);
 	}, []);
 
 	return (
