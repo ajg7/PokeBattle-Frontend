@@ -1,4 +1,5 @@
 import React from "react";
+import AuthForm from "../common/AuthForm";
 
 const Login = () => {
 	return (
@@ -7,13 +8,7 @@ const Login = () => {
 				<h1>PokeBattle</h1>
 			</header>
 			<section>
-				<h2>Login</h2>
-				<form>
-					<label>Email</label>
-					<input />
-					<label>Password</label>
-					<input />
-				</form>
+				<AuthForm formType="Login" />
 			</section>
 			<footer>
 				<p>

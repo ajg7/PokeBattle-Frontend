@@ -1,4 +1,5 @@
 import React from "react";
+import AuthForm from "../common/AuthForm";
 
 const Signup = () => {
 	return (
@@ -8,12 +9,9 @@ const Signup = () => {
 			</header>
 			<section>
 				<h2>Sign Up</h2>
-				<form>
-					<label>Email</label>
-					<input />
-					<label>Password</label>
-					<input />
-				</form>
+				<AuthForm 
+				formType="Signup"
+				/>
 			</section>
 			<footer>
 				<p>
