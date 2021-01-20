@@ -6,7 +6,13 @@ import { logout } from "../../api/auth";
 import addButton from "../../assets/addButton.png";
 
 const Teams = props => {
-	const { teamData, fetchTeams } = props;
+	const { teamData, fetchTeams, makeNewTeam } = props;
+
+	const newTeamHandler = () => {
+		const userId = localStorage.getItem("userId");
+		makeNewTeam(userId, "Grand Island Dryads");
+	};
+
 	useEffect(() => {
 		const userId = localStorage.getItem("userId");
 		fetchTeams(userId);
@@ -27,10 +33,10 @@ const Teams = props => {
 					return (
 						<div key={i} id={team.id}>
 							<h3>{team.team_name}</h3>
-							<img src={addButton} alt="add team" height={20} width={20} />
 						</div>
 					);
 				})}
+				<img src={addButton} alt="add team" height={20} width={20} onClick={newTeamHandler} />
 			</section>
 			<footer></footer>
 		</div>
@@ -39,6 +45,7 @@ const Teams = props => {
 
 Teams.propTypes = {
 	fetchTeams: PropTypes.func,
+	makeNewTeam: PropTypes.func,
 	teamData: PropTypes.array,
 };
 
@@ -49,5 +56,6 @@ export default connect(
 	}),
 	{
 		fetchTeams: teams.fetchTeams,
+		makeNewTeam: teams.makeNewTeam
 	}
 )(Teams);

@@ -2,6 +2,7 @@ import { teams } from "../actions";
 
 const initialState = {
 	teamData: [],
+	teamId: 0,
 };
 
 export const reducer = (state = initialState, action) => {
@@ -10,6 +11,11 @@ export const reducer = (state = initialState, action) => {
 			return {
 				...state,
 				teamData: action.payload,
+			};
+		case teams.MAKE_NEW_TEAM:
+			return {
+				...state,
+				teamId: action.payload,
 			};
 		default:
 			return state;

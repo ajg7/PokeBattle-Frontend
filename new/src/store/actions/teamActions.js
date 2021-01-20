@@ -6,3 +6,10 @@ export const fetchTeams = userId => async dispatch => {
 	const { data } = await axiosWithAuth().get(`/team/user/${userId}`);
 	dispatch({ type: FETCH_TEAMS_OF_USER, payload: data });
 };
+
+export const MAKE_NEW_TEAM = "MAKE_NEW_TEAM";
+export const makeNewTeam = (userId, teamName) => async dispatch => {
+	const newTeam = { userId, teamName };
+	const { data } = await axiosWithAuth().post("/team/", newTeam);
+	dispatch({ type: MAKE_NEW_TEAM, payload: data[0] });
+};
