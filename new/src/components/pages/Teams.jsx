@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { teams } from "../../store/actions/";
 import { logout } from "../../api/auth";
+import addButton from "../../assets/addButton.png";
 
 const Teams = props => {
 	const { teamData, fetchTeams } = props;
@@ -26,6 +27,7 @@ const Teams = props => {
 					return (
 						<div key={i} id={team.id}>
 							<h3>{team.team_name}</h3>
+							<img src={addButton} alt="add team" height={20} width={20} />
 						</div>
 					);
 				})}
