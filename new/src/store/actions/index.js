@@ -1,3 +1,4 @@
 import * as pokemon from "./pokemonActions";
+import * as teams from "./teamActions";
 
-export { pokemon };
+export { pokemon, teams };

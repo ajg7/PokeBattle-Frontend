@@ -3,7 +3,7 @@ import { Route, Redirect } from "react-router-dom";
 
 /*eslint-disable react/prop-types*/
 const PrivateRoute = props => {
-	const { Component, ...rest } = props;
+	const { component: Component, ...rest } = props;
 	return (
 		<Route
 			{...rest}

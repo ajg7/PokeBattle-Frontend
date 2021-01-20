@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 const Loading = () => {
 	const history = useHistory();
 	useEffect(() => {
-		setTimeout(() => history.push("/teams/"), 1000);
+		setTimeout(() => history.push("/teams/"), 2000);
 	}, []);
 
 	return (
