@@ -23,6 +23,10 @@ export const reducer = (state = initialState, action) => {
 				...state,
 				teams: action.payload,
 			};
+		case teams.DELETE_TEAM:
+			return {
+				...state,
+			};
 		default:
 			return state;
 	}

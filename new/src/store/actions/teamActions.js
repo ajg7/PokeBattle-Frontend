@@ -19,3 +19,10 @@ export const fetchPokemonTeams = userId => async dispatch => {
 	const { data } = await axiosWithAuth().get(`/team_members/data/${userId}`);
 	dispatch({ type: FETCH_POKEMON_TEAMS, payload: data });
 };
+
+export const DELETE_TEAM = "DELETE_TEAM";
+export const deleteTeam = teamId => async dispatch => {
+	const confirmation = await axiosWithAuth().delete(`/team/${teamId}`);
+	console.log(confirmation);
+	dispatch({ type: DELETE_TEAM, payload: confirmation });
+};
