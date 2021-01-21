@@ -8,8 +8,7 @@ export const fetchTeamNames = userId => async dispatch => {
 };
 
 export const MAKE_NEW_TEAM = "MAKE_NEW_TEAM";
-export const makeNewTeam = (userId, teamName) => async dispatch => {
-	const newTeam = { userId, teamName };
+export const makeNewTeam = newTeam => async dispatch => {
 	const { data } = await axiosWithAuth().post("/team/", newTeam);
 	dispatch({ type: MAKE_NEW_TEAM, payload: data[0] });
 };
@@ -22,7 +21,9 @@ export const fetchPokemonTeams = userId => async dispatch => {
 
 export const DELETE_TEAM = "DELETE_TEAM";
 export const deleteTeam = teamId => async dispatch => {
-	const confirmation = await axiosWithAuth().delete(`/team/${teamId}`);
-	console.log(confirmation);
-	dispatch({ type: DELETE_TEAM, payload: confirmation });
+	const result = window.confirm("Are you sure you want to delete this team?");
+	if (result) {
+		await axiosWithAuth().delete(`/team/${teamId}`);
+		dispatch({ type: DELETE_TEAM });
+	}
 };

@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { uniqueNamesGenerator, Cofig, adjectives, colors, animals } from "unique-names-generator"
+import { uniqueNamesGenerator, adjectives, colors, animals } from "unique-names-generator"
 import { connect } from "react-redux";
 import { team } from "../../store/actions";
 

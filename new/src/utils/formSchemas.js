@@ -7,3 +7,7 @@ export const authSchema = yup.object().shape({
 		.required("No password provided")
 		.min(8, "Password is too short! Should be 8 character minimum"),
 });
+
+export const teamNameSchema = yup.object().shape({
+	teamName: yup.string().required("Must Enter a Team Name").max(28, "Too Many Characters"),
+});
