@@ -6,7 +6,7 @@ import { logout } from "../../api/auth";
 import addButton from "../../assets/addButton.png";
 
 const Teams = props => {
-	const { fetchTeams, teams, fetchPokemonTeamMembers, makeNewTeam } = props;
+	const { teams, fetchPokemonTeams, makeNewTeam } = props;
 
 	const newTeamHandler = () => {
 		const userId = localStorage.getItem("userId");
@@ -15,9 +15,8 @@ const Teams = props => {
 
 	useEffect(() => {
 		const userId = localStorage.getItem("userId");
-		fetchTeams(userId);
-		fetchPokemonTeamMembers(userId);
-	}, [fetchTeams, fetchPokemonTeamMembers]);
+		fetchPokemonTeams(userId);
+	}, [fetchPokemonTeams]);
 
 	return (
 		<div>
@@ -38,7 +37,7 @@ const Teams = props => {
 							{ele[1].map((team, index) => {
 								return (
 									<div key={index}>
-										<img src={team.imgURL} alt={team.name} />
+										<img src={team.imgURL} alt={team.name} id={team.pokemon_Id} />
 									</div>
 								);
 							})}
@@ -59,20 +58,17 @@ const Teams = props => {
 };
 
 Teams.propTypes = {
-	fetchTeams: PropTypes.func,
-	fetchPokemonTeamMembers: PropTypes.func,
+	fetchPokemonTeams: PropTypes.func,
 	makeNewTeam: PropTypes.func,
 	teams: PropTypes.object,
 };
 
 export default connect(
 	state => ({
-		teamData: state.teams.teamData,
 		teams: state.teams.teams,
 	}),
 	{
-		fetchTeams: teams.fetchTeams,
 		makeNewTeam: teams.makeNewTeam,
-		fetchPokemonTeamMembers: teams.fetchPokemonTeamMembers,
+		fetchPokemonTeams: teams.fetchPokemonTeams,
 	}
 )(Teams);

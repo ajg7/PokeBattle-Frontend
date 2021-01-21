@@ -1,24 +1,24 @@
 import { teams } from "../actions";
 
 const initialState = {
-	teamData: [],
-	teamId: 0,
+	teamNames: [],
+	newTeamId: 0,
 	teams: [],
 };
 
 export const reducer = (state = initialState, action) => {
 	switch (action.type) {
-		case teams.FETCH_TEAMS_OF_USER:
+		case teams.FETCH_TEAM_NAMES:
 			return {
 				...state,
-				teamData: action.payload,
+				teamNames: action.payload,
 			};
 		case teams.MAKE_NEW_TEAM:
 			return {
 				...state,
-				teamId: action.payload,
+				newTeamId: action.payload,
 			};
-		case teams.FETCH_POKEMON_TEAM_MEMBERS:
+		case teams.FETCH_POKEMON_TEAMS:
 			return {
 				...state,
 				teams: action.payload,
