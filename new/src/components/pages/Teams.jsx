@@ -6,7 +6,7 @@ import { logout } from "../../api/auth";
 import addButton from "../../assets/addButton.png";
 
 const Teams = props => {
-	const { teamData, fetchTeams, fetchPokemonTeamMembers, makeNewTeam } = props;
+	const { teamData, fetchTeams, teamMembers, fetchPokemonTeamMembers, makeNewTeam } = props;
 
 	const newTeamHandler = () => {
 		const userId = localStorage.getItem("userId");
@@ -55,15 +55,17 @@ Teams.propTypes = {
 	fetchPokemonTeamMembers: PropTypes.func,
 	makeNewTeam: PropTypes.func,
 	teamData: PropTypes.array,
+	teamMembers: PropTypes.object,
 };
 
 export default connect(
 	state => ({
 		teamData: state.teams.teamData,
+		teamMembers: state.teams.teamMembers
 	}),
 	{
 		fetchTeams: teams.fetchTeams,
 		makeNewTeam: teams.makeNewTeam,
-		fetchPokemonTeamMembers: teams.fetchPokemonTeamMembers
+		fetchPokemonTeamMembers: teams.fetchPokemonTeamMembers,
 	}
 )(Teams);
