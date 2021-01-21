@@ -21,7 +21,8 @@ const AuthForm = props => {
 			authSchema.validate(user).catch(error => setAuthErrors(error.errors));
 			if (formType === "Login" && valid) login(user);
 			if (formType === "Signup" && valid) signUp(user);
-		} finally {
+		} 
+		finally {
 			setAuthErrors("");
 			emailRef.current.value = "";
 			passwordRef.current.value = "";

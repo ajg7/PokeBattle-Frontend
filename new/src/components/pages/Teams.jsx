@@ -60,7 +60,7 @@ const Teams = props => {
 Teams.propTypes = {
 	fetchPokemonTeams: PropTypes.func,
 	makeNewTeam: PropTypes.func,
-	teams: PropTypes.object,
+	teams: PropTypes.array,
 };
 
 export default connect(
