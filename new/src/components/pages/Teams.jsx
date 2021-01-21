@@ -6,7 +6,7 @@ import { logout } from "../../api/auth";
 import addButton from "../../assets/addButton.png";
 
 const Teams = props => {
-	const { teamData, fetchTeams, teamMembers, fetchPokemonTeamMembers, makeNewTeam } = props;
+	const { fetchTeams, teams, fetchPokemonTeamMembers, makeNewTeam } = props;
 
 	const newTeamHandler = () => {
 		const userId = localStorage.getItem("userId");
@@ -30,10 +30,18 @@ const Teams = props => {
 			</header>
 			<section>
 				<h2>Teams</h2>
-				{teamData.map((team, i) => {
+				{teams.map(ele => {
+					const [team] = ele[1];
 					return (
-						<div key={i} id={team.id}>
-							<h3>{team.team_name}</h3>
+						<div key={team.team_Id}>
+							<h3>{ele[0]}</h3>
+							{ele[1].map((team, index) => {
+								return (
+									<div key={index}>
+										<img src={team.imgURL} alt={team.name} />
+									</div>
+								);
+							})}
 						</div>
 					);
 				})}
@@ -54,14 +62,13 @@ Teams.propTypes = {
 	fetchTeams: PropTypes.func,
 	fetchPokemonTeamMembers: PropTypes.func,
 	makeNewTeam: PropTypes.func,
-	teamData: PropTypes.array,
-	teamMembers: PropTypes.object,
+	teams: PropTypes.object,
 };
 
 export default connect(
 	state => ({
 		teamData: state.teams.teamData,
-		teamMembers: state.teams.teamMembers
+		teams: state.teams.teams,
 	}),
 	{
 		fetchTeams: teams.fetchTeams,
