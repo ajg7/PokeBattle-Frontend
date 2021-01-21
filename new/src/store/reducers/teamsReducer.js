@@ -3,6 +3,7 @@ import { teams } from "../actions";
 const initialState = {
 	teamData: [],
 	teamId: 0,
+	teamMembers: [],
 };
 
 export const reducer = (state = initialState, action) => {
@@ -16,6 +17,11 @@ export const reducer = (state = initialState, action) => {
 			return {
 				...state,
 				teamId: action.payload,
+			};
+		case teams.FETCH_POKEMON_TEAM_MEMBERS:
+			return {
+				...state,
+				teamMembers: action.payload,
 			};
 		default:
 			return state;
