@@ -32,11 +32,6 @@ const Pokemon = props => {
 		await fetchPokemonTeams(userId);
 	};
 
-	// const dragStart = () => {
-	// 	setIsAdding(true, false);
-	// 	setSelectedPokemon({ id: id, name: name, img: imgURL, number: number });
-	// };
-
 	return (
 		<>
 			<CardFlipAnim onClick={flipHandler}>
