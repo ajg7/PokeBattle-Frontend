@@ -21,8 +21,10 @@ const Pokemon = props => {
 	const [flipped, setFlipped] = useState(false);
 
 	const flipHandler = () => (!flipped ? setFlipped(true) : setFlipped(false));
-
 	const mouseLeaveHandler = () => (flipped ? setFlipped(false) : null);
+	const addPokemonHandler = event => {
+		console.log(event.target.id, event.target.name);
+	};
 
 	// const dragStart = () => {
 	// 	setIsAdding(true, false);
@@ -53,7 +55,9 @@ const Pokemon = props => {
 										</h3>
 									</div>
 								</TypePills>
-								<button>Add Pokemon</button>
+								<button onClick={addPokemonHandler} id={id} name={name}>
+									Add Pokemon
+								</button>
 							</div>
 						</section>
 						<section className="card-back">

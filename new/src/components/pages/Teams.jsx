@@ -104,7 +104,7 @@ Teams.propTypes = {
 export default connect(
 	state => ({
 		teams: state.teams.teams,
-		newTeamId: state.teams.newTeamId,
+		teamId: state.teams.teamId,
 	}),
 	{
 		makeNewTeam: teams.makeNewTeam,

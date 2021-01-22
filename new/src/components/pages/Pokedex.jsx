@@ -1,16 +1,20 @@
 import React, { useEffect } from "react";
+import { useParams } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { pokemon } from "../../store/actions";
+import { pokemon, teams } from "../../store/actions";
 import { Pokemon } from "../common";
 import { StyledCards } from "../../styles/common";
+import { logout } from "../../api/auth";
 
 const Pokedex = props => {
-	const { fetchPokemon, pokemon } = props;
+	const { fetchPokemon, pokemon, fetchTeamById, teamNames } = props;
+	const params = useParams();
 
 	useEffect(() => {
 		fetchPokemon();
-	}, [fetchPokemon]);
+		fetchTeamById(params.teamId);
+	}, [fetchPokemon, fetchTeamById]);
 
 	return (
 		<div>
@@ -30,6 +34,9 @@ const Pokedex = props => {
 				</select>
 			</header>
 			<section>
+				<div>
+					<h3>{teamNames}</h3>
+				</div>
 				<StyledCards>
 					{pokemon.map(member => {
 						return (
@@ -55,7 +62,7 @@ const Pokedex = props => {
 			<footer>
 				<nav>
 					<h3>Home</h3>
-					<h3>Logout</h3>
+					<h3 onClick={logout}>Logout</h3>
 				</nav>
 			</footer>
 		</div>
@@ -65,13 +72,17 @@ const Pokedex = props => {
 Pokedex.propTypes = {
 	pokemon: PropTypes.array,
 	fetchPokemon: PropTypes.func,
+	fetchTeamById: PropTypes.func,
+	teamNames: PropTypes.array
 };
 
 export default connect(
 	state => ({
 		pokemon: state.pokemon.pokemon,
+		teamNames: state.teams.teamNames
 	}),
 	{
 		fetchPokemon: pokemon.fetchPokemon,
+		fetchTeamById: teams.fetchTeamById
 	}
 )(Pokedex);
