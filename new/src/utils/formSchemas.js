@@ -11,3 +11,7 @@ export const authSchema = yup.object().shape({
 export const teamNameSchema = yup.object().shape({
 	teamName: yup.string().required("Must Enter a Team Name").max(28, "Too Many Characters"),
 });
+
+export const teamNumberSchema = yup.object().shape({
+	teams: yup.array().max(6, "Can only have 6 team members"),
+});

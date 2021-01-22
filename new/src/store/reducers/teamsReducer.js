@@ -16,7 +16,7 @@ export const reducer = (state = initialState, action) => {
 		case teams.MAKE_NEW_TEAM:
 			return {
 				...state,
-				newTeamId: action.payload.data,
+				teamId: +action.payload.data,
 				teams: action.payload.pokemon,
 			};
 		case teams.FETCH_POKEMON_TEAMS:

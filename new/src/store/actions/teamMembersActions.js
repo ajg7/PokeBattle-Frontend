@@ -8,8 +8,8 @@ export const addPokemonToTeam = (pokemonId, teamId) => async dispatch => {
 
 export const DELETE_POKEMON_FROM_TEAM = "DELETE_POKEMON_FROM_TEAM";
 export const deletePokemonFromTeam = (pokemonId, teamId) => async dispatch => {
-	console.log("darkness");
-	await axiosWithAuth().delete(`/team_members/removePokemon/${pokemonId}`, { teamId });
-	const data = true;
+	const { data } = await axiosWithAuth().delete(
+		`team_member/removePokemon/${teamId}/${pokemonId}`
+	);
 	dispatch({ type: DELETE_POKEMON_FROM_TEAM, payload: data });
 };

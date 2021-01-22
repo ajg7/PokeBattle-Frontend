@@ -10,12 +10,12 @@ export const reducer = (state = initialState, action) => {
 		case teamMembers.ADD_POKEMON_TO_A_TEAM:
 			return {
 				...state,
-				pokemonHasBeenAdded: action.payload ? true : false,
+				pokemonHasBeenAdded: action.payload === 1 ? true : false,
 			};
 		case teamMembers.DELETE_POKEMON_FROM_TEAM:
 			return {
 				pokemonHasBeenAdded: false,
-				pokemonHasBeenDeleted: action.payload ? true : false,
+				pokemonHasBeenDeleted: action.payload === 1 ? true : false,
 			};
 		default:
 			return state;

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { teamMembers } from "../../store/actions";
+import { teams, teamMembers } from "../../store/actions";
 import { TypePills, CardFlipAnim } from "../../styles/common";
 import PropTypes from "prop-types";
 
@@ -19,15 +19,17 @@ const Pokemon = props => {
 		mythical,
 		ancient,
 		addPokemonToTeam,
+		fetchPokemonTeams,
 		teamId,
 	} = props;
 	const [flipped, setFlipped] = useState(false);
 
 	const flipHandler = () => (!flipped ? setFlipped(true) : setFlipped(false));
 	const mouseLeaveHandler = () => (flipped ? setFlipped(false) : null);
-	const addPokemonHandler = event => {
-		console.log(event.target.id, event.target.name);
-		addPokemonToTeam(event.target.id, teamId);
+	const addPokemonHandler = async event => {
+		const userId = localStorage.getItem("userId");
+		await addPokemonToTeam(event.target.id, teamId);
+		await fetchPokemonTeams(userId);
 	};
 
 	// const dragStart = () => {
@@ -102,8 +104,10 @@ Pokemon.propTypes = {
 	ancient: PropTypes.bool,
 	teamId: PropTypes.number,
 	addPokemonToTeam: PropTypes.func,
+	fetchPokemonTeams: PropTypes.func,
 };
 
 export default connect(null, {
 	addPokemonToTeam: teamMembers.addPokemonToTeam,
+	fetchPokemonTeams: teams.fetchPokemonTeams,
 })(Pokemon);

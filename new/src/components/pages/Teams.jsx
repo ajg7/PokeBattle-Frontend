@@ -98,7 +98,7 @@ Teams.propTypes = {
 	makeNewTeam: PropTypes.func,
 	teams: PropTypes.array,
 	deleteTeam: PropTypes.func,
-	newTeamId: PropTypes.number,
+	teamId: PropTypes.number,
 };
 
 export default connect(

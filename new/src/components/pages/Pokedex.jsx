@@ -21,14 +21,18 @@ const Pokedex = props => {
 	const params = useParams();
 	const currentTeam = teams.filter(team => team[0] === teamName);
 
+	const deletePokemonHandler = async event => {
+		const userId = localStorage.getItem("userId");
+		await deletePokemonFromTeam(event.target.id, params.teamId);
+		await fetchPokemonTeams(userId);
+	};
+
 	useEffect(() => {
 		const userId = localStorage.getItem("userId");
 		fetchPokemon();
 		fetchTeamById(params.teamId);
 		fetchPokemonTeams(userId);
 	}, [fetchPokemon, fetchTeamById, fetchPokemonTeams]);
-
-	const deletePokemonHandler = event => deletePokemonFromTeam(event.target.id, params.teamId);
 
 	return (
 		<div>
@@ -51,9 +55,9 @@ const Pokedex = props => {
 				<h3>{teamName}</h3>
 				{currentTeam.map(ele => {
 					{
-						return ele[1].map(pokemon => {
+						return ele[1].map((pokemon, index) => {
 							return (
-								<div key={pokemon.team_Id}>
+								<div key={index}>
 									<img
 										src={pokemon.imgURL}
 										alt={pokemon.name}
@@ -89,7 +93,7 @@ const Pokedex = props => {
 								legendary={member.legendary}
 								ancient={member.ancient}
 								mythical={member.mythical}
-								teamId={params.teamId}
+								teamId={+params.teamId}
 							/>
 						);
 					})}
