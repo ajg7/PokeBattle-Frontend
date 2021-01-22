@@ -8,20 +8,17 @@ import addButton from "../../assets/addButton.png";
 import deleteButton from "../../assets/deleteButton.png";
 
 const Teams = props => {
-	const { teams, newTeamId, fetchPokemonTeams, deleteTeam } = props;
+	const { teams, fetchPokemonTeams, deleteTeam } = props;
 	const [active, setActive] = useState(false);
 
-	// const newTeamHandler = () => {
-	// const userId = localStorage.getItem("userId");
-	// const newTeam = { userId, teamName };
-	// makeNewTeam(userId, "Hunters");
-	// };
-
-	const modalHandler = () => setActive(!active);
+	const modalHandler = () => { 
+		setActive(!active);
+	};
 
 	const deleteTeamHandler = event => {
 		const teamId = event.target.id;
-		deleteTeam(newTeamId || teamId);
+		deleteTeam(teamId);
+		console.log(teamId);
 	};
 
 	useEffect(() => {
@@ -42,31 +39,29 @@ const Teams = props => {
 				</header>
 				<section>
 					<h2>Teams</h2>
-					{teams.map(ele => {
-						const [team] = ele[1];
+					{teams.map((ele, index) => {
+						console.log(ele[1]);
 						return (
-							<div key={newTeamId || team.team_Id}>
+							<>
+							<div key={index}>
 								<h3>{ele[0]}</h3>
-								<img
+							<img
 									src={deleteButton}
 									alt={"delete button"}
 									height={20}
 									width={20}
 									onClick={deleteTeamHandler}
-									id={newTeamId || team.team_Id}
-								/>
-								{ele[1].map((team, index) => {
-									return (
-										<div key={index}>
-											<img
-												src={team.imgURL}
-												alt={team.name}
-												id={team.pokemon_Id}
-											/>
-										</div>
-									);
-								})}
+									id={ele[1].length === 0 ? index : ele[1][0].team_Id}
+							/>
 							</div>
+							{ele[1].map(team => {
+								return (
+									<div key={team.team_Id}>
+										<img src={team.imgURL} alt={team.name} />
+									</div>
+								);
+							})}
+							</>
 						);
 					})}
 					<img

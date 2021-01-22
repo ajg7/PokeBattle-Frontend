@@ -9,31 +9,33 @@ import { teamNameSchema } from "../../utils/formSchemas";
 const DialogBox = props => {
 	const inputRef = useRef();
 	const { makeNewTeam, modalHandler } = props;
-    const [teamNameErrors, setTeamNameErrors] = useState("");
-    
-    const randomNameGenerator = () => {
-        const randomName = uniqueNamesGenerator({
-            dictionaries: [countries, animals],
-            style: "capital",
-            separator: " "
-        });
-        inputRef.current.value = randomName;
-    };
+	const [teamNameErrors, setTeamNameErrors] = useState("");
+
+	const randomNameGenerator = () => {
+		const randomName = uniqueNamesGenerator({
+			dictionaries: [countries, animals],
+			style: "capital",
+			separator: " ",
+		});
+		inputRef.current.value = randomName;
+	};
 
 	const submitHandler = async event => {
 		event.preventDefault();
 		const userId = localStorage.getItem("userId");
 		const teamName = inputRef.current.value;
 		try {
-            const valid = await teamNameSchema.isValid({ teamName });
-            await teamNameSchema.validate({ teamName }).catch(error => setTeamNameErrors(error.errors));
+			const valid = await teamNameSchema.isValid({ teamName });
+			await teamNameSchema
+				.validate({ teamName })
+				.catch(error => setTeamNameErrors(error.errors));
 			if (valid) {
 				const newTeam = { userId, teamName };
 				makeNewTeam(newTeam);
 			}
 		} finally {
-            inputRef.current.value = "";
-            modalHandler();
+			inputRef.current.value = "";
+			modalHandler();
 		}
 	};
 
@@ -49,8 +51,8 @@ const DialogBox = props => {
 						</label>
 						<button>Submit</button>
 						<img src={""} alt="cancel" onClick={modalHandler} />
-                    </form>
-                    <button onClick={randomNameGenerator}>Random Name</button>
+					</form>
+					<button onClick={randomNameGenerator}>Random Name</button>
 				</div>
 			</div>
 		</StyledDialogBox>
