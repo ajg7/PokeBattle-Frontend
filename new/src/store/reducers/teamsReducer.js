@@ -1,7 +1,7 @@
 import { teams } from "../actions";
 
 const initialState = {
-	teamNames: [],
+	teamName: "",
 	teamId: 0,
 	teams: [],
 };
@@ -32,8 +32,8 @@ export const reducer = (state = initialState, action) => {
 		case teams.FETCH_TEAM_BY_ID:
 			return {
 				...state,
-				teamId: action.payload.teamId,
-				teamNames: action.payload.teamName,
+				teamId: +action.payload.teamId,
+				teamName: action.payload.teamName,
 			};
 		default:
 			return state;

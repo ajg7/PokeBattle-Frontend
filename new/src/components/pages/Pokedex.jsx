@@ -8,13 +8,16 @@ import { StyledCards } from "../../styles/common";
 import { logout } from "../../api/auth";
 
 const Pokedex = props => {
-	const { fetchPokemon, pokemon, fetchTeamById, teamNames } = props;
+	const { fetchPokemon, pokemon, fetchTeamById, teamName, fetchPokemonTeams, teams } = props;
 	const params = useParams();
+	const currentTeam = teams.filter(team => team[0] === teamName);
 
 	useEffect(() => {
+		const userId = localStorage.getItem("userId");
 		fetchPokemon();
 		fetchTeamById(params.teamId);
-	}, [fetchPokemon, fetchTeamById]);
+		fetchPokemonTeams(userId);
+	}, [fetchPokemon, fetchTeamById, fetchPokemonTeams]);
 
 	return (
 		<div>
@@ -34,9 +37,22 @@ const Pokedex = props => {
 				</select>
 			</header>
 			<section>
-				<div>
-					<h3>{teamNames}</h3>
-				</div>
+				<h3>{teamName}</h3>
+				{currentTeam.map(ele => {
+					{
+						return ele[1].map(pokemon => {
+							return (
+								<div key={pokemon.team_Id}>
+									<img
+										src={pokemon.imgURL}
+										alt={pokemon.name}
+										id={pokemon.pokemon_Id}
+									/>
+								</div>
+							);
+						});
+					}
+				})}
 				<StyledCards>
 					{pokemon.map(member => {
 						return (
@@ -73,16 +89,20 @@ Pokedex.propTypes = {
 	pokemon: PropTypes.array,
 	fetchPokemon: PropTypes.func,
 	fetchTeamById: PropTypes.func,
-	teamNames: PropTypes.array
+	teamName: PropTypes.string,
+	fetchPokemonTeams: PropTypes.func,
+	teams: PropTypes.array,
 };
 
 export default connect(
 	state => ({
 		pokemon: state.pokemon.pokemon,
-		teamNames: state.teams.teamNames
+		teamName: state.teams.teamName,
+		teams: state.teams.teams,
 	}),
 	{
 		fetchPokemon: pokemon.fetchPokemon,
-		fetchTeamById: teams.fetchTeamById
+		fetchTeamById: teams.fetchTeamById,
+		fetchPokemonTeams: teams.fetchPokemonTeams,
 	}
 )(Pokedex);
