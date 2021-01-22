@@ -34,6 +34,7 @@ export const reducer = (state = initialState, action) => {
 				...state,
 				teamId: +action.payload.teamId,
 				teamName: action.payload.teamName,
+				team: [],
 			};
 		default:
 			return state;

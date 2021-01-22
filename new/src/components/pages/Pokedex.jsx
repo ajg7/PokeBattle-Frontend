@@ -2,13 +2,22 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { pokemon, teams } from "../../store/actions";
+import { pokemon, teamMembers, teams } from "../../store/actions";
 import { Pokemon } from "../common";
 import { StyledCards } from "../../styles/common";
 import { logout } from "../../api/auth";
+import deleteButton from "../../assets/deleteButton.png";
 
 const Pokedex = props => {
-	const { fetchPokemon, pokemon, fetchTeamById, teamName, fetchPokemonTeams, teams } = props;
+	const {
+		fetchPokemon,
+		pokemon,
+		fetchTeamById,
+		teamName,
+		fetchPokemonTeams,
+		teams,
+		deletePokemonFromTeam,
+	} = props;
 	const params = useParams();
 	const currentTeam = teams.filter(team => team[0] === teamName);
 
@@ -18,6 +27,8 @@ const Pokedex = props => {
 		fetchTeamById(params.teamId);
 		fetchPokemonTeams(userId);
 	}, [fetchPokemon, fetchTeamById, fetchPokemonTeams]);
+
+	const deletePokemonHandler = event => deletePokemonFromTeam(event.target.id, params.teamId);
 
 	return (
 		<div>
@@ -48,6 +59,14 @@ const Pokedex = props => {
 										alt={pokemon.name}
 										id={pokemon.pokemon_Id}
 									/>
+									<img
+										src={deleteButton}
+										alt={"remove pokemon from team"}
+										id={pokemon.pokemon_Id}
+										height={20}
+										width={20}
+										onClick={deletePokemonHandler}
+									/>
 								</div>
 							);
 						});
@@ -70,6 +89,7 @@ const Pokedex = props => {
 								legendary={member.legendary}
 								ancient={member.ancient}
 								mythical={member.mythical}
+								teamId={params.teamId}
 							/>
 						);
 					})}
@@ -92,6 +112,7 @@ Pokedex.propTypes = {
 	teamName: PropTypes.string,
 	fetchPokemonTeams: PropTypes.func,
 	teams: PropTypes.array,
+	deletePokemonFromTeam: PropTypes.func,
 };
 
 export default connect(
@@ -104,5 +125,6 @@ export default connect(
 		fetchPokemon: pokemon.fetchPokemon,
 		fetchTeamById: teams.fetchTeamById,
 		fetchPokemonTeams: teams.fetchPokemonTeams,
+		deletePokemonFromTeam: teamMembers.deletePokemonFromTeam,
 	}
 )(Pokedex);

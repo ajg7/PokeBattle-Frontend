@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
+import { teamMembers } from "../../store/actions";
 import { TypePills, CardFlipAnim } from "../../styles/common";
 import PropTypes from "prop-types";
 
@@ -17,6 +18,8 @@ const Pokemon = props => {
 		legendary,
 		mythical,
 		ancient,
+		addPokemonToTeam,
+		teamId,
 	} = props;
 	const [flipped, setFlipped] = useState(false);
 
@@ -24,6 +27,7 @@ const Pokemon = props => {
 	const mouseLeaveHandler = () => (flipped ? setFlipped(false) : null);
 	const addPokemonHandler = event => {
 		console.log(event.target.id, event.target.name);
+		addPokemonToTeam(event.target.id, teamId);
 	};
 
 	// const dragStart = () => {
@@ -96,6 +100,10 @@ Pokemon.propTypes = {
 	legendary: PropTypes.bool,
 	mythical: PropTypes.bool,
 	ancient: PropTypes.bool,
+	teamId: PropTypes.number,
+	addPokemonToTeam: PropTypes.func,
 };
 
-export default connect(null, {})(Pokemon);
+export default connect(null, {
+	addPokemonToTeam: teamMembers.addPokemonToTeam,
+})(Pokemon);
