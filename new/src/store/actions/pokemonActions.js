@@ -7,3 +7,9 @@ export const fetchFeaturedPokemon = () => async dispatch => {
 	const { modern_imgURL } = data[randomNumber];
 	dispatch({ type: FETCH_FEATURED_POKEMON, payload: modern_imgURL });
 };
+
+export const FETCH_POKEMON = "FETCH_POKEMON";
+export const fetchPokemon = () => async dispatch => {
+	const { data } = await axios("http://localhost:7000/pokemon");
+	dispatch({ type: FETCH_POKEMON, payload: data });
+};

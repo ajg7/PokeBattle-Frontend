@@ -20,7 +20,6 @@ const Teams = props => {
 
 	const pokedexHandler = event => {
 		const teamId = event.target.id;
-		console.log(teamId);
 		history.push(`/pokedex/${teamId}`);
 	};
 
