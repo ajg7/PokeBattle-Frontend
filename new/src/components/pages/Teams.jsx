@@ -1,24 +1,32 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
+import { useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
 import { teams } from "../../store/actions/";
 import { logout } from "../../api/auth";
 import { DialogBox } from "../common";
 import addButton from "../../assets/addButton.png";
 import deleteButton from "../../assets/deleteButton.png";
+import editButton from "../../assets/editIcon.png";
 
 const Teams = props => {
 	const { teams, fetchPokemonTeams, deleteTeam } = props;
 	const [active, setActive] = useState(false);
+	const history = useHistory();
 
-	const modalHandler = () => { 
+	const modalHandler = () => {
 		setActive(!active);
+	};
+
+	const pokedexHandler = event => {
+		const teamId = event.target.id;
+		console.log(teamId);
+		history.push(`/pokedex/${teamId}`);
 	};
 
 	const deleteTeamHandler = event => {
 		const teamId = event.target.id;
 		deleteTeam(teamId);
-		console.log(teamId);
 	};
 
 	useEffect(() => {
@@ -43,24 +51,32 @@ const Teams = props => {
 						console.log(ele[1]);
 						return (
 							<>
-							<div key={index}>
-								<h3>{ele[0]}</h3>
-							<img
-									src={deleteButton}
-									alt={"delete button"}
-									height={20}
-									width={20}
-									onClick={deleteTeamHandler}
-									id={ele[1].length === 0 ? index : ele[1][0].team_Id}
-							/>
-							</div>
-							{ele[1].map(team => {
-								return (
-									<div key={team.team_Id}>
-										<img src={team.imgURL} alt={team.name} />
-									</div>
-								);
-							})}
+								<div key={index}>
+									<h3>{ele[0]}</h3>
+									<img
+										src={deleteButton}
+										alt={"delete button"}
+										height={20}
+										width={20}
+										onClick={deleteTeamHandler}
+										id={ele[1][0].team_Id}
+									/>
+									<img
+										src={editButton}
+										alt={"add pokemon to team"}
+										height={20}
+										width={20}
+										onClick={pokedexHandler}
+										id={ele[1][0].team_Id}
+									/>
+								</div>
+								{ele[1].map(team => {
+									return (
+										<div key={team.team_Id}>
+											<img src={team.imgURL} alt={team.name} />
+										</div>
+									);
+								})}
 							</>
 						);
 					})}

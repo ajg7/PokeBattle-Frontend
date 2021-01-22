@@ -13,7 +13,7 @@ const App = () => {
 				<Route path="/login" component={Login} />
 				<Route path="/signup" component={Signup} />
 				<Route path="/loading" component={Loading} />
-				<PrivateRoute path="/pokedex" component={Pokedex} />
+				<PrivateRoute path="/pokedex/:teamId" component={Pokedex} />
 				<PrivateRoute path="/teams" component={Teams} />
 				<Route path="/" component={LandingPage} />
 			</Switch>

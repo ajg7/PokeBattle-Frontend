@@ -2,7 +2,6 @@ import { axiosWithAuth } from "../../utils/axiosWithAuth";
 
 export const FETCH_TEAM_NAMES = "FETCH_TEAM_NAMES";
 export const fetchTeamNames = userId => async dispatch => {
-	console.log(userId);
 	const { data } = await axiosWithAuth().get(`/team/user/${userId}`);
 	dispatch({ type: FETCH_TEAM_NAMES, payload: data });
 };
