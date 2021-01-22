@@ -17,9 +17,11 @@ const Pokedex = props => {
 		fetchPokemonTeams,
 		teams,
 		deletePokemonFromTeam,
+		setCurrentTeam
 	} = props;
 	const params = useParams();
 	const currentTeam = teams.filter(team => team[0] === teamName);
+	setCurrentTeam(currentTeam.map(pokemon => pokemon[1]));
 
 	const deletePokemonHandler = async event => {
 		const userId = localStorage.getItem("userId");
@@ -117,6 +119,7 @@ Pokedex.propTypes = {
 	fetchPokemonTeams: PropTypes.func,
 	teams: PropTypes.array,
 	deletePokemonFromTeam: PropTypes.func,
+	setCurrentTeam: PropTypes.func
 };
 
 export default connect(
@@ -130,5 +133,6 @@ export default connect(
 		fetchTeamById: teams.fetchTeamById,
 		fetchPokemonTeams: teams.fetchPokemonTeams,
 		deletePokemonFromTeam: teamMembers.deletePokemonFromTeam,
+		setCurrentTeam: teams.setCurrentTeam
 	}
 )(Pokedex);

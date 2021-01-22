@@ -35,3 +35,8 @@ export const deleteTeam = teamId => async dispatch => {
 		dispatch({ type: DELETE_TEAM, payload: pokemon.data });
 	}
 };
+
+export const SET_CURRENT_TEAM = "SET_CURRENT_TEAM";
+export const setCurrentTeam = currentTeam => dispatch => {
+	dispatch({ type: SET_CURRENT_TEAM, payload: currentTeam });
+};

@@ -13,5 +13,5 @@ export const teamNameSchema = yup.object().shape({
 });
 
 export const teamNumberSchema = yup.object().shape({
-	teams: yup.array().max(6, "Can only have 6 team members"),
+	currentTeam: yup.array().max(5, "Can only have 6 team members"),
 });

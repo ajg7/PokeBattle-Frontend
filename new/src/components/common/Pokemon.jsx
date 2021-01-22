@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { teamNumberSchema } from "../../utils/formSchemas";
 import { connect } from "react-redux";
 import { teams, teamMembers } from "../../store/actions";
 import { TypePills, CardFlipAnim } from "../../styles/common";
@@ -21,20 +22,37 @@ const Pokemon = props => {
 		addPokemonToTeam,
 		fetchPokemonTeams,
 		teamId,
+		currentTeam
 	} = props;
 	const [flipped, setFlipped] = useState(false);
+	const [buttonActive, setButtonActive] = useState(false);
+	const [teamNumberErrors, setTeamNumberErrors] = useState("");
 
-	const flipHandler = () => (!flipped ? setFlipped(true) : setFlipped(false));
+	const flipHandler = () => (!flipped && !buttonActive ? setFlipped(true) : setFlipped(false));
 	const mouseLeaveHandler = () => (flipped ? setFlipped(false) : null);
+	const overButton = () => setButtonActive(true);
+	const leaveButton = () => setButtonActive(false);
 	const addPokemonHandler = async event => {
 		const userId = localStorage.getItem("userId");
-		await addPokemonToTeam(event.target.id, teamId);
-		await fetchPokemonTeams(userId);
+		try {
+			const valid = await teamNumberSchema.isValid({ currentTeam: currentTeam[0] });
+			console.log(valid);
+			teamNumberSchema.validate({ currentTeam: currentTeam[0] }).catch(error => setTeamNumberErrors(error.errors));
+			if (valid) {
+				await addPokemonToTeam(event.target.id, teamId);
+				await fetchPokemonTeams(userId);
+			}
+		}
+		finally {
+			console.log("darkness");
+			setTeamNumberErrors("");
+		}
 	};
 
 	return (
 		<>
 			<CardFlipAnim onClick={flipHandler}>
+			<h3>{teamNumberErrors}</h3>
 				<div className={flipped ? "card flipped" : "card"} onMouseLeave={mouseLeaveHandler}>
 					<div className="card-inner">
 						<section className="card-front">
@@ -56,7 +74,13 @@ const Pokemon = props => {
 										</h3>
 									</div>
 								</TypePills>
-								<button onClick={addPokemonHandler} id={id} name={name}>
+								<button
+									onClick={addPokemonHandler}
+									id={id}
+									name={name}
+									onMouseEnter={overButton}
+									onMouseLeave={leaveButton}
+								>
 									Add Pokemon
 								</button>
 							</div>
@@ -100,9 +124,13 @@ Pokemon.propTypes = {
 	teamId: PropTypes.number,
 	addPokemonToTeam: PropTypes.func,
 	fetchPokemonTeams: PropTypes.func,
+	currentTeam: PropTypes.array
 };
 
-export default connect(null, {
+export default connect(
+	state => ({
+		currentTeam: state.teams.currentTeam
+	}), {
 	addPokemonToTeam: teamMembers.addPokemonToTeam,
 	fetchPokemonTeams: teams.fetchPokemonTeams,
 })(Pokemon);

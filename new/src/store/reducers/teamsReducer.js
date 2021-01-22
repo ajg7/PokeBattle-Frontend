@@ -4,6 +4,7 @@ const initialState = {
 	teamName: "",
 	teamId: 0,
 	teams: [],
+	currentTeam: [],
 };
 
 export const reducer = (state = initialState, action) => {
@@ -35,6 +36,11 @@ export const reducer = (state = initialState, action) => {
 				teamId: +action.payload.teamId,
 				teamName: action.payload.teamName,
 				team: [],
+			};
+		case teams.SET_CURRENT_TEAM:
+			return {
+				...state,
+				currentTeam: action.payload,
 			};
 		default:
 			return state;
