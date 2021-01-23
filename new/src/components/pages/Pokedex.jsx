@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
@@ -7,6 +7,7 @@ import { Pokemon } from "../common";
 import { StyledCards } from "../../styles/common";
 import { logout } from "../../api/auth";
 import deleteButton from "../../assets/deleteButton.png";
+import editButton from "../../assets/editIcon.png";
 
 const Pokedex = props => {
 	const {
@@ -21,10 +22,14 @@ const Pokedex = props => {
 		findPokemon,
 		searchByType,
 		alphabetizePokemon,
+		makeNickname,
 	} = props;
 	const params = useParams();
 	const currentTeam = teams.filter(team => team[0] === teamName);
 	const searchRef = useRef();
+	const nicknameRef = useRef();
+	const [active, setActive] = useState(false);
+	const [selectedPokemonId, setSelectedPokemonId] = useState(0);
 	setCurrentTeam(currentTeam.map(pokemon => pokemon[1]));
 
 	const deletePokemonHandler = async event => {
@@ -55,6 +60,23 @@ const Pokedex = props => {
 		const ordering = event.target.value;
 		await alphabetizePokemon(ordering);
 		event.target.value = "alphabet-selector";
+	};
+
+	const nicknameHandler = event => {
+		setActive(true);
+		setSelectedPokemonId(event.target.id);
+	};
+
+	const closeNicknameInput = () => setActive(false);
+
+	const submitNickname = async event => {
+		event.preventDefault();
+		const userId = localStorage.getItem("userId");
+		const nickname = { nickname: nicknameRef.current.value, teamId: +params.teamId };
+		await makeNickname(nickname, +selectedPokemonId);
+		nicknameRef.current.value = "";
+		setActive(!active);
+		await fetchPokemonTeams(userId);
 	};
 
 	useEffect(() => {
@@ -99,24 +121,46 @@ const Pokedex = props => {
 			</header>
 			<section>
 				<h3>{teamName}</h3>
+				{active ? (
+					<div>
+						<form onSubmit={submitNickname} id={pokemon.pokemon_Id}>
+							<input placeholder="Enter Nickname" ref={nicknameRef} />
+							<button>Submit</button>
+						</form>
+						<button onClick={closeNicknameInput}>Cancel</button>
+					</div>
+				) : null}
 				{currentTeam.map(ele => {
 					{
 						return ele[1].map((pokemon, index) => {
 							return (
 								<div key={index}>
-									<img
-										src={pokemon.imgURL}
-										alt={pokemon.name}
-										id={pokemon.pokemon_Id}
-									/>
-									<img
-										src={deleteButton}
-										alt={"remove pokemon from team"}
-										id={pokemon.pokemon_Id}
-										height={20}
-										width={20}
-										onClick={deletePokemonHandler}
-									/>
+									<h3>{pokemon.nickname ? pokemon.nickname : pokemon.name}</h3>
+									{pokemon.pokemon_Id ? (
+										<>
+											<img
+												src={editButton}
+												alt="give pokemon a nickname"
+												height={20}
+												width={20}
+												id={pokemon.pokemon_Id}
+												onClick={nicknameHandler}
+											/>
+											<img
+												src={pokemon.imgURL}
+												alt={pokemon.name}
+												id={pokemon.pokemon_Id}
+											/>
+											<img
+												src={deleteButton}
+												alt={"remove pokemon from team"}
+												id={pokemon.pokemon_Id}
+												height={20}
+												width={20}
+												onClick={deletePokemonHandler}
+											/>
+										</>
+									) : null}
 								</div>
 							);
 						});
@@ -167,6 +211,7 @@ Pokedex.propTypes = {
 	findPokemon: PropTypes.func,
 	searchByType: PropTypes.func,
 	alphabetizePokemon: PropTypes.func,
+	makeNickname: PropTypes.func,
 };
 
 export default connect(
@@ -184,5 +229,6 @@ export default connect(
 		findPokemon: pokemon.findPokemon,
 		searchByType: pokemon.searchByType,
 		alphabetizePokemon: pokemon.alphabetizePokemon,
+		makeNickname: teamMembers.makeNickname,
 	}
 )(Pokedex);
