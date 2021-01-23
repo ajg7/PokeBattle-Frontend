@@ -1,7 +1,7 @@
 //Key (Type1) -> Value(Types that Type1 will win against)
 const types = new Map();
 
-types.set("normal", []);
+types.set("normal", ["coin-flip"]);
 types.set("fairy", ["fighting", "dragon"]);
 types.set("fighting", ["normal", "rock", "steel", "ice"]);
 types.set("steel", ["rock", "ice", "fairy"]);
