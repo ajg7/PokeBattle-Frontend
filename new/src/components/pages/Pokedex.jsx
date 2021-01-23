@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useRef, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
@@ -17,16 +17,44 @@ const Pokedex = props => {
 		fetchPokemonTeams,
 		teams,
 		deletePokemonFromTeam,
-		setCurrentTeam
+		setCurrentTeam,
+		findPokemon,
+		searchByType,
+		alphabetizePokemon,
 	} = props;
 	const params = useParams();
 	const currentTeam = teams.filter(team => team[0] === teamName);
+	const searchRef = useRef();
 	setCurrentTeam(currentTeam.map(pokemon => pokemon[1]));
 
 	const deletePokemonHandler = async event => {
 		const userId = localStorage.getItem("userId");
 		await deletePokemonFromTeam(event.target.id, params.teamId);
 		await fetchPokemonTeams(userId);
+	};
+
+	const submitHandler = async event => {
+		event.preventDefault();
+		const search = searchRef.current.value;
+		const searchLowerCase = search.toLowerCase();
+		try {
+			await findPokemon(searchLowerCase);
+		} finally {
+			searchRef.current.value = "";
+		}
+	};
+
+	const reset = () => fetchPokemon();
+	const typeDropDownHandler = async event => {
+		const type = event.target.value;
+		await searchByType(type);
+		event.target.value = "types";
+	};
+
+	const alphabetOrderingHandler = async event => {
+		const ordering = event.target.value;
+		await alphabetizePokemon(ordering);
+		event.target.value = "alphabet-selector";
 	};
 
 	useEffect(() => {
@@ -40,18 +68,34 @@ const Pokedex = props => {
 		<div>
 			<header>
 				<h2>Pokedex</h2>
-				<form>
-					<input placeholder={"Search Pokemon"} />
+				<form onSubmit={submitHandler}>
+					<input placeholder={"Search Pokemon"} ref={searchRef} />
+					<button>Search</button>
 				</form>
-				<select>
-					<option>--Select Type--</option>
-					<option>The types will be mapped over to make this list</option>
+				<select onChange={typeDropDownHandler}>
+					<option value="types">--Select Type--</option>
+					<option value="grass">Grass</option>
+					<option value="fire">Fire</option>
+					<option value="water">Water</option>
+					<option value="flying">Flying</option>
+					<option value="ice">Ice</option>
+					<option value="dragon">Dragon</option>
+					<option value="poison">Poison</option>
+					<option value="psychic">Psychic</option>
+					<option value="normal">Normal</option>
+					<option value="fighting">Fighting</option>
+					<option value="steel">Steel</option>
+					<option value="electric">Electric</option>
+					<option value="ground">Ground</option>
+					<option value="rock">Rock</option>
+					<option value="fairy">Fairy</option>
 				</select>
-				<select>
-					<option>--Alphabet--</option>
-					<option>A - Z</option>
-					<option>Z - A</option>
+				<select onChange={alphabetOrderingHandler}>
+					<option value="alphabet-selector">--Alphabet--</option>
+					<option value="asc">A - Z</option>
+					<option value="desc">Z - A</option>
 				</select>
+				<button onClick={reset}>Reset</button>
 			</header>
 			<section>
 				<h3>{teamName}</h3>
@@ -119,7 +163,10 @@ Pokedex.propTypes = {
 	fetchPokemonTeams: PropTypes.func,
 	teams: PropTypes.array,
 	deletePokemonFromTeam: PropTypes.func,
-	setCurrentTeam: PropTypes.func
+	setCurrentTeam: PropTypes.func,
+	findPokemon: PropTypes.func,
+	searchByType: PropTypes.func,
+	alphabetizePokemon: PropTypes.func,
 };
 
 export default connect(
@@ -133,6 +180,9 @@ export default connect(
 		fetchTeamById: teams.fetchTeamById,
 		fetchPokemonTeams: teams.fetchPokemonTeams,
 		deletePokemonFromTeam: teamMembers.deletePokemonFromTeam,
-		setCurrentTeam: teams.setCurrentTeam
+		setCurrentTeam: teams.setCurrentTeam,
+		findPokemon: pokemon.findPokemon,
+		searchByType: pokemon.searchByType,
+		alphabetizePokemon: pokemon.alphabetizePokemon,
 	}
 )(Pokedex);

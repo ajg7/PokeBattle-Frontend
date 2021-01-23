@@ -17,6 +17,21 @@ export const reducer = (state = initialState, action) => {
 				...state,
 				pokemon: action.payload,
 			};
+		case pokemon.FIND_POKEMON:
+			return {
+				...state,
+				pokemon: action.payload,
+			};
+		case pokemon.SEARCH_BY_TYPE:
+			return {
+				...state,
+				pokemon: action.payload,
+			};
+		case pokemon.ALPHABETIZE_POKEMON:
+			return {
+				...state,
+				pokemon: action.payload,
+			};
 		default:
 			return state;
 	}

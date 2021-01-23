@@ -22,7 +22,7 @@ const Pokemon = props => {
 		addPokemonToTeam,
 		fetchPokemonTeams,
 		teamId,
-		currentTeam
+		currentTeam,
 	} = props;
 	const [flipped, setFlipped] = useState(false);
 	const [buttonActive, setButtonActive] = useState(false);
@@ -36,23 +36,22 @@ const Pokemon = props => {
 		const userId = localStorage.getItem("userId");
 		try {
 			const valid = await teamNumberSchema.isValid({ currentTeam: currentTeam[0] });
-			console.log(valid);
-			teamNumberSchema.validate({ currentTeam: currentTeam[0] }).catch(error => setTeamNumberErrors(error.errors));
+			teamNumberSchema
+				.validate({ currentTeam: currentTeam[0] })
+				.catch(error => setTeamNumberErrors(error.errors));
 			if (valid) {
 				await addPokemonToTeam(event.target.id, teamId);
 				await fetchPokemonTeams(userId);
 			}
-		}
-		finally {
+		} finally {
 			console.log("darkness");
-			setTeamNumberErrors("");
 		}
 	};
 
 	return (
 		<>
 			<CardFlipAnim onClick={flipHandler}>
-			<h3>{teamNumberErrors}</h3>
+				<h3>{teamNumberErrors}</h3>
 				<div className={flipped ? "card flipped" : "card"} onMouseLeave={mouseLeaveHandler}>
 					<div className="card-inner">
 						<section className="card-front">
@@ -124,13 +123,15 @@ Pokemon.propTypes = {
 	teamId: PropTypes.number,
 	addPokemonToTeam: PropTypes.func,
 	fetchPokemonTeams: PropTypes.func,
-	currentTeam: PropTypes.array
+	currentTeam: PropTypes.array,
 };
 
 export default connect(
 	state => ({
-		currentTeam: state.teams.currentTeam
-	}), {
-	addPokemonToTeam: teamMembers.addPokemonToTeam,
-	fetchPokemonTeams: teams.fetchPokemonTeams,
-})(Pokemon);
+		currentTeam: state.teams.currentTeam,
+	}),
+	{
+		addPokemonToTeam: teamMembers.addPokemonToTeam,
+		fetchPokemonTeams: teams.fetchPokemonTeams,
+	}
+)(Pokemon);
