@@ -40,3 +40,9 @@ export const SET_CURRENT_TEAM = "SET_CURRENT_TEAM";
 export const setCurrentTeam = currentTeam => dispatch => {
 	dispatch({ type: SET_CURRENT_TEAM, payload: currentTeam });
 };
+
+export const FETCH_CURRENT_TEAM = "FETCH_CURRENT_TEAM";
+export const fetchCurrentTeam = currentTeamId => async dispatch => {
+	const { data } = await axiosWithAuth().get(`/team_member/getPokemon/${currentTeamId}`);
+	dispatch({ type: FETCH_CURRENT_TEAM, payload: data });
+};

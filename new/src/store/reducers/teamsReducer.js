@@ -42,6 +42,12 @@ export const reducer = (state = initialState, action) => {
 				...state,
 				currentTeam: action.payload,
 			};
+		case teams.FETCH_CURRENT_TEAM:
+			return {
+				...state,
+				currentTeam: action.payload,
+			};
+
 		default:
 			return state;
 	}

@@ -38,3 +38,8 @@ export const searchFilters = (searchParam, value) => async dispatch => {
 	);
 	dispatch({ type: OTHER_FILTERS, payload: data });
 };
+
+export const MAKE_CHALLENGER_TEAM = "MAKE_CHALLENGER_TEAM";
+export const makeChallengerTeam = () => dispatch => {
+	dispatch({ type: MAKE_CHALLENGER_TEAM });
+};

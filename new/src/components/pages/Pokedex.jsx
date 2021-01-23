@@ -23,7 +23,8 @@ const Pokedex = props => {
 		searchByType,
 		alphabetizePokemon,
 		makeNickname,
-		searchFilters
+		searchFilters,
+		makeChallengerTeam,
 	} = props;
 	const params = useParams();
 	const history = useHistory();
@@ -82,14 +83,18 @@ const Pokedex = props => {
 	const otherFilters = async event => {
 		const { value } = event.target;
 		let parameter;
-		if (value === "ancient" || value === "legendary" || value === "mythical") parameter = "status"; 
+		if (value === "ancient" || value === "legendary" || value === "mythical")
+			parameter = "status";
 		else if (value === "lightest" || value === "heaviest") parameter = "weight";
 		else if (value === "shortest" || value === "tallest") parameter = "height";
 		searchFilters(parameter, value);
 		event.target.value = "other-filters";
 	};
 
-	const battleHandler = () => history.push(`/battle/${params.teamId}`);
+	const battleHandler = () => {
+		makeChallengerTeam();
+		history.push(`/battle/${params.teamId}`);
+	};
 
 	useEffect(() => {
 		const userId = localStorage.getItem("userId");
@@ -235,7 +240,8 @@ Pokedex.propTypes = {
 	searchByType: PropTypes.func,
 	alphabetizePokemon: PropTypes.func,
 	makeNickname: PropTypes.func,
-	searchFilters: PropTypes.func
+	searchFilters: PropTypes.func,
+	makeChallengerTeam: PropTypes.func,
 };
 
 export default connect(
@@ -254,6 +260,7 @@ export default connect(
 		searchByType: pokemon.searchByType,
 		alphabetizePokemon: pokemon.alphabetizePokemon,
 		makeNickname: teamMembers.makeNickname,
-		searchFilters: pokemon.searchFilters
+		searchFilters: pokemon.searchFilters,
+		makeChallengerTeam: pokemon.makeChallengerTeam,
 	}
 )(Pokedex);
