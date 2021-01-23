@@ -50,8 +50,8 @@ const DialogBox = props => {
 							<input type="text" ref={inputRef} />
 						</label>
 						<button>Submit</button>
-						<img src={""} alt="cancel" onClick={modalHandler} />
 					</form>
+					<button onClick={modalHandler}>Cancel</button>
 					<button onClick={randomNameGenerator}>Random Name</button>
 				</div>
 			</div>

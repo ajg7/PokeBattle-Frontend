@@ -34,23 +34,23 @@ const Pokemon = props => {
 	const leaveButton = () => setButtonActive(false);
 	const addPokemonHandler = async event => {
 		const userId = localStorage.getItem("userId");
-		const pokeId = event.target.id;
+		const pokeId = +event.target.id;
 		let duplicate = false;
 		for (const ele of currentTeam) {
 			for (const member of ele) {
-				if (member.pokemon_Id === +pokeId) duplicate = true;
+				if (member.pokemon_Id === pokeId) duplicate = true;
 			}
 		}
-			const valid = await teamNumberSchema.isValid({ currentTeam: currentTeam[0] });
-			teamNumberSchema
-				.validate({ currentTeam: currentTeam[0] })
-				.catch(error => setTeamNumberErrors(error.errors));
-			if (valid && !duplicate) {
-				await addPokemonToTeam(+pokeId, teamId);
-				await fetchPokemonTeams(userId);
-			} else {
-				setTeamNumberErrors("Cannot have Duplicate Pokemon");
-			}
+		const valid = await teamNumberSchema.isValid({ currentTeam: currentTeam[0] });
+		teamNumberSchema
+			.validate({ currentTeam: currentTeam[0] })
+			.catch(error => setTeamNumberErrors(error.errors));
+		if (valid && !duplicate) {
+			await addPokemonToTeam(pokeId, teamId);
+			await fetchPokemonTeams(userId);
+		} else {
+			setTeamNumberErrors("Cannot have Duplicate Pokemon");
+		}
 	};
 
 	return (

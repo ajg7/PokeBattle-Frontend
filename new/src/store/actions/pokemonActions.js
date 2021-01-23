@@ -15,9 +15,8 @@ export const fetchPokemon = () => async dispatch => {
 };
 
 export const FIND_POKEMON = "FIND_POKEMON";
-export const findPokemon = pokemonName => async dispatch => {
-	const { data } = await axios(`http://localhost:7000/pokemon/search/?pokemon=${pokemonName}`);
-	dispatch({ type: FIND_POKEMON, payload: data });
+export const findPokemon = result => dispatch => {
+	dispatch({ type: FIND_POKEMON, payload: result });
 };
 
 export const SEARCH_BY_TYPE = "SEARCH_BY_TYPE";

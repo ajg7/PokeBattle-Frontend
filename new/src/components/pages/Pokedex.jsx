@@ -43,8 +43,9 @@ const Pokedex = props => {
 		event.preventDefault();
 		const search = searchRef.current.value;
 		const searchLowerCase = search.toLowerCase();
+		const result = pokemon.filter(p => p.name.startsWith(searchLowerCase));
 		try {
-			await findPokemon(searchLowerCase);
+			await findPokemon(result);
 		} finally {
 			searchRef.current.value = "";
 		}
