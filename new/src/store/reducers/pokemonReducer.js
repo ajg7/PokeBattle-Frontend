@@ -32,6 +32,11 @@ export const reducer = (state = initialState, action) => {
 				...state,
 				pokemon: action.payload,
 			};
+		case pokemon.OTHER_FILTERS:
+			return {
+				...state,
+				pokemon: action.payload,
+			};
 		default:
 			return state;
 	}

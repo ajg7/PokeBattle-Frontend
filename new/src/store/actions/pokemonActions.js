@@ -30,3 +30,11 @@ export const alphabetizePokemon = alphabetOrdering => async dispatch => {
 	const { data } = await axios(`http://localhost:7000/pokemon/${alphabetOrdering}`);
 	dispatch({ type: ALPHABETIZE_POKEMON, payload: data });
 };
+
+export const OTHER_FILTERS = "OTHER_FILTERS";
+export const searchFilters = (searchParam, value) => async dispatch => {
+	const { data } = await axios(
+		`http://localhost:7000/pokemon/${searchParam}?${searchParam}=${value}`
+	);
+	dispatch({ type: OTHER_FILTERS, payload: data });
+};

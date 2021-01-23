@@ -23,6 +23,7 @@ const Pokedex = props => {
 		searchByType,
 		alphabetizePokemon,
 		makeNickname,
+		searchFilters
 	} = props;
 	const params = useParams();
 	const history = useHistory();
@@ -41,14 +42,11 @@ const Pokedex = props => {
 
 	const submitHandler = async event => {
 		event.preventDefault();
+		await fetchPokemon();
 		const search = searchRef.current.value;
 		const searchLowerCase = search.toLowerCase();
 		const result = pokemon.filter(p => p.name.startsWith(searchLowerCase));
-		try {
-			await findPokemon(result);
-		} finally {
-			searchRef.current.value = "";
-		}
+		await findPokemon(result);
 	};
 
 	const reset = () => fetchPokemon();
@@ -79,6 +77,16 @@ const Pokedex = props => {
 		nicknameRef.current.value = "";
 		setActive(!active);
 		await fetchPokemonTeams(userId);
+	};
+
+	const otherFilters = async event => {
+		const { value } = event.target;
+		let parameter;
+		if (value === "ancient" || value === "legendary" || value === "mythical") parameter = "status"; 
+		else if (value === "lightest" || value === "heaviest") parameter = "weight";
+		else if (value === "shortest" || value === "tallest") parameter = "height";
+		searchFilters(parameter, value);
+		event.target.value = "other-filters";
 	};
 
 	const battleHandler = () => history.push(`/battle/${params.teamId}`);
@@ -120,6 +128,16 @@ const Pokedex = props => {
 					<option value="alphabet-selector">--Alphabet--</option>
 					<option value="asc">A - Z</option>
 					<option value="desc">Z - A</option>
+				</select>
+				<select onChange={otherFilters}>
+					<option value="other-filters">--Other Filters--</option>
+					<option value="heaviest">Heaviest - Lightest</option>
+					<option value="lightest">Lightest - Heaviest</option>
+					<option value="ancient">Ancient</option>
+					<option value="legendary">Legendary</option>
+					<option value="mythical">Mythical</option>
+					<option value="tallest">Tallest - Shortest</option>
+					<option value="shortest">Shortest - Tallest</option>
 				</select>
 				<button onClick={reset}>Reset</button>
 			</header>
@@ -217,6 +235,7 @@ Pokedex.propTypes = {
 	searchByType: PropTypes.func,
 	alphabetizePokemon: PropTypes.func,
 	makeNickname: PropTypes.func,
+	searchFilters: PropTypes.func
 };
 
 export default connect(
@@ -235,5 +254,6 @@ export default connect(
 		searchByType: pokemon.searchByType,
 		alphabetizePokemon: pokemon.alphabetizePokemon,
 		makeNickname: teamMembers.makeNickname,
+		searchFilters: pokemon.searchFilters
 	}
 )(Pokedex);
