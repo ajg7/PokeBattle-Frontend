@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { pokemon, teamMembers, teams } from "../../store/actions";
@@ -25,6 +25,7 @@ const Pokedex = props => {
 		makeNickname,
 	} = props;
 	const params = useParams();
+	const history = useHistory();
 	const currentTeam = teams.filter(team => team[0] === teamName);
 	const searchRef = useRef();
 	const nicknameRef = useRef();
@@ -79,6 +80,8 @@ const Pokedex = props => {
 		await fetchPokemonTeams(userId);
 	};
 
+	const battleHandler = () => history.push(`/battle/${params.teamId}`);
+
 	useEffect(() => {
 		const userId = localStorage.getItem("userId");
 		fetchPokemon();
@@ -123,7 +126,7 @@ const Pokedex = props => {
 				<h3>{teamName}</h3>
 				{active ? (
 					<div>
-						<form onSubmit={submitNickname} id={pokemon.pokemon_Id}>
+						<form onSubmit={submitNickname}>
 							<input placeholder="Enter Nickname" ref={nicknameRef} />
 							<button>Submit</button>
 						</form>
@@ -190,6 +193,7 @@ const Pokedex = props => {
 				</StyledCards>
 			</section>
 			<footer>
+				<button onClick={battleHandler}>Battle!</button>
 				<nav>
 					<h3>Home</h3>
 					<h3 onClick={logout}>Logout</h3>

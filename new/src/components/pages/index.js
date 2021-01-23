@@ -5,5 +5,6 @@ import Loading from "./Loading";
 import ErrorPage from "./ErrorPage";
 import Teams from "./Teams";
 import Pokedex from "./Pokedex";
+import BattlePage from "./BattlePage";
 
-export { LandingPage, Login, Signup, Loading, ErrorPage, Teams, Pokedex };
+export { LandingPage, Login, Signup, Loading, ErrorPage, Teams, Pokedex, BattlePage };

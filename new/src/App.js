@@ -2,7 +2,15 @@ import React from "react";
 import { Route, Switch } from "react-router-dom";
 import { GlobalReset, Mobile } from "./styles/global";
 import { PrivateRoute } from "./components/common";
-import { LandingPage, Login, Signup, Teams, Pokedex, Loading } from "./components/pages";
+import {
+	LandingPage,
+	Login,
+	Signup,
+	Teams,
+	Pokedex,
+	Loading,
+	BattlePage,
+} from "./components/pages";
 
 const App = () => {
 	return (
@@ -15,6 +23,7 @@ const App = () => {
 				<Route path="/loading" component={Loading} />
 				<PrivateRoute path="/pokedex/:teamId" component={Pokedex} />
 				<PrivateRoute path="/teams" component={Teams} />
+				<PrivateRoute path="/battle/:teamId" component={BattlePage} />
 				<Route path="/" component={LandingPage} />
 			</Switch>
 		</>
