@@ -15,7 +15,9 @@ const BattlePage = props => {
 		makeChallengerTeam,
 		teamName,
 		makeABattle,
+		updateScores,
 	} = props;
+	let { playerScore, challengerScore } = props;
 	const [selectedPokemon, setSelectedPokemon] = useState({});
 	const [challengerPokemon, setChallengerPokemon] = useState({});
 	const [outcome, setOutcome] = useState("");
@@ -23,6 +25,7 @@ const BattlePage = props => {
 	const [active, setActive] = useState(true);
 
 	const battle = async event => {
+		const userId = localStorage.getItem("userId");
 		const type1 = event.target.getAttribute("type1");
 		const type2 = event.target.getAttribute("type2");
 		const img = event.target.getAttribute("img");
@@ -54,12 +57,16 @@ const BattlePage = props => {
 
 		if (totalChallengerPoints > totalPlayerPoints) {
 			setOutcome("Challenger Wins!");
+			challengerScore++;
+			updateScores({ playerScore, challengerScore });
 			const result = currentTeam.filter(pokemon => pokemon.name === name);
 			const index = currentTeam.indexOf(result[0]);
 			if (index > -1) currentTeam.splice(index, 1);
 		}
 		if (totalPlayerPoints > totalChallengerPoints) {
 			setOutcome("Player Wins!");
+			playerScore++;
+			updateScores({ playerScore, challengerScore });
 			const result = challengerTeam.filter(
 				pokemon => pokemon.name === challengerPokemon.name
 			);
@@ -70,6 +77,8 @@ const BattlePage = props => {
 			let coinFlip = Math.round(Math.random() * 25) % 2;
 			if (coinFlip === 1) {
 				setOutcome("Player Wins by Coin Flip!");
+				playerScore++;
+				updateScores({ playerScore, challengerScore });
 				const result = challengerTeam.filter(
 					pokemon => pokemon.name === challengerPokemon.name
 				);
@@ -77,6 +86,8 @@ const BattlePage = props => {
 				if (index > -1) challengerTeam.splice(index, 1);
 			} else {
 				setOutcome("Challenger Wins by Coin Flip!");
+				challengerScore++;
+				updateScores({ playerScore, challengerScore });
 				const result = currentTeam.filter(pokemon => pokemon.name === name);
 				const index = currentTeam.indexOf(result[0]);
 				if (index > -1) currentTeam.splice(index, 1);
@@ -97,26 +108,30 @@ const BattlePage = props => {
 		}
 
 		if (challengerTeam < 1) {
+			await makeABattle(userId, params.teamId, playerScore, challengerScore);
 			setDisabled(true);
-			setOutcome("Player Has Won Battle!");
-			//Update call to DB to update scores is made here
 			setActive(false);
+			makeABattle(userId, params.teamId);
+			if (playerScore > challengerScore) setOutcome("Player Has Won Battle!");
+			if (challengerScore > playerScore) setOutcome("Challenger Has Won Battle!");
+			if (playerScore === challengerScore) setOutcome("Tie");
 		} else if (currentTeam < 1) {
-			setOutcome("Challenger Has Won Battle!");
-			//Update call to DB to update scores is made here
+			await makeABattle(userId, params.teamId, playerScore, challengerScore);
 			setActive(false);
+			if (playerScore > challengerScore) setOutcome("Player Has Won Battle!");
+			if (challengerScore > playerScore) setOutcome("Challenger Has Won Battle!");
+			if (playerScore === challengerScore) setOutcome("Tie");
 		}
 	};
 
 	const battleReset = async () => {
-		const userId = localStorage.getItem("userId");
 		await makeChallengerTeam();
 		await fetchCurrentTeam(params.teamId);
 		setDisabled(false);
 		setSelectedPokemon({});
 		setChallengerPokemon({});
 		setOutcome("");
-		await makeABattle(userId, params.teamId);
+		updateScores({ playerScore: 0, challengerScore: 0 });
 	};
 
 	useEffect(() => {
@@ -149,6 +164,8 @@ const BattlePage = props => {
 					selectedPokemon={selectedPokemon}
 					challengerPokemon={challengerPokemon}
 					outcome={outcome}
+					playerScore={playerScore}
+					challengerScore={challengerScore}
 				/>
 			</section>
 			<footer>
@@ -176,6 +193,9 @@ BattlePage.propTypes = {
 	makeChallengerTeam: PropTypes.func,
 	teamName: PropTypes.string,
 	makeABattle: PropTypes.func,
+	updateScores: PropTypes.func,
+	playerScore: PropTypes.number,
+	challengerScore: PropTypes.number,
 };
 
 export default connect(
@@ -183,10 +203,13 @@ export default connect(
 		currentTeam: state.teams.currentTeam,
 		challengerTeam: state.pokemon.challengerTeam,
 		teamName: state.teams.teamName,
+		playerScore: state.battle.playerScore,
+		challengerScore: state.battle.challengerScore,
 	}),
 	{
 		fetchCurrentTeam: teams.fetchCurrentTeam,
 		makeChallengerTeam: pokemon.makeChallengerTeam,
 		makeABattle: battle.makeABattle,
+		updateScores: battle.updateScores,
 	}
 )(BattlePage);
