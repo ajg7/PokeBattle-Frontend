@@ -19,11 +19,14 @@ export const updateScores = scores => async dispatch => {
 export const GET_BATTLE_DATA = "GET_BATTLE_DATA";
 export const getBattleData = teamId => async dispatch => {
 	const { data } = await axiosWithAuth().get(`battle/battles/${teamId}`);
-	console.log(data);
 	const wins = data.filter(battle => battle.player_score > battle.challenger_score);
 	const losses = data.filter(battle => battle.player_score < battle.challenger_score);
 	const ties = data.filter(battle => battle.player_score === battle.challenger_score);
-	console.log(wins, losses, ties);
-	const battleData = { wins, losses, ties };
+	let totalPlayerScore = 0;
+	data.map(battle => (totalPlayerScore += battle.player_score));
+	const battleAverage = totalPlayerScore / data.length;
+	const allPlayerScores = data.map(battle => battle.player_score);
+	const bestScore = Math.max(...allPlayerScores);
+	const battleData = { wins, losses, ties, battleAverage, bestScore };
 	dispatch({ type: GET_BATTLE_DATA, payload: battleData });
 };

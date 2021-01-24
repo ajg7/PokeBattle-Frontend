@@ -7,6 +7,8 @@ const initialState = {
 	wins: 0,
 	losses: 0,
 	ties: 0,
+	battleAverage: 0,
+	bestScore: 0,
 };
 
 export const reducer = (state = initialState, action) => {
@@ -28,6 +30,8 @@ export const reducer = (state = initialState, action) => {
 				wins: action.payload.wins.length,
 				losses: action.payload.losses.length,
 				ties: action.payload.ties.length,
+				battleAverage: action.payload.battleAverage,
+				bestScore: action.payload.bestScore,
 			};
 		default:
 			return state;

@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { teamMembers, battle } from "../../store/actions";
 
 const Records = props => {
-	const { getPokemonByTeam, getBattleData, pokemonInTeam, teamName, wins, losses, ties } = props;
+	const { getPokemonByTeam, getBattleData, pokemonInTeam, teamName, wins, losses, ties, battleAverage, bestScore } = props;
 	const params = useParams();
 	useEffect(() => {
         getPokemonByTeam(params.teamId);
@@ -21,9 +21,9 @@ const Records = props => {
             <h3>Wins: {wins}</h3>
             <h3>Losses: {losses}</h3>
             <h3>Ties: {ties}</h3>
-            <h3>Win/Loss Ratio: {wins/losses}</h3>
-            <h3>Average Score: </h3>
-            <h3>Best Score: </h3>
+            <h3>Win/Loss Ratio: {wins / losses}</h3>
+            <h3>Average Score: {battleAverage}</h3>
+            <h3>Best Score: {bestScore}</h3>
             {pokemonInTeam.map(pokemon => {
                 return (
                     <div key={pokemon.pokemon_Id}>
@@ -45,7 +45,9 @@ Records.propTypes = {
     getBattleData: PropTypes.func,
     wins: PropTypes.number,
     losses: PropTypes.number,
-    ties: PropTypes.number
+    ties: PropTypes.number,
+    battleAverage: PropTypes.number,
+    bestScore: PropTypes.number
 };
 
 export default connect(
@@ -54,7 +56,9 @@ export default connect(
         teamName: state.teams.teamName,
         wins: state.battle.wins,
         losses: state.battle.losses,
-        ties: state.battle.ties
+        ties: state.battle.ties,
+        battleAverage: state.battle.battleAverage,
+        bestScore: state.battle.bestScore
 	}),
 	{
         getPokemonByTeam: teamMembers.getPokemonByTeam,
