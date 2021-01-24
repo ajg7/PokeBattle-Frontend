@@ -18,21 +18,16 @@ const AuthForm = props => {
 		const email = emailRef.current.value;
 		const password = passwordRef.current.value;
 		const user = { email: email.trim(), password: password.trim() };
+		const valid = await authSchema.isValid(user);
+		authSchema.validate(user).catch(error => setAuthErrors(error.errors));
 		try {
-			const valid = await authSchema.isValid(user);
-			authSchema.validate(user).catch(error => setAuthErrors(error.errors));
-			if (formType === "Login" && valid) {
-				login(user);
-				isLoadingTeams();
-			}
-			if (formType === "Signup" && valid) {
-				signUp(user);
-				isLoadingTeams();
-			}
-		} finally {
-			setAuthErrors("");
-			emailRef.current.value = "";
-			passwordRef.current.value = "";
+			let mounted = true;
+			if (formType === "Login" && valid && mounted) await login(user);
+			if (formType === "Signup" && valid && mounted) await signUp(user);
+			return () => mounted = false;
+		}
+		finally {
+			isLoadingTeams();
 			history.push("/loading");
 		}
 	};

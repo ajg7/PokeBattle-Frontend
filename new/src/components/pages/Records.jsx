@@ -48,7 +48,7 @@ const Records = props => {
 				})}
 			</section>
 			<footer>
-			<button onClick={homeHandler}>Home</button>
+				<button onClick={homeHandler}>Home</button>
 			</footer>
 		</div>
 	);
