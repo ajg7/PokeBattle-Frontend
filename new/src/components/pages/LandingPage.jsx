@@ -32,6 +32,7 @@ const LandingPage = props => {
 				<h4>
 					Check them out at <a href="https://pokeapi.co/">PokeApi</a> and <a href="https://lambdaschool.com/">Lambda School</a>
 				</h4>
+				<h4>Check out my <a href="https://github.com/ajg7">Github</a></h4>
 			</footer>
 		</div>
 	);

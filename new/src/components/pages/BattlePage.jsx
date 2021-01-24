@@ -173,7 +173,7 @@ const BattlePage = props => {
 				{challengerTeam.map(pokemon => {
 					return (
 						<div key={pokemon.pokemon_Id}>
-							<h3>{pokemon.name}</h3>
+							<h3>{pokemon.nickname ? pokemon.nickname : pokemon.name}</h3>
 							<img src={pokemon.imgURL} alt={pokemon.name} />
 						</div>
 					);

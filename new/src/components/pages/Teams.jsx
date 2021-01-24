@@ -43,8 +43,6 @@ const Teams = props => {
 				</header>
 				<section>
 					<h2>Teams</h2>
-					<h3>Wins: </h3>
-					<h3>Losses: </h3>
 					{teams.map((ele, index) => {
 						return (
 							<>
