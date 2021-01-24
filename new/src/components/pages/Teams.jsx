@@ -28,6 +28,11 @@ const Teams = props => {
 		deleteTeam(teamId);
 	};
 
+	const recordsHandler = event => {
+		const teamId = event.target.id;
+		history.push(`/records/${teamId}`);
+	};
+
 	useEffect(() => {
 		const userId = localStorage.getItem("userId");
 		fetchPokemonTeams(userId);
@@ -64,6 +69,9 @@ const Teams = props => {
 										onClick={pokedexHandler}
 										id={ele[1][0].team_Id}
 									/>
+									<button onClick={recordsHandler} id={ele[1][0].team_Id}>
+										Records Room
+									</button>
 								</div>
 								{ele[1].map(team => {
 									return (

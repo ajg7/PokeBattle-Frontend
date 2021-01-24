@@ -12,6 +12,7 @@ import {
 	Pokedex,
 	Loading,
 	BattlePage,
+	Records,
 } from "./components/pages";
 
 const App = props => {
@@ -28,6 +29,7 @@ const App = props => {
 				</Route>
 				<PrivateRoute path="/pokedex/:teamId" component={Pokedex} />
 				<PrivateRoute path="/teams" component={Teams} />
+				<PrivateRoute path="/records/:teamId" component={Records} />
 				<PrivateRoute path="/battle/:teamId" component={BattlePage}>
 					{challengerTeam.length === 0 ? <Redirect to="/teams" /> : null}
 				</PrivateRoute>

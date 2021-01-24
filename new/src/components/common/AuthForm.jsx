@@ -57,11 +57,9 @@ const AuthForm = props => {
 
 AuthForm.propTypes = {
 	formType: PropTypes.string,
-	isLoadingTeams: PropTypes.func
+	isLoadingTeams: PropTypes.func,
 };
 
-export default connect( null,
-	{
-		isLoadingTeams: teams.isLoadingTeams
-	}
-)(AuthForm);
+export default connect(null, {
+	isLoadingTeams: teams.isLoadingTeams,
+})(AuthForm);

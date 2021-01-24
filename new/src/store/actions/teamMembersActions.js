@@ -19,3 +19,9 @@ export const makeNickname = (nickname, pokemonId) => async dispatch => {
 	const data = await axiosWithAuth().put(`/team_member/nickname/${pokemonId}`, nickname);
 	console.log(data, dispatch);
 };
+
+export const GET_POKEMON_IN_SPECIFIC_TEAM = "GET_POKEMON_IN_SPECIFIC_TEAM";
+export const getPokemonByTeam = teamId => async dispatch => {
+	const { data } = await axiosWithAuth().get(`/team_members/getPokemon/${teamId}`);
+	dispatch({ type: GET_POKEMON_IN_SPECIFIC_TEAM, payload: data });
+};
