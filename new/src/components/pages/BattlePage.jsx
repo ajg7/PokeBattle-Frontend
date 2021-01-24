@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { useParams } from "react-router-dom";
@@ -8,6 +9,7 @@ import { Arena } from "../common";
 
 const BattlePage = props => {
 	const params = useParams();
+	const history = useHistory();
 	const {
 		currentTeam,
 		fetchCurrentTeam,
@@ -23,6 +25,8 @@ const BattlePage = props => {
 	const [outcome, setOutcome] = useState("");
 	const [disabled, setDisabled] = useState(false);
 	const [active, setActive] = useState(true);
+
+	const homeHandler = () => history.push("/teams");
 
 	const battle = async event => {
 		const userId = localStorage.getItem("userId");
@@ -181,6 +185,7 @@ const BattlePage = props => {
 				<button onClick={battleReset} disabled={active}>
 					Battle Again?
 				</button>
+				<button onClick={homeHandler}>Home</button>
 			</footer>
 		</div>
 	);

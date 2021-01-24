@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import { teamMembers, battle } from "../../store/actions";
 
@@ -17,6 +17,10 @@ const Records = props => {
 		bestScore,
 	} = props;
 	const params = useParams();
+	const history = useHistory();
+
+	const homeHandler = () => history.goBack();
+
 	useEffect(() => {
 		getPokemonByTeam(params.teamId);
 		getBattleData(params.teamId);
@@ -43,7 +47,9 @@ const Records = props => {
 					);
 				})}
 			</section>
-			<footer></footer>
+			<footer>
+			<button onClick={homeHandler}>Home</button>
+			</footer>
 		</div>
 	);
 };
