@@ -39,15 +39,13 @@ const Teams = props => {
 			<div>
 				<header>
 					<h1>PokeBattle</h1>
-					<nav>
-						<img src={""} alt="help" />
-						<button onClick={logout}>Log Out</button>
-					</nav>
+					<button onClick={logout}>Log Out</button>
 				</header>
 				<section>
 					<h2>Teams</h2>
+					<h3>Wins: </h3>
+					<h3>Losses: </h3>
 					{teams.map((ele, index) => {
-						console.log(ele[1]);
 						return (
 							<>
 								<div key={index}>
