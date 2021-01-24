@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { pokemon, teamMembers, teams } from "../../store/actions";
+import { pokemon, teamMembers, teams, battle } from "../../store/actions";
 import { Pokemon } from "../common";
 import { StyledCards } from "../../styles/common";
 import { logout } from "../../api/auth";
@@ -25,6 +25,7 @@ const Pokedex = props => {
 		makeNickname,
 		searchFilters,
 		makeChallengerTeam,
+		makeABattle
 	} = props;
 	const params = useParams();
 	const history = useHistory();
@@ -91,8 +92,10 @@ const Pokedex = props => {
 		event.target.value = "other-filters";
 	};
 
-	const battleHandler = () => {
-		makeChallengerTeam();
+	const battleHandler = async () => {
+		const userId = localStorage.getItem("userId");
+		await makeChallengerTeam();
+		await makeABattle(userId, params.teamId);
 		history.push(`/battle/${params.teamId}`);
 	};
 
@@ -244,6 +247,7 @@ Pokedex.propTypes = {
 	makeNickname: PropTypes.func,
 	searchFilters: PropTypes.func,
 	makeChallengerTeam: PropTypes.func,
+	makeABattle: PropTypes.func
 };
 
 export default connect(
@@ -264,5 +268,6 @@ export default connect(
 		makeNickname: teamMembers.makeNickname,
 		searchFilters: pokemon.searchFilters,
 		makeChallengerTeam: pokemon.makeChallengerTeam,
+		makeABattle: battle.makeABattle
 	}
 )(Pokedex);
