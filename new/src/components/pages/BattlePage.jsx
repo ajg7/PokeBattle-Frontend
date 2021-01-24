@@ -13,6 +13,7 @@ const BattlePage = props => {
 	const [challengerPokemon, setChallengerPokemon] = useState({});
 	const [outcome, setOutcome] = useState("");
 	const [disabled, setDisabled] = useState(false);
+	const [active, setActive] = useState(true);
 
 	const battle = async event => {
 		const type1 = event.target.getAttribute("type1");
@@ -91,7 +92,11 @@ const BattlePage = props => {
 		if (challengerTeam < 1) {
 			setDisabled(true);
 			setOutcome("Player Has Won Battle!");
-		} else if (currentTeam < 1) setOutcome("Challenger Has Won Battle!");
+			setActive(false);
+		} else if (currentTeam < 1) {
+			setOutcome("Challenger Has Won Battle!");
+			setActive(false);
+		}
 	};
 
 	const battleReset = () => {
@@ -145,8 +150,7 @@ const BattlePage = props => {
 						</div>
 					);
 				})}
-				{/*Later when I put outcome in redux, make it so that when their is an outcome disabled === false*/}
-				<button onClick={battleReset} disabled={false}>
+				<button onClick={battleReset} disabled={active}>
 					Battle Again?
 				</button>
 			</footer>

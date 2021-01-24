@@ -96,6 +96,8 @@ const Pokedex = props => {
 		history.push(`/battle/${params.teamId}`);
 	};
 
+	const homeHandler = () => history.push("/teams/");
+
 	useEffect(() => {
 		const userId = localStorage.getItem("userId");
 		fetchPokemon();
@@ -219,8 +221,8 @@ const Pokedex = props => {
 			<footer>
 				<button onClick={battleHandler}>Battle!</button>
 				<nav>
-					<h3>Home</h3>
-					<h3 onClick={logout}>Logout</h3>
+					<button onClick={homeHandler}>Home</button>
+					<button onClick={logout}>Logout</button>
 				</nav>
 			</footer>
 		</div>
