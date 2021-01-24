@@ -28,9 +28,9 @@ const LandingPage = props => {
 			</section>
 			<footer>
 				<h3>Created By: A.J. Gebara</h3>
-				<h3>Special Thanks to PokeApi for the Data</h3>
+				<h3>Special Thanks to PokeApi for the Data and to Lambda School for Giving Me the Tools to Excel!</h3>
 				<h4>
-					Check them out at <a href="https://pokeapi.co/">https://pokeapi.co/</a>
+					Check them out at <a href="https://pokeapi.co/">PokeApi</a> and <a href="https://lambdaschool.com/">Lambda School</a>
 				</h4>
 			</footer>
 		</div>
