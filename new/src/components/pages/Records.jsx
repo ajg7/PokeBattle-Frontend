@@ -21,9 +21,9 @@ const Records = props => {
             <h3>Wins: {wins}</h3>
             <h3>Losses: {losses}</h3>
             <h3>Ties: {ties}</h3>
-            <h3>Win/Loss Ratio: {wins / losses}</h3>
-            <h3>Average Score: {battleAverage}</h3>
-            <h3>Best Score: {bestScore}</h3>
+            <h3>Win/Loss Ratio: {isNaN(wins / losses) ? 0 : wins / losses}</h3>
+            <h3>Average Score: {isNaN(battleAverage) ? 0 : battleAverage}</h3>
+            <h3>Best Score: {bestScore === -Infinity ? 0 : bestScore}</h3>
             {pokemonInTeam.map(pokemon => {
                 return (
                     <div key={pokemon.pokemon_Id}>
