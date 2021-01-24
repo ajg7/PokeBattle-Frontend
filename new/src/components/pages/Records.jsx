@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { teamMembers } from "../../store/actions";
 
 const Records = props => {
-	const { getPokemonByTeam, pokemonInTeam } = props;
+	const { getPokemonByTeam, pokemonInTeam, teamName } = props;
 	const params = useParams();
 	useEffect(() => {
 		getPokemonByTeam(params.teamId);
@@ -13,7 +13,8 @@ const Records = props => {
 	return (
 		<div>
 			<header>
-				<h2>Records Room</h2>
+                <h2>Records Room</h2>
+                <h3>{teamName}</h3>
 			</header>
             <section>
             <h3>Wins: </h3>
@@ -37,12 +38,14 @@ const Records = props => {
 
 Records.propTypes = {
 	getPokemonByTeam: PropTypes.func,
-	pokemonInTeam: PropTypes.array,
+    pokemonInTeam: PropTypes.array,
+    teamName: PropTypes.string
 };
 
 export default connect(
 	state => ({
-		pokemonInTeam: state.teamMembers.pokemonInTeam,
+        pokemonInTeam: state.teamMembers.pokemonInTeam,
+        teamName: state.teams.teamName
 	}),
 	{
 		getPokemonByTeam: teamMembers.getPokemonByTeam,

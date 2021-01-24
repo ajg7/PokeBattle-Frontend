@@ -16,7 +16,7 @@ import {
 } from "./components/pages";
 
 const App = props => {
-	const { challengerTeam, loading } = props;
+	const { challengerTeam, loading, teamName } = props;
 	return (
 		<>
 			<GlobalReset />
@@ -29,7 +29,9 @@ const App = props => {
 				</Route>
 				<PrivateRoute path="/pokedex/:teamId" component={Pokedex} />
 				<PrivateRoute path="/teams" component={Teams} />
-				<PrivateRoute path="/records/:teamId" component={Records} />
+				<PrivateRoute path="/records/:teamId" component={Records}>
+					{teamName ? null : <Redirect to="/teams" />}
+				</PrivateRoute>
 				<PrivateRoute path="/battle/:teamId" component={BattlePage}>
 					{challengerTeam.length === 0 ? <Redirect to="/teams" /> : null}
 				</PrivateRoute>
@@ -42,12 +44,14 @@ const App = props => {
 App.propTypes = {
 	challengerTeam: PropTypes.array,
 	loading: PropTypes.bool,
+	teamName: PropTypes.string,
 };
 
 export default connect(
 	state => ({
 		challengerTeam: state.pokemon.challengerTeam,
 		loading: state.teams.loading,
+		teamName: state.teams.teamName,
 	}),
 	{}
 )(App);

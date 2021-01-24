@@ -30,6 +30,7 @@ export const reducer = (state = initialState, action) => {
 			return {
 				...state,
 				teams: action.payload,
+				teamName: action.payload[0][0],
 				loading: false,
 			};
 		case teams.DELETE_TEAM:
