@@ -2,13 +2,20 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { useParams } from "react-router-dom";
-import { pokemon, teams } from "../../store/actions";
+import { battle, pokemon, teams } from "../../store/actions";
 import types from "../../utils/types";
 import { Arena } from "../common";
 
 const BattlePage = props => {
 	const params = useParams();
-	const { currentTeam, fetchCurrentTeam, challengerTeam, makeChallengerTeam, teamName } = props;
+	const {
+		currentTeam,
+		fetchCurrentTeam,
+		challengerTeam,
+		makeChallengerTeam,
+		teamName,
+		makeABattle,
+	} = props;
 	const [selectedPokemon, setSelectedPokemon] = useState({});
 	const [challengerPokemon, setChallengerPokemon] = useState({});
 	const [outcome, setOutcome] = useState("");
@@ -92,20 +99,24 @@ const BattlePage = props => {
 		if (challengerTeam < 1) {
 			setDisabled(true);
 			setOutcome("Player Has Won Battle!");
+			//Update call to DB to update scores is made here
 			setActive(false);
 		} else if (currentTeam < 1) {
 			setOutcome("Challenger Has Won Battle!");
+			//Update call to DB to update scores is made here
 			setActive(false);
 		}
 	};
 
-	const battleReset = () => {
-		makeChallengerTeam();
-		fetchCurrentTeam(params.teamId);
+	const battleReset = async () => {
+		const userId = localStorage.getItem("userId");
+		await makeChallengerTeam();
+		await fetchCurrentTeam(params.teamId);
 		setDisabled(false);
 		setSelectedPokemon({});
 		setChallengerPokemon({});
 		setOutcome("");
+		await makeABattle(userId, params.teamId);
 	};
 
 	useEffect(() => {
@@ -164,6 +175,7 @@ BattlePage.propTypes = {
 	fetchCurrentTeam: PropTypes.func,
 	makeChallengerTeam: PropTypes.func,
 	teamName: PropTypes.string,
+	makeABattle: PropTypes.func,
 };
 
 export default connect(
@@ -175,5 +187,6 @@ export default connect(
 	{
 		fetchCurrentTeam: teams.fetchCurrentTeam,
 		makeChallengerTeam: pokemon.makeChallengerTeam,
+		makeABattle: battle.makeABattle,
 	}
 )(BattlePage);

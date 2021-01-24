@@ -9,6 +9,7 @@ const Arena = props => {
 			{selectedPokemon ? (
 				<div>
 					<img src={selectedPokemon.img} alt={selectedPokemon.name} />
+					<h3>Player Score : Challenger Score</h3>
 					<img src={challengerPokemon.img} alt={challengerPokemon.name} />
 				</div>
 			) : null}
