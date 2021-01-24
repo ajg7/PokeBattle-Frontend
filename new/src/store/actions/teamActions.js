@@ -1,5 +1,10 @@
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
 
+export const IS_LOADING_TEAMS = "IS_LOADING_TEAMS";
+export const isLoadingTeams = () => async dispatch => {
+	dispatch({ type: IS_LOADING_TEAMS });
+};
+
 export const FETCH_TEAM_NAMES = "FETCH_TEAM_NAMES";
 export const fetchTeamNames = userId => async dispatch => {
 	const { data } = await axiosWithAuth().get(`/teams/user/${userId}`);

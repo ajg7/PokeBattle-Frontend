@@ -15,7 +15,7 @@ import {
 } from "./components/pages";
 
 const App = props => {
-	const { challengerTeam } = props;
+	const { challengerTeam, loading } = props;
 	return (
 		<>
 			<GlobalReset />
@@ -23,11 +23,12 @@ const App = props => {
 			<Switch>
 				<Route path="/login" component={Login} />
 				<Route path="/signup" component={Signup} />
-				<Route path="/loading" component={Loading} />
+				<Route path="/loading" component={Loading}>
+					{loading ? null : <Redirect to="/" />}
+				</Route>
 				<PrivateRoute path="/pokedex/:teamId" component={Pokedex} />
 				<PrivateRoute path="/teams" component={Teams} />
 				<PrivateRoute path="/battle/:teamId" component={BattlePage}>
-					{/*Later add 'outcome' to state, and make the condition [&& !outcome]*/}
 					{challengerTeam.length === 0 ? <Redirect to="/teams" /> : null}
 				</PrivateRoute>
 				<Route path="/" component={LandingPage} />
@@ -38,11 +39,13 @@ const App = props => {
 
 App.propTypes = {
 	challengerTeam: PropTypes.array,
+	loading: PropTypes.bool,
 };
 
 export default connect(
 	state => ({
 		challengerTeam: state.pokemon.challengerTeam,
+		loading: state.teams.loading,
 	}),
 	{}
 )(App);

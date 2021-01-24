@@ -5,10 +5,16 @@ const initialState = {
 	teamId: 0,
 	teams: [],
 	currentTeam: [],
+	loading: false,
 };
 
 export const reducer = (state = initialState, action) => {
 	switch (action.type) {
+		case teams.IS_LOADING_TEAMS:
+			return {
+				...state,
+				loading: true,
+			};
 		case teams.FETCH_TEAM_NAMES:
 			return {
 				...state,
@@ -24,6 +30,7 @@ export const reducer = (state = initialState, action) => {
 			return {
 				...state,
 				teams: action.payload,
+				loading: false,
 			};
 		case teams.DELETE_TEAM:
 			return {
