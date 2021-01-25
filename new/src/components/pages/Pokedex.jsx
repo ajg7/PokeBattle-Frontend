@@ -43,11 +43,11 @@ const Pokedex = props => {
 
 	const submitHandler = async event => {
 		event.preventDefault();
-		await fetchPokemon();
 		const search = searchRef.current.value;
 		const searchLowerCase = search.toLowerCase();
 		const result = pokemon.filter(p => p.name.startsWith(searchLowerCase));
 		await findPokemon(result);
+		searchRef.current.value = "";
 	};
 
 	const reset = () => fetchPokemon();
@@ -96,7 +96,7 @@ const Pokedex = props => {
 		history.push(`/battle/${params.teamId}`);
 	};
 
-	const homeHandler = () => history.push("/teams/");
+	const homeHandler = () => history.goBack();
 
 	useEffect(() => {
 		const userId = localStorage.getItem("userId");

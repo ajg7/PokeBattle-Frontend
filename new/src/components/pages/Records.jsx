@@ -2,13 +2,11 @@ import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { useHistory, useParams } from "react-router-dom";
 import { connect } from "react-redux";
-import { teamMembers, battle, teams } from "../../store/actions";
+import { teamMembers, battle } from "../../store/actions";
 
 const Records = props => {
 	const {
-		getPokemonByTeam,
 		getBattleData,
-		fetchTeamById,
 		pokemonInTeam,
 		teamName,
 		wins,
@@ -23,9 +21,8 @@ const Records = props => {
 	const homeHandler = () => history.goBack();
 
 	useEffect(() => {
-		getPokemonByTeam(params.teamId);
 		getBattleData(params.teamId);
-	}, [getPokemonByTeam, getBattleData, fetchTeamById]);
+	}, [getBattleData]);
 
 	return (
 		<div>
@@ -82,6 +79,5 @@ export default connect(
 	{
 		getPokemonByTeam: teamMembers.getPokemonByTeam,
 		getBattleData: battle.getBattleData,
-		fetchTeamById: teams.fetchTeamById,
 	}
 )(Records);

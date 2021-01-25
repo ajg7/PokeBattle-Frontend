@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
-import { teams } from "../../store/actions/";
+import { teams, teamMembers } from "../../store/actions/";
 import { logout } from "../../api/auth";
 import { DialogBox } from "../common";
 import addButton from "../../assets/addButton.png";
@@ -11,7 +11,7 @@ import editButton from "../../assets/editIcon.png";
 import uuid from "react-uuid";
 
 const Teams = props => {
-	const { teams, fetchPokemonTeams, deleteTeam, fetchTeamById } = props;
+	const { teams, fetchPokemonTeams, deleteTeam, fetchTeamById, getPokemonByTeam } = props;
 	const [active, setActive] = useState(false);
 	const history = useHistory();
 
@@ -31,6 +31,7 @@ const Teams = props => {
 
 	const recordsHandler = async event => {
 		const teamId = event.target.id;
+		await getPokemonByTeam(teamId);
 		await fetchTeamById(teamId);
 		history.push(`/records/${teamId}`);
 	};
@@ -49,7 +50,7 @@ const Teams = props => {
 					<button onClick={logout}>Log Out</button>
 				</header>
 				<section>
-					<h2>Teams</h2>
+					<h2>Your Teams</h2>
 					{teams.map(ele => {
 						return (
 							<>
@@ -106,6 +107,7 @@ Teams.propTypes = {
 	deleteTeam: PropTypes.func,
 	teamId: PropTypes.number,
 	fetchTeamById: PropTypes.func,
+	getPokemonByTeam: PropTypes.func
 };
 
 export default connect(
@@ -118,5 +120,6 @@ export default connect(
 		fetchPokemonTeams: teams.fetchPokemonTeams,
 		deleteTeam: teams.deleteTeam,
 		fetchTeamById: teams.fetchTeamById,
+		getPokemonByTeam: teamMembers.getPokemonByTeam
 	}
 )(Teams);

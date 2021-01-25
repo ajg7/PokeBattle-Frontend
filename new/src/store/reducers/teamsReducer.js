@@ -33,7 +33,6 @@ export const reducer = (state = initialState, action) => {
 				teams: action.payload,
 			};
 		case teams.FETCH_TEAM_BY_ID:
-			console.log(action.payload);
 			return {
 				...state,
 				teamId: +action.payload.teamId,
