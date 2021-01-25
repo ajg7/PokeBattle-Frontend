@@ -15,11 +15,11 @@ export const reducer = (state = initialState, action) => {
 				...state,
 				loading: true,
 			};
-		case teams.FETCH_TEAM_NAMES:
-			return {
-				...state,
-				teamName: action.payload,
-			};
+		// case teams.FETCH_TEAM_NAMES:
+		// 	return {
+		// 		...state,
+		// 		teamName: action.payload,
+		// 	};
 		case teams.MAKE_NEW_TEAM:
 			return {
 				...state,
@@ -38,10 +38,11 @@ export const reducer = (state = initialState, action) => {
 				teams: action.payload,
 			};
 		case teams.FETCH_TEAM_BY_ID:
+			console.log(action.payload);
 			return {
 				...state,
 				teamId: +action.payload.teamId,
-				teamName: action.payload.teamName,
+				teamName: action.payload.teamName[0].team_name,
 				team: [],
 			};
 		case teams.SET_CURRENT_TEAM:

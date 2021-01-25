@@ -25,14 +25,13 @@ const Records = props => {
 	useEffect(() => {
 		getPokemonByTeam(params.teamId);
 		getBattleData(params.teamId);
-		fetchTeamById(params.teamId);
 	}, [getPokemonByTeam, getBattleData, fetchTeamById]);
 
 	return (
 		<div>
 			<header>
 				<h2>Records Room</h2>
-				<h3>{teamName[0].team_name}</h3>
+				<h3>{teamName}</h3>
 			</header>
 			<section>
 				<h3>Wins: {wins}</h3>
@@ -67,7 +66,7 @@ Records.propTypes = {
 	ties: PropTypes.number,
 	battleAverage: PropTypes.number,
 	bestScore: PropTypes.number,
-	fetchTeamById: PropTypes.func
+	fetchTeamById: PropTypes.func,
 };
 
 export default connect(
@@ -83,6 +82,6 @@ export default connect(
 	{
 		getPokemonByTeam: teamMembers.getPokemonByTeam,
 		getBattleData: battle.getBattleData,
-		fetchTeamById: teams.fetchTeamById
+		fetchTeamById: teams.fetchTeamById,
 	}
 )(Records);

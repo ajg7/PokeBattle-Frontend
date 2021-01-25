@@ -5,11 +5,11 @@ export const isLoadingTeams = () => async dispatch => {
 	dispatch({ type: IS_LOADING_TEAMS });
 };
 
-export const FETCH_TEAM_NAMES = "FETCH_TEAM_NAMES";
-export const fetchTeamNames = userId => async dispatch => {
-	const { data } = await axiosWithAuth().get(`/teams/user/${userId}`);
-	dispatch({ type: FETCH_TEAM_NAMES, payload: data });
-};
+// export const FETCH_TEAM_NAMES = "FETCH_TEAM_NAMES";
+// export const fetchTeamNames = userId => async dispatch => {
+// 	const { data } = await axiosWithAuth().get(`/teams/user/${userId}`);
+// 	dispatch({ type: FETCH_TEAM_NAMES, payload: data });
+// };
 
 export const FETCH_TEAM_BY_ID = "FETCH_TEAM_BY_ID";
 export const fetchTeamById = teamId => async dispatch => {

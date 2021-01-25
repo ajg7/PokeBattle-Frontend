@@ -11,7 +11,7 @@ import editButton from "../../assets/editIcon.png";
 import uuid from "react-uuid";
 
 const Teams = props => {
-	const { teams, fetchPokemonTeams, deleteTeam } = props;
+	const { teams, fetchPokemonTeams, deleteTeam, fetchTeamById } = props;
 	const [active, setActive] = useState(false);
 	const history = useHistory();
 
@@ -29,8 +29,9 @@ const Teams = props => {
 		deleteTeam(teamId);
 	};
 
-	const recordsHandler = event => {
+	const recordsHandler = async event => {
 		const teamId = event.target.id;
+		await fetchTeamById(teamId);
 		history.push(`/records/${teamId}`);
 	};
 
@@ -104,6 +105,7 @@ Teams.propTypes = {
 	teams: PropTypes.array,
 	deleteTeam: PropTypes.func,
 	teamId: PropTypes.number,
+	fetchTeamById: PropTypes.func
 };
 
 export default connect(
@@ -115,5 +117,6 @@ export default connect(
 		makeNewTeam: teams.makeNewTeam,
 		fetchPokemonTeams: teams.fetchPokemonTeams,
 		deleteTeam: teams.deleteTeam,
+		fetchTeamById: teams.fetchTeamById
 	}
 )(Teams);

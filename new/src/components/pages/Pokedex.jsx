@@ -6,8 +6,8 @@ import { pokemon, teamMembers, teams } from "../../store/actions";
 // import { Pokemon } from "../common";
 import { StyledCards } from "../../styles/common";
 import { logout } from "../../api/auth";
-// import deleteButton from "../../assets/deleteButton.png";
-// import editButton from "../../assets/editIcon.png";
+import deleteButton from "../../assets/deleteButton.png";
+import editButton from "../../assets/editIcon.png";
 
 const Pokedex = props => {
 	const {
@@ -17,7 +17,7 @@ const Pokedex = props => {
 		teamName,
 		fetchPokemonTeams,
 		teams,
-		// deletePokemonFromTeam,
+		deletePokemonFromTeam,
 		setCurrentTeam,
 		findPokemon,
 		searchByType,
@@ -32,15 +32,14 @@ const Pokedex = props => {
 	const searchRef = useRef();
 	const nicknameRef = useRef();
 	const [active, setActive] = useState(false);
-	console.log(teamName, "darkness");
-	// const [selectedPokemonId, setSelectedPokemonId] = useState(0);
-	setCurrentTeam(currentTeam.map(pokemon => pokemon[1]));
+	const [selectedPokemonId, setSelectedPokemonId] = useState(0);
+	console.log(selectedPokemonId, teamName);
 
-	// const deletePokemonHandler = async event => {
-	// 	const userId = localStorage.getItem("userId");
-	// 	await deletePokemonFromTeam(event.target.id, params.teamId);
-	// 	await fetchPokemonTeams(userId);
-	// };
+	const deletePokemonHandler = async event => {
+		const userId = localStorage.getItem("userId");
+		await deletePokemonFromTeam(event.target.id, params.teamId);
+		await fetchPokemonTeams(userId);
+	};
 
 	const submitHandler = async event => {
 		event.preventDefault();
@@ -64,10 +63,10 @@ const Pokedex = props => {
 		event.target.value = "alphabet-selector";
 	};
 
-	// const nicknameHandler = event => {
-	// 	setActive(true);
-	// 	setSelectedPokemonId(event.target.id);
-	// };
+	const nicknameHandler = event => {
+		setActive(true);
+		setSelectedPokemonId(event.target.id);
+	};
 
 	const closeNicknameInput = () => setActive(false);
 
@@ -101,9 +100,10 @@ const Pokedex = props => {
 
 	useEffect(() => {
 		const userId = localStorage.getItem("userId");
-		fetchPokemon();
 		fetchTeamById(params.teamId);
+		setCurrentTeam(currentTeam.map(pokemon => pokemon[1]));
 		fetchPokemonTeams(userId);
+		fetchPokemon();
 	}, [fetchPokemon, fetchTeamById, fetchPokemonTeams]);
 
 	return (
@@ -150,7 +150,7 @@ const Pokedex = props => {
 				<button onClick={reset}>Reset</button>
 			</header>
 			<section>
-				<h3>{teamName[0].team_name}</h3>
+				<h3>{teamName}</h3>
 				{active ? (
 					<div>
 						<form onSubmit={submitNickname}>
@@ -160,7 +160,7 @@ const Pokedex = props => {
 						<button onClick={closeNicknameInput}>Cancel</button>
 					</div>
 				) : null}
-				{/*currentTeam.map(ele => {
+				{currentTeam.map(ele => {
 					{
 						return ele[1].map((pokemon, index) => {
 							return (
@@ -195,7 +195,7 @@ const Pokedex = props => {
 							);
 						});
 					}
-				})*/}
+				})}
 				<StyledCards>
 					{/*pokemon.map(member => {
 						return (
