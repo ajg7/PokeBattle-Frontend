@@ -18,7 +18,7 @@ export const reducer = (state = initialState, action) => {
 		case teams.FETCH_TEAM_NAMES:
 			return {
 				...state,
-				teamNames: action.payload,
+				teamName: action.payload,
 			};
 		case teams.MAKE_NEW_TEAM:
 			return {
@@ -30,7 +30,6 @@ export const reducer = (state = initialState, action) => {
 			return {
 				...state,
 				teams: action.payload,
-				teamName: action.payload[0],
 				loading: false,
 			};
 		case teams.DELETE_TEAM:
