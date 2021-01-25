@@ -15,11 +15,6 @@ export const reducer = (state = initialState, action) => {
 				...state,
 				loading: true,
 			};
-		// case teams.FETCH_TEAM_NAMES:
-		// 	return {
-		// 		...state,
-		// 		teamName: action.payload,
-		// 	};
 		case teams.MAKE_NEW_TEAM:
 			return {
 				...state,

@@ -3,7 +3,7 @@ import { useParams, useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { pokemon, teamMembers, teams } from "../../store/actions";
-// import { Pokemon } from "../common";
+import { Pokemon } from "../common";
 import { StyledCards } from "../../styles/common";
 import { logout } from "../../api/auth";
 import deleteButton from "../../assets/deleteButton.png";
@@ -22,7 +22,7 @@ const Pokedex = props => {
 		findPokemon,
 		searchByType,
 		alphabetizePokemon,
-		// makeNickname,
+		makeNickname,
 		searchFilters,
 		makeChallengerTeam,
 	} = props;
@@ -33,7 +33,6 @@ const Pokedex = props => {
 	const nicknameRef = useRef();
 	const [active, setActive] = useState(false);
 	const [selectedPokemonId, setSelectedPokemonId] = useState(0);
-	console.log(selectedPokemonId, teamName);
 
 	const deletePokemonHandler = async event => {
 		const userId = localStorage.getItem("userId");
@@ -73,8 +72,8 @@ const Pokedex = props => {
 	const submitNickname = async event => {
 		event.preventDefault();
 		const userId = localStorage.getItem("userId");
-		// const nickname = { nickname: nicknameRef.current.value, teamId: +params.teamId };
-		// await makeNickname(nickname, +selectedPokemonId);
+		const nickname = { nickname: nicknameRef.current.value, teamId: +params.teamId };
+		await makeNickname(nickname, +selectedPokemonId);
 		nicknameRef.current.value = "";
 		setActive(!active);
 		await fetchPokemonTeams(userId);
@@ -197,7 +196,7 @@ const Pokedex = props => {
 					}
 				})}
 				<StyledCards>
-					{/*pokemon.map(member => {
+					{pokemon.map(member => {
 						return (
 							<Pokemon
 								key={member.number}
@@ -216,7 +215,7 @@ const Pokedex = props => {
 								teamId={+params.teamId}
 							/>
 						);
-					})*/}
+					})}
 				</StyledCards>
 			</section>
 			<footer>
