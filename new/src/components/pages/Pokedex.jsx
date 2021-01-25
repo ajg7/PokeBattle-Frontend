@@ -233,7 +233,7 @@ Pokedex.propTypes = {
 	pokemon: PropTypes.array,
 	fetchPokemon: PropTypes.func,
 	fetchTeamById: PropTypes.func,
-	teamName: PropTypes.array,
+	teamName: PropTypes.string,
 	fetchPokemonTeams: PropTypes.func,
 	teams: PropTypes.array,
 	deletePokemonFromTeam: PropTypes.func,
