@@ -15,9 +15,8 @@ export const deletePokemonFromTeam = (pokemonId, teamId) => async dispatch => {
 };
 
 export const MAKE_NICKNAME = "MAKE_NICKNAME";
-export const makeNickname = (nickname, pokemonId) => async dispatch => {
-	const data = await axiosWithAuth().put(`/team_member/nickname/${pokemonId}`, nickname);
-	console.log(data, dispatch);
+export const makeNickname = (nickname, pokemonId) => async () => {
+	await axiosWithAuth().put(`/team_member/nickname/${pokemonId}`, nickname);
 };
 
 export const GET_POKEMON_IN_SPECIFIC_TEAM = "GET_POKEMON_IN_SPECIFIC_TEAM";

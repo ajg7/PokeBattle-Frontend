@@ -33,6 +33,7 @@ const Pokedex = props => {
 	const nicknameRef = useRef();
 	const [active, setActive] = useState(false);
 	const [selectedPokemonId, setSelectedPokemonId] = useState(0);
+	setCurrentTeam(currentTeam.map(pokemon => pokemon[1]));
 
 	const deletePokemonHandler = async event => {
 		const userId = localStorage.getItem("userId");
@@ -100,7 +101,6 @@ const Pokedex = props => {
 	useEffect(() => {
 		const userId = localStorage.getItem("userId");
 		fetchTeamById(params.teamId);
-		setCurrentTeam(currentTeam.map(pokemon => pokemon[1]));
 		fetchPokemonTeams(userId);
 		fetchPokemon();
 	}, [fetchPokemon, fetchTeamById, fetchPokemonTeams]);

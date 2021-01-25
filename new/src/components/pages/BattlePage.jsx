@@ -132,6 +132,7 @@ const BattlePage = props => {
 		await makeChallengerTeam();
 		await fetchCurrentTeam(params.teamId);
 		setDisabled(false);
+		setActive(true);
 		setSelectedPokemon({});
 		setChallengerPokemon({});
 		setOutcome("");
