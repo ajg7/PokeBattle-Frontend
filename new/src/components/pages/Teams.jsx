@@ -107,7 +107,7 @@ Teams.propTypes = {
 	deleteTeam: PropTypes.func,
 	teamId: PropTypes.number,
 	fetchTeamById: PropTypes.func,
-	getPokemonByTeam: PropTypes.func
+	getPokemonByTeam: PropTypes.func,
 };
 
 export default connect(
@@ -120,6 +120,6 @@ export default connect(
 		fetchPokemonTeams: teams.fetchPokemonTeams,
 		deleteTeam: teams.deleteTeam,
 		fetchTeamById: teams.fetchTeamById,
-		getPokemonByTeam: teamMembers.getPokemonByTeam
+		getPokemonByTeam: teamMembers.getPokemonByTeam,
 	}
 )(Teams);
