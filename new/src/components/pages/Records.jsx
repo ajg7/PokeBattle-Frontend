@@ -2,12 +2,13 @@ import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { useHistory, useParams } from "react-router-dom";
 import { connect } from "react-redux";
-import { teamMembers, battle } from "../../store/actions";
+import { teamMembers, battle, teams } from "../../store/actions";
 
 const Records = props => {
 	const {
 		getPokemonByTeam,
 		getBattleData,
+		fetchTeamById,
 		pokemonInTeam,
 		teamName,
 		wins,
@@ -24,12 +25,14 @@ const Records = props => {
 	useEffect(() => {
 		getPokemonByTeam(params.teamId);
 		getBattleData(params.teamId);
-	}, [getPokemonByTeam, getBattleData]);
+		fetchTeamById(params.teamId);
+	}, [getPokemonByTeam, getBattleData, fetchTeamById]);
+
 	return (
 		<div>
 			<header>
 				<h2>Records Room</h2>
-				<h3>{teamName}</h3>
+				<h3>{teamName[0].team_name}</h3>
 			</header>
 			<section>
 				<h3>Wins: {wins}</h3>
@@ -64,6 +67,7 @@ Records.propTypes = {
 	ties: PropTypes.number,
 	battleAverage: PropTypes.number,
 	bestScore: PropTypes.number,
+	fetchTeamById: PropTypes.func
 };
 
 export default connect(
@@ -79,5 +83,6 @@ export default connect(
 	{
 		getPokemonByTeam: teamMembers.getPokemonByTeam,
 		getBattleData: battle.getBattleData,
+		fetchTeamById: teams.fetchTeamById
 	}
 )(Records);

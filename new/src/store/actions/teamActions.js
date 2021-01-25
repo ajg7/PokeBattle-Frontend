@@ -14,7 +14,7 @@ export const fetchTeamNames = userId => async dispatch => {
 export const FETCH_TEAM_BY_ID = "FETCH_TEAM_BY_ID";
 export const fetchTeamById = teamId => async dispatch => {
 	const { data } = await axiosWithAuth().get(`/team/${teamId}`);
-	dispatch({ type: FETCH_TEAM_BY_ID, payload: { teamId, teamName: data[0].team_name } });
+	dispatch({ type: FETCH_TEAM_BY_ID, payload: { teamId, teamName: data } });
 };
 
 export const MAKE_NEW_TEAM = "MAKE_NEW_TEAM";
