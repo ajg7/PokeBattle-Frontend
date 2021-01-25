@@ -1,5 +1,8 @@
 {
   "name": "new",
+  "jest": {
+    "verbose": true
+  },
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -27,7 +30,8 @@
     "react-test": "react-scripts test",
     "eject": "react-scripts eject",
     "format": "prettier --write .",
-    "check": "prettier --check ."
+    "check": "prettier --check .",
+    "test": "jest --watchAll"
   },
   "eslintConfig": {
     "extends": [
