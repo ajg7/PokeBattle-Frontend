@@ -44,7 +44,7 @@ const App = props => {
 App.propTypes = {
 	challengerTeam: PropTypes.array,
 	loading: PropTypes.bool,
-	teamName: PropTypes.string,
+	teamName: PropTypes.any,
 };
 
 export default connect(

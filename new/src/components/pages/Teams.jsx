@@ -8,6 +8,7 @@ import { DialogBox } from "../common";
 import addButton from "../../assets/addButton.png";
 import deleteButton from "../../assets/deleteButton.png";
 import editButton from "../../assets/editIcon.png";
+import uuid from "react-uuid";
 
 const Teams = props => {
 	const { teams, fetchPokemonTeams, deleteTeam } = props;
@@ -48,10 +49,10 @@ const Teams = props => {
 				</header>
 				<section>
 					<h2>Teams</h2>
-					{teams.map((ele, index) => {
+					{teams.map(ele => {
 						return (
 							<>
-								<div key={index}>
+								<div>
 									<h3>{ele[0]}</h3>
 									<img
 										src={deleteButton}
@@ -75,7 +76,7 @@ const Teams = props => {
 								</div>
 								{ele[1].map(team => {
 									return (
-										<div key={team.team_Id}>
+										<div key={uuid()}>
 											<img src={team.imgURL} alt={team.name} />
 										</div>
 									);

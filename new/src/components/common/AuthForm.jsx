@@ -24,9 +24,8 @@ const AuthForm = props => {
 			let mounted = true;
 			if (formType === "Login" && valid && mounted) await login(user);
 			if (formType === "Signup" && valid && mounted) await signUp(user);
-			return () => mounted = false;
-		}
-		finally {
+			return () => (mounted = false);
+		} finally {
 			isLoadingTeams();
 			history.push("/loading");
 		}
