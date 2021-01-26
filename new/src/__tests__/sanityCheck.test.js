@@ -1,4 +1,5 @@
-const getType = require("jest-get-type");
+import getType from "jest-get-type";
+import types from "../utils/types";
 
 //Mock Sanity Checks
 const add = jest.fn(() => 14);
@@ -31,6 +32,11 @@ describe("Unit Tests", () => {
 	test("Return type for stringReturn should be a string", () => {
 		const returnType = getType(stringReturn("A.J."));
 		expect(returnType).toBe("string");
+	});
+	test("Types Function", () => {
+		const dragon = types.get("dragon");
+		console.log(dragon);
+		expect(types.get("dragon")).toStrictEqual(["dragon"]);
 	});
 });
 
