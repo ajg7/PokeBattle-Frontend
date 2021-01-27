@@ -5,7 +5,7 @@ import types from "../utils/types";
 const add = jest.fn(() => 14);
 
 describe.skip("Sanity Check Testing Suite", () => {
-	describe("Mock Calls", () => {
+	describe.skip("Mock Calls", () => {
 		test("add", () => {
 			expect(add(5, 20)).toBe(14);
 			expect(add).toHaveBeenCalledTimes(1);
@@ -19,7 +19,7 @@ describe.skip("Sanity Check Testing Suite", () => {
 
 	const stringReturn = name => `My name is ${name}`;
 
-	describe("Unit Tests", () => {
+	describe.skip("Unit Tests", () => {
 		test("adds 6 + 5 to equal 11", () => {
 			expect(sum(6, 5)).toBe(11);
 		});
@@ -45,7 +45,7 @@ describe.skip("Sanity Check Testing Suite", () => {
 		return "$" + sum(shipping, subTotal);
 	};
 
-	describe("Integration Tests", () => {
+	describe.skip("Integration Tests", () => {
 		test("total", () => {
 			expect(total(5, 20)).toBe("$25");
 			expect(total(5, 20)).not.toBe(25);
