@@ -25,9 +25,16 @@ const AuthForm = props => {
 			if (formType === "Login" && valid && mounted) await login(user);
 			if (formType === "Signup" && valid && mounted) await signUp(user);
 			return () => (mounted = false);
-		} finally {
-			isLoadingTeams();
-			history.push("/loading");
+		} 
+		catch (error) {
+			if (formType === "Signup") setAuthErrors("User is Already Exists!");
+			if (formType === "Login") setAuthErrors("User Doesn't Exist!");
+		}
+		finally {
+			if (localStorage.getItem("token")) {
+				isLoadingTeams();
+				history.push("/loading");
+			}
 		}
 	};
 

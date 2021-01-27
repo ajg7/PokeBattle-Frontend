@@ -18,9 +18,7 @@ export const TypePills = styled.div`
 	}};
 
 	.type-pill-primary {
-		background-color: ${({ theme, type }) => {
-			return theme.types[type];
-		}};
+		background-color: ${({ theme, type }) => theme.types[type]};
 		border-radius: 5px;
 		width: 45%;
 		color: ${({ type }) => {
@@ -53,16 +51,11 @@ export const TypePills = styled.div`
 		}};
 	}
 	.type-pill-secondary {
-		background-color: ${({ theme, secondaryType }) => {
-			return theme.types[secondaryType];
-		}};
+		background-color: ${({ theme, secondaryType }) => theme.types[secondaryType]};
 		border-radius: 5px;
 		width: ${({ secondaryType }) => {
-			if (secondaryType === null) {
-				return "0%";
-			} else {
-				return "45%";
-			}
+			if (secondaryType === null) "0%";
+			else "45%";
 		}};
 		color: ${({ secondaryType }) => {
 			switch (secondaryType) {

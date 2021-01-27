@@ -2,9 +2,7 @@ import { signUp, login, logout } from "../api/auth";
 
 describe.skip("Auth Functions", () => {
 	describe("Signup", () => {
-		test("User can signup", () => {
-            
-        });
+		test("User can signup", () => {});
 	});
 
 	describe("Login", () => {
