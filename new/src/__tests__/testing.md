@@ -8,8 +8,7 @@
 
     1) Login, Logout, Sign Up
         -Mock
-    2) Pokemon API calls
-        -Mock
+    2) Pokemon API calls [Tested]
     3) Types Hash Maps [Tested]
     4) Pokemon Cards UI
     5) Sign Up and Login Buttons
