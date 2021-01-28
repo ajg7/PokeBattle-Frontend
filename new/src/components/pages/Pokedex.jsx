@@ -3,7 +3,7 @@ import { useParams, useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { pokemon, teamMembers, teams } from "../../store/actions";
-import { Pokemon } from "../common";
+import { Pokemon, Button } from "../common";
 import { StyledCards } from "../../styles/common";
 import { logout } from "../../api/auth";
 import deleteButton from "../../assets/deleteButton.png";
@@ -111,7 +111,7 @@ const Pokedex = props => {
 				<h2>Pokedex</h2>
 				<form onSubmit={submitHandler}>
 					<input placeholder={"Search Pokemon"} ref={searchRef} />
-					<button>Search</button>
+					<Button buttonText={"Search"} />
 				</form>
 				<select onChange={typeDropDownHandler}>
 					<option value="types">--Select Type--</option>
@@ -146,7 +146,7 @@ const Pokedex = props => {
 					<option value="tallest">Tallest - Shortest</option>
 					<option value="shortest">Shortest - Tallest</option>
 				</select>
-				<button onClick={reset}>Reset</button>
+				<Button handleClick={reset} buttonText={"Reset"} />
 			</header>
 			<section>
 				<h3>{teamName}</h3>
@@ -154,9 +154,9 @@ const Pokedex = props => {
 					<div>
 						<form onSubmit={submitNickname}>
 							<input placeholder="Enter Nickname" ref={nicknameRef} />
-							<button>Submit</button>
+							<Button buttonText={"Search"} />
 						</form>
-						<button onClick={closeNicknameInput}>Cancel</button>
+						<Button handleClick={closeNicknameInput} buttonText={"Cancel"} />
 					</div>
 				) : null}
 				{currentTeam.map(ele => {
@@ -219,10 +219,10 @@ const Pokedex = props => {
 				</StyledCards>
 			</section>
 			<footer>
-				<button onClick={battleHandler}>Battle!</button>
+				<Button handleClick={battleHandler} buttonText={"Battle!"} />
 				<nav>
-					<button onClick={homeHandler}>Home</button>
-					<button onClick={logout}>Logout</button>
+					<Button handleClick={homeHandler} buttonText={"Home"} />
+					<Button handleClick={logout} buttonText={"Logout"} />
 				</nav>
 			</footer>
 		</div>

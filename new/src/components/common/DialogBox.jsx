@@ -5,6 +5,7 @@ import { StyledDialogBox } from "../../styles/common";
 import PropTypes from "prop-types";
 import { teams } from "../../store/actions/";
 import { teamNameSchema } from "../../utils/formSchemas";
+import { Button } from "../common";
 
 const DialogBox = props => {
 	const inputRef = useRef();
@@ -49,10 +50,10 @@ const DialogBox = props => {
 							Team Name:
 							<input type="text" ref={inputRef} />
 						</label>
-						<button>Submit</button>
+						<Button buttonText={"Submit"} />
 					</form>
-					<button onClick={modalHandler}>Cancel</button>
-					<button onClick={randomNameGenerator}>Random Name</button>
+					<Button handleClick={modalHandler} buttonText={"Cancel"} />
+					<Button handleClick={randomNameGenerator} buttonText={"Random Name"} />
 				</div>
 			</div>
 		</StyledDialogBox>

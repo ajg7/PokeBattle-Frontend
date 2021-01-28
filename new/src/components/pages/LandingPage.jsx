@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { pokemon } from "../../store/actions/";
 import { useHistory } from "react-router-dom";
+import { Button } from "../common/";
 
 const LandingPage = props => {
 	const history = useHistory();
@@ -19,8 +20,8 @@ const LandingPage = props => {
 			<header>
 				<h1>PokeBattle</h1>
 				<nav>
-					<button onClick={signupRouteHandler}>Sign Up</button>
-					<button onClick={loginRouteHandler}>Log In</button>
+					<Button handleClick={signupRouteHandler} buttonText={"Sign Up"} />
+					<Button handleClick={loginRouteHandler} buttonText={"Log In"} />
 				</nav>
 			</header>
 			<section>

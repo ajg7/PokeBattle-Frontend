@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import { signUp, login } from "../../api/auth";
 import { authSchema } from "../../utils/formSchemas";
 import { useHistory } from "react-router-dom";
+import { Button } from "../common/";
 
 const AuthForm = props => {
 	const emailRef = useRef();
@@ -48,7 +49,7 @@ const AuthForm = props => {
 					<input placeholder="Password" type="password" ref={passwordRef} />
 				</label>
 				<p>{authErrors}</p>
-				<button>Submit</button>
+				<Button buttonText={"Submit"} />
 			</form>
 		</div>
 	);

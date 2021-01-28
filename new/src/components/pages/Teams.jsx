@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
 import { teams, teamMembers } from "../../store/actions/";
 import { logout } from "../../api/auth";
-import { DialogBox } from "../common";
+import { DialogBox, Button } from "../common";
 import addButton from "../../assets/addButton.png";
 import deleteButton from "../../assets/deleteButton.png";
 import editButton from "../../assets/editIcon.png";
@@ -47,7 +47,7 @@ const Teams = props => {
 			<div>
 				<header>
 					<h1>PokeBattle</h1>
-					<button onClick={logout}>Log Out</button>
+					<Button handleClick={logout} buttonText={"Log Out"} />
 				</header>
 				<section>
 					<h2>Your Teams</h2>

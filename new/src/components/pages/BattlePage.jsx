@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import { useParams } from "react-router-dom";
 import { battle, pokemon, teams } from "../../store/actions";
 import types from "../../utils/types";
-import { Arena } from "../common";
+import { Arena, Button } from "../common";
 
 const BattlePage = props => {
 	const params = useParams();
@@ -183,10 +183,8 @@ const BattlePage = props => {
 						</div>
 					);
 				})}
-				<button onClick={battleReset} disabled={active}>
-					Battle Again?
-				</button>
-				<button onClick={homeHandler}>Home</button>
+				<Button handleClick={battleReset} disabled={active} buttonText={"Battle Again?"} />
+				<Button handleClick={homeHandler} buttonText={"Home"} />
 			</footer>
 		</div>
 	);

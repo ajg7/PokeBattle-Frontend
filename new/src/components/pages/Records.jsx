@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { useHistory, useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import { teamMembers, battle } from "../../store/actions";
+import { Button } from "../common/";
 
 const Records = props => {
 	const {
@@ -50,7 +51,7 @@ const Records = props => {
 				})}
 			</section>
 			<footer>
-				<button onClick={homeHandler}>Home</button>
+				<Button handleClick={homeHandler} buttonText={"Home"} />
 			</footer>
 		</div>
 	);
