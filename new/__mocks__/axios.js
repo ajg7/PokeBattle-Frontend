@@ -1,1 +1,0 @@
-import axiosMock from "axios";
