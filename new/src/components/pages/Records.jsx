@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { useHistory, useParams } from "react-router-dom";
 import { connect } from "react-redux";
-import { teamMembers, battle } from "../../store/actions";
+import { teamMembers, battle, whosThatPokemon } from "../../store/actions";
 import { Button } from "../common/";
 
 const Records = props => {
@@ -15,15 +15,19 @@ const Records = props => {
 		ties,
 		battleAverage,
 		bestScore,
+		getTotalPoints,
+		totalPoints,
 	} = props;
 	const params = useParams();
 	const history = useHistory();
+	const userId = localStorage.getItem("userId");
 
 	const homeHandler = () => history.goBack();
 
 	useEffect(() => {
 		getBattleData(params.teamId);
-	}, [getBattleData]);
+		getTotalPoints(userId);
+	}, [getBattleData, getTotalPoints, userId]);
 
 	return (
 		<div>
@@ -32,6 +36,7 @@ const Records = props => {
 				<h3>{teamName}</h3>
 			</header>
 			<section>
+				<h3>{`Total Points in Who's That Pokemon: ${totalPoints}`}</h3>
 				<h3>Wins: {wins}</h3>
 				<h3>Losses: {losses}</h3>
 				<h3>Ties: {ties}</h3>
@@ -68,6 +73,8 @@ Records.propTypes = {
 	battleAverage: PropTypes.number,
 	bestScore: PropTypes.number,
 	fetchTeamById: PropTypes.func,
+	getTotalPoints: PropTypes.func,
+	totalPoints: PropTypes.number,
 };
 
 export default connect(
@@ -79,9 +86,11 @@ export default connect(
 		ties: state.battle.ties,
 		battleAverage: state.battle.battleAverage,
 		bestScore: state.battle.bestScore,
+		totalPoints: state.whosThatPokemon.totalPoints,
 	}),
 	{
 		getPokemonByTeam: teamMembers.getPokemonByTeam,
 		getBattleData: battle.getBattleData,
+		getTotalPoints: whosThatPokemon.getTotalPoints,
 	}
 )(Records);

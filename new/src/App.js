@@ -13,15 +13,18 @@ import {
 	Loading,
 	BattlePage,
 	Records,
+	WhosThatPokemon,
 } from "./components/pages";
 
 const App = props => {
 	const { challengerTeam, loading, teamName } = props;
+	const token = localStorage.getItem("token");
 	return (
 		<>
 			<GlobalReset />
 			<Mobile />
 			<Switch>
+				{token ? null : <Redirect to="/" />}
 				<Route path="/login" component={Login} />
 				<Route path="/signup" component={Signup} />
 				<Route path="/loading" component={Loading}>
@@ -35,6 +38,7 @@ const App = props => {
 				<PrivateRoute path="/battle/:teamId" component={BattlePage}>
 					{challengerTeam.length === 0 ? <Redirect to="/teams" /> : null}
 				</PrivateRoute>
+				<PrivateRoute path="/whos_that_pokemon" component={WhosThatPokemon} />
 				<Route path="/" component={LandingPage} />
 			</Switch>
 		</>

@@ -1,11 +1,6 @@
 import styled from "styled-components";
 
 export const StyledButton = styled.div`
-	img {
-		height: 30px;
-		width: 30px;
-	}
-
 	button {
 		display: flex;
 		justify-content: space-evenly;

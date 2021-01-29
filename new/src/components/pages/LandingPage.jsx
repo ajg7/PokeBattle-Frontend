@@ -25,7 +25,7 @@ const LandingPage = props => {
 				</nav>
 			</header>
 			<section>
-				<img src={`${featuredPokemon}`} alt="featured pokemon" />
+				<img src={featuredPokemon.modern_imgURL} alt="featured pokemon" />
 			</section>
 			<footer>
 				<h3>Created By: A.J. Gebara</h3>

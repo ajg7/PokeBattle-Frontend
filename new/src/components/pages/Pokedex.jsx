@@ -154,7 +154,7 @@ const Pokedex = props => {
 					<div>
 						<form onSubmit={submitNickname}>
 							<input placeholder="Enter Nickname" ref={nicknameRef} />
-							<Button buttonText={"Search"} />
+							<Button buttonText={"Ok"} />
 						</form>
 						<Button handleClick={closeNicknameInput} buttonText={"Cancel"} />
 					</div>

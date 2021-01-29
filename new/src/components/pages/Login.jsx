@@ -8,6 +8,7 @@ const Login = () => {
 				<h1>PokeBattle</h1>
 			</header>
 			<section>
+				<h2>Login</h2>
 				<AuthForm formType="Login" />
 			</section>
 			<footer>

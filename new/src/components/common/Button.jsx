@@ -1,26 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { StyledButton } from "../../styles/common";
-import pikachu from "../../assets/pika.png";
-import otherPikachu from "../../assets/otherPika.png";
 
 const Button = props => {
 	const { handleClick, disabled, classType, buttonText } = props;
-	const [pika, setPika] = useState(1);
-
-	const mouseOver = () => setPika(2);
-	const mouseLeave = () => setPika(1);
 
 	return (
-		<StyledButton>
-			<button
-				onClick={handleClick}
-				disabled={disabled}
-				className={classType || null}
-				onMouseOver={mouseOver}
-				onMouseLeave={mouseLeave}
-			>
-				<img src={pika === 1 ? pikachu : otherPikachu} alt={"pikachu"} />
+		<StyledButton data-testid="test-button">
+			<button onClick={handleClick} disabled={disabled} className={classType || null}>
 				{buttonText}
 			</button>
 		</StyledButton>
@@ -28,7 +15,7 @@ const Button = props => {
 };
 
 Button.propTypes = {
-	buttonText: PropTypes.string.isRequired,
+	buttonText: PropTypes.string,
 	classType: PropTypes.string,
 	disabled: PropTypes.bool,
 	handleClick: PropTypes.func,

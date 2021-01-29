@@ -6,5 +6,16 @@ import Teams from "./Teams";
 import Pokedex from "./Pokedex";
 import BattlePage from "./BattlePage";
 import Records from "./Records";
+import WhosThatPokemon from "./WhosThatPokemon";
 
-export { LandingPage, Login, Signup, Loading, Teams, Pokedex, BattlePage, Records };
+export {
+	LandingPage,
+	Login,
+	Signup,
+	Loading,
+	Teams,
+	Pokedex,
+	BattlePage,
+	Records,
+	WhosThatPokemon,
+};

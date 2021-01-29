@@ -36,6 +36,8 @@ const Teams = props => {
 		history.push(`/records/${teamId}`);
 	};
 
+	const whosThatPokemonHandler = () => history.push("/whos_that_pokemon");
+
 	useEffect(() => {
 		const userId = localStorage.getItem("userId");
 		fetchPokemonTeams(userId);
@@ -94,7 +96,12 @@ const Teams = props => {
 						onClick={modalHandler}
 					/>
 				</section>
-				<footer></footer>
+				<footer>
+					<Button
+						handleClick={whosThatPokemonHandler}
+						buttonText={"Who's that Pokemon?"}
+					/>
+				</footer>
 			</div>
 		</div>
 	);
