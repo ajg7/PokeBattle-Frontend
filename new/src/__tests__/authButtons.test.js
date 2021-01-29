@@ -10,7 +10,10 @@ describe("Auth Buttons can call their respective functions", () => {
 		const userCredentials = { mockToken: "4nun4j3re231", mockUserId: 0 };
 		return userCredentials;
 	});
-	const logout = jest.fn((user = { mockToken: "4nun4j3re231", mockUserId: 0 }) => (user = {}));
+	const logout = jest.fn((user = { mockToken: "4nun4j3re231", mockUserId: 0 }) => {
+		user = {};
+		return user;
+	});
 
 	test("Button can be clicked", () => {
 		const { getByText } = render(
