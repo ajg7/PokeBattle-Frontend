@@ -7,6 +7,7 @@ import Pokedex from "./Pokedex";
 import BattlePage from "./BattlePage";
 import Records from "./Records";
 import WhosThatPokemon from "./WhosThatPokemon";
+import NotFoundPage from "./NotFoundPage";
 
 export {
 	LandingPage,
@@ -18,4 +19,5 @@ export {
 	BattlePage,
 	Records,
 	WhosThatPokemon,
+	NotFoundPage,
 };

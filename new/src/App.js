@@ -14,32 +14,32 @@ import {
 	BattlePage,
 	Records,
 	WhosThatPokemon,
+	NotFoundPage,
 } from "./components/pages";
 
 const App = props => {
 	const { challengerTeam, loading, teamName } = props;
-	const token = localStorage.getItem("token");
 	return (
 		<>
 			<GlobalReset />
 			<Mobile />
 			<Switch>
-				{token ? null : <Redirect to="/" />}
-				<Route path="/login" component={Login} />
-				<Route path="/signup" component={Signup} />
-				<Route path="/loading" component={Loading}>
+				<Route exact path="/login" component={Login} />
+				<Route exact path="/signup" component={Signup} />
+				<Route exact path="/loading" component={Loading}>
 					{loading ? null : <Redirect to="/" />}
 				</Route>
-				<PrivateRoute path="/pokedex/:teamId" component={Pokedex} />
-				<PrivateRoute path="/teams" component={Teams} />
-				<PrivateRoute path="/records/:teamId" component={Records}>
+				<PrivateRoute exact path="/pokedex/:teamId" component={Pokedex} />
+				<PrivateRoute exact path="/teams" component={Teams} />
+				<PrivateRoute exact path="/records/:teamId" component={Records}>
 					{teamName ? null : <Redirect to="/teams" />}
 				</PrivateRoute>
-				<PrivateRoute path="/battle/:teamId" component={BattlePage}>
+				<PrivateRoute exact path="/battle/:teamId" component={BattlePage}>
 					{challengerTeam.length === 0 ? <Redirect to="/teams" /> : null}
 				</PrivateRoute>
-				<PrivateRoute path="/whos_that_pokemon" component={WhosThatPokemon} />
-				<Route path="/" component={LandingPage} />
+				<PrivateRoute exact path="/whos_that_pokemon" component={WhosThatPokemon} />
+				<Route exact path="/" component={LandingPage} />
+				<Route component={NotFoundPage} />
 			</Switch>
 		</>
 	);

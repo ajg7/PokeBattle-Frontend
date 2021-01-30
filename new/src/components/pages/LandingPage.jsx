@@ -38,7 +38,7 @@ const LandingPage = props => {
 					<a href="https://lambdaschool.com/">Lambda School</a>
 				</h4>
 				<h4>
-					Check out my <a href="https://github.com/ajg7">Github</a>
+					Check out my <a href="https://github.com/ajg7">GitHub</a>
 				</h4>
 			</footer>
 		</div>
@@ -47,7 +47,7 @@ const LandingPage = props => {
 
 LandingPage.propTypes = {
 	fetchFeaturedPokemon: PropTypes.func,
-	featuredPokemon: PropTypes.string,
+	featuredPokemon: PropTypes.any,
 };
 
 export default connect(
