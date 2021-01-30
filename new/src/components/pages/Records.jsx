@@ -27,7 +27,7 @@ const Records = props => {
 	useEffect(() => {
 		getBattleData(params.teamId);
 		getTotalPoints(userId);
-	}, [getBattleData, getTotalPoints, userId]);
+	}, [getBattleData, getTotalPoints, userId, params.teamId]);
 
 	return (
 		<div>

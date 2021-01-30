@@ -24,7 +24,7 @@ const WhosThatPokemon = props => {
 	useEffect(() => {
 		fetchFeaturedPokemon();
 		getTotalPoints(userId);
-	}, [fetchFeaturedPokemon]);
+	}, [fetchFeaturedPokemon, getTotalPoints, userId]);
 
 	const evaluator = event => {
 		event.preventDefault();

@@ -141,7 +141,7 @@ const BattlePage = props => {
 
 	useEffect(() => {
 		fetchCurrentTeam(params.teamId);
-	}, [fetchCurrentTeam]);
+	}, [fetchCurrentTeam, params.teamId]);
 
 	return (
 		<div>

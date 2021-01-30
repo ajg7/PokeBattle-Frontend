@@ -6,7 +6,7 @@ const Loading = () => {
 	const history = useHistory();
 	useEffect(() => {
 		setTimeout(() => history.push("/teams/"), 2000);
-	}, []);
+	}, [history]);
 
 	return (
 		<div>

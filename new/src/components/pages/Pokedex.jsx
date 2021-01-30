@@ -103,7 +103,7 @@ const Pokedex = props => {
 		fetchTeamById(params.teamId);
 		fetchPokemonTeams(userId);
 		fetchPokemon();
-	}, [fetchPokemon, fetchTeamById, fetchPokemonTeams]);
+	}, [fetchPokemon, fetchTeamById, fetchPokemonTeams, params.teamId]);
 
 	return (
 		<div>
