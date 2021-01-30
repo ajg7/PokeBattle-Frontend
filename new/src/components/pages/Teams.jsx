@@ -54,7 +54,6 @@ const Teams = props => {
 			<div>
 				<header>
 					<h1>PokeBattle</h1>
-					<Button handleClick={logoutHandler} buttonText={"Log Out"} />
 				</header>
 				<section>
 					<h2>Your Teams</h2>
@@ -106,6 +105,7 @@ const Teams = props => {
 						handleClick={whosThatPokemonHandler}
 						buttonText={"Who's that Pokemon?"}
 					/>
+					<Button handleClick={logoutHandler} buttonText={"Log Out"} />
 				</footer>
 			</div>
 		</div>

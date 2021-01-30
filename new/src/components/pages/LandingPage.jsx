@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { pokemon } from "../../store/actions/";
 import { useHistory } from "react-router-dom";
+import { StyledLandingPage } from "../../styles/pages";
 import { Button } from "../common/";
 
 const LandingPage = props => {
@@ -16,13 +17,14 @@ const LandingPage = props => {
 	}, [fetchFeaturedPokemon]);
 
 	return (
-		<div className="landing-page">
+		<StyledLandingPage>
 			<header>
 				<h1>PokeBattle</h1>
-				<nav>
-					<Button handleClick={signupRouteHandler} buttonText={"Sign Up"} />
+					{/*Button has a div and then button*/}
+					<nav>
 					<Button handleClick={loginRouteHandler} buttonText={"Log In"} />
-				</nav>
+					<Button handleClick={signupRouteHandler} buttonText={"Sign Up"} />
+					</nav>
 			</header>
 			<section>
 				<img src={featuredPokemon.modern_imgURL} alt="featured pokemon" />
@@ -33,15 +35,15 @@ const LandingPage = props => {
 					Special Thanks to PokeApi for the Data and to Lambda School for Giving Me the
 					Tools to Excel!
 				</h3>
-				<h4>
+				<h3>
 					Check them out at <a href="https://pokeapi.co/">PokeApi</a> and{" "}
 					<a href="https://lambdaschool.com/">Lambda School</a>
-				</h4>
-				<h4>
+				</h3>
+				<h3>
 					Check out my <a href="https://github.com/ajg7">GitHub</a>
-				</h4>
+				</h3>
 			</footer>
-		</div>
+		</StyledLandingPage>
 	);
 };
 

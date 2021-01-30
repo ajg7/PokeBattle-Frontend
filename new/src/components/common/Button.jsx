@@ -6,7 +6,7 @@ const Button = props => {
 	const { handleClick, disabled, classType, buttonText } = props;
 
 	return (
-		<StyledButton data-testid="test-button">
+		<StyledButton data-testid="test-button" className={"button-component"}>
 			<button onClick={handleClick} disabled={disabled} className={classType || null}>
 				{buttonText}
 			</button>

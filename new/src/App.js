@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Route, Switch, Redirect } from "react-router-dom";
-import { GlobalReset, Mobile } from "./styles/global";
+import { GlobalReset, Mobile, GlobalStyles } from "./styles/global";
 import { PrivateRoute } from "./components/common";
 import {
 	LandingPage,
@@ -22,6 +22,7 @@ const App = props => {
 	return (
 		<>
 			<GlobalReset />
+			<GlobalStyles />
 			<Mobile />
 			<Switch>
 				<Route exact path="/login" component={Login} />

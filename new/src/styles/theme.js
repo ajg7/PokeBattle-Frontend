@@ -34,6 +34,5 @@ export const theme = {
 	pokeFont: "sigmar one",
 	pokeTextFont: "pokemon-font",
 	pokeTitleFont: "pokeTitleFont",
-	unownText: "unownText",
 	pikaText: "pikaText",
 };
