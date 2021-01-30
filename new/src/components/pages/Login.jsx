@@ -1,7 +1,10 @@
 import React from "react";
-import { AuthForm } from "../common/";
+import { useHistory } from "react-router-dom";
+import { AuthForm, Button } from "../common/";
 
 const Login = () => {
+	const history = useHistory();
+	const landingPageHandler = () => history.goBack();
 	return (
 		<div>
 			<header>
@@ -15,6 +18,7 @@ const Login = () => {
 				<p>
 					Already have an account? <a href="/signup">Sign Up</a>
 				</p>
+				<Button handleClick={landingPageHandler} buttonText={"Back"} />
 			</footer>
 		</div>
 	);

@@ -11,7 +11,6 @@ export const StyledLandingPage = styled.div`
 
 	header nav {
 		display: flex;
-		justify-content: space-around;
 	}
 
 	header nav div button {
@@ -27,7 +26,8 @@ export const StyledLandingPage = styled.div`
 		height: 250px;
 		width: 250px;
 		border: 3px solid red;
-		margin: 40px 0;
+		margin: 25px 0;
+		padding: 15px;
 	}
 
 	footer h3 {
