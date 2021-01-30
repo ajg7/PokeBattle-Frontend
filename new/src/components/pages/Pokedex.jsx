@@ -97,7 +97,7 @@ const Pokedex = props => {
 	};
 
 	const homeHandler = () => history.goBack();
-	
+
 	const logoutHandler = () => {
 		logout();
 		history.push("/");

@@ -1,10 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { StyledArena } from "../../styles/common";
 
 const Arena = props => {
 	const { selectedPokemon, challengerPokemon, outcome, playerScore, challengerScore } = props;
 	return (
-		<div>
+		<StyledArena>
 			<h3>{outcome}</h3>
 			{selectedPokemon ? (
 				<div>
@@ -15,7 +16,7 @@ const Arena = props => {
 					<img src={challengerPokemon.img} alt={challengerPokemon.name} />
 				</div>
 			) : null}
-		</div>
+		</StyledArena>
 	);
 };
 
