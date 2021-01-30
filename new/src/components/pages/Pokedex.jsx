@@ -97,6 +97,11 @@ const Pokedex = props => {
 	};
 
 	const homeHandler = () => history.goBack();
+	
+	const logoutHandler = () => {
+		logout();
+		history.push("/");
+	};
 
 	useEffect(() => {
 		const userId = localStorage.getItem("userId");
@@ -222,7 +227,7 @@ const Pokedex = props => {
 				<Button handleClick={battleHandler} buttonText={"Battle!"} />
 				<nav>
 					<Button handleClick={homeHandler} buttonText={"Home"} />
-					<Button handleClick={logout} buttonText={"Logout"} />
+					<Button handleClick={logoutHandler} buttonText={"Logout"} />
 				</nav>
 			</footer>
 		</div>

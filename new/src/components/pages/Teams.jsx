@@ -38,6 +38,11 @@ const Teams = props => {
 
 	const whosThatPokemonHandler = () => history.push("/whos_that_pokemon");
 
+	const logoutHandler = () => {
+		logout();
+		history.push("/");
+	};
+
 	useEffect(() => {
 		const userId = localStorage.getItem("userId");
 		fetchPokemonTeams(userId);
@@ -49,7 +54,7 @@ const Teams = props => {
 			<div>
 				<header>
 					<h1>PokeBattle</h1>
-					<Button handleClick={logout} buttonText={"Log Out"} />
+					<Button handleClick={logoutHandler} buttonText={"Log Out"} />
 				</header>
 				<section>
 					<h2>Your Teams</h2>
