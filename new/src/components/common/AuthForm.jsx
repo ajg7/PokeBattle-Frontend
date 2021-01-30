@@ -37,6 +37,8 @@ const AuthForm = props => {
 		}
 	};
 
+	const landingPageHandler = () => history.goBack();
+
 	return (
 		<div>
 			<form onSubmit={submitHandler}>
@@ -49,6 +51,7 @@ const AuthForm = props => {
 					<input placeholder="Password" type="password" ref={passwordRef} />
 				</label>
 				<p>{authErrors}</p>
+				<Button handleClick={landingPageHandler} buttonText={"Back"} />
 				<Button buttonText={"Submit"} />
 			</form>
 		</div>
