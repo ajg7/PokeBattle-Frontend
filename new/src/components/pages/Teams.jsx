@@ -9,7 +9,6 @@ import { StyledTeams } from "../../styles/pages";
 import addButton from "../../assets/addButton.png";
 import deleteButton from "../../assets/deleteButton.png";
 import editButton from "../../assets/editIcon.png";
-import uuid from "react-uuid";
 
 const Teams = props => {
 	const { teams, fetchPokemonTeams, deleteTeam, fetchTeamById, getPokemonByTeam } = props;
@@ -52,54 +51,59 @@ const Teams = props => {
 	return (
 		<StyledTeams>
 			<div>{active ? <DialogBox modalHandler={modalHandler} /> : null}</div>
-			<div>
+			<div className={"teams-page"}>
 				<header>
 					<h1>PokeBattle</h1>
+					<h2>Your Teams</h2>
 				</header>
 				<section>
-					<h2>Your Teams</h2>
-					{teams.map(ele => {
-						return (
-							<>
-								<div>
-									<h3>{ele[0]}</h3>
-									<img
-										src={deleteButton}
-										alt={"delete button"}
-										height={20}
-										width={20}
-										onClick={deleteTeamHandler}
-										id={ele[1][0].team_Id}
-									/>
-									<img
-										src={editButton}
-										alt={"add pokemon to team"}
-										height={20}
-										width={20}
-										onClick={pokedexHandler}
-										id={ele[1][0].team_Id}
-									/>
+					<div className={"team"}>
+						{teams.map(ele => {
+							return (
+								<>
+									<div className={"team-buttons"}>
+										<img
+											src={deleteButton}
+											alt={"delete button"}
+											height={20}
+											width={20}
+											onClick={deleteTeamHandler}
+											id={ele[1][0].team_Id}
+										/>
+										<h3>{ele[0]}</h3>
+										<img
+											src={editButton}
+											alt={"add pokemon to team"}
+											height={20}
+											width={20}
+											onClick={pokedexHandler}
+											id={ele[1][0].team_Id}
+											className={"edit-team-members-button"}
+										/>
+									</div>
 									<button onClick={recordsHandler} id={ele[1][0].team_Id}>
 										Records Room
 									</button>
-								</div>
-								{ele[1].map(team => {
-									return (
-										<div key={uuid()}>
-											<img src={team.imgURL} alt={team.name} />
-										</div>
-									);
-								})}
-							</>
-						);
-					})}
-					<img
-						src={addButton}
-						alt="add team"
-						height={20}
-						width={20}
-						onClick={modalHandler}
-					/>
+									<div className={"teams"}>
+									{ele[1].map((team, index) => {
+										return (
+												<div key={index} className={"team-member"}>
+													<img src={team.imgURL} alt={team.name} />
+												</div>
+										);
+									})}
+									</div>
+								</>
+							);
+						})}
+						<img
+							src={addButton}
+							alt="add team"
+							height={20}
+							width={20}
+							onClick={modalHandler}
+						/>
+					</div>
 				</section>
 				<footer>
 					<Button
