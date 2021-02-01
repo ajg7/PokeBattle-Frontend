@@ -26,7 +26,7 @@ const BattlePage = props => {
 	const [disabled, setDisabled] = useState(false);
 	const [active, setActive] = useState(true);
 
-	const homeHandler = () => history.push("/teams");
+	const teamsHandler = () => history.push("/teams");
 
 	const battle = async event => {
 		const userId = localStorage.getItem("userId");
@@ -184,7 +184,7 @@ const BattlePage = props => {
 					);
 				})}
 				<Button handleClick={battleReset} disabled={active} buttonText={"Battle Again?"} />
-				<Button handleClick={homeHandler} buttonText={"Home"} />
+				<Button handleClick={teamsHandler} buttonText={"Home"} />
 			</footer>
 		</div>
 	);

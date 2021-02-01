@@ -96,7 +96,7 @@ const Pokedex = props => {
 		history.push(`/battle/${params.teamId}`);
 	};
 
-	const homeHandler = () => history.goBack();
+	const teamsHandler = () => history.goBack();
 
 	const logoutHandler = () => {
 		logout();
@@ -226,7 +226,7 @@ const Pokedex = props => {
 			<footer>
 				<Button handleClick={battleHandler} buttonText={"Battle!"} />
 				<nav>
-					<Button handleClick={homeHandler} buttonText={"Home"} />
+					<Button handleClick={teamsHandler} buttonText={"Home"} />
 					<Button handleClick={logoutHandler} buttonText={"Logout"} />
 				</nav>
 			</footer>

@@ -46,7 +46,7 @@ const WhosThatPokemon = props => {
 		await fetchFeaturedPokemon();
 	};
 
-	const homeHandler = async () => {
+	const teamsHandler = async () => {
 		const updatedPoints = { points: totalPoints + points };
 		try {
 			if (updateTotalPoints.points !== totalPoints) updateTotalPoints(updatedPoints, userId);
@@ -87,7 +87,7 @@ const WhosThatPokemon = props => {
 					classType={"reset-button"}
 					buttonText={"Again?"}
 				/>
-				<Button handleClick={homeHandler} buttonText={"Home"} />
+				<Button handleClick={teamsHandler} buttonText={"Home"} />
 			</footer>
 		</StyledWhosThatPokemon>
 	);
