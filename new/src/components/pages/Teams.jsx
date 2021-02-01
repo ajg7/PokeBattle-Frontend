@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import { teams, teamMembers } from "../../store/actions/";
 import { logout } from "../../api/auth";
 import { DialogBox, Button } from "../common";
+import { StyledTeams } from "../../styles/pages";
 import addButton from "../../assets/addButton.png";
 import deleteButton from "../../assets/deleteButton.png";
 import editButton from "../../assets/editIcon.png";
@@ -49,7 +50,7 @@ const Teams = props => {
 	}, [fetchPokemonTeams]);
 
 	return (
-		<div>
+		<StyledTeams>
 			<div>{active ? <DialogBox modalHandler={modalHandler} /> : null}</div>
 			<div>
 				<header>
@@ -108,7 +109,7 @@ const Teams = props => {
 					<Button handleClick={logoutHandler} buttonText={"Log Out"} />
 				</footer>
 			</div>
-		</div>
+		</StyledTeams>
 	);
 };
 
