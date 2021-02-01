@@ -25,9 +25,9 @@ export const StyledLandingPage = styled.div`
 	section img {
 		height: 250px;
 		width: 250px;
-		border: 3px solid red;
 		margin: 25px 0;
 		padding: 15px;
+		border: 3px solid red;
 	}
 
 	footer h3 {

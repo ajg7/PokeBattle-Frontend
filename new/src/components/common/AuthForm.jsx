@@ -6,6 +6,7 @@ import { signUp, login } from "../../api/auth";
 import { authSchema } from "../../utils/formSchemas";
 import { useHistory } from "react-router-dom";
 import { Button } from "../common/";
+import { StyledAuthForm } from "../../styles/pages";
 
 const AuthForm = props => {
 	const emailRef = useRef();
@@ -40,21 +41,23 @@ const AuthForm = props => {
 	const landingPageHandler = () => history.goBack();
 
 	return (
-		<div>
+		<StyledAuthForm>
 			<form onSubmit={submitHandler}>
 				<label>
-					Email:
+					Email
 					<input placeholder="Email" type="text" ref={emailRef} />
 				</label>
 				<label>
-					Password:
+					Password
 					<input placeholder="Password" type="password" ref={passwordRef} />
 				</label>
 				<p>{authErrors}</p>
-				<Button handleClick={landingPageHandler} buttonText={"Back"} />
-				<Button buttonText={"Submit"} />
+				<div className={"auth-buttons"}>
+					<Button handleClick={landingPageHandler} buttonText={"Back"} />
+					<Button buttonText={"Submit"} />
+				</div>
 			</form>
-		</div>
+		</StyledAuthForm>
 	);
 };
 
