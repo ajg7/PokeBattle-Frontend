@@ -15,6 +15,7 @@ import {
 	Records,
 	WhosThatPokemon,
 	NotFoundPage,
+	About,
 } from "./components/pages";
 
 const App = props => {
@@ -25,6 +26,7 @@ const App = props => {
 			<GlobalStyles />
 			<Mobile />
 			<Switch>
+				<Route exact path="/about" component={About} />
 				<Route exact path="/login" component={Login} />
 				<Route exact path="/signup" component={Signup} />
 				<Route exact path="/loading" component={Loading}>
