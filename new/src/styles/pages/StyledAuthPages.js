@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 export const StyledAuthPages = styled.div`
+	padding: ${({ theme }) => theme.globalPadding};
+
 	header {
 		display: flex;
 		justify-content: space-evenly;
@@ -30,6 +32,10 @@ export const StyledAuthForm = styled.div`
 		display: flex;
 		flex-flow: column wrap;
 		align-items: center;
+		margin: 10px 0;
+	}
+
+	form label input {
 		margin: 10px 0;
 	}
 

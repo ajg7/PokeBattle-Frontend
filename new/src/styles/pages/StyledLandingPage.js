@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const StyledLandingPage = styled.div`
-	padding: 25px;
+	padding: ${({ theme }) => theme.globalPadding};
 
 	header {
 		display: flex;
