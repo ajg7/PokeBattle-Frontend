@@ -155,6 +155,12 @@ const BattlePage = props => {
 		<StyledBattlePage>
 			<header>
 				<h3>{teamName}</h3>
+				<h3>
+					{playerScore} : {challengerScore}
+				</h3>
+				<h3>{challengerTeamName}</h3>
+			</header>
+			<section className="main-content">
 				<div className={"player-team"}>
 					{currentTeam.map(pokemon => [
 						<div key={pokemon.pokemon_Id}>
@@ -176,18 +182,15 @@ const BattlePage = props => {
 						</div>,
 					])}
 				</div>
-			</header>
-			<section>
-				<Arena
-					selectedPokemon={selectedPokemon}
-					challengerPokemon={challengerPokemon}
-					outcome={outcome}
-					playerScore={playerScore}
-					challengerScore={challengerScore}
-				/>
-			</section>
-			<footer>
-				<h3>{challengerTeamName}</h3>
+				<div className="arena">
+					<Arena
+						selectedPokemon={selectedPokemon}
+						challengerPokemon={challengerPokemon}
+						outcome={outcome}
+						playerScore={playerScore}
+						challengerScore={challengerScore}
+					/>
+				</div>
 				<div className="challenger-team">
 					{challengerTeam.map(pokemon => {
 						return (
@@ -198,10 +201,10 @@ const BattlePage = props => {
 						);
 					})}
 				</div>
-				<div className="battle-buttons">
-				<Button handleClick={teamsHandler} buttonText={"Your Teams"} />
+			</section>
+			<footer>
 				<Button handleClick={battleReset} disabled={active} buttonText={"Battle Again?"} />
-				</div>
+				<Button handleClick={teamsHandler} buttonText={"Your Teams"} />
 			</footer>
 		</StyledBattlePage>
 	);
