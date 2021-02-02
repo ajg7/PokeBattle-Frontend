@@ -46,14 +46,18 @@ const DialogBox = props => {
 				<div className="dialog-box-content">
 					<p>{teamNameErrors}</p>
 					<form onSubmit={submitHandler}>
-						<label>
-							Team Name:
-							<input type="text" ref={inputRef} />
-						</label>
-						<Button buttonText={"Submit"} />
+						<div className="dialog-box-input">
+							<label>
+								Team Name
+								<input type="text" ref={inputRef} placeholder="Enter Team Name" />
+							</label>
+						</div>
+						<div className="dialog-box-buttons">
+							<Button buttonText={"Submit"} />
+							<Button handleClick={randomNameGenerator} buttonText={"Random Name"} />
+							<Button handleClick={modalHandler} buttonText={"Cancel"} />
+						</div>
 					</form>
-					<Button handleClick={modalHandler} buttonText={"Cancel"} />
-					<Button handleClick={randomNameGenerator} buttonText={"Random Name"} />
 				</div>
 			</div>
 		</StyledDialogBox>

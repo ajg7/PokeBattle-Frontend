@@ -16,8 +16,30 @@ export const StyledDialogBox = styled.div`
 	.dialog-box-content {
 		background-color: #fefefe;
 		margin: 15% auto;
-		padding: 20px;
+		padding: 30px;
 		border: 1px solid #888;
 		width: 80%;
+	}
+
+	.dialog-box-input label {
+		display: flex;
+		flex-flow: column wrap;
+		align-items: center;
+	}
+
+	.dialog-box-input label input {
+		width: 25%;
+		margin-top: 15px;
+	}
+
+	.dialog-box-buttons {
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: center;
+		margin: 25px 0;
+	}
+
+	.dialog-box-buttons div button {
+		margin: 0 10px;
 	}
 `;

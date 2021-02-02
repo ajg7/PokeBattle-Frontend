@@ -87,11 +87,11 @@ const Teams = props => {
 									</div>
 									<div className={"teams"}>
 										{ele[1].map((team, index) => {
-											return (
+											return team.imgURL ? (
 												<div key={index} className={"team-member"}>
 													<img src={team.imgURL} alt={team.name} />
 												</div>
-											);
+											) : null;
 										})}
 									</div>
 								</>

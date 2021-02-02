@@ -26,7 +26,7 @@ const Pokedex = props => {
 		makeNickname,
 		searchFilters,
 		makeChallengerTeam,
-		habitatFilter
+		habitatFilter,
 	} = props;
 	const params = useParams();
 	const history = useHistory();
@@ -279,7 +279,7 @@ Pokedex.propTypes = {
 	makeNickname: PropTypes.func,
 	searchFilters: PropTypes.func,
 	makeChallengerTeam: PropTypes.func,
-	habitatFilter: PropTypes.func
+	habitatFilter: PropTypes.func,
 };
 
 export default connect(
@@ -300,6 +300,6 @@ export default connect(
 		makeNickname: teamMembers.makeNickname,
 		searchFilters: pokemon.searchFilters,
 		makeChallengerTeam: pokemon.makeChallengerTeam,
-		habitatFilter: pokemon.habitatFilter
+		habitatFilter: pokemon.habitatFilter,
 	}
 )(Pokedex);
