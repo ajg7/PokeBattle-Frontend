@@ -64,8 +64,10 @@ const Pokemon = props => {
 								<img src={imgURL} alt={name} value={id} />
 							</div>
 							<div className="pokemon-data-container">
+								<div className="pokemon-identification">
 								<h3 className="id">#{id}</h3>
 								<h3>{name}</h3>
+								</div>
 								<TypePills type={type1} secondaryType={type2}>
 									<div className="type-pill-primary">
 										<h3 className={type1} id="primary-type-title">

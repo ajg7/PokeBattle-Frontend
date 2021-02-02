@@ -34,10 +34,39 @@ export const StyledCards = styled.div`
 	.card-front .image-container img {
 		height: 125px;
 		width: 125px;
+		padding: 15px;
 	}
 
-	.edit-icon {
-		height: 15px;
-		width: 15px;
+	.card-front .pokemon-data-container .pokemon-identification {
+		padding: 15px;
+		display: flex;
+		flex-flow: column wrap;
+		align-items: flex-start;
+	}
+
+	.card-front .pokemon-data-container .pokemon-identification h3 {
+		margin: 5px 0;
+	}
+
+	.card-front .pokemon-data-container button {
+		margin: 15px 0;
+	}
+
+	.card-back .pokemon-card-back {
+		padding: 25px;
+	}
+
+	.card-back .pokemon-card-back .pokemon-stats-back h4,
+	.card-back .pokemon-card-back .pokemon-entry-back p {
+		padding: 15px 0;
+	}
+
+	.card-inner .card-front button {
+		height: 30px;
+		width: 150px;
+		border-radius: 16px;
+		background-color: ${({ theme }) => theme.colorThemes.secondary};
+		color: ${({ theme }) => theme.colorThemes.white};
+		font: 20px ${({ theme }) => theme.pokeFont};
 	}
 `;
