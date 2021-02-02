@@ -3,7 +3,6 @@ import loadingPika from "../../assets/loadingPika.gif";
 import { useHistory } from "react-router-dom";
 import { StyledIntermediateRoutes } from "../../styles/common";
 
-
 const Loading = () => {
 	const history = useHistory();
 	useEffect(() => {

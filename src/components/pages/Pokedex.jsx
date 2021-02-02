@@ -149,6 +149,17 @@ const Pokedex = props => {
 						<option value="asc">A - Z</option>
 						<option value="desc">Z - A</option>
 					</select>
+					<select>
+						<option value="habitat-filter">--Habitat Filter--</option>
+						<option value="cave">Cave</option>
+						<option value="forest">Forest</option>
+						<option value="mountain">Mountain</option>
+						<option value="rough-terrain">Rough-Terrain</option>
+						<option value="sea">Sea</option>
+						<option value="urban">Urban</option>
+						<option value="waters-edge">Waters-Edge</option>
+						<option value="unknown">Unknown</option>
+					</select>
 					<select onChange={otherFilters}>
 						<option value="other-filters">--Other Filters--</option>
 						<option value="heaviest">Heaviest - Lightest</option>
