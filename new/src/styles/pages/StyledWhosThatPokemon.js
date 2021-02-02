@@ -22,7 +22,8 @@ export const StyledWhosThatPokemon = styled.div`
 		align-items: center;
 	}
 
-	section > * {
+	section > *,
+	section form label input {
 		margin: 10px 0;
 	}
 

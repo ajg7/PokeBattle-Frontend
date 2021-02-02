@@ -4,8 +4,11 @@ export const FETCH_FEATURED_POKEMON = "FETCH_FEATURED_POKEMON";
 export const fetchFeaturedPokemon = () => async dispatch => {
 	const { data } = await axios("http://localhost:7000/pokemon");
 	const randomNumber = Math.round(Math.random() * 151);
-	const { modern_imgURL, name, entry } = data[randomNumber];
-	dispatch({ type: FETCH_FEATURED_POKEMON, payload: { modern_imgURL, name, entry } });
+	const { modern_imgURL, name, entry, shiny_imgURL } = data[randomNumber];
+	dispatch({
+		type: FETCH_FEATURED_POKEMON,
+		payload: { modern_imgURL, name, entry, shiny_imgURL },
+	});
 };
 
 export const FETCH_POKEMON = "FETCH_POKEMON";

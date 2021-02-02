@@ -1,7 +1,7 @@
 import { pokemon } from "../actions";
 
 const initialState = {
-	featuredPokemon: "",
+	featuredPokemon: {},
 	pokemon: [],
 	challengerTeam: [],
 };

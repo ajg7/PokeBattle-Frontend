@@ -17,6 +17,7 @@ const WhosThatPokemon = props => {
 	const [revealed, setRevealed] = useState(false);
 	const [outcome, setOutcome] = useState("");
 	const [points, setPoints] = useState(0);
+	const [randomNumber, setRandomNumber] = useState(Math.round(Math.random() * 25));
 	const nameRef = useRef();
 	const userId = localStorage.getItem("userId");
 	const history = useHistory();
@@ -31,10 +32,10 @@ const WhosThatPokemon = props => {
 		const submission = nameRef.current.value.toLowerCase();
 		if (submission === featuredPokemon.name) {
 			setOutcome("You Win!");
-			setPoints(points + 1);
+			randomNumber < 23 ? setPoints(points + 1): setPoints(points + 5);
 		} else {
 			setOutcome("You Lose!");
-			setPoints(points - 1);
+			randomNumber < 23 ? setPoints(points - 1): setPoints(points - 5);
 		}
 		setRevealed(true);
 	};
@@ -42,6 +43,7 @@ const WhosThatPokemon = props => {
 	const reset = async () => {
 		setRevealed(false);
 		setOutcome("");
+		setRandomNumber(Math.round(Math.random() * 25));
 		nameRef.current.value = "";
 		await fetchFeaturedPokemon();
 	};
@@ -63,7 +65,7 @@ const WhosThatPokemon = props => {
 			</header>
 			<section>
 				<img
-					src={featuredPokemon.modern_imgURL}
+					src={randomNumber < 23 ? featuredPokemon.modern_imgURL: featuredPokemon.shiny_imgURL}
 					alt={"who's that pokemon?"}
 					className={"featured-pokemon-img"}
 				/>
