@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { pokemon, teamMembers, teams } from "../../store/actions";
 import { Pokemon, Button } from "../common";
 import { StyledCards } from "../../styles/common";
+import { StyledPokedex } from "../../styles/pages";
 import { logout } from "../../api/auth";
 import deleteButton from "../../assets/deleteButton.png";
 import editButton from "../../assets/editIcon.png";
@@ -111,47 +112,53 @@ const Pokedex = props => {
 	}, [fetchPokemon, fetchTeamById, fetchPokemonTeams, params.teamId]);
 
 	return (
-		<div>
+		<StyledPokedex currentTeam={currentTeam}>
 			<header>
-				<h2>Pokedex</h2>
-				<form onSubmit={submitHandler}>
-					<input placeholder={"Search Pokemon"} ref={searchRef} />
-					<Button buttonText={"Search"} />
-				</form>
-				<select onChange={typeDropDownHandler}>
-					<option value="types">--Select Type--</option>
-					<option value="grass">Grass</option>
-					<option value="fire">Fire</option>
-					<option value="water">Water</option>
-					<option value="flying">Flying</option>
-					<option value="ice">Ice</option>
-					<option value="dragon">Dragon</option>
-					<option value="poison">Poison</option>
-					<option value="psychic">Psychic</option>
-					<option value="normal">Normal</option>
-					<option value="fighting">Fighting</option>
-					<option value="steel">Steel</option>
-					<option value="electric">Electric</option>
-					<option value="ground">Ground</option>
-					<option value="rock">Rock</option>
-					<option value="fairy">Fairy</option>
-				</select>
-				<select onChange={alphabetOrderingHandler}>
-					<option value="alphabet-selector">--Alphabet--</option>
-					<option value="asc">A - Z</option>
-					<option value="desc">Z - A</option>
-				</select>
-				<select onChange={otherFilters}>
-					<option value="other-filters">--Other Filters--</option>
-					<option value="heaviest">Heaviest - Lightest</option>
-					<option value="lightest">Lightest - Heaviest</option>
-					<option value="ancient">Ancient</option>
-					<option value="legendary">Legendary</option>
-					<option value="mythical">Mythical</option>
-					<option value="tallest">Tallest - Shortest</option>
-					<option value="shortest">Shortest - Tallest</option>
-				</select>
-				<Button handleClick={reset} buttonText={"Reset"} />
+				<h3>Pokedex</h3>
+				<div className="search">
+					<form onSubmit={submitHandler}>
+						<input placeholder={"Search Pokemon"} ref={searchRef} />
+						<div className="search-buttons">
+							<Button buttonText={"Search"} />
+							<Button handleClick={reset} buttonText={"Reset"} />
+						</div>
+					</form>
+				</div>
+				<div className="filters">
+					<select onChange={typeDropDownHandler}>
+						<option value="types">--Select Type--</option>
+						<option value="grass">Grass</option>
+						<option value="fire">Fire</option>
+						<option value="water">Water</option>
+						<option value="flying">Flying</option>
+						<option value="ice">Ice</option>
+						<option value="dragon">Dragon</option>
+						<option value="poison">Poison</option>
+						<option value="psychic">Psychic</option>
+						<option value="normal">Normal</option>
+						<option value="fighting">Fighting</option>
+						<option value="steel">Steel</option>
+						<option value="electric">Electric</option>
+						<option value="ground">Ground</option>
+						<option value="rock">Rock</option>
+						<option value="fairy">Fairy</option>
+					</select>
+					<select onChange={alphabetOrderingHandler}>
+						<option value="alphabet-selector">--Alphabet--</option>
+						<option value="asc">A - Z</option>
+						<option value="desc">Z - A</option>
+					</select>
+					<select onChange={otherFilters}>
+						<option value="other-filters">--Other Filters--</option>
+						<option value="heaviest">Heaviest - Lightest</option>
+						<option value="lightest">Lightest - Heaviest</option>
+						<option value="ancient">Ancient</option>
+						<option value="legendary">Legendary</option>
+						<option value="mythical">Mythical</option>
+						<option value="tallest">Tallest - Shortest</option>
+						<option value="shortest">Shortest - Tallest</option>
+					</select>
+				</div>
 			</header>
 			<section>
 				<h3>{teamName}</h3>
@@ -164,42 +171,42 @@ const Pokedex = props => {
 						<Button handleClick={closeNicknameInput} buttonText={"Cancel"} />
 					</div>
 				) : null}
-				{currentTeam.map(ele => {
-					{
-						return ele[1].map((pokemon, index) => {
-							return (
-								<div key={index}>
-									<h3>{pokemon.nickname ? pokemon.nickname : pokemon.name}</h3>
-									{pokemon.pokemon_Id ? (
-										<>
-											<img
-												src={editButton}
-												alt="give pokemon a nickname"
-												height={20}
-												width={20}
-												id={pokemon.pokemon_Id}
-												onClick={nicknameHandler}
-											/>
-											<img
-												src={pokemon.imgURL}
-												alt={pokemon.name}
-												id={pokemon.pokemon_Id}
-											/>
-											<img
-												src={deleteButton}
-												alt={"remove pokemon from team"}
-												id={pokemon.pokemon_Id}
-												height={20}
-												width={20}
-												onClick={deletePokemonHandler}
-											/>
-										</>
-									) : null}
-								</div>
-							);
-						});
-					}
-				})}
+				<div className="team">
+					{currentTeam.map(ele => {
+						{
+							return ele[1].map((pokemon, index) => {
+								return (
+									<div key={index}>
+										<h3>
+											{pokemon.nickname ? pokemon.nickname : pokemon.name}
+										</h3>
+										{pokemon.pokemon_Id ? (
+											<div>
+												<img
+													src={editButton}
+													alt="give pokemon a nickname"
+													id={pokemon.pokemon_Id}
+													onClick={nicknameHandler}
+												/>
+												<img
+													src={pokemon.imgURL}
+													alt={pokemon.name}
+													id={pokemon.pokemon_Id}
+												/>
+												<img
+													src={deleteButton}
+													alt={"remove pokemon from team"}
+													id={pokemon.pokemon_Id}
+													onClick={deletePokemonHandler}
+												/>
+											</div>
+										) : null}
+									</div>
+								);
+							});
+						}
+					})}
+				</div>
 				<StyledCards>
 					{pokemon.map(member => {
 						return (
@@ -224,13 +231,13 @@ const Pokedex = props => {
 				</StyledCards>
 			</section>
 			<footer>
-				<Button handleClick={battleHandler} buttonText={"Battle!"} />
 				<nav>
+					<Button handleClick={battleHandler} buttonText={"Battle!"} />
 					<Button handleClick={teamsHandler} buttonText={"Your Teams"} />
 					<Button handleClick={logoutHandler} buttonText={"Logout"} />
 				</nav>
 			</footer>
-		</div>
+		</StyledPokedex>
 	);
 };
 

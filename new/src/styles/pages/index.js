@@ -3,6 +3,7 @@ import { StyledWhosThatPokemon } from "./StyledWhosThatPokemon";
 import { StyledAuthPages, StyledAuthForm } from "./StyledAuthPages";
 import { StyledTeams } from "./StyledTeams";
 import { StyledRecords } from "./StyledRecords";
+import { StyledPokedex } from "./StyledPokedex";
 
 export {
 	StyledLandingPage,
@@ -11,4 +12,5 @@ export {
 	StyledAuthForm,
 	StyledTeams,
 	StyledRecords,
+	StyledPokedex,
 };
