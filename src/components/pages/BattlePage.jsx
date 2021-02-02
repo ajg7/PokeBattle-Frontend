@@ -18,6 +18,7 @@ const BattlePage = props => {
 		teamName,
 		makeABattle,
 		updateScores,
+		challengerTeamName
 	} = props;
 	let { playerScore, challengerScore } = props;
 	const [selectedPokemon, setSelectedPokemon] = useState({});
@@ -174,7 +175,7 @@ const BattlePage = props => {
 				/>
 			</section>
 			<footer>
-				<h3>Challengers</h3>
+				<h3>{challengerTeamName}</h3>
 				{challengerTeam.map(pokemon => {
 					return (
 						<div key={pokemon.pokemon_Id}>
@@ -200,6 +201,7 @@ BattlePage.propTypes = {
 	updateScores: PropTypes.func,
 	playerScore: PropTypes.number,
 	challengerScore: PropTypes.number,
+	challengerTeamName: PropTypes.string
 };
 
 export default connect(
@@ -209,6 +211,7 @@ export default connect(
 		teamName: state.teams.teamName,
 		playerScore: state.battle.playerScore,
 		challengerScore: state.battle.challengerScore,
+		challengerTeamName: state.pokemon.challengerTeamName
 	}),
 	{
 		fetchCurrentTeam: teams.fetchCurrentTeam,

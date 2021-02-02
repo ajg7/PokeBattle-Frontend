@@ -43,8 +43,8 @@ export const searchFilters = (searchParam, value) => async dispatch => {
 };
 
 export const MAKE_CHALLENGER_TEAM = "MAKE_CHALLENGER_TEAM";
-export const makeChallengerTeam = () => dispatch => {
-	dispatch({ type: MAKE_CHALLENGER_TEAM });
+export const makeChallengerTeam = challengerTeamName => dispatch => {
+	dispatch({ type: MAKE_CHALLENGER_TEAM, payload: challengerTeamName });
 };
 
 export const HABITAT_FILTER = "HABITAT_FILTER";

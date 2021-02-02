@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
+import { uniqueNamesGenerator, countries, animals } from "unique-names-generator";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { pokemon, teamMembers, teams } from "../../store/actions";
@@ -101,7 +102,12 @@ const Pokedex = props => {
 	};
 
 	const battleHandler = async () => {
-		await makeChallengerTeam();
+		const challengerTeamName = uniqueNamesGenerator({
+			dictionaries: [countries, animals],
+			style: "capital",
+			separator: " ",
+		});
+		await makeChallengerTeam(challengerTeamName);
 		history.push(`/battle/${params.teamId}`);
 	};
 

@@ -4,6 +4,7 @@ const initialState = {
 	featuredPokemon: {},
 	pokemon: [],
 	challengerTeam: [],
+	challengerTeamName: "",
 };
 
 export const reducer = (state = initialState, action) => {
@@ -49,6 +50,7 @@ export const reducer = (state = initialState, action) => {
 					state.pokemon[Math.round(Math.random() * 151)],
 					state.pokemon[Math.round(Math.random() * 151)],
 				],
+				challengerTeamName: action.payload,
 			};
 		case pokemon.HABITAT_FILTER:
 			return {
