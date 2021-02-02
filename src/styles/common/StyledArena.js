@@ -5,10 +5,10 @@ export const StyledArena = styled.div`
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	height: 400px;
+	height: 500px;
 	width: 100%;
-	background-color: limegreen;
-	margin: 15px 0;
+	background-color: #028a0f;
+	margin: 25px 0;
 
 	.player-team-slot,
 	.challenger-team-slot {

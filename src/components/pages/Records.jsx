@@ -45,7 +45,7 @@ const Records = props => {
 					Win/Loss Ratio:{" "}
 					{isNaN(wins / losses) || wins / losses === Infinity ? 0 : wins / losses}
 				</h3>
-				<h3>Average Score: {isNaN(battleAverage) ? 0 : battleAverage}</h3>
+				<h3>Average Score: {isNaN(battleAverage) ? 0 : Math.round(battleAverage)}</h3>
 				<h3>Best Score: {bestScore === -Infinity ? 0 : bestScore}</h3>
 				<div className="team">
 					{pokemonInTeam.map(pokemon => {

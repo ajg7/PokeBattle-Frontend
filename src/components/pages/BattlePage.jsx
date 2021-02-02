@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
+import { uniqueNamesGenerator, countries, animals } from "unique-names-generator";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { useParams } from "react-router-dom";
@@ -131,7 +132,12 @@ const BattlePage = props => {
 	};
 
 	const battleReset = async () => {
-		await makeChallengerTeam();
+		const challengerTeamName = uniqueNamesGenerator({
+			dictionaries: [countries, animals],
+			style: "capital",
+			separator: " ",
+		});
+		await makeChallengerTeam(challengerTeamName);
 		await fetchCurrentTeam(params.teamId);
 		setDisabled(false);
 		setActive(true);
