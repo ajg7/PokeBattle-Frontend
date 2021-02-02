@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const StyledBattlePage = styled.div`
 	padding: ${({ theme }) => theme.globalPadding};
+	text-transform: ${({ theme }) => theme.cap};
 
 	header {
 		display: flex;
