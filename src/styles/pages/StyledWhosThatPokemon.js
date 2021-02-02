@@ -1,4 +1,16 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const enter = keyframes`
+	from {
+		height: 0px;
+		width: 0px;
+	}
+
+	to {
+		height: 200px;
+		width: 200px;
+	}
+`;
 
 export const StyledWhosThatPokemon = styled.div`
 	padding: ${({ theme }) => theme.globalPadding};
@@ -14,6 +26,8 @@ export const StyledWhosThatPokemon = styled.div`
 
 	.featured-pokemon-img {
 		filter: ${props => (!props.revealed ? "contrast(100%) brightness(0%)" : "none")};
+		animation-name: ${enter};
+		animation-duration: 2s;
 	}
 
 	section {
@@ -32,8 +46,8 @@ export const StyledWhosThatPokemon = styled.div`
 	}
 
 	section img {
-		height: 150px;
-		width: 150px;
+		height: 200px;
+		width: 200px;
 	}
 
 	section p {
