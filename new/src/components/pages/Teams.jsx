@@ -100,9 +100,8 @@ const Teams = props => {
 						<img
 							src={addButton}
 							alt="add team"
-							height={20}
-							width={20}
 							onClick={modalHandler}
+							className={"add-button"}
 						/>
 					</div>
 				</section>

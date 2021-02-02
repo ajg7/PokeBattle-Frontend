@@ -25,7 +25,17 @@ export const StyledTeams = styled.div`
 		padding: 15px 25px 15px 0px;
 	}
 
+	.team-member img {
+		height: 85px;
+		width: 85px;
+	}
+
 	section .team-buttons img {
+		height: 15px;
+		width: 15px;
+	}
+
+	.add-button {
 		height: 15px;
 		width: 15px;
 	}
@@ -38,7 +48,8 @@ export const StyledTeams = styled.div`
 
 	footer {
 		display: flex;
-		flex-flow: row-reverse wrap;
+		flex-flow: row wrap;
+		justify-content: flex-end;
 		margin: 10px;
 	}
 
