@@ -29,6 +29,23 @@ export const StyledPokedex = styled.div`
 		margin: 0 10px;
 	}
 
+	.nickname-form form {
+		display: flex;
+		flex-flow: row wrap;
+		align-items: center;
+		margin: 15px 0;
+	}
+
+	.nickname-form form .form-buttons {
+		display: flex;
+		flex-flow: row wrap;
+		margin: 0 15px;
+	}
+
+	.nickname-form form .form-buttons div button {
+		margin: 0 10px;
+	}
+
 	.team {
 		padding: 25px;
 		display: flex;

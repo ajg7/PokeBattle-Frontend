@@ -29,7 +29,9 @@ const WhosThatPokemon = props => {
 
 	const evaluator = event => {
 		event.preventDefault();
-		const submission = nameRef.current.value.toLowerCase();
+		let submission = nameRef.current.value.toLowerCase();
+		if (submission === "nidoran girl") submission = "nidoran ♀";
+		if (submission === "nidoran boy") submission = "nidoran ♂";
 		if (submission === featuredPokemon.name) {
 			setOutcome("You Win!");
 			randomNumber < 23 ? setPoints(points + 1) : setPoints(points + 5);

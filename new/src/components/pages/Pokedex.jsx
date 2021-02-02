@@ -38,6 +38,7 @@ const Pokedex = props => {
 
 	const deletePokemonHandler = async event => {
 		const userId = localStorage.getItem("userId");
+		setActive(false);
 		await deletePokemonFromTeam(event.target.id, params.teamId);
 		await fetchPokemonTeams(userId);
 	};
@@ -163,12 +164,16 @@ const Pokedex = props => {
 			<section>
 				<h3>{teamName}</h3>
 				{active ? (
-					<div>
+					<div className={"nickname-form"}>
 						<form onSubmit={submitNickname}>
+							<div>
 							<input placeholder="Enter Nickname" ref={nicknameRef} />
+							</div>
+							<div className="form-buttons">
 							<Button buttonText={"Ok"} />
+							<Button handleClick={closeNicknameInput} buttonText={"Cancel"} />
+							</div>
 						</form>
-						<Button handleClick={closeNicknameInput} buttonText={"Cancel"} />
 					</div>
 				) : null}
 				<div className="team">
