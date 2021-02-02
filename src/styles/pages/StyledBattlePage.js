@@ -23,11 +23,6 @@ export const StyledBattlePage = styled.div`
 		text-align: center;
 	}
 
-	.player-team div button {
-		height: 50px;
-		width: 150px;
-	}
-
 	.player-team div {
 		padding: 10px 0;
 	}

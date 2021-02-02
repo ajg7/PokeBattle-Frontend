@@ -199,12 +199,8 @@ const BattlePage = props => {
 					})}
 				</div>
 				<div className="battle-buttons">
-					<Button handleClick={teamsHandler} buttonText={"Your Teams"} />
-					<Button
-						handleClick={battleReset}
-						disabled={active}
-						buttonText={"Battle Again?"}
-					/>
+				<Button handleClick={teamsHandler} buttonText={"Your Teams"} />
+				<Button handleClick={battleReset} disabled={active} buttonText={"Battle Again?"} />
 				</div>
 			</footer>
 		</StyledBattlePage>

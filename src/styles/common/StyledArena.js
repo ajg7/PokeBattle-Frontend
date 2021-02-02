@@ -10,6 +10,11 @@ export const StyledArena = styled.div`
 	background-color: #028a0f;
 	margin: 25px 0;
 
+	h3 {
+		padding: 25px 0;
+		text-align: center;
+	}
+
 	.player-team-slot,
 	.challenger-team-slot {
 		height: 100px;
