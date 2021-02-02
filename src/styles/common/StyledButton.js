@@ -11,6 +11,7 @@ export const StyledButton = styled.div`
 		color: ${({ theme }) => theme.colorThemes.white};
 		border-radius: 16px;
 		font: 20px ${({ theme }) => theme.pokeFont};
+		text-transform: ${({ theme }) => theme.cap};
 
 		&:hover {
 			background-color: ${({ theme }) => theme.colorThemes.primary};

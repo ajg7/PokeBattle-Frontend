@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 import { battle, pokemon, teams } from "../../store/actions";
 import types from "../../utils/types";
 import { Arena, Button } from "../common";
+import { StyledBattlePage } from "../../styles/pages";
 
 const BattlePage = props => {
 	const params = useParams();
@@ -18,7 +19,7 @@ const BattlePage = props => {
 		teamName,
 		makeABattle,
 		updateScores,
-		challengerTeamName
+		challengerTeamName,
 	} = props;
 	let { playerScore, challengerScore } = props;
 	const [selectedPokemon, setSelectedPokemon] = useState({});
@@ -145,25 +146,30 @@ const BattlePage = props => {
 	}, [fetchCurrentTeam, params.teamId]);
 
 	return (
-		<div>
+		<StyledBattlePage>
 			<header>
 				<h3>{teamName}</h3>
-				{currentTeam.map(pokemon => [
-					<div key={pokemon.pokemon_Id}>
-						<h3>{pokemon.nickname ? pokemon.nickname : pokemon.name}</h3>
-						<img src={pokemon.imgURL} alt={pokemon.name} />
-						<button
-							onClick={battle}
-							type1={pokemon.type1}
-							type2={pokemon.type2}
-							img={pokemon.imgURL}
-							name={pokemon.name}
-							disabled={disabled}
-						>{`I Choose You, ${
-							pokemon.nickname ? pokemon.nickname : pokemon.name
-						}!`}</button>
-					</div>,
-				])}
+				<div className={"player-team"}>
+					{currentTeam.map(pokemon => [
+						<div key={pokemon.pokemon_Id}>
+							<h3>{pokemon.nickname ? pokemon.nickname : pokemon.name}</h3>
+							<img src={pokemon.imgURL} alt={pokemon.name} />
+							<div>
+								<Button
+									handleClick={battle}
+									type1={pokemon.type1}
+									type2={pokemon.type2}
+									img={pokemon.imgURL}
+									name={pokemon.name}
+									disabled={disabled}
+									buttonText={`${
+										pokemon.nickname ? pokemon.nickname : pokemon.name
+									}, I Choose You!`}
+								/>
+							</div>
+						</div>,
+					])}
+				</div>
 			</header>
 			<section>
 				<Arena
@@ -176,18 +182,20 @@ const BattlePage = props => {
 			</section>
 			<footer>
 				<h3>{challengerTeamName}</h3>
-				{challengerTeam.map(pokemon => {
-					return (
-						<div key={pokemon.pokemon_Id}>
-							<h3>{pokemon.nickname ? pokemon.nickname : pokemon.name}</h3>
-							<img src={pokemon.imgURL} alt={pokemon.name} />
-						</div>
-					);
-				})}
+				<div className="challenger-team">
+					{challengerTeam.map(pokemon => {
+						return (
+							<div key={pokemon.pokemon_Id}>
+								<h3>{pokemon.nickname ? pokemon.nickname : pokemon.name}</h3>
+								<img src={pokemon.imgURL} alt={pokemon.name} />
+							</div>
+						);
+					})}
+				</div>
 				<Button handleClick={battleReset} disabled={active} buttonText={"Battle Again?"} />
 				<Button handleClick={teamsHandler} buttonText={"Your Teams"} />
 			</footer>
-		</div>
+		</StyledBattlePage>
 	);
 };
 
@@ -201,7 +209,7 @@ BattlePage.propTypes = {
 	updateScores: PropTypes.func,
 	playerScore: PropTypes.number,
 	challengerScore: PropTypes.number,
-	challengerTeamName: PropTypes.string
+	challengerTeamName: PropTypes.string,
 };
 
 export default connect(
@@ -211,7 +219,7 @@ export default connect(
 		teamName: state.teams.teamName,
 		playerScore: state.battle.playerScore,
 		challengerScore: state.battle.challengerScore,
-		challengerTeamName: state.pokemon.challengerTeamName
+		challengerTeamName: state.pokemon.challengerTeamName,
 	}),
 	{
 		fetchCurrentTeam: teams.fetchCurrentTeam,
