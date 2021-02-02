@@ -33,7 +33,7 @@ const Records = props => {
 	return (
 		<StyledRecords>
 			<header>
-				<h2>Records Room</h2>
+				<h3>Records Room</h3>
 				<h3>{teamName}</h3>
 			</header>
 			<section>
@@ -47,14 +47,16 @@ const Records = props => {
 				</h3>
 				<h3>Average Score: {isNaN(battleAverage) ? 0 : battleAverage}</h3>
 				<h3>Best Score: {bestScore === -Infinity ? 0 : bestScore}</h3>
+				<div className="team">
 				{pokemonInTeam.map(pokemon => {
 					return (
-						<div key={pokemon.pokemon_Id}>
+						<div key={pokemon.pokemon_Id} className="team-members">
 							<img src={pokemon.imgURL} alt={pokemon.name} />
 							<h3>{pokemon.nickname ? pokemon.nickname : pokemon.name}</h3>
 						</div>
 					);
 				})}
+				</div>
 			</section>
 			<footer>
 				<Button handleClick={homeHandler} buttonText={"Your Teams"} />
