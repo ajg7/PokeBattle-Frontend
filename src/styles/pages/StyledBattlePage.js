@@ -8,18 +8,34 @@ export const StyledBattlePage = styled.div`
 		display: flex;
 		flex-flow: row wrap;
 		justify-content: space-between;
+		margin: 25px 0;
 	}
 
 	.main-content {
 		display: flex;
 		flex-flow: row wrap;
 		justify-content: space-between;
+		margin: 25px 0;
+	}
+
+	.player-team,
+	.challenger-team {
+		display: flex;
+		flex-flow: column wrap;
+		justify-content: space-around;
+		align-items: center;
+	}
+
+	.player-team div > *,
+	.challenger-team div > * {
+		margin: 5px 0;
 	}
 
 	footer {
 		display: flex;
 		flex-flow: row wrap;
 		justify-content: space-evenly;
+		margin: 25px 0;
 	}
 
 	/* .main-content {

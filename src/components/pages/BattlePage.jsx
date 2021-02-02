@@ -166,7 +166,7 @@ const BattlePage = props => {
 						<div key={pokemon.pokemon_Id}>
 							<h3>{pokemon.nickname ? pokemon.nickname : pokemon.name}</h3>
 							<img src={pokemon.imgURL} alt={pokemon.name} />
-							<div>
+							<div className="selection-button">
 								<Button
 									handleClick={battle}
 									type1={pokemon.type1}
@@ -179,7 +179,7 @@ const BattlePage = props => {
 									}, I Choose You!`}
 								/>
 							</div>
-						</div>,
+						</div>
 					])}
 				</div>
 				<div className="arena">

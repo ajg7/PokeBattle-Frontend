@@ -35,5 +35,5 @@ export const theme = {
 	pokeTextFont: "pokemon-font",
 	pokeTitleFont: "pokeTitleFont",
 	pikaText: "pikaText",
-	globalPadding: "25px",
+	globalPadding: "35px",
 };
