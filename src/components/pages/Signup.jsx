@@ -2,7 +2,7 @@ import React from "react";
 import { StyledAuthPages } from "../../styles/pages";
 import { AuthForm } from "../common/";
 
-const Login = () => {
+const Signup = () => {
 	return (
 		<StyledAuthPages>
 			<header>
@@ -10,9 +10,6 @@ const Login = () => {
 				<nav>
 					<h2>
 						<a href="/">Home</a>
-					</h2>
-					<h2>
-						<a href="/about">About</a>
 					</h2>
 					<h2>
 						<a href="/login">Login</a>
@@ -23,15 +20,15 @@ const Login = () => {
 				</nav>
 			</header>
 			<section>
-				<AuthForm formType="Login" />
+				<AuthForm formType="Signup" />
 			</section>
 			<footer>
 				<p>
-					Already have an account? <a href="/signup">Sign Up</a>
+					Already have an account? <a href="/login">Log In</a>
 				</p>
 			</footer>
 		</StyledAuthPages>
 	);
 };
 
-export default Login;
+export default Signup;
