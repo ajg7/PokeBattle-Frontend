@@ -48,14 +48,14 @@ const Records = props => {
 				<h3>Average Score: {isNaN(battleAverage) ? 0 : battleAverage}</h3>
 				<h3>Best Score: {bestScore === -Infinity ? 0 : bestScore}</h3>
 				<div className="team">
-				{pokemonInTeam.map(pokemon => {
-					return (
-						<div key={pokemon.pokemon_Id} className="team-members">
-							<img src={pokemon.imgURL} alt={pokemon.name} />
-							<h3>{pokemon.nickname ? pokemon.nickname : pokemon.name}</h3>
-						</div>
-					);
-				})}
+					{pokemonInTeam.map(pokemon => {
+						return (
+							<div key={pokemon.pokemon_Id} className="team-members">
+								<img src={pokemon.imgURL} alt={pokemon.name} />
+								<h3>{pokemon.nickname ? pokemon.nickname : pokemon.name}</h3>
+							</div>
+						);
+					})}
 				</div>
 			</section>
 			<footer>
