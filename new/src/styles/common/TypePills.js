@@ -20,7 +20,7 @@ export const TypePills = styled.div`
 	.type-pill-primary {
 		background-color: ${({ theme, type }) => theme.types[type]};
 		border-radius: 5px;
-		width: 45%;
+		width: 100px;
 		color: ${({ type }) => {
 			switch (type) {
 				case "poison":
@@ -53,10 +53,7 @@ export const TypePills = styled.div`
 	.type-pill-secondary {
 		background-color: ${({ theme, secondaryType }) => theme.types[secondaryType]};
 		border-radius: 5px;
-		width: ${({ secondaryType }) => {
-			if (secondaryType === null) "0%";
-			else "45%";
-		}};
+		width: ${({ secondaryType }) => (!secondaryType ? "0" : "100px")};
 		color: ${({ secondaryType }) => {
 			switch (secondaryType) {
 				case "poison":
