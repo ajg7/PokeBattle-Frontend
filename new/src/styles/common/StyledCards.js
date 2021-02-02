@@ -17,7 +17,7 @@ export const StyledCards = styled.div`
 		width: 250px;
 		height: 375px;
 		perspective: 1000px;
-		margin: 15px;
+		padding: 15px;
 	}
 
 	.card-inner {
