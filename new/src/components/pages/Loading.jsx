@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import loadingPika from "../../assets/loadingPika.gif";
 import { useHistory } from "react-router-dom";
+import { StyledIntermediateRoutes } from "../../styles/common";
+
 
 const Loading = () => {
 	const history = useHistory();
@@ -9,15 +11,10 @@ const Loading = () => {
 	}, [history]);
 
 	return (
-		<div>
-			<header>
-				<h2>Loading...</h2>
-			</header>
-			<section>
-				<img src={loadingPika} alt="loading image" />
-			</section>
-			<footer></footer>
-		</div>
+		<StyledIntermediateRoutes>
+			<h3>Loading...</h3>
+			<img src={loadingPika} alt="loading image" />
+		</StyledIntermediateRoutes>
 	);
 };
 

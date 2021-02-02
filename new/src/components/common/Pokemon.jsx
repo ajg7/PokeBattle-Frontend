@@ -65,8 +65,8 @@ const Pokemon = props => {
 							</div>
 							<div className="pokemon-data-container">
 								<div className="pokemon-identification">
-								<h3 className="id">#{id}</h3>
-								<h3>{name}</h3>
+									<h3 className="id">#{id}</h3>
+									<h3>{name}</h3>
 								</div>
 								<TypePills type={type1} secondaryType={type2}>
 									<div className="type-pill-primary">
