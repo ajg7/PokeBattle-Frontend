@@ -4,6 +4,7 @@ import { useHistory, useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import { teamMembers, battle, whosThatPokemon } from "../../store/actions";
 import { Button } from "../common/";
+import { StyledRecords } from "../../styles/pages";
 
 const Records = props => {
 	const {
@@ -30,7 +31,7 @@ const Records = props => {
 	}, [getBattleData, getTotalPoints, userId, params.teamId]);
 
 	return (
-		<div>
+		<StyledRecords>
 			<header>
 				<h2>Records Room</h2>
 				<h3>{teamName}</h3>
@@ -58,7 +59,7 @@ const Records = props => {
 			<footer>
 				<Button handleClick={homeHandler} buttonText={"Your Teams"} />
 			</footer>
-		</div>
+		</StyledRecords>
 	);
 };
 
