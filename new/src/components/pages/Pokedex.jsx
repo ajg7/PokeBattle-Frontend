@@ -226,7 +226,7 @@ const Pokedex = props => {
 			<footer>
 				<Button handleClick={battleHandler} buttonText={"Battle!"} />
 				<nav>
-					<Button handleClick={teamsHandler} buttonText={"Home"} />
+					<Button handleClick={teamsHandler} buttonText={"Your Teams"} />
 					<Button handleClick={logoutHandler} buttonText={"Logout"} />
 				</nav>
 			</footer>

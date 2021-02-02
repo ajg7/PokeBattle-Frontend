@@ -184,7 +184,7 @@ const BattlePage = props => {
 					);
 				})}
 				<Button handleClick={battleReset} disabled={active} buttonText={"Battle Again?"} />
-				<Button handleClick={teamsHandler} buttonText={"Home"} />
+				<Button handleClick={teamsHandler} buttonText={"Your Teams"} />
 			</footer>
 		</div>
 	);

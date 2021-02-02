@@ -87,7 +87,7 @@ const WhosThatPokemon = props => {
 					classType={"reset-button"}
 					buttonText={"Again?"}
 				/>
-				<Button handleClick={teamsHandler} buttonText={"Home"} />
+				<Button handleClick={teamsHandler} buttonText={"Your Teams"} />
 			</footer>
 		</StyledWhosThatPokemon>
 	);

@@ -56,7 +56,7 @@ const Records = props => {
 				})}
 			</section>
 			<footer>
-				<Button handleClick={homeHandler} buttonText={"Home"} />
+				<Button handleClick={homeHandler} buttonText={"Your Teams"} />
 			</footer>
 		</div>
 	);
