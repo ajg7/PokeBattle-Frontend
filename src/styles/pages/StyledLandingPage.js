@@ -1,4 +1,14 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const enter = keyframes`
+	from {
+		transform: translateX(500%);
+	}
+	
+	to {
+		transform: translateX(0%);
+	}
+`;
 
 export const StyledLandingPage = styled.div`
 	padding: ${({ theme }) => theme.globalPadding};
@@ -27,7 +37,8 @@ export const StyledLandingPage = styled.div`
 		width: 250px;
 		margin: 25px 0;
 		padding: 15px;
-		border: 3px solid red;
+		animation-name: ${enter};
+		animation-duration: 2s;
 	}
 
 	footer h3 {

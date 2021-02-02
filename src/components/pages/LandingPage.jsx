@@ -20,14 +20,17 @@ const LandingPage = props => {
 		<StyledLandingPage>
 			<header>
 				<h1>PokeBattle</h1>
-				{/*Button has a div and then button*/}
 				<nav>
 					<Button handleClick={loginRouteHandler} buttonText={"Log In"} />
 					<Button handleClick={signupRouteHandler} buttonText={"Sign Up"} />
 				</nav>
 			</header>
 			<section>
-				<img src={featuredPokemon.modern_imgURL} alt="featured pokemon" />
+				<img
+					src={featuredPokemon.modern_imgURL}
+					alt="featured pokemon"
+					className="featured-pokemon"
+				/>
 			</section>
 			<footer>
 				<h3>Created By: A.J. Gebara</h3>
