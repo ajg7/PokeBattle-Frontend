@@ -31,4 +31,13 @@ export const StyledBattlePage = styled.div`
 	.player-team div {
 		padding: 10px 0;
 	}
+
+	footer .battle-buttons {
+		display: flex;
+		flex-flow: row wrap;
+	}
+
+	footer .battle-buttons div button {
+		margin: 10px;
+	}
 `;
