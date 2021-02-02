@@ -50,6 +50,11 @@ export const reducer = (state = initialState, action) => {
 					state.pokemon[Math.round(Math.random() * 151)],
 				],
 			};
+		case pokemon.HABITAT_FILTER:
+			return {
+				...state,
+				pokemon: action.payload,
+			};
 		default:
 			return state;
 	}

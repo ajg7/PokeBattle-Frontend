@@ -46,3 +46,9 @@ export const MAKE_CHALLENGER_TEAM = "MAKE_CHALLENGER_TEAM";
 export const makeChallengerTeam = () => dispatch => {
 	dispatch({ type: MAKE_CHALLENGER_TEAM });
 };
+
+export const HABITAT_FILTER = "HABITAT_FILTER";
+export const habitatFilter = habitat => async dispatch => {
+	const { data } = await axios.get(`http://localhost:7000/pokemon/habitat?habitat=${habitat}`);
+	dispatch({ type: HABITAT_FILTER, payload: data });
+};

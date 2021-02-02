@@ -26,6 +26,7 @@ const Pokedex = props => {
 		makeNickname,
 		searchFilters,
 		makeChallengerTeam,
+		habitatFilter
 	} = props;
 	const params = useParams();
 	const history = useHistory();
@@ -80,6 +81,12 @@ const Pokedex = props => {
 		nicknameRef.current.value = "";
 		setActive(!active);
 		await fetchPokemonTeams(userId);
+	};
+
+	const habitatFilterHandler = async event => {
+		const habitat = event.target.value;
+		event.target.value = "habitat-filter";
+		await habitatFilter(habitat);
 	};
 
 	const otherFilters = async event => {
@@ -149,7 +156,7 @@ const Pokedex = props => {
 						<option value="asc">A - Z</option>
 						<option value="desc">Z - A</option>
 					</select>
-					<select>
+					<select onChange={habitatFilterHandler}>
 						<option value="habitat-filter">--Habitat Filter--</option>
 						<option value="cave">Cave</option>
 						<option value="forest">Forest</option>
@@ -272,6 +279,7 @@ Pokedex.propTypes = {
 	makeNickname: PropTypes.func,
 	searchFilters: PropTypes.func,
 	makeChallengerTeam: PropTypes.func,
+	habitatFilter: PropTypes.func
 };
 
 export default connect(
@@ -292,5 +300,6 @@ export default connect(
 		makeNickname: teamMembers.makeNickname,
 		searchFilters: pokemon.searchFilters,
 		makeChallengerTeam: pokemon.makeChallengerTeam,
+		habitatFilter: pokemon.habitatFilter
 	}
 )(Pokedex);
