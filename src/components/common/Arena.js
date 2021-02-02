@@ -9,11 +9,15 @@ const Arena = props => {
 			<h3>{outcome}</h3>
 			{selectedPokemon ? (
 				<div>
-					<img src={selectedPokemon.img} alt={selectedPokemon.name} />
+					{selectedPokemon.img ? (
+						<img src={selectedPokemon.img} alt={selectedPokemon.name} />
+					) : null}
 					<h3>
 						{playerScore} : {challengerScore}
 					</h3>
-					<img src={challengerPokemon.img} alt={challengerPokemon.name} />
+					{selectedPokemon.img ? (
+						<img src={challengerPokemon.img} alt={challengerPokemon.name} />
+					) : null}
 				</div>
 			) : null}
 		</StyledArena>
