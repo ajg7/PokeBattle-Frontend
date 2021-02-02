@@ -32,10 +32,10 @@ const WhosThatPokemon = props => {
 		const submission = nameRef.current.value.toLowerCase();
 		if (submission === featuredPokemon.name) {
 			setOutcome("You Win!");
-			randomNumber < 23 ? setPoints(points + 1): setPoints(points + 5);
+			randomNumber < 23 ? setPoints(points + 1) : setPoints(points + 5);
 		} else {
 			setOutcome("You Lose!");
-			randomNumber < 23 ? setPoints(points - 1): setPoints(points - 5);
+			randomNumber < 23 ? setPoints(points - 1) : setPoints(points - 5);
 		}
 		setRevealed(true);
 	};
@@ -65,7 +65,11 @@ const WhosThatPokemon = props => {
 			</header>
 			<section>
 				<img
-					src={randomNumber < 23 ? featuredPokemon.modern_imgURL: featuredPokemon.shiny_imgURL}
+					src={
+						randomNumber < 23
+							? featuredPokemon.modern_imgURL
+							: featuredPokemon.shiny_imgURL
+					}
 					alt={"who's that pokemon?"}
 					className={"featured-pokemon-img"}
 				/>
