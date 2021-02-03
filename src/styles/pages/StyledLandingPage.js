@@ -12,6 +12,15 @@ const enter = keyframes`
 
 export const StyledLandingPage = styled.div`
 	padding: ${({ theme }) => theme.globalPadding};
+	@media (max-width: 450px) {
+		header h1 {
+			margin: 15px 0;
+		}
+		header nav {
+			display: flex;
+			flex-flow: column wrap;
+		}
+	}
 
 	header {
 		display: flex;
