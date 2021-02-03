@@ -18,9 +18,11 @@ export const TypePills = styled.div`
 	}};
 
 	.type-pill-primary {
+		padding: 5px 0;
 		background-color: ${({ theme, type }) => theme.types[type]};
 		border-radius: 5px;
 		width: 100px;
+		font-size: 12px;
 		color: ${({ type }) => {
 			switch (type) {
 				case "poison":
@@ -50,8 +52,11 @@ export const TypePills = styled.div`
 			}
 		}};
 	}
+
 	.type-pill-secondary {
+		padding: 5px 0;
 		background-color: ${({ theme, secondaryType }) => theme.types[secondaryType]};
+		font-size: 10px;
 		border-radius: 5px;
 		width: ${({ secondaryType }) => (!secondaryType ? "0" : "100px")};
 		color: ${({ secondaryType }) => {

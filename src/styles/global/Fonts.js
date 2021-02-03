@@ -4,6 +4,7 @@ import PokeLogo from "../../assets/PocketMonk-15ze.ttf";
 import ButtonText from "../../assets/SigmarOne-Regular.ttf";
 import PikaText from "../../assets/DanisPikachu-jrG0.ttf";
 import GBText from "../../assets/PokemonGb-RAeo.ttf";
+import h2Font from "../../assets/secondHeading.ttf";
 
 export const Fonts = createGlobalStyle`
 	@font-face {
@@ -26,15 +27,25 @@ export const Fonts = createGlobalStyle`
 		src: url(${GBText});
 	}
 
+	@font-face {
+		font-family: "h2Font";
+		src: url(${h2Font});
+	}
+
+
 	h1 {
 		font-family: "PokeLogo";
+	}
+
+	h2 {
+		font-family: "h2Font";
 	}
 
 	button {
 		font-family: "ButtonText";
 	}
 
-	p, label, input, h3 {
+	p, label, input, h3, select {
 		font-family: "GBText";
 	}
 `;

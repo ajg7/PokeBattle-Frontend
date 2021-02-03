@@ -26,7 +26,8 @@ export const StyledWhosThatPokemon = styled.div`
 		justify-content: space-between;
 	}
 
-	header h3:nth-child(2) {
+	header h2,
+	header h3 {
 		font-size: 40px;
 	}
 
@@ -45,6 +46,16 @@ export const StyledWhosThatPokemon = styled.div`
 	section > *,
 	section form label input {
 		margin: 10px 0;
+	}
+
+	section form label input {
+		width: 100%;
+	}
+
+	section div {
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: center;
 	}
 
 	section div {

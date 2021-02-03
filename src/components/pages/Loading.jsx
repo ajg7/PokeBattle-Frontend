@@ -11,7 +11,7 @@ const Loading = () => {
 
 	return (
 		<StyledIntermediateRoutes>
-			<h3>Loading...</h3>
+			<h2>Loading...</h2>
 			<img src={loadingPika} alt="loading image" />
 		</StyledIntermediateRoutes>
 	);

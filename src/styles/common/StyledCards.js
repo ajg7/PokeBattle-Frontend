@@ -1,16 +1,16 @@
 import styled from "styled-components";
 
 export const StyledCards = styled.div`
-	* {
-		font-family: "pokemon-font", monospace;
-	}
-
 	display: flex;
 	flex-flow: row wrap;
-	justify-content: space-between;
+	justify-content: space-evenly;
 	text-transform: ${({ theme }) => theme.cap};
 	padding: 50px;
 	padding-top: ${props => (props.page ? "300px" : null)};
+
+	p {
+		font-size: 12px;
+	}
 
 	.card {
 		background-color: transparent;

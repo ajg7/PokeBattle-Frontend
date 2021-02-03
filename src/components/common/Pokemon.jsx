@@ -54,7 +54,7 @@ const Pokemon = props => {
 	};
 
 	return (
-		<div className="cards-component">
+		<div>
 			<CardFlipAnim onClick={flipHandler}>
 				<h3>{teamNumberErrors}</h3>
 				<div className={flipped ? "card flipped" : "card"} onMouseLeave={mouseLeaveHandler}>

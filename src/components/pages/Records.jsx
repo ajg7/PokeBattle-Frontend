@@ -33,7 +33,7 @@ const Records = props => {
 	return (
 		<StyledRecords>
 			<header>
-				<h3>Records Room</h3>
+				<h2>Records Room</h2>
 				<h3>{teamName}</h3>
 			</header>
 			<section>
@@ -43,7 +43,7 @@ const Records = props => {
 				<h3>Ties: {ties}</h3>
 				<h3>
 					Win/Loss Ratio:{" "}
-					{isNaN(wins / losses) || wins / losses === Infinity ? 0 : wins / losses}
+					{isNaN(wins / losses) || wins / losses === Infinity ? 0 : (wins / losses).toFixed(1)}
 				</h3>
 				<h3>Average Score: {isNaN(battleAverage) ? 0 : Math.round(battleAverage)}</h3>
 				<h3>Best Score: {bestScore === -Infinity ? 0 : bestScore}</h3>

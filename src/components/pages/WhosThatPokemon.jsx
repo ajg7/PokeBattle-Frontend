@@ -62,7 +62,7 @@ const WhosThatPokemon = props => {
 	return (
 		<StyledWhosThatPokemon revealed={revealed}>
 			<header>
-				<h3>{"Who's That Pokemon?"}</h3>
+				<h2>{"Who's That Pokemon?"}</h2>
 				<h3>{points}</h3>
 			</header>
 			<section>
@@ -79,7 +79,7 @@ const WhosThatPokemon = props => {
 				<h3>{outcome}</h3>
 				<form onSubmit={evaluator}>
 					<label>
-						<input placeholder="Enter Name of Pokemon" type="text" ref={nameRef} />
+						<input placeholder="Enter Pokemon" type="text" ref={nameRef} />
 					</label>
 					<Button
 						disabled={!revealed ? false : true}

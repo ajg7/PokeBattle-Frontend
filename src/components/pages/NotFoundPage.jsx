@@ -5,7 +5,7 @@ import { StyledIntermediateRoutes } from "../../styles/common";
 const NotFoundPage = () => {
 	return (
 		<StyledIntermediateRoutes>
-			<h3>404 Not Found</h3>
+			<h2>404 Not Found</h2>
 			<img src={pageNotFoundPika} alt={"page not found pikachu"} />
 		</StyledIntermediateRoutes>
 	);

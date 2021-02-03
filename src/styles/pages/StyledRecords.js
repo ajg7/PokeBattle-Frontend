@@ -5,6 +5,7 @@ export const StyledRecords = styled.div`
 	text-transform: ${({ theme }) => theme.cap};
 
 	@media (max-width: 450px) {
+		h2,
 		h3 {
 			margin: 10px;
 		}
@@ -31,6 +32,7 @@ export const StyledRecords = styled.div`
 		display: flex;
 		flex-flow: row wrap;
 		justify-content: space-evenly;
+		margin: 15px 0;
 	}
 
 	section {

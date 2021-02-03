@@ -28,5 +28,8 @@ export const theme = {
 		white: "#F0EAD6",
 	},
 	cap: "capitalize",
+	rounded: "3%",
+	rotateRight: "rotateY(180deg)",
+	rotateLeft: "rotateY(-180deg)",
 	globalPadding: "35px",
 };
