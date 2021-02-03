@@ -3,13 +3,25 @@ import styled from "styled-components";
 export const StyledTeams = styled.div`
 	padding: ${({ theme }) => theme.globalPadding};
 
+	@media (max-width: 450px) {
+		footer div {
+			margin: 10px 0;
+		}
+
+		.team-buttons {
+			margin: 25px 0;
+		}
+	}
+
 	.teams-page header {
 		display: flex;
+		flex-flow: row wrap;
 		justify-content: space-evenly;
 	}
 
 	.team-buttons {
 		display: flex;
+		flex-flow: row wrap;
 	}
 
 	.team-buttons h3 {
