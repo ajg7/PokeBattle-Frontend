@@ -2,7 +2,6 @@ import { createGlobalStyle } from "styled-components";
 
 import PokeLogo from "../../assets/PocketMonk-15ze.ttf";
 import ButtonText from "../../assets/SigmarOne-Regular.ttf";
-import PikaText from "../../assets/DanisPikachu-jrG0.ttf";
 import GBText from "../../assets/PokemonGb-RAeo.ttf";
 import h2Font from "../../assets/secondHeading.ttf";
 
@@ -15,11 +14,6 @@ export const Fonts = createGlobalStyle`
 	@font-face {
 		font-family: "ButtonText";
 		src: url(${ButtonText})
-	}
-
-	@font-face {
-		font-family: "PikaText";
-		src: url(${PikaText});
 	}
 
 	@font-face {

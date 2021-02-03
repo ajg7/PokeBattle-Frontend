@@ -43,7 +43,9 @@ const Records = props => {
 				<h3>Ties: {ties}</h3>
 				<h3>
 					Win/Loss Ratio:{" "}
-					{isNaN(wins / losses) || wins / losses === Infinity ? 0 : (wins / losses).toFixed(1)}
+					{isNaN(wins / losses) || wins / losses === Infinity
+						? 0
+						: (wins / losses).toFixed(1)}
 				</h3>
 				<h3>Average Score: {isNaN(battleAverage) ? 0 : Math.round(battleAverage)}</h3>
 				<h3>Best Score: {bestScore === -Infinity ? 0 : bestScore}</h3>

@@ -27,7 +27,11 @@ const LandingPage = props => {
 			</header>
 			<section>
 				<img
-					src={featuredPokemon.modern_imgURL}
+					src={
+						Math.round(Math.random() * 25) < 23
+							? featuredPokemon.modern_imgURL
+							: featuredPokemon.shiny_imgURL
+					}
 					alt="featured pokemon"
 					className="featured-pokemon"
 				/>
