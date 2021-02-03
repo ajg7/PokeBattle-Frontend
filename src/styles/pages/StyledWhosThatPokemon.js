@@ -26,9 +26,11 @@ export const StyledWhosThatPokemon = styled.div`
 		justify-content: space-between;
 	}
 
-	header h2,
+	header h2 {
+		font-size: 75px;
+	}
 	header h3 {
-		font-size: 40px;
+		font-size: 75px;
 	}
 
 	.featured-pokemon-img {

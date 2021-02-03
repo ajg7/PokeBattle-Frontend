@@ -51,6 +51,10 @@ export const StyledPokedex = styled.div`
 		align-items: center;
 	}
 
+	h2 {
+		font-size: 75px;
+	}
+
 	header form input {
 		margin: 15px;
 		width: 300px;

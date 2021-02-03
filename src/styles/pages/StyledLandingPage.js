@@ -27,6 +27,10 @@ export const StyledLandingPage = styled.div`
 		}
 	}
 
+	h1 {
+		font-size: 100px;
+	}
+
 	header {
 		display: flex;
 		flex-flow: row wrap;

@@ -13,6 +13,10 @@ export const StyledTeams = styled.div`
 		}
 	}
 
+	h2 {
+		font-size: 75px;
+	}
+
 	.teams-page header {
 		display: flex;
 		flex-flow: row wrap;

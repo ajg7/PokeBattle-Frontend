@@ -128,7 +128,7 @@ const Pokedex = props => {
 	return (
 		<StyledPokedex currentTeam={currentTeam}>
 			<header>
-				<h3>Pokedex</h3>
+				<h2>Pokedex</h2>
 				<div className="search">
 					<form onSubmit={submitHandler}>
 						<input placeholder={"Search Pokemon"} ref={searchRef} />

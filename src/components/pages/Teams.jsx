@@ -53,7 +53,6 @@ const Teams = props => {
 			<div>{active ? <DialogBox modalHandler={modalHandler} /> : null}</div>
 			<div className={"teams-page"}>
 				<header>
-					<h1>PokeBattle</h1>
 					<h2>Your Teams</h2>
 				</header>
 				<section>
