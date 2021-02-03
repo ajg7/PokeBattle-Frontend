@@ -13,6 +13,7 @@ export const makeABattle = (userId, teamId, playerScore, challengerScore) => asy
 
 export const UPDATE_SCORES = "UPDATE_SCORES";
 export const updateScores = scores => async dispatch => {
+	console.log(scores);
 	dispatch({ type: UPDATE_SCORES, payload: scores });
 };
 

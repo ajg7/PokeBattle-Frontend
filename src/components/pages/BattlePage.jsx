@@ -8,6 +8,7 @@ import { battle, pokemon, teams } from "../../store/actions";
 import types from "../../utils/types";
 import { Arena, Button } from "../common";
 import { StyledBattlePage } from "../../styles/pages";
+import { Battles } from "../../class/";
 
 const BattlePage = props => {
 	const params = useParams();
@@ -44,82 +45,74 @@ const BattlePage = props => {
 		const type2 = event.target.getAttribute("type2");
 		const img = event.target.getAttribute("img");
 		const name = event.target.getAttribute("name");
+		let playerIndex;
+		let challengerIndex;
 
 		const playerType1 = types.get(type1) === undefined ? [] : types.get(type1);
 		const playerType2 = types.get(type2) === undefined ? [] : types.get(type2);
+		const player = new Battles(userId, type1, type2, playerType1, playerType2, img, name);
 
-		const challenger = challengerTeam[Math.round(Math.random() * (challengerTeam.length - 1))];
+		const challengerPokemon =
+			challengerTeam[Math.round(Math.random() * (challengerTeam.length - 1))];
 		const challengerType1 =
-			types.get(challenger.type1) === undefined ? [] : types.get(challenger.type1);
+			types.get(challengerPokemon.type1) === undefined
+				? []
+				: types.get(challengerPokemon.type1);
 		const challengerType2 =
-			types.get(challenger.type2) === undefined ? [] : types.get(challenger.type2);
-
-		setSelectedPokemon({ playerType1, playerType2, img, name });
-		setChallengerPokemon({ name: challenger.name, img: challenger.imgURL });
-
-		const eval1 = playerType1.filter(
-			type => type === challenger.type1 || type === challenger.type2
+			types.get(challengerPokemon.type2) === undefined
+				? []
+				: types.get(challengerPokemon.type2);
+		const challenger = new Battles(
+			userId,
+			challengerPokemon.type1,
+			challengerPokemon.type2,
+			challengerType1,
+			challengerType2,
+			challengerPokemon.imgURL,
+			challengerPokemon.name
 		);
-		const eval2 = playerType2.filter(
-			type => type === challenger.type1 || type === challenger.type2
-		);
-		const eval3 = challengerType1.filter(type => type === type1 || type === type2);
-		const eval4 = challengerType2.filter(type => type === type1 || type === type2);
 
-		const totalPlayerPoints = eval1.length + eval2.length;
-		const totalChallengerPoints = eval3.length + eval4.length;
+		// Getting the index of each Pokemon
+		currentTeam.forEach((pokemon, index) => {
+			if (pokemon.name === name) playerIndex = index;
+		});
 
-		if (totalChallengerPoints > totalPlayerPoints) {
-			setOutcome("Challenger Wins!");
-			challengerScore++;
-			updateScores({ playerScore, challengerScore });
-			const result = currentTeam.filter(pokemon => pokemon.name === name);
-			const index = currentTeam.indexOf(result[0]);
-			if (index > -1) currentTeam.splice(index, 1);
+		challengerTeam.forEach((pokemon, index) => {
+			if (pokemon.name === challengerPokemon.name) challengerIndex = index;
+		});
+
+		setSelectedPokemon({ img, name });
+		setChallengerPokemon({ img: challengerPokemon.imgURL, name: challengerPokemon.name });
+
+		const { playerSubPoints, challengerSubPoints } = Battles.evaluator(player, challenger);
+
+		if (playerSubPoints > challengerSubPoints) {
+			setOutcome(`${name} wins!`);
+			updateScores({ playerScore: playerScore + 1, challengerScore: challengerScore });
+			challengerTeam.splice(challengerIndex, 1);
 		}
-		if (totalPlayerPoints > totalChallengerPoints) {
-			setOutcome("Player Wins!");
-			playerScore++;
-			updateScores({ playerScore, challengerScore });
-			const result = challengerTeam.filter(
-				pokemon => pokemon.name === challengerPokemon.name
-			);
-			const index = challengerTeam.indexOf(result[0]);
-			if (index > -1) challengerTeam.splice(index, 1);
+
+		if (playerSubPoints < challengerSubPoints) {
+			setOutcome(`${challengerPokemon.name} wins!`);
+			updateScores({ playerScore: playerScore, challengerScore: challengerScore + 1 });
+			currentTeam.splice(playerIndex, 1);
 		}
-		if (totalPlayerPoints === totalChallengerPoints) {
-			let coinFlip = Math.round(Math.random() * 25) % 2;
+
+		if (playerSubPoints === challengerSubPoints) {
+			const coinFlip = Math.round(Math.random());
 			if (coinFlip === 1) {
-				setOutcome("Player Wins by Coin Flip!");
-				playerScore++;
-				updateScores({ playerScore, challengerScore });
-				const result = challengerTeam.filter(
-					pokemon => pokemon.name === challengerPokemon.name
-				);
-				const index = challengerTeam.indexOf(result[0]);
-				if (index > -1) challengerTeam.splice(index, 1);
-			} else {
-				setOutcome("Challenger Wins by Coin Flip!");
-				challengerScore++;
-				updateScores({ playerScore, challengerScore });
-				const result = currentTeam.filter(pokemon => pokemon.name === name);
-				const index = currentTeam.indexOf(result[0]);
-				if (index > -1) currentTeam.splice(index, 1);
+				setOutcome(`${name} wins by Coin Flip!`);
+				updateScores({ playerScore: playerScore + 1, challengerScore: challengerScore });
+				challengerTeam.splice(challengerIndex, 1);
+			}
+			if (coinFlip === 0) {
+				setOutcome(`${challengerPokemon.name} wins by Coin Flip!`);
+				updateScores({ playerScore: playerScore, challengerScore: challengerScore + 1 });
+				currentTeam.splice(playerIndex, 1);
 			}
 		}
 
-		if (outcome === "Player Wins!" || outcome === "Player Wins by Coin Flip!") {
-			const result = challengerTeam.filter(
-				pokemon => pokemon.name === challengerPokemon.name
-			);
-			const index = challengerTeam.indexOf(result[0]);
-			if (index > -1) challengerTeam.splice(index, 1);
-		}
-		if (outcome === "Challenger Wins!" || outcome === "Challenger Wins by Coin Flip!") {
-			const result = currentTeam.filter(pokemon => pokemon.name === name);
-			const index = currentTeam.indexOf(result[0]);
-			if (index > -1) currentTeam.splice(index, 1);
-		}
+		// After the Game
 
 		if (challengerTeam < 1) {
 			await makeABattle(userId, params.teamId, playerScore, challengerScore);
