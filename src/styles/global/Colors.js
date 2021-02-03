@@ -6,7 +6,7 @@ export const Colors = createGlobalStyle`
         background-color: ${({ theme }) => theme.colorThemes.primary};
     }
 
-    h1 {
+    h1, h5 {
         -webkit-text-stroke: 5px ${({ theme }) => theme.colorThemes.tertiary};
         -webkit-text-fill-color: ${({ theme }) => theme.colorThemes.quaternary};
     }

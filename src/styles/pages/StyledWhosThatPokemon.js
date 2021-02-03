@@ -50,6 +50,19 @@ export const StyledWhosThatPokemon = styled.div`
 		margin: 10px 0;
 	}
 
+	section .whos-that-pokemon {
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: center;
+	}
+
+	section .whos-that-pokemon div {
+		display: flex;
+		flex-flow: column wrap;
+		font-family: "PokeLogo";
+		font-size: 75px;
+	}
+
 	section form label input {
 		width: 100%;
 	}

@@ -34,7 +34,6 @@ const Records = props => {
 		<StyledRecords>
 			<header>
 				<h2>Records Room</h2>
-				<h3>{teamName}</h3>
 			</header>
 			<section>
 				<h3>{`Total Points in Who's That Pokemon: ${totalPoints}`}</h3>
@@ -49,6 +48,9 @@ const Records = props => {
 				</h3>
 				<h3>Average Score: {isNaN(battleAverage) ? 0 : Math.round(battleAverage)}</h3>
 				<h3>Best Score: {bestScore === -Infinity ? 0 : bestScore}</h3>
+				<div className={"team-name"}>
+					<h3>{teamName}</h3>
+				</div>
 				<div className="team">
 					{pokemonInTeam.map(pokemon => {
 						return (

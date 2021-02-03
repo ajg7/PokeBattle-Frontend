@@ -11,11 +11,19 @@ export const StyledRecords = styled.div`
 		}
 	}
 
+	h2 {
+		font-size: 75px;
+	}
+
 	.team {
 		display: flex;
 		flex-flow: row wrap;
 		justify-content: center;
 		margin: 10px 0;
+	}
+
+	.team-name {
+		text-align: center;
 	}
 
 	.team-members {

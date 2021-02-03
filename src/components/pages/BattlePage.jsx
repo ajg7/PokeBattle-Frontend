@@ -113,21 +113,19 @@ const BattlePage = props => {
 		}
 
 		// After the Game
-
 		if (challengerTeam < 1) {
 			await makeABattle(userId, params.teamId, playerScore, challengerScore);
 			setDisabled(true);
 			setActive(false);
-			makeABattle(userId, params.teamId);
 			if (playerScore > challengerScore) setOutcome("Player Has Won Battle!");
 			if (challengerScore > playerScore) setOutcome("Challenger Has Won Battle!");
-			if (playerScore === challengerScore) setOutcome("Tie");
+			// if (playerScore === challengerScore) setOutcome("Tie");
 		} else if (currentTeam < 1) {
 			await makeABattle(userId, params.teamId, playerScore, challengerScore);
 			setActive(false);
 			if (playerScore > challengerScore) setOutcome("Player Has Won Battle!");
 			if (challengerScore > playerScore) setOutcome("Challenger Has Won Battle!");
-			if (playerScore === challengerScore) setOutcome("Tie");
+			// if (playerScore === challengerScore) setOutcome("Tie");
 		}
 	};
 

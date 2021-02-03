@@ -66,15 +66,21 @@ const WhosThatPokemon = props => {
 				<h3>{points}</h3>
 			</header>
 			<section>
-				<img
-					src={
-						randomNumber < 23
-							? featuredPokemon.modern_imgURL
-							: featuredPokemon.shiny_imgURL
-					}
-					alt={"who's that pokemon?"}
-					className={"featured-pokemon-img"}
-				/>
+				<div className="whos-that-pokemon">
+					<img
+						src={
+							randomNumber < 23
+								? featuredPokemon.modern_imgURL
+								: featuredPokemon.shiny_imgURL
+						}
+						alt={"who's that pokemon?"}
+						className={"featured-pokemon-img"}
+					/>
+					<div>
+						<h5>?</h5>
+						<h5>Pokemon</h5>
+					</div>
+				</div>
 				<p>{featuredPokemon.entry}</p>
 				<h3>{outcome}</h3>
 				<form onSubmit={evaluator}>
