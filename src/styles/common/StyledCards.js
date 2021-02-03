@@ -29,6 +29,7 @@ export const StyledCards = styled.div`
 	.card-front,
 	.card-back {
 		border-radius: ${({ theme }) => theme.rounded};
+		background-color: white;
 	}
 
 	.card-front .image-container img {
@@ -66,7 +67,7 @@ export const StyledCards = styled.div`
 		width: 150px;
 		border-radius: 16px;
 		background-color: ${({ theme }) => theme.colorThemes.secondary};
-		color: ${({ theme }) => theme.colorThemes.white};
+		color: white;
 		font: 20px ${({ theme }) => theme.pokeFont};
 	}
 `;

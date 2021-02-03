@@ -70,6 +70,7 @@ export const StyledBattlePage = styled.div`
 
 	.arena {
 		width: 75%;
+		border: 3px ${({ theme }) => theme.colorThemes.tertiary} solid;
 	}
 
 	img {

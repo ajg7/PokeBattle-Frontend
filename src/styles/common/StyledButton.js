@@ -7,14 +7,14 @@ export const StyledButton = styled.div`
 		align-items: center;
 		height: 50px;
 		width: 150px;
-		background-color: ${({ theme }) => theme.colorThemes.secondary};
-		color: ${({ theme }) => theme.colorThemes.white};
+		background-color: ${({ theme }) => theme.colorThemes.quaternary};
+		color: ${({ theme }) => theme.colorThemes.tertiary};
 		border-radius: 16px;
-		font: 20px ${({ theme }) => theme.pokeFont};
 		text-transform: ${({ theme }) => theme.cap};
 
 		&:hover {
-			background-color: ${({ theme }) => theme.colorThemes.primary};
+			background-color: ${({ theme }) => theme.colorThemes.tertiary};
+			color: ${({ theme }) => theme.colorThemes.quaternary};
 		}
 	}
 `;

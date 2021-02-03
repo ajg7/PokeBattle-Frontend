@@ -19,7 +19,7 @@ const LandingPage = props => {
 	return (
 		<StyledLandingPage>
 			<header>
-				<h1>PokeBattle</h1>
+				<h1>PokéBattle</h1>
 				<nav>
 					<Button handleClick={loginRouteHandler} buttonText={"Log In"} />
 					<Button handleClick={signupRouteHandler} buttonText={"Sign Up"} />

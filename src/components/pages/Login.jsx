@@ -6,7 +6,7 @@ const Login = () => {
 	return (
 		<StyledAuthPages>
 			<header>
-				<h1>PokeBattle</h1>
+				<h1>PokéBattle</h1>
 				<nav>
 					<h3>
 						<a href="/">Home</a>

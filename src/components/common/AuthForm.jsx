@@ -53,8 +53,8 @@ const AuthForm = props => {
 				</label>
 				<p>{authErrors}</p>
 				<div className={"auth-buttons"}>
-					<Button handleClick={landingPageHandler} buttonText={"Back"} />
 					<Button buttonText={"Submit"} />
+					<Button handleClick={landingPageHandler} buttonText={"Back"} />
 				</div>
 			</form>
 		</StyledAuthForm>

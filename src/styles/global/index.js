@@ -1,4 +1,5 @@
 import { GlobalReset } from "./GlobalReset";
 import { Fonts } from "./Fonts";
+import { Colors } from "./Colors";
 
-export { GlobalReset, Fonts };
+export { GlobalReset, Fonts, Colors };
