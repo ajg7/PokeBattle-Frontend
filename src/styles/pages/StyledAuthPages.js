@@ -21,7 +21,7 @@ export const StyledAuthPages = styled.div`
 		flex-flow: row wrap;
 	}
 
-	header nav h2 {
+	header nav h3 {
 		margin: 0 10px;
 	}
 

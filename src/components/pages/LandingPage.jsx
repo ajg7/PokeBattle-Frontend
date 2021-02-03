@@ -33,18 +33,18 @@ const LandingPage = props => {
 				/>
 			</section>
 			<footer>
-				<h3>Created By: A.J. Gebara</h3>
-				<h3>
+				<p>Created By: A.J. Gebara</p>
+				<p>
 					Special Thanks to PokeApi for the Data and to Lambda School for Giving Me the
 					Tools to Excel!
-				</h3>
-				<h3>
+				</p>
+				<p>
 					Check them out at <a href="https://pokeapi.co/">PokeApi</a> and{" "}
 					<a href="https://lambdaschool.com/">Lambda School</a>
-				</h3>
-				<h3>
-					Check out my <a href="https://github.com/ajg7">GitHub</a>
-				</h3>
+				</p>
+				<p>
+					Also Check out my <a href="https://github.com/ajg7">GitHub</a>
+				</p>
 			</footer>
 		</StyledLandingPage>
 	);

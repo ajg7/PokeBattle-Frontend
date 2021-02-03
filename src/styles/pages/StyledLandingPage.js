@@ -12,7 +12,6 @@ const enter = keyframes`
 
 export const StyledLandingPage = styled.div`
 	padding: ${({ theme }) => theme.globalPadding};
-	font-family: "PokeLogo";
 
 	@media (max-width: 450px) {
 		header h1 {
@@ -26,10 +25,6 @@ export const StyledLandingPage = styled.div`
 		header nav div {
 			margin: 10px 0;
 		}
-	}
-
-	button {
-		font-family: "ButtonText";
 	}
 
 	header {
@@ -49,6 +44,7 @@ export const StyledLandingPage = styled.div`
 
 	section {
 		display: flex;
+		flex-flow: row wrap;
 		justify-content: center;
 	}
 
@@ -61,7 +57,13 @@ export const StyledLandingPage = styled.div`
 		animation-duration: 2s;
 	}
 
-	footer h3 {
-		padding: 5px 0;
+	footer {
+		display: flex;
+		flex-flow: column wrap;
+		align-items: center;
+	}
+
+	footer p {
+		padding: 15px 0;
 	}
 `;

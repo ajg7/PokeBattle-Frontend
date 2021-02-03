@@ -28,17 +28,5 @@ export const theme = {
 		white: "#F0EAD6",
 	},
 	cap: "capitalize",
-	rounded: "3%",
-	rotateRight: "rotateY(180deg)",
-	rotateLeft: "rotateY(-180deg)",
-	pokeFont: "sigmar one",
-	pokeTextFont: "pokemon-font",
-	pokeTitleFont: "pokeTitleFont",
-	pikaText: "pikaText",
 	globalPadding: "35px",
-	breakpoints: {
-		mobile: { value: 450 },
-		tablet: { value: 700 },
-		desktop: { value: 900 },
-	},
 };

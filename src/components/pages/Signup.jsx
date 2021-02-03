@@ -8,15 +8,15 @@ const Signup = () => {
 			<header>
 				<h1>PokeBattle</h1>
 				<nav>
-					<h2>
+					<h3>
 						<a href="/">Home</a>
-					</h2>
-					<h2>
+					</h3>
+					<h3>
 						<a href="/login">Login</a>
-					</h2>
-					<h2>
+					</h3>
+					<h3>
 						<a href="/signup">Signup</a>
-					</h2>
+					</h3>
 				</nav>
 			</header>
 			<section>
