@@ -28,6 +28,7 @@ const BattlePage = props => {
 	const [outcome, setOutcome] = useState("");
 	const [disabled, setDisabled] = useState(false);
 	const [active, setActive] = useState(true);
+	const [backgroundColor, setBackgroundColor] = useState("#028a0f");
 
 	const teamsHandler = () => history.push("/teams");
 
@@ -147,6 +148,10 @@ const BattlePage = props => {
 		updateScores({ playerScore: 0, challengerScore: 0 });
 	};
 
+	const colorCollector = event => {
+		setBackgroundColor(event.target.value);
+	};
+
 	useEffect(() => {
 		fetchCurrentTeam(params.teamId);
 	}, [fetchCurrentTeam, params.teamId]);
@@ -162,25 +167,27 @@ const BattlePage = props => {
 			</header>
 			<section className="main-content">
 				<div className={"player-team"}>
-					{currentTeam.map(pokemon => [
-						<div key={pokemon.pokemon_Id}>
-							<h3>{pokemon.nickname ? pokemon.nickname : pokemon.name}</h3>
-							<img src={pokemon.imgURL} alt={pokemon.name} />
-							<div className="selection-button">
-								<Button
-									handleClick={battle}
-									type1={pokemon.type1}
-									type2={pokemon.type2}
-									img={pokemon.imgURL}
-									name={pokemon.name}
-									disabled={disabled}
-									buttonText={`${
-										pokemon.nickname ? pokemon.nickname : pokemon.name
-									}, I Choose You!`}
-								/>
+					{currentTeam.map(pokemon => {
+						return (
+							<div key={pokemon.pokemon_Id}>
+								<h3>{pokemon.nickname ? pokemon.nickname : pokemon.name}</h3>
+								<img src={pokemon.imgURL} alt={pokemon.name} />
+								<div className="selection-button">
+									<Button
+										handleClick={battle}
+										type1={pokemon.type1}
+										type2={pokemon.type2}
+										img={pokemon.imgURL}
+										name={pokemon.name}
+										disabled={disabled}
+										buttonText={`${
+											pokemon.nickname ? pokemon.nickname : pokemon.name
+										}, I Choose You!`}
+									/>
+								</div>
 							</div>
-						</div>
-					])}
+						);
+					})}
 				</div>
 				<div className="arena">
 					<Arena
@@ -189,6 +196,7 @@ const BattlePage = props => {
 						outcome={outcome}
 						playerScore={playerScore}
 						challengerScore={challengerScore}
+						backgroundColor={backgroundColor}
 					/>
 				</div>
 				<div className="challenger-team">
@@ -204,6 +212,18 @@ const BattlePage = props => {
 			</section>
 			<footer>
 				<Button handleClick={battleReset} disabled={active} buttonText={"Battle Again?"} />
+				<select onChange={colorCollector}>
+					<option value="background-selector">-- Background Color --</option>
+					<option value="#40826D">Viridian</option>
+					<option value="#E9EAEC">Pewter</option>
+					<option value="#0040FF">Cerulean</option>
+					<option value="#e34234">Vermilion</option>
+					<option value="#967bb6">Lavender</option>
+					<option value="#ACE1AF">Celadon</option>
+					<option value="#ca2c92">Fuchsia</option>
+					<option value="#f4c430">Saffron</option>
+					<option value="#E34234">Cinnabar</option>
+				</select>
 				<Button handleClick={teamsHandler} buttonText={"Your Teams"} />
 			</footer>
 		</StyledBattlePage>
