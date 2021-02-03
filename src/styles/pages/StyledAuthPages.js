@@ -3,13 +3,22 @@ import styled from "styled-components";
 export const StyledAuthPages = styled.div`
 	padding: ${({ theme }) => theme.globalPadding};
 
+	@media (max-width: 450px) {
+		h1,
+		header nav {
+			margin: 10px 0;
+		}
+	}
+
 	header {
 		display: flex;
+		flex-flow: row wrap;
 		justify-content: space-evenly;
 	}
 
 	header nav {
 		display: flex;
+		flex-flow: row wrap;
 	}
 
 	header nav h2 {
@@ -27,6 +36,24 @@ export const StyledAuthPages = styled.div`
 `;
 
 export const StyledAuthForm = styled.div`
+	@media (max-width: 450px) {
+		form label,
+		form {
+			display: flex;
+			flex-flow: column wrap;
+			align-items: flex-start;
+			margin: 0;
+		}
+		.auth-buttons {
+			display: flex;
+			flex-flow: column wrap;
+		}
+
+		.auth-buttons div {
+			margin: 10px 0;
+		}
+	}
+
 	form {
 		display: flex;
 		flex-flow: column wrap;

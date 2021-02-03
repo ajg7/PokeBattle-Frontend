@@ -20,6 +20,10 @@ export const StyledLandingPage = styled.div`
 			display: flex;
 			flex-flow: column wrap;
 		}
+
+		header nav div {
+			margin: 10px 0;
+		}
 	}
 
 	header {
