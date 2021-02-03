@@ -186,7 +186,7 @@ const Pokedex = props => {
 				</div>
 			</header>
 			<section>
-				<h3>{teamName}</h3>
+				<h3 className="team-name">{teamName}</h3>
 				{active ? (
 					<div className={"nickname-form"}>
 						<form onSubmit={submitNickname}>
@@ -236,7 +236,7 @@ const Pokedex = props => {
 						}
 					})}
 				</div>
-				<StyledCards>
+				<StyledCards className="cards">
 					{pokemon.map(member => {
 						return (
 							<Pokemon

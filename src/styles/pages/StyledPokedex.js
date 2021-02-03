@@ -6,7 +6,8 @@ export const StyledPokedex = styled.div`
 
 	@media (max-width: 800px) {
 		header .search form input {
-			width: 75%;
+			width: 85%;
+			text-align: center;
 		}
 
 		header .search-buttons {
@@ -16,10 +17,27 @@ export const StyledPokedex = styled.div`
 		}
 
 		header .filters select {
-			margin: 15px;
+			margin: 25px;
 			display: flex;
 			flex-flow: column wrap;
 			align-items: center;
+		}
+
+		.cards .cards-component {
+			padding: 0;
+		}
+	}
+
+	@media (max-width: 500px) {
+		section .team {
+			display: flex;
+			flex-flow: column wrap;
+			align-items: center;
+		}
+
+		section .team-name {
+			text-align: center;
+			margin-top: 10px;
 		}
 	}
 
