@@ -39,6 +39,10 @@ export const StyledPokedex = styled.div`
 			text-align: center;
 			margin-top: 10px;
 		}
+
+		footer nav div button {
+			margin: 15px 0;
+		}
 	}
 
 	header {

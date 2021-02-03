@@ -4,6 +4,32 @@ export const StyledBattlePage = styled.div`
 	padding: ${({ theme }) => theme.globalPadding};
 	text-transform: ${({ theme }) => theme.cap};
 
+	@media (max-width: 500px) {
+		header h3 {
+			margin: 10px;
+		}
+
+		.player-team,
+		.challenger-team {
+			margin: 20px 0;
+		}
+
+		footer {
+			display: flex;
+			flex-flow: column wrap;
+			align-items: center;
+			justify-content: center;
+		}
+
+		footer select {
+			height: 25%;
+		}
+
+		footer div button {
+			margin: 25px 0;
+		}
+	}
+
 	header {
 		display: flex;
 		flex-flow: row wrap;
