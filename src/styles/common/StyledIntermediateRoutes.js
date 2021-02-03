@@ -10,7 +10,7 @@ export const StyledIntermediateRoutes = styled.div`
 	}
 
 	img {
-		height: 400px;
-		width: 400px;
+		height: 25%;
+		width: 25%;
 	}
 `;
