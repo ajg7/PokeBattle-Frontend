@@ -4,6 +4,25 @@ export const StyledPokedex = styled.div`
 	padding: ${({ theme }) => theme.globalPadding};
 	text-transform: ${({ theme }) => theme.cap};
 
+	@media (max-width: 800px) {
+		header .search form input {
+			width: 75%;
+		}
+
+		header .search-buttons {
+			display: flex;
+			flex-flow: column wrap;
+			align-items: center;
+		}
+
+		header .filters select {
+			margin: 15px;
+			display: flex;
+			flex-flow: column wrap;
+			align-items: center;
+		}
+	}
+
 	header {
 		display: flex;
 		flex-flow: column wrap;
