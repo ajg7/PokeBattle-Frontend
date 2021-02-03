@@ -30,7 +30,13 @@ const BattlePage = props => {
 	const [active, setActive] = useState(true);
 	const [backgroundColor, setBackgroundColor] = useState("#028a0f");
 
-	const teamsHandler = () => history.push("/teams");
+	const teamsHandler = () => {
+		setSelectedPokemon({});
+		setChallengerPokemon({});
+		setOutcome("");
+		updateScores({ playerScore: 0, challengerScore: 0 });
+		history.push("/teams");
+	};
 
 	const battle = async event => {
 		const userId = localStorage.getItem("userId");
