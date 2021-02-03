@@ -15,6 +15,12 @@ const enter = keyframes`
 export const StyledWhosThatPokemon = styled.div`
 	padding: ${({ theme }) => theme.globalPadding};
 
+	@media (max-width: 400px) {
+		footer div {
+			margin: 10px 0;
+		}
+	}
+
 	header {
 		display: flex;
 		justify-content: space-between;
