@@ -20,6 +20,10 @@ export const StyledAuthPages = styled.div`
 		color: #000000;
 		text-decoration: none;
 	}
+
+	footer p {
+		margin: 15px 0;
+	}
 `;
 
 export const StyledAuthForm = styled.div`

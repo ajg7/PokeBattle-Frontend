@@ -15,6 +15,7 @@ export const StyledLandingPage = styled.div`
 
 	header {
 		display: flex;
+		flex-flow: row wrap;
 		justify-content: space-evenly;
 		align-items: center;
 	}

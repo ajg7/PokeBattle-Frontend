@@ -36,4 +36,9 @@ export const theme = {
 	pokeTitleFont: "pokeTitleFont",
 	pikaText: "pikaText",
 	globalPadding: "35px",
+	breakpoints: {
+		mobile: { value: 450 },
+		tablet: { value: 700 },
+		desktop: { value: 900 },
+	},
 };
