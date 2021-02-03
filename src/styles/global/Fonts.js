@@ -1,25 +1,23 @@
-import { injectGlobal } from "styled-components";
-import pokeTitleFont from "../../assets/PocketMonk-15ze.ttf";
+import { createGlobalStyle } from "styled-components";
 
-/*
-@import url("https:fonts.googleapis.com/css?family=Sigmar+One");
-@font-face {
-	font-family: pokeTitleFont;
-	src: url("../../assets/PocketMonk-15ze.ttf");
-}
-@font-face {
-	font-family: unownText;
-	src: url("../../assets/Unown-OVEwA.ttf");
-}
-@font-face {
-	font-family: pikaText;
-	src: url("../../assets/DanisPikachu-jrG0.ttf");
-}
-*/
+import PokeLogo from "../../assets/PocketMonk-15ze.ttf";
+import ButtonText from "../../assets/SigmarOne-Regular.ttf";
+import PikaText from "../../assets/DanisPikachu-jrG0.ttf";
 
-injectGlobal`
+export const Fonts = createGlobalStyle`
 	@font-face {
-		font-family: pokeTitleFont;
-		src: url(${pokeTitleFont});
+		font-family: "PokeLogo";
+		src: url(${PokeLogo});
 	}
+	
+	@font-face {
+		font-family: "ButtonText";
+		src: url(${ButtonText})
+	}
+
+	@font-face {
+		font-family: "PikaText";
+		src: url(${PikaText});
+	}
+
 `;

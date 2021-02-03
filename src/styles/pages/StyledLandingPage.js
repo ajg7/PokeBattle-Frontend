@@ -12,6 +12,8 @@ const enter = keyframes`
 
 export const StyledLandingPage = styled.div`
 	padding: ${({ theme }) => theme.globalPadding};
+	font-family: "PokeLogo";
+
 	@media (max-width: 450px) {
 		header h1 {
 			margin: 15px 0;
@@ -24,6 +26,10 @@ export const StyledLandingPage = styled.div`
 		header nav div {
 			margin: 10px 0;
 		}
+	}
+
+	button {
+		font-family: "ButtonText";
 	}
 
 	header {
