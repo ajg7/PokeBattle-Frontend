@@ -20,8 +20,8 @@ export const theme = {
 		dark: "#707070",
 	},
 	colorThemes: {
-		primary: "#FF0000",
-		secondary: "#CC0000",
+		primary: "#CC0000",
+		secondary: "#FF0000",
 		tertiary: "#3B4CCA",
 		quaternary: "#FFDE00",
 	},

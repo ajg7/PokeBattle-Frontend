@@ -210,7 +210,7 @@ const BattlePage = props => {
 			<footer>
 				<Button handleClick={battleReset} disabled={active} buttonText={"Battle Again?"} />
 				<select onChange={colorCollector}>
-					<option value="background-selector">-- Background Color --</option>
+					<option value="#028a0f">-- Background Color --</option>
 					<option value="#40826D">Viridian</option>
 					<option value="#E9EAEC">Pewter</option>
 					<option value="#0040FF">Cerulean</option>
