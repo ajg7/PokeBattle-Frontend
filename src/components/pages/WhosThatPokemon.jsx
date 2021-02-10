@@ -69,7 +69,7 @@ const WhosThatPokemon = props => {
 				<div className="whos-that-pokemon">
 					<img
 						src={
-							randomNumber < 23
+							randomNumber < 21
 								? featuredPokemon.modern_imgURL
 								: featuredPokemon.shiny_imgURL
 						}
@@ -77,13 +77,12 @@ const WhosThatPokemon = props => {
 						className={"featured-pokemon-img"}
 					/>
 					<div>
-						<h5>?</h5>
+						{!outcome ? <h5>?</h5> : <h5>{outcome ? featuredPokemon.name : null}</h5>}
 						<h5>Pokemon</h5>
 					</div>
 				</div>
 				<p>{featuredPokemon.entry}</p>
 				<h3>{outcome}</h3>
-				<h3 className={"pokemon-name"}>{outcome ? featuredPokemon.name : null}</h3>
 				<form onSubmit={evaluator}>
 					<label>
 						<input placeholder="Enter Pokemon" type="text" ref={nameRef} />

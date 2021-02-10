@@ -30,9 +30,7 @@ export const StyledWhosThatPokemon = styled.div`
 		justify-content: space-between;
 	}
 
-	header h2 {
-		font-size: 75px;
-	}
+	header h2,
 	header h3 {
 		font-size: 75px;
 	}

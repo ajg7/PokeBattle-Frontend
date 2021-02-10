@@ -28,7 +28,7 @@ const LandingPage = props => {
 			<section>
 				<img
 					src={
-						Math.round(Math.random() * 25) < 23
+						Math.round(Math.random() * 25) < 21
 							? featuredPokemon.modern_imgURL
 							: featuredPokemon.shiny_imgURL
 					}
