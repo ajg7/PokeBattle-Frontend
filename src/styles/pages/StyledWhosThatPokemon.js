@@ -21,6 +21,10 @@ export const StyledWhosThatPokemon = styled.div`
 		}
 	}
 
+	.pokemon-name {
+		text-transform: ${({ theme }) => theme.cap};
+	}
+
 	header {
 		display: flex;
 		justify-content: space-between;

@@ -83,7 +83,7 @@ const WhosThatPokemon = props => {
 				</div>
 				<p>{featuredPokemon.entry}</p>
 				<h3>{outcome}</h3>
-				<h3>{outcome ? featuredPokemon.name : null}</h3>
+				<h3 className={"pokemon-name"}>{outcome ? featuredPokemon.name : null}</h3>
 				<form onSubmit={evaluator}>
 					<label>
 						<input placeholder="Enter Pokemon" type="text" ref={nameRef} />
