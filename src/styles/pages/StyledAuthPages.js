@@ -4,12 +4,12 @@ export const StyledAuthPages = styled.div`
 	padding: ${({ theme }) => theme.globalPadding};
 
 	@media (max-width: 450px) {
-		h1,
 		header nav {
 			margin: 10px 0;
 		}
 
 		h1 {
+			margin: 15px 0;
 			font-size: 75px;
 		}
 	}
