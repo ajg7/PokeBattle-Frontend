@@ -4,10 +4,8 @@ import { StyledAuthPages } from "../../styles/pages";
 import { AuthForm } from "../common/";
 
 const Login = () => {
-
 	const history = useHistory();
 	const signupHandler = () => history.push("/signup");
-
 
 	return (
 		<StyledAuthPages>
