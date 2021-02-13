@@ -8,6 +8,10 @@ export const StyledAuthPages = styled.div`
 		header nav {
 			margin: 10px 0;
 		}
+
+		h1 {
+			font-size: 75px;
+		}
 	}
 
 	h1 {
