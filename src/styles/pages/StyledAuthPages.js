@@ -13,6 +13,10 @@ export const StyledAuthPages = styled.div`
 		font-size: 100px;
 	}
 
+	h2 {
+		font-size: 75px;
+	}
+
 	header {
 		display: flex;
 		flex-flow: row wrap;

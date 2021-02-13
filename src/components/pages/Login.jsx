@@ -11,7 +11,7 @@ const Login = () => {
 		<StyledAuthPages>
 			<header>
 				<h1>PokéBattle</h1>
-				<h3>Login</h3>
+				<h2>Login</h2>
 			</header>
 			<section>
 				<AuthForm formType="Login" />
