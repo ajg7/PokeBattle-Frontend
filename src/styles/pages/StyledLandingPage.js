@@ -16,6 +16,7 @@ export const StyledLandingPage = styled.div`
 	@media (max-width: 450px) {
 		header h1 {
 			margin: 15px 0;
+			font-size: 50px;
 		}
 		header nav {
 			display: flex;
