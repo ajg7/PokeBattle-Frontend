@@ -4,10 +4,6 @@ export const StyledAuthPages = styled.div`
 	padding: ${({ theme }) => theme.globalPadding};
 
 	@media (max-width: 450px) {
-		header nav {
-			margin: 10px 0;
-		}
-
 		h1 {
 			font-size: 75px;
 		}
@@ -21,20 +17,6 @@ export const StyledAuthPages = styled.div`
 		display: flex;
 		flex-flow: row wrap;
 		justify-content: space-evenly;
-	}
-
-	header nav {
-		display: flex;
-		flex-flow: row wrap;
-	}
-
-	header nav h3 {
-		margin: 0 10px;
-	}
-
-	header nav a {
-		color: #000000;
-		text-decoration: none;
 	}
 
 	footer p {
