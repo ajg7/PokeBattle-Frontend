@@ -9,7 +9,6 @@ export const StyledAuthPages = styled.div`
 		}
 
 		h1 {
-			margin: 15px 0;
 			font-size: 75px;
 		}
 	}
