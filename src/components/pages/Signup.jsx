@@ -1,8 +1,13 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import { StyledAuthPages } from "../../styles/pages";
 import { AuthForm } from "../common/";
 
 const Signup = () => {
+
+	const history = useHistory();
+	const loginHandler = () => history.push("/login");
+
 	return (
 		<StyledAuthPages>
 			<header>
@@ -13,7 +18,7 @@ const Signup = () => {
 			</section>
 			<footer>
 				<p>
-					Already have an account? <a href="https://musing-euler-334a9c.netlify.app/login">Log In</a>
+					Already have an account? <span onClick={loginHandler}>Login</span>
 				</p>
 			</footer>
 		</StyledAuthPages>
