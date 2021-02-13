@@ -18,3 +18,10 @@ export const logout = () => {
 	localStorage.removeItem("token");
 	localStorage.removeItem("userId");
 };
+
+export const deleteAccount = async () => {
+	const userId = localStorage.getItem("userId");
+	await axios.delete(`https://pokebattle-backend.herokuapp.com/users/removeUser/${userId}`);
+	localStorage.removeItem("token");
+	localStorage.removeItem("userId");
+};

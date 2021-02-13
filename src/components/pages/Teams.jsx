@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
 import { teams, teamMembers } from "../../store/actions/";
-import { logout } from "../../api/auth";
+import { logout, deleteAccount } from "../../api/auth";
 import { DialogBox, Button } from "../common";
 import { StyledTeams } from "../../styles/pages";
 import addButton from "../../assets/addButton.png";
@@ -40,6 +40,11 @@ const Teams = props => {
 
 	const logoutHandler = () => {
 		logout();
+		history.push("/");
+	};
+
+	const deleteAccountHandler = () => {
+		deleteAccount();
 		history.push("/");
 	};
 
@@ -110,6 +115,7 @@ const Teams = props => {
 						buttonText={"Who's that Pokemon?"}
 					/>
 					<Button handleClick={logoutHandler} buttonText={"Log Out"} />
+					<Button handleClick={deleteAccountHandler} buttonText={"Delete Account"} />
 				</footer>
 			</div>
 		</StyledTeams>
