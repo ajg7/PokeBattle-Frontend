@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const FETCH_FEATURED_POKEMON = "FETCH_FEATURED_POKEMON";
 export const fetchFeaturedPokemon = () => async dispatch => {
-	const { data } = await axios("http://localhost:7000/pokemon");
+	const { data } = await axios("https://pokebattle-backend.herokuapp.com/pokemon");
 	const randomNumber = Math.round(Math.random() * 151);
 	const { modern_imgurl, name, entry, shiny_imgurl } = data[randomNumber];
 	dispatch({
