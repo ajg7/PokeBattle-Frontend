@@ -19,7 +19,7 @@ export const updateScores = scores => async dispatch => {
 
 export const GET_BATTLE_DATA = "GET_BATTLE_DATA";
 export const getBattleData = teamId => async dispatch => {
-	const { data } = await axiosWithAuth().get(`battle/battles/${teamId}`);
+	const { data } = await axiosWithAuth().get(`battle/${teamId}`);
 	const wins = data.filter(battle => battle.player_score > battle.challenger_score);
 	const losses = data.filter(battle => battle.player_score < battle.challenger_score);
 	const ties = data.filter(battle => battle.player_score === battle.challenger_score);

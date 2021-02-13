@@ -69,7 +69,7 @@ const WhosThatPokemon = props => {
 				<div className="whos-that-pokemon">
 					<img
 						src={
-							Math.round(Math.random() * 25) < 22
+							Math.round(Math.random() * 25) < 23
 								? featuredPokemon.modern_imgURL
 								: featuredPokemon.shiny_imgURL
 						}

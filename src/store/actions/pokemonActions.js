@@ -4,10 +4,10 @@ export const FETCH_FEATURED_POKEMON = "FETCH_FEATURED_POKEMON";
 export const fetchFeaturedPokemon = () => async dispatch => {
 	const { data } = await axios("https://pokebattle-backend.herokuapp.com/pokemon");
 	const randomNumber = Math.round(Math.random() * 151);
-	const { modern_imgURL, name, entry, shiny_imgURL } = data[randomNumber];
+	const { modern_imgurl, name, entry, shiny_imgurl } = data[randomNumber];
 	dispatch({
 		type: FETCH_FEATURED_POKEMON,
-		payload: { modern_imgURL, name, entry, shiny_imgURL },
+		payload: { modern_imgurl, name, entry, shiny_imgurl },
 	});
 };
 
