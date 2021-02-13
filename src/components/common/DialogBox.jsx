@@ -31,7 +31,8 @@ const DialogBox = props => {
 				.validate({ teamName })
 				.catch(error => setTeamNameErrors(error.errors));
 			if (valid) {
-				const newTeam = { userId, teamName };
+				const newTeam = { user_Id: +userId, team_name: teamName };
+				console.log(newTeam);
 				makeNewTeam(newTeam);
 			}
 		} finally {

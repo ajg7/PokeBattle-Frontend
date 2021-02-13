@@ -14,7 +14,7 @@ export const fetchTeamById = teamId => async dispatch => {
 export const MAKE_NEW_TEAM = "MAKE_NEW_TEAM";
 export const makeNewTeam = newTeam => async dispatch => {
 	const { data } = await axiosWithAuth().post("/team/", newTeam);
-	const pokemon = await axiosWithAuth().get(`/team_members/data/${newTeam.userId}`);
+	const pokemon = await axiosWithAuth().get(`/team_members/data/${newTeam.user_Id}`);
 	dispatch({ type: MAKE_NEW_TEAM, payload: { data: data[0], pokemon: pokemon.data } });
 };
 

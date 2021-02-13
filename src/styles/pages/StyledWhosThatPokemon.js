@@ -86,6 +86,7 @@ export const StyledWhosThatPokemon = styled.div`
 
 	section p {
 		text-transform: ${({ theme }) => theme.cap};
+		text-align: center;
 	}
 
 	footer {
