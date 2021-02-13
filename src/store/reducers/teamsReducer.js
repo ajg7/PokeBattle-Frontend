@@ -36,7 +36,7 @@ export const reducer = (state = initialState, action) => {
 			return {
 				...state,
 				teamId: +action.payload.teamId,
-				teamName: action.payload.teamName[0].team_name,
+				teamName: action.payload.teamName.team_name,
 				team: [],
 			};
 		case teams.SET_CURRENT_TEAM:

@@ -68,7 +68,7 @@ const BattlePage = props => {
 			challengerPokemon.type2,
 			challengerType1,
 			challengerType2,
-			challengerPokemon.imgURL,
+			challengerPokemon.imgurl,
 			challengerPokemon.name
 		);
 
@@ -82,7 +82,7 @@ const BattlePage = props => {
 		});
 
 		setSelectedPokemon({ img, name });
-		setChallengerPokemon({ img: challengerPokemon.imgURL, name: challengerPokemon.name });
+		setChallengerPokemon({ img: challengerPokemon.imgurl, name: challengerPokemon.name });
 
 		const { playerSubPoints, challengerSubPoints } = Battles.evaluator(player, challenger);
 
@@ -119,13 +119,11 @@ const BattlePage = props => {
 			setActive(false);
 			if (playerScore > challengerScore) setOutcome("Player Has Won Battle!");
 			if (challengerScore > playerScore) setOutcome("Challenger Has Won Battle!");
-			// if (playerScore === challengerScore) setOutcome("Tie");
 		} else if (currentTeam < 1) {
 			await makeABattle(userId, params.teamId, playerScore, challengerScore);
 			setActive(false);
 			if (playerScore > challengerScore) setOutcome("Player Has Won Battle!");
 			if (challengerScore > playerScore) setOutcome("Challenger Has Won Battle!");
-			// if (playerScore === challengerScore) setOutcome("Tie");
 		}
 	};
 
@@ -166,15 +164,15 @@ const BattlePage = props => {
 				<div className={"player-team"}>
 					{currentTeam.map(pokemon => {
 						return (
-							<div key={pokemon.pokemon_Id}>
+							<div key={pokemon.pokemon_id}>
 								<h3>{pokemon.nickname ? pokemon.nickname : pokemon.name}</h3>
-								<img src={pokemon.imgURL} alt={pokemon.name} />
+								<img src={pokemon.imgurl} alt={pokemon.name} />
 								<div className="selection-button">
 									<Button
 										handleClick={battle}
 										type1={pokemon.type1}
 										type2={pokemon.type2}
-										img={pokemon.imgURL}
+										img={pokemon.imgurl}
 										name={pokemon.name}
 										disabled={disabled}
 										buttonText={`${
@@ -199,9 +197,9 @@ const BattlePage = props => {
 				<div className="challenger-team">
 					{challengerTeam.map(pokemon => {
 						return (
-							<div key={pokemon.pokemon_Id}>
+							<div key={pokemon.pokemon_id}>
 								<h3>{pokemon.nickname ? pokemon.nickname : pokemon.name}</h3>
-								<img src={pokemon.imgURL} alt={pokemon.name} />
+								<img src={pokemon.imgurl} alt={pokemon.name} />
 							</div>
 						);
 					})}

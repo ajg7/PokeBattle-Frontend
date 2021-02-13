@@ -68,6 +68,7 @@ const Pokedex = props => {
 	};
 
 	const nicknameHandler = event => {
+		console.log(event.target.id);
 		setActive(true);
 		setSelectedPokemonId(event.target.id);
 	};
@@ -209,23 +210,23 @@ const Pokedex = props => {
 										<h3>
 											{pokemon.nickname ? pokemon.nickname : pokemon.name}
 										</h3>
-										{pokemon.pokemon_Id ? (
+										{pokemon.pokemon_id ? (
 											<div>
 												<img
 													src={editButton}
 													alt="give pokemon a nickname"
-													id={pokemon.pokemon_Id}
+													id={pokemon.pokemon_id}
 													onClick={nicknameHandler}
 												/>
 												<img
-													src={pokemon.imgURL}
+													src={pokemon.imgurl}
 													alt={pokemon.name}
-													id={pokemon.pokemon_Id}
+													id={pokemon.pokemon_id}
 												/>
 												<img
 													src={deleteButton}
 													alt={"remove pokemon from team"}
-													id={pokemon.pokemon_Id}
+													id={pokemon.pokemon_id}
 													onClick={deletePokemonHandler}
 												/>
 											</div>
@@ -245,7 +246,7 @@ const Pokedex = props => {
 								name={member.name}
 								type1={member.type1}
 								type2={member.type2}
-								imgURL={member.imgURL}
+								imgURL={member.imgurl}
 								height={member.height}
 								weight={member.weight}
 								entry={member.entry}

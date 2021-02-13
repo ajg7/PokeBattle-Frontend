@@ -65,30 +65,30 @@ const Teams = props => {
 											src={deleteButton}
 											alt={"delete button"}
 											onClick={deleteTeamHandler}
-											id={ele[1][0].team_Id}
+											id={ele[1][0].team_id}
 										/>
 										<h3>{ele[0]}</h3>
 										<img
 											src={editButton}
 											alt={"add pokemon to team"}
 											onClick={pokedexHandler}
-											id={ele[1][0].team_Id}
+											id={ele[1][0].team_id}
 											className={"edit-team-members-button"}
 										/>
 									</div>
 									<div className="records">
 										<Button
 											handleClick={recordsHandler}
-											id={ele[1][0].team_Id}
+											id={ele[1][0].team_id}
 											buttonText={"Records Room"}
 											classType={"records-button"}
 										/>
 									</div>
 									<div className={"teams"}>
 										{ele[1].map((team, index) => {
-											return team.imgURL ? (
+											return team.imgurl ? (
 												<div key={index} className={"team-member"}>
-													<img src={team.imgURL} alt={team.name} />
+													<img src={team.imgurl} alt={team.name} />
 												</div>
 											) : null;
 										})}

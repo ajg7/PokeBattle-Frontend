@@ -54,8 +54,8 @@ const Records = props => {
 				<div className="team">
 					{pokemonInTeam.map(pokemon => {
 						return (
-							<div key={pokemon.pokemon_Id} className="team-members">
-								<img src={pokemon.imgURL} alt={pokemon.name} />
+							<div key={pokemon.pokemon_id} className="team-members">
+								<img src={pokemon.imgurl} alt={pokemon.name} />
 								<h3>{pokemon.nickname ? pokemon.nickname : pokemon.name}</h3>
 							</div>
 						);

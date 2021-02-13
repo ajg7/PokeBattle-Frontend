@@ -38,7 +38,7 @@ const Pokemon = props => {
 		let duplicate = false;
 		for (const ele of currentTeam) {
 			for (const member of ele) {
-				if (member.pokemon_Id === pokeId) duplicate = true;
+				if (member.pokemon_id === pokeId) duplicate = true;
 			}
 		}
 		const valid = await teamNumberSchema.isValid({ currentTeam: currentTeam[0] });
