@@ -28,6 +28,8 @@ export const StyledArena = styled.div`
 					return "white";
 				case "#ca2c92":
 					return "white";
+				case "#3F00FF":
+					return "white";
 				default:
 					return "black";
 			}
