@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { StyledAuthPages } from "../../styles/pages";
 import { AuthForm } from "../common/";
 
@@ -9,13 +10,13 @@ const Signup = () => {
 				<h1>PokéBattle</h1>
 				<nav>
 					<h3>
-						<a href="/">Home</a>
+						<Link to="/">Home</Link>
 					</h3>
 					<h3>
-						<a href="/login">Login</a>
+						<Link to="/login">Login</Link>
 					</h3>
 					<h3>
-						<a href="/signup">Signup</a>
+						<Link to="/signup">Signup</Link>
 					</h3>
 				</nav>
 			</header>
