@@ -4,7 +4,7 @@ export const StyledAuthPages = styled.div`
 	padding: ${({ theme }) => theme.globalPadding};
 
 	@media (max-width: 450px) {
-		h1 {
+		header h1 {
 			font-size: 75px;
 		}
 	}
