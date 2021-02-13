@@ -218,6 +218,7 @@ const BattlePage = props => {
 					<option value="#ca2c92">Fuchsia</option>
 					<option value="#f4c430">Saffron</option>
 					<option value="#E34234">Cinnabar</option>
+					<option value="#3F00FF">Indigo</option>
 				</select>
 				<Button handleClick={teamsHandler} buttonText={"Your Teams"} />
 			</footer>
