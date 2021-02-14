@@ -7,8 +7,8 @@ Make sure to check out [PokeBattle's backend](https://github.com/ajg7/PokeBattle
 
 ## Technologies
 
-    *React
-    *Redux
-    *axios
-    *Styled-Components
-    *Jest
+    - React
+    - Redux
+    - axios
+    - Styled-Components
+    - Jest
