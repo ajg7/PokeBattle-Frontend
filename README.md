@@ -17,6 +17,8 @@ Make sure to check out [PokeBattle's backend](https://github.com/ajg7/PokeBattle
 
 ### Teams Menu
 
+![PokeBattle Flow](./src/assets/PokeBattle.gif "PokeBattle Flow")
+
 1. Click on "Make Team Button"
 
 2. Click on "Edit Team Button"
