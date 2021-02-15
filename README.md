@@ -3,9 +3,9 @@
 PokeBattle allows users to create a team of 6 pokemon and battle a randomly generated team.
 Make sure to check out [PokeBattle's backend](https://github.com/ajg7/PokeBattle-Backend)
 
-## App Flow
+## Set-Up
 
-[] gif of basic app flow
+## App Flow
 
 ### Login/Signup
 
@@ -49,7 +49,7 @@ Make sure to check out [PokeBattle's backend](https://github.com/ajg7/PokeBattle
 
 One additional minigame is "Who's That Pokemon?"
 
-(https://youtu.be/xJPW5r9yrN0)
+![Who's that pokemon](./src/assets/PokeBattle-%20Whos%20That%20Pokemon.gif "Who's That Pokemon Flow")
 
 1. Write down which pokemon it is
 
