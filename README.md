@@ -5,6 +5,16 @@ Make sure to check out [PokeBattle's backend](https://github.com/ajg7/PokeBattle
 
 ## Set-Up
 
+1. npm install
+
+2. npm start
+
+### Prettier
+
+npm run format
+
+App uses Husky as a pre-commit hook
+
 ## App Flow
 
 ### Login/Signup
