@@ -49,7 +49,7 @@ Make sure to check out [PokeBattle's backend](https://github.com/ajg7/PokeBattle
 
 One additional minigame is "Who's That Pokemon?"
 
-[](https://youtu.be/xJPW5r9yrN0)
+(https://youtu.be/xJPW5r9yrN0)
 
 1. Write down which pokemon it is
 
